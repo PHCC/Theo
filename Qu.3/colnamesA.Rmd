@@ -1,0 +1,73 @@
+---
+title: "Théo3A.Rmd"
+author: "Christoph"
+date: "2023-05-08...19.."
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    keep_tex: yes
+  word_document:
+    toc: no
+    toc_depth: '3'
+geometry: margin=0.5cm
+---
+
+
+# Libraries
+
+```{r, comment=FALSE, warning=FALSE, message=FALSE}
+library(xlsx)                                         # Fichiers Excel
+library(jmv)                                          # Analyses Jamovi
+library(dplyr)                                        # filter etc.
+```
+
+
+# Données
+
+## Lire 
+
+```{r}
+setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
+
+#TOUT <- read.xlsx("QEMS_all-corr.xlsx", sheetName ="sheet1")  # java.lang.OutOfMemoryError: GC overhead limit exceeded
+load("QEMS_all.RData")
+View(dataset)
+
+traduction <- read.xlsx("new_polished_itemname:lignes1,2.xlsx", sheetName ="sheet1")
+View(traduction)
+
+#TOUT <- read.xlsx("new_polished_itemname-CHP.xlsx", sheetName ="Sheet1")[1:506]  # colonnes vides à la fin
+```
+
+traduire noms des colonnes
+
+```{r}
+TOUT <- data.frame(dataset)  # deep copy
+
+for (i in 1:length(TOUT)) {
+  for (j in 1:length(traduction)) {
+    name <- gsub(" ",".",colnames(TOUT)[i])
+    name <- gsub(",",".",name)
+    name <- gsub("-",".",name)
+    if ( name ==  colnames(traduction)[j]) {
+      # importé differément, donc " " est devenu "." dans traduction !
+      
+      #print(paste("ancien dataset",i,"traduction",j,":",colnames(TOUT)[i],"->",traduction[1,j]))
+      colnames(TOUT)[i] <- traduction[1,j]
+    }
+  }
+}
+```
+
+
+## Afficher
+
+(sur écran mais pas dans le PDF ou word)
+
+```{r}
+View(TOUT)
+colnames(TOUT)   # Noms des Variables
+```

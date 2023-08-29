@@ -1,0 +1,46 @@
+"Mpsy_paire_ignoré_item1"
+"Mpsy_paire_investissement_item2"                      
+"Mpsy_paire_critique_perf_item3"                      
+"Mpsy_paire_apparence_item4"    
+                       
+"Mpsy_paire_rumeur_item5"                             
+"Mpsy_paire_humiliation_item6"
+"Mpsy_paire_menace_exclusion_item7"                    
+"mpsy_paire_menace_physique_item8"
+
+"Mpsy_paire_encourager_humiliation_item9"    
+"mpsy_paire_limite_contacte_item10"     
+
+# item 11-15 n'existent pas pour les paires ??
+                                      
+"Mpsy_adulte_ignoer_item1"                                                            
+"mpsy_adulte_critique_perf_item2"                      "mpsy_adulte_critiquer_apparence_item3"               
+"mpsy_adulte_rumeur_item4"                             
+"mpsy_adulte_ridiculiser_item5"                       
+"Mpsy_adulte_crier_dessus_item6"                                                    
+"mpsy_adulte_menace_expulsion_item7"                  
+"mpsy_adulte_menacephysi_item8"                         "mpsy_adulte_humiliation_autrui_item9"                
+"mpsy_adulte_limitation_contact_item10"                
+"mpsy_adulte_jouer_blesser_item11"                    
+"mpsy_adulte_entrainer_a_vomir_item12"                 
+"mpsy_adulte_dopage_item13"                           
+"mpsy_adulte_poids_ideal_item13"  
+
+#  item 14, 15 n'existent pas pour les adultes ??                    
+                              
+"Mpsy_parent_ignorer_item1"                           
+"mpsy_parent_invesstissment_item2"                     
+"mpsy_parent_critique_perf_item3"                     
+"Mpsy_parent_critique_corps_item4"                     
+"mpsy_parent_rumeur_item5"                            
+"mpsy_parent_ridiculisà_perf_item6"                    
+"mpsy_parent_crier_dessus_item7"    
+"Mpsy_parent_menace_physique_item8" 
+"Mpsy_parent_blesser_adversaire_item9"                
+"Mpsy_parent_limite_contact_item10"                    
+"Mpsy_parent_blessé_soi_mm_item11"                    
+"mpsy_parent_vomir_item12"                             
+"mpsy_parent_dopage_item13"                           
+"Mpsy_parent_poids_ideal_item14"      
+
+#  item 15 n'existet pas pour les adultes ??                        

@@ -1,0 +1,44 @@
+---
+title: "...col names"
+author: "Christoph"
+date: "2023-05-22.."
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    keep_tex: yes
+  word_document:
+    toc: no
+    toc_depth: '3'
+geometry: margin=0.5cm
+---
+
+
+# Libraries
+
+```{r, comment=FALSE, warning=FALSE, message=FALSE}
+library(xlsx)                                         # Fichiers Excel
+#library(tigerstats)                                   # beaux tableaux croisés
+```
+
+
+# Données
+
+## Lire
+
+```{r}
+setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
+TOUT <- read.xlsx("new_polished_itemname-CHP2.xlsx", sheetName ="Sheet1")  # enlevé 3 linebreaks fausses     [1:506]  # colonnes vides à la fin?
+```
+
+
+## Afficher
+
+(sur écran mais pas dans le PDF ou word)
+
+```{r}
+#View(TOUT)
+colnames(TOUT)   # Noms des Variables
+```

@@ -1,0 +1,138 @@
+---
+title: "Théo"
+author: "Christoph"
+date: "2023-05-02..05"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    keep_tex: yes
+geometry: margin=0.5cm
+---
+
+---
+#    latex-engine: xelatex
+---
+
+# Libraries
+
+```{r, comment=FALSE, warning=FALSE, message=FALSE}
+library(xlsx)                                         # Fichiers Excel
+library(jmv)                                          # Analyses Jamovi
+library(dplyr)                                        # filter etc.
+#library(tigerstats)                                   # beaux tableaux croisés
+```
+
+
+# Données
+
+## Lire
+
+```{r}
+setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
+TOUT <- read.xlsx("new_polished_itemname-CHP.xlsx", sheetName ="Sheet1")[1:506]  # colonnes vides à la fin
+```
+
+
+## Afficher
+
+(sur écran mais pas dans le PDF)
+
+```{r}
+View(TOUT)
+#colnames(TOUT)   # Noms des Variables
+```
+
+# MPS
+
+```{r}
+TOUT$MPS <- TOUT$Mphysique_pairs_item1==1                 | TOUT$Mphysique_paire_item2==1         | 
+                TOUT$Mphysique_paire_item3==1             | 
+            TOUT$Mphysique_adulte_secoue_agrippe_item1==1 | TOUT$Mphysique_adulte_frappe_item2==1 | 
+                TOUT$Mphysique_adulte_etouffe_item3==1    |
+            TOUT$Mphysique_parent_secoue==1               | TOUT$Mphysique_parent_frappe==1       | 
+                TOUT$Mphysique_parent_ettoufe==1
+
+TOUT$MPS <- if_else(TOUT$MPS, 1, 0)
+
+MPS <- filter(TOUT, MPS==1)
+
+#View(TOUT)
+```
+
+
+## Statistiques Descriptives 
+
+```{r}
+descriptives(MPS, c("Categorie_age","sport_categories","sexe_genre","niveau_de_pratique","avant_12_ans"), 
+             freq=TRUE)
+```
+
+Ces résultats corréspondent à ```new_polished_itemname-MP.omv``` .
+
+Mais ces ne sont pas encore les prévalences mais plutôt les caractéristiques sociodémographiques des répondants.
+
+
+# Prévalences
+
+Pour les prévalences de MPS dans les différents classes sociodémographiques il faut 
+
+- d'abord filtrer la classe
+- puis décrire (ma nouvelle variable) MPS oui/non
+
+
+```{r}
+inv.table <- function(maltyp, categorie, titres) {
+  print(noquote(""))
+  print(noquote(paste( "------------ Tableau cas/non-cas pour la catégorie ",categorie," : ------------------" )))
+  #print("titres="      ); print(titres)
+
+  col1 <- c( sum(    filter(TOUT, !!as.symbol(categorie) == titres[1])[maltyp], na.rm=TRUE), 
+             sum(1 - filter(TOUT, !!as.symbol(categorie) == titres[1])[maltyp], na.rm=TRUE) ) 
+  df <-  data.frame(col1)
+
+  for (i in 2:length(titres) ) {  
+    col <- c( sum(    filter(TOUT, !!as.symbol(categorie) == titres[i])[maltyp], na.rm=TRUE), 
+              sum(1 - filter(TOUT, !!as.symbol(categorie) == titres[i])[maltyp], na.rm=TRUE) ) 
+    df <- cbind(df,col)
+   }
+  rownames(df) = c(paste(maltyp,"oui"), paste(maltyp,"no"))
+  colnames(df) <- titres
+  print(df)
+  return(df)
+}
+
+prevalences <- function(it){
+  print(noquote("Prévalences selon cette catégorie:"))
+  print( it[1,]/(it[1,]+it[2,]) )
+}
+
+tab_prev <- function(maltyp){
+  print(noquote(paste("========================== maltraitance",maltyp,": ===================================")))
+  
+  prev_age <- inv.table("MPS", "Categorie_age", c("16-19 ans ","20-23 ans","24 ans et plus"))         # titre automatique ne vaut pas
+  prevalences(prev_age)
+
+  prev_sexe <- inv.table("MPS", "sexe_genre", c("Une fille","Un garçon","Les catégories ne me correspondent pas"))   # 
+  prevalences(prev_sexe)
+
+  prev_niveau <- inv.table("MPS", "niveau_de_pratique", c("National", "Régional", "Autre", 
+                                  "International", "Inter-régional (inter-cantonal)", "Régional (cantonal)"))   # 
+  prevalences(prev_niveau)
+
+  prev_12ans <- inv.table("MPS", "avant_12_ans", c(0,1))   # 
+  prevalences(prev_sexe)
+}
+```
+
+```{r}
+tab_prev("MPS")
+```
+
+
+# Petites discussions
+
+- la prévalence de MAP est de 16.8% chez les 16-19 ans, 17.5% chez les 20-23 ans et 22.5% chez les 24 ans ou plus.
+- 100% prevalence dans la catégorie ```Les catégories ne me correspondent pas``` - mais il n'y avait qu'un seul cas.

@@ -1,0 +1,5561 @@
+Théo3.Rmd
+Christoph
+2023-05-08…06-07…
+
+Libraries
+library(xlsx)
+library(jmv)
+library(dplyr)
+library(purrr)
+
+#
+#
+#
+#
+
+Fichiers Excel
+Analyses Jamovi
+filter etc.
+add2
+
+Données
+Lire
+setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
+#TOUT <- read.xlsx("QEMS_all-corr.xlsx", sheetName ="sheet1")
+load("QEMS_all.RData")
+#View(dataset)
+
+# java.lang.OutOfMemoryError: GC overhead limit exce
+
+traduction <- read.xlsx("new_polished_itemname:lignes1,2.xlsx", sheetName ="sheet1")
+#View(traduction)
+#TOUT <- read.xlsx("new_polished_itemname-CHP.xlsx", sheetName ="Sheet1")[1:506]
+
+# colonnes vides à la fin
+
+traduire noms des colonnes
+TOUT <- data.frame(dataset)
+
+# deep copy
+
+for (i in 1:length(TOUT)) {
+for (j in 1:length(traduction)) {
+name <- gsub(" ",".",colnames(TOUT)[i])
+name <- gsub(",",".",name)
+name <- gsub("-",".",name)
+if ( name == colnames(traduction)[j]) {
+# importé differément, donc " " est devenu "." dans traduction !
+#print(paste("ancien dataset",i,"traduction",j,":",colnames(TOUT)[i],"->",traduction[1,j]))
+colnames(TOUT)[i] <- traduction[1,j]
+}
+}
+}
+
+Afficher
+(sur écran mais pas dans le PDF ou word)
+#View(TOUT)
+#colnames(TOUT)
+
+# Noms des Variables
+
+MPS
+• paire, adulte, parent : 1 catégorie, 3 items, 3 interpretations, 10 conséquences = OK
+TOUT$MPS <- TOUT$Mphysique_pairs_item1!="Jamais"
+TOUT$Mphysique_paire_item3!="Jamais"
+
+| TOUT$Mphysique_paire_item2!="Jamais"
+|
+
+|
+
+TOUT$Mphysique_adulte_secoue_agrippe_item1!="Jamais" | TOUT$Mphysique_adulte_frappe_item2!="Jamais" |
+TOUT$Mphysique_adulte_etouffe_item3!="Jamais"
+|
+TOUT$Mphysique_parent_secoue!="Jamais"
+TOUT$Mphysique_parent_ettoufe!="Jamais"
+
+| TOUT$Mphysique_parent_frappe!="Jamais"
+# NA reste NA, c'est bon!
+
+|
+
+TOUT$MPS <- if_else(TOUT$MPS, 1, 0)
+MPS <- filter(TOUT, MPS==1)
+
+3.1.1 Interpretation MPS
+# recoder...
+# ... par exemple compter tout sauf
+#MPS$Mphysique_paire_normalisation
+#MPS$Mphysique_paire_necessite_perf
+#MPS$Mphysique_paire_faire_partie
+
+"Pas du tout":
+<- MPS$Mphysique_paire_normalisation!="Pas du tout"
+<- MPS$Mphysique_paire_necessite_perf!="Pas du tout"
+<- MPS$Mphysique_paire_faire_partie!="Pas du tout"
+
+descriptives(MPS, c("Mphysique_paire_normalisation",
+"Mphysique_paire_necessite_perf",
+"Mphysique_paire_faire_partie"),
+freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+�����������������������������������������������������������������������������������������������������������������
+Mphysique_paire_normalisation
+Mphysique_paire_necessite_perf
+�����������������������������������������������������������������������������������������������������������������
+N
+282
+282
+Manquants
+62
+62
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�����������������������������������������������������������������������������������������������������������������
+
+FRÉQUENCES
+Fréquences de Mphysique_paire_normalisation
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+% cumulés
+�������������������������������������������������������
+Moyennement
+84
+29.78723
+29.78723
+Pas du tout
+119
+42.19858
+71.98582
+Tout à fait
+66
+23.40426
+95.39007
+Ne sait pas
+13
+4.60993
+100.00000
+�������������������������������������������������������
+
+Fréquences de Mphysique_paire_necessite_perf
+�������������������������������������������������������
+
+Mphysique_paire_faire_partie
+282
+62
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+68
+24.11348
+Pas du tout
+166
+58.86525
+Tout à fait
+39
+13.82979
+Ne sait pas
+9
+3.19149
+�������������������������������������������������������
+
+Fréquences de Mphysique_paire_faire_partie
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+77
+27.30496
+Pas du tout
+120
+42.55319
+Tout à fait
+80
+28.36879
+Ne sait pas
+5
+1.77305
+�������������������������������������������������������
+
+% cumulés
+24.11348
+82.97872
+96.80851
+100.00000
+
+% cumulés
+27.30496
+69.85816
+98.22695
+100.00000
+
+MPS$Mphysique_adulte_auteur_normlisation <- as.numeric(MPS$Mphysique_adulte_auteur_normlisation)
+descriptives(MPS, c("Mphysique_adulte_auteur_normlisation",
+"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...1",
+"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...2"),
+freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+
+Statistiques descriptives
+������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+Mphysique_adulte_auteur_normlisation Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme.
+������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+N
+40
+0
+Manquants
+304
+344
+Moyenne
+3.225000
+NaN
+Médiane
+3.000000
+NaN
+Ecart-type
+1.887713
+NaN
+Minimum
+1.000000
+NaN
+Maximum
+7.000000
+NaN
+������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+
+FRÉQUENCES
+Fréquences de Mphysique_adulte_auteur_normlisation
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+% cumulés
+�����������������������������������������������������
+1
+5
+12.50000
+12.50000
+2
+9
+22.50000
+35.00000
+3
+19
+47.50000
+82.50000
+7
+7
+17.50000
+100.00000
+�����������������������������������������������������
+
+Fréquences de Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...1
+�������������������������������������������������������������������������������
+Modalités
+Quantités
+% du Total
+% cumulés
+�������������������������������������������������������������������������������
+�������������������������������������������������������������������������������
+
+Fréquences de Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...2
+�������������������������������������������������������������������������������
+
+##
+##
+##
+
+Modalités
+Quantités
+% du Total
+% cumulés
+�������������������������������������������������������������������������������
+�������������������������������������������������������������������������������
+
+# parents:
+descriptives(MPS, c("Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...3",
+"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...4",
+"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...5"),
+freq=TRUE)
+
+##
+## STATISTIQUES DESCRIPTIVES
+##
+## Statistiques descriptives
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...3 Tu.as.considéré.ces.évènements.de
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+## N
+0
+0
+## Manquants
+344
+344
+## Moyenne
+NaN
+NaN
+## Médiane
+NaN
+NaN
+## Ecart-type
+NaN
+NaN
+## Minimum
+NaN
+NaN
+## Maximum
+NaN
+NaN
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+##
+## FRÉQUENCES
+##
+## Fréquences de Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...3
+## �������������������������������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������������������������������
+## �������������������������������������������������������������������������������
+##
+##
+## Fréquences de Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...4
+## �������������������������������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������������������������������
+## �������������������������������������������������������������������������������
+##
+##
+## Fréquences de Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...5
+## �������������������������������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������������������������������
+## �������������������������������������������������������������������������������
+# à partir d'ici tout est NA, même pas la peine de convertir car les tableaux seront vides
+#
+"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...1",
+#
+"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...2"),
+#
+#descriptives(MPS, c("Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...3",
+#
+"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...4",
+#
+"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...5" ),
+
+Qu. 3.2.1 Conséquences de la MPS
+descriptives(MPS, c("Mphysique_paire_demotivation" ,
+"Mphysique_paire_perteconfiance",
+"Mphysique_paire_peur"
+,
+"Mphysique_paire_triste"
+,
+
+"Mphysique_paire_moins_performé",
+"Mphysique_paire_image_neg"
+,
+"Mphysique_paire_colere"
+,
+"Mphysique_paire_stress"
+,
+
+"Mphysique_paire_ta_faute"
+freq=TRUE)
+
+, "Mphysique_paire_humiliation"
+
+),
+
+##
+## STATISTIQUES DESCRIPTIVES
+##
+## Statistiques descriptives
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+Mphysique_paire_demotivation Mphysique_paire_moins_performé Mphysique_paire_perteconfiance Mphys
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+## N
+282
+282
+282
+282
+## Manquants
+62
+62
+62
+62
+##
+Moyenne
+##
+Médiane
+##
+Ecart-type
+##
+Minimum
+##
+Maximum
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+##
+## FRÉQUENCES
+##
+## Fréquences de Mphysique_paire_demotivation
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Fortement
+16
+5.67376
+5.67376
+##
+Moyennement
+44
+15.60284
+21.27660
+##
+Pas du tout
+222
+78.72340
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de Mphysique_paire_moins_performé
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Moyennement
+51
+18.08511
+18.08511
+##
+Pas du tout
+221
+78.36879
+96.45390
+##
+Fortement
+10
+3.54610
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de Mphysique_paire_perteconfiance
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Fortement
+18
+6.38298
+6.38298
+##
+Moyennement
+48
+17.02128
+23.40426
+##
+Pas du tout
+216
+76.59574
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de Mphysique_paire_image_neg
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Fortement
+16
+5.67376
+5.67376
+##
+Moyennement
+36
+12.76596
+18.43972
+##
+Pas du tout
+230
+81.56028
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de Mphysique_paire_peur
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Fortement
+24
+8.51064
+Moyennement
+79
+28.01418
+Pas du tout
+179
+63.47518
+�������������������������������������������������������
+
+Fréquences de Mphysique_paire_colere
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Fortement
+96
+34.04255
+Moyennement
+123
+43.61702
+Pas du tout
+63
+22.34043
+�������������������������������������������������������
+
+Fréquences de Mphysique_paire_triste
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Fortement
+23
+8.15603
+Moyennement
+61
+21.63121
+Pas du tout
+198
+70.21277
+�������������������������������������������������������
+
+Fréquences de Mphysique_paire_stress
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Fortement
+29
+10.28369
+Moyennement
+83
+29.43262
+Pas du tout
+170
+60.28369
+�������������������������������������������������������
+
+Fréquences de Mphysique_paire_ta_faute
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+56
+19.85816
+Pas du tout
+207
+73.40426
+Fortement
+19
+6.73759
+�������������������������������������������������������
+
+Fréquences de Mphysique_paire_humiliation
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Fortement
+32
+11.34752
+Moyennement
+73
+25.88652
+Pas du tout
+177
+62.76596
+�������������������������������������������������������
+
+% cumulés
+8.51064
+36.52482
+100.00000
+
+% cumulés
+34.04255
+77.65957
+100.00000
+
+% cumulés
+8.15603
+29.78723
+100.00000
+
+% cumulés
+10.28369
+39.71631
+100.00000
+
+% cumulés
+19.85816
+93.26241
+100.00000
+
+% cumulés
+11.34752
+37.23404
+100.00000
+
+descriptives(MPS, c("Mphysique_adute_domotivation" , "Mphysique_adulte_performance",
+"Mphysique_adulte_confiance"
+, "Mphysique_adulte_imagecorps" ,
+"Mphysique_adulte_peur"
+, "Mphysique_adulte_colere"
+,
+"Mphysique_adulte_triste"
+, "Mphysique_adulte_stress"
+,
+"Mphysique_adulte_responsabilite", "Mphysique_adulte_humiliation"
+freq=TRUE)
+
+),
+
+##
+## STATISTIQUES DESCRIPTIVES
+##
+## Statistiques descriptives
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+Mphysique_adute_domotivation Mphysique_adulte_performance Mphysique_adulte_confiance Mphysique_a
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+## N
+115
+115
+115
+115
+1
+## Manquants
+229
+229
+229
+229
+##
+Moyenne
+##
+Médiane
+##
+Ecart-type
+##
+Minimum
+##
+Maximum
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+##
+## FRÉQUENCES
+##
+## Fréquences de Mphysique_adute_domotivation
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Moyennement
+34
+29.56522
+29.56522
+##
+Pas du tout
+73
+63.47826
+93.04348
+##
+Fortement
+8
+6.95652
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de Mphysique_adulte_performance
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Moyennement
+26
+22.60870
+22.60870
+##
+Pas du tout
+75
+65.21739
+87.82609
+##
+Fortement
+14
+12.17391
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de Mphysique_adulte_confiance
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Fortement
+20
+17.39130
+17.39130
+##
+Moyennement
+36
+31.30435
+48.69565
+##
+Pas du tout
+59
+51.30435
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de Mphysique_adulte_imagecorps
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Fortement
+19
+16.52174
+16.52174
+##
+Moyennement
+28
+24.34783
+40.86957
+##
+Pas du tout
+68
+59.13043
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de Mphysique_adulte_peur
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Pas du tout
+68
+59.13043
+59.13043
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Moyennement
+31
+Fortement
+16
+�������������������������������������������������������
+
+26.95652
+13.91304
+
+Fréquences de Mphysique_adulte_colere
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Fortement
+27
+23.47826
+Moyennement
+37
+32.17391
+Pas du tout
+51
+44.34783
+�������������������������������������������������������
+
+Fréquences de Mphysique_adulte_triste
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+34
+29.56522
+Pas du tout
+60
+52.17391
+Fortement
+21
+18.26087
+�������������������������������������������������������
+
+Fréquences de Mphysique_adulte_stress
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Fortement
+32
+27.82609
+Moyennement
+35
+30.43478
+Pas du tout
+48
+41.73913
+�������������������������������������������������������
+
+86.08696
+100.00000
+
+% cumulés
+23.47826
+55.65217
+100.00000
+
+% cumulés
+29.56522
+81.73913
+100.00000
+
+% cumulés
+27.82609
+58.26087
+100.00000
+
+Fréquences de Mphysique_adulte_responsabilite
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+% cumulés
+�������������������������������������������������������
+Fortement
+31
+26.95652
+26.95652
+Moyennement
+35
+30.43478
+57.39130
+Pas du tout
+49
+42.60870
+100.00000
+�������������������������������������������������������
+
+Fréquences de Mphysique_adulte_humiliation
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Fortement
+22
+19.13043
+Moyennement
+42
+36.52174
+Pas du tout
+51
+44.34783
+�������������������������������������������������������
+
+% cumulés
+19.13043
+55.65217
+100.00000
+
+MPS$Mphysique_parent_consideration <- as.numeric(MPS$Mphysique_parent_consideration)
+# Il n'y a aucune entrée,
+descriptives(MPS, c("Mphysique_parent_consideration", "Mphysique_parent_suite_a",
+"Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..1",
+"Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..2",
+"Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..3",
+"Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..4",
+"Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..5",
+"Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..6",
+"Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..7",
+"Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..8"),
+
+freq=TRUE)
+
+##
+## STATISTIQUES DESCRIPTIVES
+##
+## Statistiques descriptives
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+Mphysique_parent_consideration Mphysique_parent_suite_a Suite.à.ces.événements.de.maltraitance.ph
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+## N
+40
+0
+0
+## Manquants
+304
+344
+344
+## Moyenne
+2.750000
+NaN
+NaN
+## Médiane
+1.000000
+NaN
+NaN
+## Ecart-type
+2.250356
+NaN
+NaN
+## Minimum
+1.000000
+NaN
+NaN
+## Maximum
+6.000000
+NaN
+NaN
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+##
+## FRÉQUENCES
+##
+## Fréquences de Mphysique_parent_consideration
+## �����������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �����������������������������������������������������
+##
+1
+23
+57.50000
+57.50000
+##
+3
+5
+12.50000
+70.00000
+##
+6
+12
+30.00000
+100.00000
+## �����������������������������������������������������
+##
+##
+## Fréquences de Mphysique_parent_suite_a
+## �����������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �����������������������������������������������������
+## �����������������������������������������������������
+##
+##
+## Fréquences de Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..1
+## �������������������������������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������������������������������
+## �������������������������������������������������������������������������������
+##
+##
+## Fréquences de Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..2
+## �������������������������������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������������������������������
+## �������������������������������������������������������������������������������
+##
+##
+## Fréquences de Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..3
+## �������������������������������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������������������������������
+## �������������������������������������������������������������������������������
+##
+##
+## Fréquences de Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..4
+## �������������������������������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������������������������������
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+�������������������������������������������������������������������������������
+
+Fréquences de Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..5
+�������������������������������������������������������������������������������
+Modalités
+Quantités
+% du Total
+% cumulés
+�������������������������������������������������������������������������������
+�������������������������������������������������������������������������������
+
+Fréquences de Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..6
+�������������������������������������������������������������������������������
+Modalités
+Quantités
+% du Total
+% cumulés
+�������������������������������������������������������������������������������
+�������������������������������������������������������������������������������
+
+Fréquences de Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..7
+�������������������������������������������������������������������������������
+Modalités
+Quantités
+% du Total
+% cumulés
+�������������������������������������������������������������������������������
+�������������������������������������������������������������������������������
+
+Fréquences de Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..8
+�������������������������������������������������������������������������������
+Modalités
+Quantités
+% du Total
+% cumulés
+�������������������������������������������������������������������������������
+�������������������������������������������������������������������������������
+
+NEG
+et adultes et parents 3 catégories (Franzoni p. 95) avec 5 items au total
+TOUT$NEG <- TOUT$Neg_adulte_entrainer_blesse_item1!="Jamais" | TOUT$neg_adulte_dopage_soutenu_item2!="Jamais" |
+TOUT$neg_adulte_poids_ideal_item3
+!="Jamais" | TOUT$Neg_adulte_louper_ecole_item4!="Jamais"
+|
+TOUT$Neg_adulte_laisser_humilier_item5!="Jamais" |
+
+TOUT$Neg_parent_laisser_entrainer_blesser_item1!="Jamais" | TOUT$Neg_parent_dopage_item2!="Jamais" |
+TOUT$Neg_parent_poids_ideal_item3!="Jamais"
+| TOUT$Neg_parent_arret_ecole_item4!="Jamais"
+TOUT$neg_parent_laisser_humilier_autrui_item5!="Jamais"
+TOUT$NEG <- if_else(TOUT$NEG, 1, 0)
+NEG <- filter(TOUT, NEG==1)
+
+Interpretation
+————— “additionner” les catégories: ————- ‘
+add1 <- function(x, y){
+if(is.na(x)){return(y)}
+return(x)
+}
+#add1(1,NA)
+#add1(NA,1)
+
+# weder x noch y NA: abfangen!
+
+add2 <- function(x_, y_){
+return( unlist(map2(x_,y_,add1)) )
+}
+#add2( c(1,2,NA), c(NA,3,4) )
+
+add3 <- function(x_, y_, z_){
+return( add2(add2(x_,y_),z_) )
+}
+#add3( c(1,2,NA), c(NA,3,4), c(0,NA,5) )
+add4 <- function(w_, x_, y_, z_){
+return( add2(add3(w_,x_,y_),z_) )
+}
+#add4( c(NA, 2,3,4), c(10,NA,30,40), c(100,200,NA,400), c(1000,2000,3000,NA) )
+add5 <- function(x1_, x2_, x3_, x4_, x5_){
+return( add2(add3(x1_, x2_, x3_),add2(x4_, x5_)) )
+}
+
+add6 <- function(x1_, x2_, x3_, x4_, x5_, x6_){
+return( add2(add3(x1_, x2_, x3_),add3(x4_, x5_, x6_)) )
+}
+#add6( c(NA,2,3,4,5,6), c(10,NA,30,40,50,60), c(100,200,NA,400,500,600), c(1000,2000,3000,NA,5000,6000),c(10000,200
+
+add7 <- function(x1_, x2_, x3_, x4_, x5_, x6_, x7_){
+return( add2(add4(x1_, x2_, x3_, x4_),add3(x5_, x6_, x7_)) )
+}
+#add7( c(NA,2,3,4,5,6,7), c(10,NA,30,40,50,60,70), c(100,200,NA,400,500,600,700), c(1000,2000,3000,NA,5000,6000,700
+
+je vais mieux programmer l’addition:
+add <- function(df) { vec <- NULL View(df) N <- nrow(df) print(N) for (i in 1:10){ # N!! #print(df[i,]) print() vec[i] <as.vector(na.omit(df[i,]))[1] # premier element != NA } return( vec) } # na.omit(select(df, colonnes)[ligne,])[1] # max(select(df,
+colonnes)[ligne,])
+
+il y a des IDs avec entrées sur plusieurs catégories!
+Théo: ne devrait pas exister, mais prendre la moins forte: min !
+Interprétation Adultes
+
+NEG$neg_adult_nec <- add3(NEG$Neg_adulte_necessaire_perf, NEG$Neg_adulte_necessaire_perf_2, NEG$Neg_adulte_necessa
+NEG$neg_adult_part <- add3(NEG$Neg_adulte_faisant_partie,NEG$neg_adulte_faisant_partie, NEG$Neg_adulte_faisant_part
+NEG$neg_adult_norm <- add3(NEG$Neg_adulte_normalite, NEG$neg_adulte_normalite, NEG$Neg_adulte_normalite_2)
+descriptives(NEG, c("neg_adult_norm", "neg_adult_nec", "neg_adult_part"),freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+�������������������������������������������������������������������
+neg_adult_norm
+neg_adult_nec
+�������������������������������������������������������������������
+N
+312
+315
+Manquants
+53
+50
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�������������������������������������������������������������������
+
+neg_adult_part
+315
+50
+
+# Hier war schon Fehler !
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+FRÉQUENCES
+Fréquences de neg_adult_norm
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+127
+40.70513
+Ne sait pas
+16
+5.12821
+Pas du tout
+77
+24.67949
+Tout à fait
+92
+29.48718
+0
+0
+0.00000
+2
+0
+0.00000
+1
+0
+0.00000
+�������������������������������������������������������
+
+Fréquences de neg_adult_nec
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+101
+32.06349
+Ne sait pas
+17
+5.39683
+Pas du tout
+96
+30.47619
+Tout à fait
+101
+32.06349
+�������������������������������������������������������
+
+Fréquences de neg_adult_part
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+113
+35.87302
+Ne sait pas
+15
+4.76190
+Pas du tout
+66
+20.95238
+Tout à fait
+121
+38.41270
+�������������������������������������������������������
+
+% cumulés
+40.70513
+45.83333
+70.51282
+100.00000
+100.00000
+100.00000
+100.00000
+
+% cumulés
+32.06349
+37.46032
+67.93651
+100.00000
+
+% cumulés
+35.87302
+40.63492
+61.58730
+100.00000
+
+#NEG$neg_adult_norm <- add(select(NEG, Neg_adulte_normalite, neg_adulte_normalite, Neg_adulte_normalite_2))
+#descriptives(NEG, c("neg_adult_norm"),freq=TRUE)
+
+Interprétation Parents
+
+NEG$neg_parent_norm <- add3(NEG$Neg_parent_normalite
+, NEG$neg_parent_normalite
+,
+NEG$Tu.as.considéré.cette.négligence.émotionnelle.comme....normale..1)
+NEG$neg_parent_nec <- add3(NEG$neg_parent_necessaire_perf, NEG$Neg_parent_necessaire_perf, NEG$Neg_adulte_necessai
+
+NEG$neg_parent_part <- add3(NEG$neg_parent_faisant_partie , NEG$neg_parent_faisant_partie_2, NEG$neg_parent_faisant
+descriptives(NEG, c("neg_parent_norm", "neg_parent_nec", "neg_parent_part"),freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+����������������������������������������������������������������������
+neg_parent_norm
+neg_parent_nec
+����������������������������������������������������������������������
+N
+190
+190
+Manquants
+175
+175
+Moyenne
+2.678947
+Médiane
+3.000000
+Ecart-type
+1.304075
+Minimum
+1
+
+neg_parent_part
+190
+175
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Maximum
+4
+����������������������������������������������������������������������
+
+FRÉQUENCES
+Fréquences de neg_parent_norm
+�����������������������������������������������������
+Modalités
+Quantités
+%
+�����������������������������������������������������
+1
+62
+2
+15
+3
+35
+4
+78
+�����������������������������������������������������
+
+du Total
+
+% cumulés
+
+32.63158
+7.89474
+18.42105
+41.05263
+
+32.63158
+40.52632
+58.94737
+100.00000
+
+Fréquences de neg_parent_nec
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+54
+28.42105
+Ne sait pas
+17
+8.94737
+Pas du tout
+48
+25.26316
+Tout à fait
+71
+37.36842
+�������������������������������������������������������
+
+Fréquences de neg_parent_part
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+50
+26.31579
+Ne sait pas
+14
+7.36842
+Pas du tout
+49
+25.78947
+Tout à fait
+77
+40.52632
+�������������������������������������������������������
+
+% cumulés
+28.42105
+37.36842
+62.63158
+100.00000
+
+% cumulés
+26.31579
+33.68421
+59.47368
+100.00000
+
+(avec le temps je vais chercher d’où il viennent ces niveaux 0 2 1, mais ils ne dérangent pas)
+
+Conséquences adultes
+NEG$NEG_adulte_demotivation <- add3(
+NEG$Neg_adulte_demotiver,NEG$Neg_adulte_demotive,NEG$Neg_adulte_demotive_2)
+NEG$NEG_adulte_perf <- add3(
+NEG$Neg_adulte_moins_perf,NEG$Neg_adulte_moins_perf_2,NEG$Neg_adulte_moins_perf_3)
+NEG$NEG_adulte_confiance <- add3(
+NEG$Neg_adulte_perdu_confiance,NEG$Neg_adulte_perdu_confiance_2,NEG$Neg_adulte_perdu_confiance_3)
+NEG$NEG_adulte_image <- add3(
+NEG$Neg_adulte_image_neg_corps,NEG$Neg_adulte_image_coprs,NEG$Neg_adulte_image_corps)
+NEG$NEG_adulte_peur <- add3(NEG$Neg_adulte_peur,NEG$Neg_Adulte_peur,NEG$Neg_adulte_peur_2)
+NEG$NEG_adulte_colere <- add3(NEG$Neg_adulte_colere,NEG$Neg_adulte_colere_2,NEG$Neg_adulte_colere_3)
+NEG$NEG_adulte_triste <- add3(NEG$Neg_adulte_triste,NEG$Neg_adulte_triste_2,NEG$Neg_adulte_triste_3)
+NEG$NEG_adulte_stress <- add3(NEG$Neg_adulte_stress,NEG$Neg_adulte_stress_2,NEG$Neg_adulte_stress_3)
+NEG$NEG_adulte_faute <- add3(
+NEG$Neg_adulte_ta_faute,NEG$Neg_adulte_ta_faute_2,NEG$Neg_adulte_ta_faute_3)
+NEG$NEG_adulte_humiliation <- add3(
+
+NEG$Neg_adulte_humiliation,NEG$Neg_adulte_humiliation_2,NEG$Neg_adulte_humiliation_3)
+descriptives(NEG, c("NEG_adulte_demotivation",
+"NEG_adulte_perf",
+"NEG_adulte_confiance",
+"NEG_adulte_image",
+"NEG_adulte_peur",
+"NEG_adulte_colere",
+"NEG_adulte_triste",
+"NEG_adulte_stress",
+"NEG_adulte_faute",
+"Neg_adulte_humiliation"),freq=TRUE)
+
+##
+## STATISTIQUES DESCRIPTIVES
+##
+## Statistiques descriptives
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+NEG_adulte_demotivation NEG_adulte_perf NEG_adulte_confiance NEG_adulte_image NEG_adulte_peur
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+## N
+315
+315
+315
+315
+315
+315
+## Manquants
+50
+50
+50
+50
+50
+50
+##
+Moyenne
+##
+Médiane
+##
+Ecart-type
+##
+Minimum
+##
+Maximum
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+##
+## FRÉQUENCES
+##
+## Fréquences de NEG_adulte_demotivation
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Moyennement
+48
+15.23810
+15.23810
+##
+Pas du tout
+253
+80.31746
+95.55556
+##
+Fortement
+14
+4.44444
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de NEG_adulte_perf
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Fortement
+69
+21.90476
+21.90476
+##
+Moyennement
+107
+33.96825
+55.87302
+##
+Pas du tout
+139
+44.12698
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de NEG_adulte_confiance
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Moyennement
+55
+17.46032
+17.46032
+##
+Pas du tout
+228
+72.38095
+89.84127
+##
+Fortement
+32
+10.15873
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de NEG_adulte_image
+## �������������������������������������������������������
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+35
+11.11111
+Pas du tout
+256
+81.26984
+Fortement
+24
+7.61905
+�������������������������������������������������������
+
+Fréquences de NEG_adulte_peur
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Fortement
+24
+7.61905
+Moyennement
+55
+17.46032
+Pas du tout
+236
+74.92063
+�������������������������������������������������������
+
+Fréquences de NEG_adulte_colere
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+52
+16.50794
+Pas du tout
+239
+75.87302
+Fortement
+24
+7.61905
+�������������������������������������������������������
+
+Fréquences de NEG_adulte_triste
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Fortement
+24
+7.61905
+Moyennement
+42
+13.33333
+Pas du tout
+249
+79.04762
+�������������������������������������������������������
+
+Fréquences de NEG_adulte_stress
+�������������������������������������������������������
+Modalités
+Quantités
+%
+�������������������������������������������������������
+Fortement
+51
+Moyennement
+75
+Pas du tout
+189
+�������������������������������������������������������
+
+Fréquences de NEG_adulte_faute
+�������������������������������������������������������
+Modalités
+Quantités
+%
+�������������������������������������������������������
+Fortement
+40
+Moyennement
+48
+Pas du tout
+227
+�������������������������������������������������������
+
+% cumulés
+11.11111
+92.38095
+100.00000
+
+% cumulés
+7.61905
+25.07937
+100.00000
+
+% cumulés
+16.50794
+92.38095
+100.00000
+
+% cumulés
+7.61905
+20.95238
+100.00000
+
+du Total
+
+% cumulés
+
+16.19048
+23.80952
+60.00000
+
+16.19048
+40.00000
+100.00000
+
+du Total
+
+% cumulés
+
+12.69841
+15.23810
+72.06349
+
+12.69841
+27.93651
+100.00000
+
+Fréquences de Neg_adulte_humiliation
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+27
+9.34256
+Pas du tout
+250
+86.50519
+
+% cumulés
+9.34256
+95.84775
+
+##
+##
+
+Fortement
+12
+�������������������������������������������������������
+
+4.15225
+
+100.00000
+
+Conséquences Parent
+NEG$NEG_parent_demotiv <- add3(
+NEG$neg_parent_demotive,NEG$neg_parent_demotive_2,NEG$Neg_parent_demotive)
+NEG$NEG_parent_perf <- add3(
+NEG$neg_parent_moins_perf,
+NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.1,
+NEG$neg_adulte_moins_perf) # Théo: ce n'est pas adulte mais parent, OK , aussi Neg_adulte_necessaire!!!
+# Argumente gibts nich, dann kein Resultat !!
+NEG$NEG_parent_conf <- add3(
+NEG$Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..1,
+NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.1,
+NEG$Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..1)
+NEG$NEG_parent_image <- add3(
+NEG$Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..2,
+NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.2,
+NEG$Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..2)
+NEG$NEG_parent_peur <- add3(
+NEG$Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..3,
+NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.3,
+NEG$Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..3)
+NEG$NEG_parent_colere <- add3(
+NEG$Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..4,
+NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.4,
+NEG$Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..4)
+NEG$NEG_parent_triste <- add3(
+NEG$Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..5,
+NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.5,
+NEG$Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..5)
+NEG$NEG_parent_stress <- add3(
+NEG$Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..6,
+NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.6,
+NEG$Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..6)
+NEG$NEG_parent_faute <- add3(
+NEG$Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..7,
+NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.7,
+NEG$Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..7)
+NEG$NEG_parent_humil <- add3(
+NEG$Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..8,
+NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.8,
+NEG$Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..8)
+descriptives(NEG, c("NEG_parent_demotiv",
+"NEG_parent_perf",
+#
+NEG_parent_perf
+"NEG_parent_conf",
+"NEG_parent_image",
+"NEG_parent_peur",
+"NEG_parent_colere",
+"NEG_parent_triste",
+
+"NEG_parent_stress",
+"NEG_parent_faute",
+"NEG_parent_humil"),freq=TRUE)
+
+##
+## STATISTIQUES DESCRIPTIVES
+##
+## Statistiques descriptives
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+NEG_parent_demotiv NEG_parent_perf NEG_parent_conf NEG_parent_image NEG_parent_peur NEG_pare
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+## N
+190
+0
+0
+0
+0
+0
+0
+## Manquants
+175
+365
+365
+365
+365
+365
+36
+## Moyenne
+NaN
+NaN
+NaN
+NaN
+NaN
+NaN
+## Médiane
+NaN
+NaN
+NaN
+NaN
+NaN
+NaN
+## Ecart-type
+NaN
+NaN
+NaN
+NaN
+NaN
+NaN
+## Minimum
+NaN
+NaN
+NaN
+NaN
+NaN
+NaN
+## Maximum
+NaN
+NaN
+NaN
+NaN
+NaN
+NaN
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+##
+## FRÉQUENCES
+##
+## Fréquences de NEG_parent_demotiv
+## �����������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �����������������������������������������������������
+##
+1
+170
+89.47368
+89.47368
+##
+0
+17
+8.94737
+98.42105
+##
+2
+3
+1.57895
+100.00000
+## �����������������������������������������������������
+##
+##
+## Fréquences de NEG_parent_perf
+## �����������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �����������������������������������������������������
+## �����������������������������������������������������
+##
+##
+## Fréquences de NEG_parent_conf
+## �����������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �����������������������������������������������������
+## �����������������������������������������������������
+##
+##
+## Fréquences de NEG_parent_image
+## �����������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �����������������������������������������������������
+## �����������������������������������������������������
+##
+##
+## Fréquences de NEG_parent_peur
+## �����������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �����������������������������������������������������
+## �����������������������������������������������������
+##
+##
+## Fréquences de NEG_parent_colere
+## �����������������������������������������������������
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+�����������������������������������������������������
+
+% cumulés
+
+Fréquences de NEG_parent_triste
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+�����������������������������������������������������
+
+% cumulés
+
+Fréquences de NEG_parent_stress
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+�����������������������������������������������������
+
+% cumulés
+
+Fréquences de NEG_parent_faute
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+�����������������������������������������������������
+
+% cumulés
+
+Fréquences de NEG_parent_humil
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+�����������������������������������������������������
+
+% cumulés
+
+Les Analyses decriptives sont toutes vides auf le NEG_parent_demotiv. J’ai contrôlé dans mes données que c’est correct.
+
+SEX
+• et paires et adultes 7 catégories, la première avec 2 items (Franzoni p. 92)
+• paires 9 items
+• adultes 8 items
+
+TOUT$SEX <- TOUT$Msex_paire_remarque_apparence_item1!="Jamais"
+| TOUT$Msex_paire_proposition_sex_item2!="Jamais"
+TOUT$msex_paire_exhibitionisme_item3!="Jamais"
+| TOUT$msex_paire_photo_intime_item4!="Jamais"
+TOUT$msex_paire_attouchement_item5!="Jamais"
+| TOUT$Msex_paire_embrasser_item6!="Jamais"
+TOUT$msex_paire_frotter_partie_intime_item7!="Jamais" | TOUT$msex_paire_viol_penetration_item7!="Jamais
+TOUT$Msex_paire_avec_sans_penetration_non_consentie_item8!="Jamais"
+|
+TOUT$Msex_adulte_remarque_sex_item1!="Jamais"
+TOUT$Msex_adulte_exhibition_partie_intime_item2!="Jamais"
+TOUT["msex_adulte_force-a_toucher_item3"]!="Jamais"
+TOUT$msex_adulte_embrasser_bouche_item5!="Jamais"
+TOUT$Msex_adulte_tentation_relation_sex_item7!="Jamais"
+TOUT$SEX <- if_else(TOUT$SEX, 1, 0)
+SEX <- filter(TOUT, SEX==1)
+
+Interpretations Paires, Adultes
+SEX$sex_paire_norm <- add7(SEX$msex_paire_normalite,
+SEX$msex_paire_consideration_normale,
+SEX$msex_paire_normalite_2,
+SEX$Msex_paire_normalite,
+
+|
+|
+|
+|
+|
+
+TOUT$msex_adulte_envoi_image_sex_item2!="Ja
+TOUT$msex_adulte_photo_partie_intime_item3!
+TOUT$msex_adulte_toucher_malalaise_item4!="
+TOUT$Msex_adulte_frotter_partie_intime_item
+TOUT$Msex_adulte_forcer_relation_sex_avec_s
+
+SEX$Msex_paire_normalité,
+SEX$msex_paire_normalite_3,
+SEX$msex_paire_normalite_4)
+
+# 7
+
+SEX$sex_adulte_norm <- add7(SEX$Msex_adulte_normalite,
+SEX$msex_adulte_normalite,
+SEX$Msex_adulte_normalité,
+SEX$msex_adulte_normalite_2,
+SEX$Msex_adulte_normalite_2,
+SEX$msex_adulte_normalite_7,
+SEX$msex_adulte_normalite_4) # 7
+SEX$sex_paire_nec <- add6(SEX$Msex_paire_necesstite,
+SEX$msex_paire_necessaire_perf,
+SEX$msex_paire_neccesite_perf,
+SEX$msex_paire_necessaire_perf_2,
+SEX$msex_paire_necessaire_perf_3,
+SEX$msex_paire_necessaire_perf_4)
+SEX$sex_paire_partie <- add7(SEX$msex_paire_partie_compet,
+SEX$Msex_paire_fait_partie_compet,
+SEX$msex_paire_consideration_partie_perf,
+SEX$Msex_paire_partie_entrainement,
+SEX$Msex_paire_faisant_partie_entrainement,
+SEX$msex_paire_faisant_partie,
+SEX$Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..1)
+
+# 7
+
+SEX$sex_adulte_nec <- add6(SEX$msex_adulte_necessaire_perf,
+SEX$msex_adulte_necessaire_perf_5,
+SEX$msex_adulte_necessaire_perf_3,
+SEX$msex_adulte_necessaire_perf_7,
+#SEX["msex_adulte_necessaire_perf_5 (2)"],
+des problèmes que je dois encore resoudre, puis add7() !
+SEX$msex_adulte_necessaire_perf_8,
+SEX$msex_adulte_necessaire_perf_9 )
+# 7
+SEX$sex_adulte_partie <- add7(SEX$Msex_adulte_fsisant_partie,
+#
+SEX$Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..2,
+#
+SEX$Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..3,
+#
+SEX$Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..4,
+#
+SEX$msex_adulte_faisant_partie,
+#
+SEX$Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..5,
+#
+SEX$Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..6) # 7
+descriptives(SEX, c("sex_paire_norm" , "sex_paire_nec", "sex_paire_partie")
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+���������������������������������������������������������������������
+sex_paire_norm
+sex_paire_nec
+���������������������������������������������������������������������
+N
+140
+132
+Manquants
+38
+46
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+���������������������������������������������������������������������
+
+FRÉQUENCES
+
+sex_paire_partie
+140
+38
+1.978571
+2.000000
+0.4402069
+1
+5
+
+398
+419
+440
+461
+484
+505
+526
+,freq=TRUE)
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Fréquences de sex_paire_norm
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+34
+24.28571
+Pas du tout
+87
+62.14286
+Tout à fait
+12
+8.57143
+Ne sait pas
+7
+5.00000
+�������������������������������������������������������
+
+Fréquences de sex_paire_nec
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+5
+3.78788
+Pas du tout
+125
+94.69697
+Tout à fait
+2
+1.51515
+Ne sait pas
+0
+0.00000
+�������������������������������������������������������
+
+Fréquences de sex_paire_partie
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+1
+11
+7.85714
+2
+124
+88.57143
+3
+3
+2.14286
+4
+1
+0.71429
+5
+1
+0.71429
+�����������������������������������������������������
+
+% cumulés
+24.28571
+86.42857
+95.00000
+100.00000
+
+% cumulés
+3.78788
+98.48485
+100.00000
+100.00000
+
+% cumulés
+7.85714
+96.42857
+98.57143
+99.28571
+100.00000
+
+descriptives(SEX, c("sex_adulte_norm", "sex_adulte_nec", "sex_adulte_partie"),freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+������������������������������������������������������������������������
+sex_adulte_norm
+sex_adulte_nec
+������������������������������������������������������������������������
+N
+80
+56
+Manquants
+98
+122
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+������������������������������������������������������������������������
+
+FRÉQUENCES
+Fréquences de sex_adulte_norm
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Pas du tout
+60
+75.00000
+Moyennement
+15
+18.75000
+Tout à fait
+3
+3.75000
+Ne sait pas
+2
+2.50000
+�������������������������������������������������������
+
+% cumulés
+75.00000
+93.75000
+97.50000
+100.00000
+
+sex_adulte_partie
+74
+104
+1.297297
+1.000000
+0.7536165
+1
+4
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Fréquences de sex_adulte_nec
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Pas du tout
+53
+94.64286
+Tout à fait
+2
+3.57143
+Moyennement
+1
+1.78571
+�������������������������������������������������������
+
+Fréquences de sex_adulte_partie
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+1
+62
+83.78378
+2
+5
+6.75676
+3
+4
+5.40541
+4
+3
+4.05405
+�����������������������������������������������������
+
+% cumulés
+94.64286
+98.21429
+100.00000
+
+% cumulés
+83.78378
+90.54054
+95.94595
+100.00000
+
+Conséquences Paires
+# "Msex_paire_consideration_demotive"
+
+# ici ?? plutôt non, y a toujours 10 cons.
+
+SEX$sex_paire_demotivation <- add7(SEX$Msex_paire_demotive,
+SEX$msex_paire_demotive,
+SEX$Msex_paire_consideration_demotive,
+SEX$Msex_paire_demotive_2,
+SEX$Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.1,
+SEX$Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.2,
+SEX$Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.3)
+SEX$sex_paire_perf <- add7(SEX$Msex_paire_moins_perf,
+SEX$msex_paire_moins_perf,
+SEX$msex_paire_moins_perf_2,
+SEX$msex_paire_moins_perf_3,
+SEX$msex_paire_moins_perf_4,
+SEX$msex_paire_moins_perf_5,
+SEX$msex_paire_moins_perf_6)
+SEX$sex_paire_confiance <- add7(SEX$Msex_paire_perdu_confiance,
+SEX$msex_paire_perdu_confiance,
+SEX$msex_paire_perdu_confiance_2,
+SEX$msex_paire_perdu_confiance_3,
+SEX$Msex_paire_perte_confiance,
+SEX$Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..1,
+SEX$Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..2)
+SEX$sex_paire_image <- add7(SEX$Msex_paire_image_neg_corps,
+SEX$Msex_paire_image_corps,
+SEX$Msex_paire_image_corps_2,
+SEX$msex_paire_image_neg,
+SEX$Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.1,
+SEX$Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.2,
+SEX$Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.3)
+SEX$sex_paire_peur <- add7(SEX$msex_paire_peur,
+SEX$Msex_paire_peur_2,
+SEX$msex_paire_peur_3,
+SEX$msex_paire_peur_4,
+
+SEX$Msex_paire_peur,
+SEX$msex_paire_peur_6,
+SEX$msex_paire_peur_7)
+
+# ici il suit triste_6, pas colère!
+
+SEX$sex_paire_colere <- add6(SEX$Msex_paire_colere,
+SEX$msex_paire_colere,
+SEX$msex_paire_colere_3,
+SEX$msex_paire_peur_5,
+# suivait à peur alors je crois que c'était colère!?
+SEX$msex_paire_colere_4,
+SEX$msex_paire_colere_5)
+SEX$sex_paire_triste <- add6(SEX$msex_paire_triste,
+SEX$msex_paire_triste_2,
+#SEX["msex:_paire_triste"], DEBUG!!
+SEX$msex_paire_triste_3,
+SEX$msex_paire_triste_4,
+SEX$msex_paire_triste_5,
+SEX$msex_paire_triste_6)
+SEX$sex_paire_stress <- add7(SEX$msex_paire_stress,
+SEX$msex_paire_stress_2,
+SEX$msex_paire_stress_3,
+SEX$msex_paire_stress_4,
+SEX$msex_paire_stress_5,
+SEX$msex_paire_stress_6,
+SEX$msex_paire_stress_7)
+SEX$sex_paire_faute <- add7(SEX$Msex_paire_ta_faute,
+SEX$msex_paire_ta_faute,
+SEX$msex_paire_ta_faute_3,
+SEX$msex_paire_ta_faute_4,
+SEX$Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.1,
+SEX$Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.2,
+SEX$Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.3)
+# 10 303
+OK
+SEX$sex_paire_humiliation <- add7(SEX$Msex_paire_humiliation,
+SEX$msex_paire_humiliation,
+# 10 317
+SEX$msex_paire_humiliation_2, # 10 330
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..1, # 10 344
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..2, # 10 359
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..3, # 10 373
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..4) # 10 386
+
+descriptives(SEX, c("sex_paire_perf", "sex_paire_demotivation", "sex_paire_confiance", "sex_paire_image", "sex_pair
+
+##
+## STATISTIQUES DESCRIPTIVES
+##
+## Statistiques descriptives
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+sex_paire_perf sex_paire_demotivation sex_paire_confiance sex_paire_image sex_paire_peur sex
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+## N
+140
+139
+139
+139
+140
+140
+132
+## Manquants
+38
+39
+39
+39
+38
+38
+46
+## Moyenne
+2.000000
+1.935252
+1.971223
+## Médiane
+2
+2
+2
+## Ecart-type
+0.4170288
+0.4846728
+0.5639206
+## Minimum
+1
+1
+1
+## Maximum
+4
+4
+4
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+##
+## FRÉQUENCES
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Fréquences de sex_paire_perf
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+11
+7.85714
+Pas du tout
+120
+85.71429
+Fortement
+9
+6.42857
+�������������������������������������������������������
+
+Fréquences de sex_paire_demotivation
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+1
+11
+7.91367
+2
+118
+84.89209
+3
+9
+6.47482
+4
+1
+0.71942
+�����������������������������������������������������
+
+Fréquences de sex_paire_confiance
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+1
+20
+14.38849
+2
+109
+78.41727
+3
+9
+6.47482
+4
+1
+0.71942
+�����������������������������������������������������
+
+Fréquences de sex_paire_image
+�����������������������������������������������������
+Modalités
+Quantités
+%
+�����������������������������������������������������
+1
+23
+2
+98
+3
+17
+4
+1
+�����������������������������������������������������
+
+% cumulés
+7.85714
+93.57143
+100.00000
+
+% cumulés
+7.91367
+92.80576
+99.28058
+100.00000
+
+% cumulés
+14.38849
+92.80576
+99.28058
+100.00000
+
+du Total
+
+% cumulés
+
+16.54676
+70.50360
+12.23022
+0.71942
+
+16.54676
+87.05036
+99.28058
+100.00000
+
+Fréquences de sex_paire_peur
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+27
+19.28571
+Pas du tout
+104
+74.28571
+Fortement
+9
+6.42857
+�������������������������������������������������������
+
+Fréquences de sex_paire_colere
+�������������������������������������������������������
+Modalités
+Quantités
+%
+�������������������������������������������������������
+Moyennement
+37
+Pas du tout
+78
+Fortement
+25
+�������������������������������������������������������
+
+% cumulés
+19.28571
+93.57143
+100.00000
+
+du Total
+
+% cumulés
+
+26.42857
+55.71429
+17.85714
+
+26.42857
+82.14286
+100.00000
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Fréquences de sex_paire_triste
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+18
+13.63636
+Pas du tout
+104
+78.78788
+Fortement
+10
+7.57576
+�������������������������������������������������������
+
+Fréquences de sex_paire_stress
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+32
+22.85714
+Pas du tout
+95
+67.85714
+Fortement
+13
+9.28571
+�������������������������������������������������������
+
+Fréquences de sex_paire_faute
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+1
+14
+10.07194
+2
+119
+85.61151
+3
+5
+3.59712
+4
+1
+0.71942
+�����������������������������������������������������
+
+Fréquences de sex_paire_humiliation
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+1
+15
+11.53846
+2
+36
+27.69231
+3
+78
+60.00000
+4
+1
+0.76923
+�����������������������������������������������������
+
+% cumulés
+13.63636
+92.42424
+100.00000
+
+% cumulés
+22.85714
+90.71429
+100.00000
+
+% cumulés
+10.07194
+95.68345
+99.28058
+100.00000
+
+% cumulés
+11.53846
+39.23077
+99.23077
+100.00000
+
+Conséquences Adultes
+SEX$sex_adulte_demotivation <- add7(SEX$msex_adulte_demotive,
+SEX$Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.4,
+SEX$Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.5,
+SEX$Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.6,
+SEX$Msex_adulte_demotive,
+SEX$Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.7,
+SEX$Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.8)
+SEX$sex_adulte_perf <- add7(SEX$Msex_adulte_moins_perf,
+SEX$msex_adulte_moins_perf,
+SEX$msex_adulte_moins_perf_7,
+SEX$msex_adulte_moins_perf_8,
+SEX$msex_adulte_moins_perf_4,
+SEX$msex_adulte_moins_perf_5,
+SEX$msex_adulte_moins_perf_10)
+SEX$sex_adulte_confiance <- add7(SEX$msex_adulte_perdu_confiance,
+SEX$Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..3,
+SEX$Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..4,
+
+SEX$Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..5,
+SEX$Msex_adulte_perdu_confiance,
+SEX$Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..6,
+SEX$Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..7)
+SEX$sex_adulte_image <- add7(SEX$msex_adulte_image_corps,
+SEX$Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.4,
+SEX$Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.5,
+SEX$Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.6,
+SEX$Msex_adulte_image_neg_corps,
+SEX$Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.7,
+SEX$Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.8)
+SEX$sex_adulte_peur <- add7(SEX$msex_adulte_peur,
+SEX$msex_adulte_peur_6,
+SEX$msex_adulte_peur_3,
+SEX$Msex_adulte_peur,
+SEX$msex_adulte_peur_4,
+SEX$msex_adulte_peur_9,
+SEX$msex_adulte_peur_10)
+SEX$sex_adulte_colere <- add7(SEX$msex_adulte_colere,
+SEX$msex_adulte_colere_6,
+SEX$msex_adulte_colere_7,
+SEX$msex_adulte_colere_4,
+SEX$msex_adulte_colere_5,
+SEX$Msex_adulte_colere,
+SEX$msex_adulte_colere_10)
+SEX$sex_adulte_triste <- add7(SEX$msex_adulte_triste,
+SEX$Msex_adulte_triste,
+SEX$msex_adulte_triste_2,
+SEX$msex_adulte_triste_8,
+SEX$msex_adulte_triste_4,
+SEX$msex_adulte_triste_9,
+SEX$msex_adulte_triste_10)
+SEX$sex_adulte_stress <- add6(SEX$msex_adulte_stress,
+#SEX["msex_adulte_stress (2)"], DEBUG !!
+SEX$msex_adulte_stress_3,
+SEX$msex_adulte_stress_8,
+SEX$msex_adulte_stress_5,
+SEX$msex_adulte_stress_9,
+SEX$msex_adulte_stress_10)
+SEX$sex_adulte_faute <- add7(SEX$msex_adulte_ta_faute,
+SEX$Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.4,
+SEX$Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.5,
+SEX$Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.6,
+SEX$msex_adulte_ta_faute_2,
+SEX$Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.7,
+SEX$Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.8)
+SEX$sex_adulte_humiliation <- add7(SEX$msex_adulte_humiliation,
+# 10 408
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..5,
+# 10 429
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..6, # 10 450
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..7, # 10 471
+SEX$Msex_adulte_humiliation,
+# 10 494
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..8,
+# 10 515
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..9)
+# 10 536
+
+descriptives(SEX, c("sex_adulte_perf", "sex_adulte_demotivation", "sex_adulte_confiance", "sex_adulte_image", "sex_
+##
+
+## STATISTIQUES DESCRIPTIVES
+##
+## Statistiques descriptives
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+sex_adulte_perf sex_adulte_demotivation sex_adulte_confiance sex_adulte_image sex_adulte_peur
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+## N
+80
+74
+74
+74
+80
+80
+## Manquants
+98
+104
+104
+104
+98
+98
+## Moyenne
+1.364865
+1.445946
+2.162162
+## Médiane
+1.000000
+1.000000
+3.000000
+## Ecart-type
+0.7133622
+0.7788627
+0.9219846
+## Minimum
+1
+1
+1
+## Maximum
+3
+3
+3
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+##
+## FRÉQUENCES
+##
+## Fréquences de sex_adulte_perf
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Pas du tout
+57
+71.25000
+71.25000
+##
+Fortement
+4
+5.00000
+76.25000
+##
+Moyennement
+19
+23.75000
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de sex_adulte_demotivation
+## �����������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �����������������������������������������������������
+##
+1
+57
+77.02703
+77.02703
+##
+2
+7
+9.45946
+86.48649
+##
+3
+10
+13.51351
+100.00000
+## �����������������������������������������������������
+##
+##
+## Fréquences de sex_adulte_confiance
+## �����������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �����������������������������������������������������
+##
+1
+54
+72.97297
+72.97297
+##
+2
+7
+9.45946
+82.43243
+##
+3
+13
+17.56757
+100.00000
+## �����������������������������������������������������
+##
+##
+## Fréquences de sex_adulte_image
+## �����������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �����������������������������������������������������
+##
+1
+26
+35.13514
+35.13514
+##
+2
+10
+13.51351
+48.64865
+##
+3
+38
+51.35135
+100.00000
+## �����������������������������������������������������
+##
+##
+## Fréquences de sex_adulte_peur
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Pas du tout
+48
+60.00000
+60.00000
+##
+Fortement
+11
+13.75000
+73.75000
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Moyennement
+21
+�������������������������������������������������������
+
+Fréquences de sex_adulte_colere
+�������������������������������������������������������
+Modalités
+Quantités
+%
+�������������������������������������������������������
+Pas du tout
+37
+Fortement
+18
+Moyennement
+25
+�������������������������������������������������������
+
+26.25000
+
+100.00000
+
+du Total
+
+% cumulés
+
+46.25000
+22.50000
+31.25000
+
+46.25000
+68.75000
+100.00000
+
+Fréquences de sex_adulte_triste
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Pas du tout
+63
+78.75000
+Fortement
+6
+7.50000
+Moyennement
+11
+13.75000
+�������������������������������������������������������
+
+Fréquences de sex_adulte_stress
+�������������������������������������������������������
+Modalités
+Quantités
+%
+�������������������������������������������������������
+Moyennement
+23
+Fortement
+10
+Pas du tout
+46
+�������������������������������������������������������
+
+% cumulés
+78.75000
+86.25000
+100.00000
+
+du Total
+
+% cumulés
+
+29.11392
+12.65823
+58.22785
+
+29.11392
+41.77215
+100.00000
+
+Fréquences de sex_adulte_faute
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+1
+59
+79.72973
+2
+12
+16.21622
+3
+3
+4.05405
+�����������������������������������������������������
+
+Fréquences de sex_adulte_humiliation
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+1
+31
+41.89189
+2
+25
+33.78378
+3
+18
+24.32432
+�����������������������������������������������������
+
+% cumulés
+79.72973
+95.94595
+100.00000
+
+% cumulés
+41.89189
+75.67568
+100.00000
+
+PSY
+• parent: 4 catégories (14 items, Franzoni p. 91f)
+catégorie 1.: 1 item, 0 interpretation, 10 conséquences <-?? EST-CE CORRECT ?? je n’arrive pas bien à comparer avec Franzoni
+TOUT$PSY <- TOUT$Mpsy_paire_ignoré_item1!="Jamais" | TOUT$Mpsy_paire_investissement_item2!="Jamais" |
+TOUT$Mpsy_paire_critique_perf_item3!="Jamais" | TOUT$Mpsy_paire_apparence_item4!="Jamais" |
+TOUT$Mpsy_paire_rumeur_item5!="Jamais" | TOUT$Mpsy_paire_humiliation_item6!="Jamais" |
+
+TOUT$Mpsy_paire_menace_exclusion_item7!="Jamais" | TOUT$mpsy_paire_menace_physique_item8!="Jamais" |
+TOUT$Mpsy_paire_encourager_humiliation_item9!="Jamais" | TOUT$mpsy_paire_limite_contacte_item10!="Jamai
+
+TOUT$Mpsy_adulte_ignoer_item1!="Jamais" | TOUT$mpsy_adulte_critique_invesstissement_item2!="Jamais" |
+TOUT$mpsy_adulte_critique_perf_item2!="Jamais" | TOUT$mpsy_adulte_critiquer_apparence_item3!="Jamais" |
+TOUT$mpsy_adulte_rumeur_item4!="Jamais" | TOUT$mpsy_adulte_ridiculiser_item5!="Jamais" |
+TOUT$Mpsy_adulte_crier_dessus_item6!="Jamais" | TOUT$mpsy_adulte_menace_expulsion_item7!="Jamais" |
+TOUT$mpsy_adulte_menacephysi_item8!="Jamais" | TOUT$mpsy_adulte_humiliation_autrui_item9!="Jamais" |
+TOUT$mpsy_adulte_limitation_contact_item10!="Jamais" | TOUT$mpsy_adulte_jouer_blesser_item11!="Jamais"
+TOUT$mpsy_adulte_entrainer_a_vomir_item12!="Jamais" | TOUT$mpsy_adulte_dopage_item13!="Jamais" |
+TOUT$mpsy_adulte_poids_ideal_item13!="Jamais" |
+TOUT$Mpsy_parent_ignorer_item1!="Jamais" | TOUT$mpsy_parent_invesstissment_item2!="Jamais" |
+TOUT$mpsy_parent_critique_perf_item3!="Jamais" | TOUT$Mpsy_parent_critique_corps_item4!="Jamais" |
+TOUT$mpsy_parent_rumeur_item5!="Jamais" | TOUT$mpsy_parent_ridiculisà_perf_item6!="Jamais" |
+TOUT$mpsy_parent_crier_dessus_item7!="Jamais" | TOUT$Mpsy_parent_menace_physique_item8!="Jamais" |
+TOUT$Mpsy_parent_blesser_adversaire_item9!="Jamais" | TOUT$Mpsy_parent_limite_contact_item10!="Jamais"
+TOUT$Mpsy_parent_blessé_soi_mm_item11!="Jamais" | TOUT$mpsy_parent_vomir_item12!="Jamais" |
+TOUT$mpsy_parent_dopage_item13!="Jamais" | TOUT$Mpsy_parent_poids_ideal_item14!="Jamais"
+TOUT$PSY <- if_else(TOUT$PSY, 1, 0)
+PSY <- filter(TOUT, PSY==1)
+
+Qu. 3.1.2 Interpretation PSY
+PSY$psy_paire_norm <- add3(PSY$Mpsy_paire_normalisation,
+PSY$mpsy_paire_normlisation,
+PSY$Mpsy_paire_normalisation_2)
+PSY$psy_paire_nec <- add3(PSY$Mpsy_paire_necessite,
+PSY$mpsy_paire_necessite_perf,
+PSY$mpsy_paire_necessaireperf)
+PSY$psy_paire_part <- add3(PSY$Mpsy_paire_partie_entrainement,
+PSY$mpsy_paire_partie_entrainement,
+PSY$mpsy_paire_partie_entrainement_2)
+
+PSY$psy_adulte_norm <- add2(PSY$Mpsy_adulte_auteur_considerer_normal,
+PSY$mpsy_adulte_considération_normale)
+PSY$psy_adulte_nec <- add2(PSY$mpsy_adulte_necessaire_perf,
+PSY$mpsy_adulte_necessaireperf)
+PSY$psy_adulte_part <- add2(PSY$mpsy_adulte_partie_entrainement,
+PSY$mpsy_adulte_partie_compet)
+
+PSY$psy_parent_norm <- add2(PSY$Mpsy_parent_normalisation,
+PSY$Mpsy_parent_consideration_normal)
+PSY$psy_parent_nec <- add2(PSY$mpsy_parent_necessaire,
+PSY$mpsy_parent_necessaire_perf_2)
+PSY$psy_parent_part <- add2(PSY$mpsy_parent_faisant_partie,
+PSY$Mpsy_parent_partie_compet)
+descriptives(PSY, c("psy_paire_norm" , "psy_paire_nec",
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+
+"psy_paire_part" ),freq=TRUE)
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Statistiques descriptives
+�������������������������������������������������������������������
+psy_paire_norm
+psy_paire_nec
+�������������������������������������������������������������������
+N
+468
+468
+Manquants
+243
+243
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�������������������������������������������������������������������
+
+psy_paire_part
+468
+243
+
+FRÉQUENCES
+Fréquences de psy_paire_norm
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+191
+40.81197
+Pas du tout
+216
+46.15385
+Tout à fait
+36
+7.69231
+Ne sait pas
+25
+5.34188
+�������������������������������������������������������
+
+Fréquences de psy_paire_nec
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+69
+14.74359
+Pas du tout
+358
+76.49573
+Tout à fait
+28
+5.98291
+Ne sait pas
+13
+2.77778
+�������������������������������������������������������
+
+Fréquences de psy_paire_part
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+128
+27.35043
+Pas du tout
+268
+57.26496
+Tout à fait
+56
+11.96581
+Ne sait pas
+16
+3.41880
+�������������������������������������������������������
+
+% cumulés
+40.81197
+86.96581
+94.65812
+100.00000
+
+% cumulés
+14.74359
+91.23932
+97.22222
+100.00000
+
+% cumulés
+27.35043
+84.61538
+96.58120
+100.00000
+
+descriptives(PSY, c("psy_adulte_norm", "psy_adulte_nec", "psy_adulte_part"),freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+����������������������������������������������������������������������
+psy_adulte_norm
+psy_adulte_nec
+����������������������������������������������������������������������
+N
+420
+420
+Manquants
+291
+291
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+
+psy_adulte_part
+420
+291
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+����������������������������������������������������������������������
+
+FRÉQUENCES
+Fréquences de psy_adulte_norm
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+152
+36.19048
+Ne sait pas
+9
+2.14286
+Pas du tout
+147
+35.00000
+Tout à fait
+112
+26.66667
+�������������������������������������������������������
+
+Fréquences de psy_adulte_nec
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+142
+33.80952
+Ne sait pas
+11
+2.61905
+Pas du tout
+107
+25.47619
+Tout à fait
+160
+38.09524
+�������������������������������������������������������
+
+Fréquences de psy_adulte_part
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+127
+30.23810
+Ne sait pas
+7
+1.66667
+Pas du tout
+127
+30.23810
+Tout à fait
+159
+37.85714
+�������������������������������������������������������
+
+% cumulés
+36.19048
+38.33333
+73.33333
+100.00000
+
+% cumulés
+33.80952
+36.42857
+61.90476
+100.00000
+
+% cumulés
+30.23810
+31.90476
+62.14286
+100.00000
+
+descriptives(PSY, c("psy_parent_norm", "psy_parent_nec", "psy_parent_part"),freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+����������������������������������������������������������������������
+psy_parent_norm
+psy_parent_nec
+����������������������������������������������������������������������
+N
+299
+299
+Manquants
+412
+412
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+����������������������������������������������������������������������
+
+FRÉQUENCES
+Fréquences de psy_parent_norm
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+111
+37.12375
+Ne sait pas
+10
+3.34448
+
+% cumulés
+37.12375
+40.46823
+
+psy_parent_part
+299
+412
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Pas du tout
+95
+Tout à fait
+83
+�������������������������������������������������������
+
+31.77258
+27.75920
+
+Fréquences de psy_parent_nec
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+79
+26.42140
+Ne sait pas
+9
+3.01003
+Pas du tout
+133
+44.48161
+Tout à fait
+78
+26.08696
+�������������������������������������������������������
+
+Fréquences de psy_parent_part
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+69
+23.07692
+Ne sait pas
+12
+4.01338
+Pas du tout
+134
+44.81605
+Tout à fait
+84
+28.09365
+�������������������������������������������������������
+
+72.24080
+100.00000
+
+% cumulés
+26.42140
+29.43144
+73.91304
+100.00000
+
+% cumulés
+23.07692
+27.09030
+71.90635
+100.00000
+
+Qu. 3.2.1 Conséquences PSY
+PSY$psy_paire_demot <- add4(PSY$Mpsy_paire_démotivation,
+PSY$Mpsy_paire_demotive,
+PSY$mpsy_paire_demotive_sport,
+PSY$mpsy_paire_demotive)
+PSY$psy_paire_perf <- add4(PSY$Mpsy_paire_moins_performe,
+PSY$mpsy_paire_moins_perf,
+PSY$mpsy_paire_moins_perf_2,
+PSY$mpsy_paire_moins_perf_3)
+PSY$psy_paire_conf <- add4(PSY$Mpsy_paire_perdu_confiance,
+PSY$Mpsy_paire_perte_confiance,
+PSY$mpsy_paire_perdu_confiance,
+PSY$mpsy_paire_perte_confiance)
+PSY$psy_paire_image <- add4(PSY$Mpsy_paire_image_corps,
+PSY$mpsy_paire_image_corps,
+PSY$Mpsy_paire_image_corps_2,
+PSY$mpsy_paire_image_neg)
+
+PSY$psy_paire_peur <- add4(PSY$Mpsy_paire_peur,
+PSY$Mpsy_paire_peur_2,
+PSY$Mpsy_paire_peur_3,
+PSY$mpsy_paire_peur)
+
+PSY$psy_paire_colere <- add4(PSY$Mpsy_paire_colere,
+PSY$Mpsy_paire_colere_2,
+PSY$Mpsy_paire_colere_3,
+PSY$mpsy_paire_colere)
+PSY$psy_paire_triste <- add4(PSY$Mpsy_paire_triste,
+PSY$Mpsy_paire_triste_2,
+
+PSY$mpsy_paire_triste,
+PSY$mpsy_paire_triste_2)
+PSY$psy_paire_stress <- add4(PSY$Mpsy_paire_stress,
+PSY$Mpsy_paire_stress_2,
+PSY$mpsy_paire_stress,
+PSY$Mpsy_paire_stress_3)
+PSY$psy_paire_faute <- add4(PSY$MPsy_paire_ta_faute,
+PSY$mpsy_paire_faute,
+PSY$Mpsy_paire_ta_faute,
+PSY$Mpsy_paire_faute)
+PSY$psy_paire_humil <- add4(PSY$Mpsy_paire_humiliation,
+PSY$Mpsy_paire_humiliation_2,
+PSY$Mpsy_paire_humiliation_3,
+PSY$mpsy_paire_humiliation)
+
+PSY$psy_adulte_demot <- add4(PSY$Mpsy_adulte_demotive,
+PSY$Mpsy_adulte_demotive_2,
+PSY$mpsy_adulte_demotive,
+PSY$mpsy_adulte_demotive_sport)
+PSY$psy_adulte_perf <- add4(PSY$mpsy_adulte_moins_perf,
+PSY$mpsy_adulte_moins_perf_2,
+PSY$mpsy_adulte_moins_perf_3,
+PSY$Mpsy_adulte_moins_perf)
+PSY$psy_adulte_conf <- add4(PSY$Mpsy_adulte_perdu_confiance,
+PSY$Mpsy_adulte_perduconfiance,
+PSY$mpsy_adulte_perdu_confiance,
+PSY$mpsy_adulte_perdu_confiance_2)
+PSY$psy_adulte_peur <- add4(PSY$mpsy_adulte_peur,
+PSY$mpsy_adulte_peur_2,
+PSY$mpsy_adulte_peur_3,
+PSY$Mpsy_adulte_peur)
+PSY$psy_adulte_image <- add4(PSY$mpsy_adulte_image_corps,
+PSY$Mpsy_adulte_image_corps,
+PSY$mpsy_adulte_image_neg,
+PSY$Mpsy_adulte_image_neg)
+PSY$psy_adulte_faute <- add4(PSY$mpsy_adulte_ta_faute,
+PSY$mpsy_adulte_ta_faute_2,
+PSY$mpsy_adulte_ta_faute_3,
+PSY$mpsy_adulte_ta_faute_4)
+PSY$psy_adulte_humil <- add4(PSY$mpsy_adulte_humiliation,
+PSY$mpsy_adulte_humiliation_2,
+PSY$mpsy_adulte_ressenti_humuliation,
+PSY$Mpsy_adulte_humiliation)
+PSY$psy_adulte_colere <- add4(PSY$mpsy_adulte_colere,
+PSY$mpsy_adulte_colere_2,
+PSY$mpsy_adulte_colere_3,
+PSY$mpsy_adulte_colère)
+PSY$psy_adulte_triste <- add4(PSY$mpsy_adulte_triste,
+PSY$mpsy_adulte_triste_2,
+PSY$mpsy_adulte_triste_3,
+PSY$Mpsy_adulte_triste)
+
+PSY$psy_adulte_stress <- add4(PSY$mpsy_adulte_stress,
+PSY$mpsy_adulte_stress_2,
+PSY$Mpsy_Adulte_stress,
+PSY$mpsy_adulte_stress_3)
+
+PSY$psy_parent_demot <- add2(PSY$mpsy_parent_demotiver_sport,
+PSY$Mpsy_parent_demotiver)
+
+descriptives(PSY, c("psy_paire_perf", "psy_paire_demot", "psy_paire_conf", "psy_paire_image", "psy_paire_peur", "ps
+
+##
+## STATISTIQUES DESCRIPTIVES
+##
+## Statistiques descriptives
+## ������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+psy_paire_perf psy_paire_demot psy_paire_conf psy_paire_image psy_paire_peur psy_paire_coler
+## ������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+## N
+656
+656
+656
+656
+656
+656
+656
+## Manquants
+55
+55
+55
+55
+55
+55
+55
+##
+Moyenne
+##
+Médiane
+##
+Ecart-type
+##
+Minimum
+##
+Maximum
+## ������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+##
+## FRÉQUENCES
+##
+## Fréquences de psy_paire_perf
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Fortement
+63
+9.60366
+9.60366
+##
+Moyennement
+171
+26.06707
+35.67073
+##
+Pas du tout
+422
+64.32927
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de psy_paire_demot
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Fortement
+72
+10.97561
+10.97561
+##
+Moyennement
+166
+25.30488
+36.28049
+##
+Pas du tout
+418
+63.71951
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de psy_paire_conf
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Fortement
+103
+15.70122
+15.70122
+##
+Moyennement
+211
+32.16463
+47.86585
+##
+Pas du tout
+342
+52.13415
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de psy_paire_image
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+�������������������������������������������������������
+Fortement
+73
+Moyennement
+133
+Pas du tout
+450
+�������������������������������������������������������
+
+11.12805
+20.27439
+68.59756
+
+Fréquences de psy_paire_peur
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Fortement
+27
+4.11585
+Moyennement
+86
+13.10976
+Pas du tout
+543
+82.77439
+�������������������������������������������������������
+
+Fréquences de psy_paire_colere
+�������������������������������������������������������
+Modalités
+Quantités
+%
+�������������������������������������������������������
+Fortement
+127
+Moyennement
+284
+Pas du tout
+245
+�������������������������������������������������������
+
+Fréquences de psy_paire_triste
+�������������������������������������������������������
+Modalités
+Quantités
+%
+�������������������������������������������������������
+Fortement
+139
+Moyennement
+216
+Pas du tout
+301
+�������������������������������������������������������
+
+Fréquences de psy_paire_stress
+�������������������������������������������������������
+Modalités
+Quantités
+%
+�������������������������������������������������������
+Fortement
+83
+Moyennement
+179
+Pas du tout
+394
+�������������������������������������������������������
+
+11.12805
+31.40244
+100.00000
+
+% cumulés
+4.11585
+17.22561
+100.00000
+
+du Total
+
+% cumulés
+
+19.35976
+43.29268
+37.34756
+
+19.35976
+62.65244
+100.00000
+
+du Total
+
+% cumulés
+
+21.18902
+32.92683
+45.88415
+
+21.18902
+54.11585
+100.00000
+
+du Total
+
+% cumulés
+
+12.65244
+27.28659
+60.06098
+
+12.65244
+39.93902
+100.00000
+
+Fréquences de psy_paire_faute
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Fortement
+87
+13.26220
+Moyennement
+234
+35.67073
+Pas du tout
+335
+51.06707
+�������������������������������������������������������
+
+Fréquences de psy_paire_humil
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Fortement
+110
+16.76829
+Moyennement
+202
+30.79268
+Pas du tout
+344
+52.43902
+
+% cumulés
+13.26220
+48.93293
+100.00000
+
+% cumulés
+16.76829
+47.56098
+100.00000
+
+##
+
+�������������������������������������������������������
+
+descriptives(PSY, c("psy_adulte_perf", "psy_adulte_demot", "psy_adulte_conf", "psy_adulte_image", "psy_adulte_peur"
+
+##
+## STATISTIQUES DESCRIPTIVES
+##
+## Statistiques descriptives
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+psy_adulte_perf psy_adulte_demot psy_adulte_conf psy_adulte_image psy_adulte_peur psy_adulte
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+## N
+587
+587
+587
+587
+589
+589
+589
+## Manquants
+124
+124
+124
+124
+122
+122
+122
+##
+Moyenne
+##
+Médiane
+##
+Ecart-type
+##
+Minimum
+##
+Maximum
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+##
+## FRÉQUENCES
+##
+## Fréquences de psy_adulte_perf
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Fortement
+94
+16.01363
+16.01363
+##
+Moyennement
+149
+25.38330
+41.39693
+##
+Pas du tout
+343
+58.43271
+99.82964
+##
+0
+1
+0.17036
+100.00000
+##
+1
+0
+0.00000
+100.00000
+##
+2
+0
+0.00000
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de psy_adulte_demot
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Fortement
+94
+16.01363
+16.01363
+##
+Moyennement
+160
+27.25724
+43.27087
+##
+Pas du tout
+332
+56.55877
+99.82964
+##
+0
+1
+0.17036
+100.00000
+##
+1
+0
+0.00000
+100.00000
+##
+2
+0
+0.00000
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de psy_adulte_conf
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Fortement
+122
+20.78365
+20.78365
+##
+Moyennement
+161
+27.42760
+48.21124
+##
+Pas du tout
+303
+51.61840
+99.82964
+##
+0
+1
+0.17036
+100.00000
+##
+1
+0
+0.00000
+100.00000
+##
+2
+0
+0.00000
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de psy_adulte_image
+## �������������������������������������������������������
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Fortement
+62
+10.56218
+Moyennement
+84
+14.31005
+Pas du tout
+440
+74.95741
+0
+1
+0.17036
+2
+0
+0.00000
+1
+0
+0.00000
+�������������������������������������������������������
+
+Fréquences de psy_adulte_peur
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Fortement
+38
+6.45161
+Moyennement
+83
+14.09168
+Pas du tout
+468
+79.45671
+�������������������������������������������������������
+
+Fréquences de psy_adulte_colere
+�������������������������������������������������������
+Modalités
+Quantités
+%
+�������������������������������������������������������
+Fortement
+146
+Moyennement
+210
+Pas du tout
+233
+�������������������������������������������������������
+
+Fréquences de psy_adulte_triste
+�������������������������������������������������������
+Modalités
+Quantités
+%
+�������������������������������������������������������
+Fortement
+117
+Moyennement
+159
+Pas du tout
+313
+�������������������������������������������������������
+
+Fréquences de psy_adulte_stress
+�������������������������������������������������������
+Modalités
+Quantités
+%
+�������������������������������������������������������
+Fortement
+101
+Moyennement
+165
+Pas du tout
+323
+�������������������������������������������������������
+
+Fréquences de psy_adulte_faute
+�������������������������������������������������������
+Modalités
+Quantités
+%
+�������������������������������������������������������
+Fortement
+103
+Moyennement
+203
+Pas du tout
+280
+0
+1
+2
+0
+1
+0
+�������������������������������������������������������
+
+% cumulés
+10.56218
+24.87223
+99.82964
+100.00000
+100.00000
+100.00000
+
+% cumulés
+6.45161
+20.54329
+100.00000
+
+du Total
+
+% cumulés
+
+24.78778
+35.65365
+39.55857
+
+24.78778
+60.44143
+100.00000
+
+du Total
+
+% cumulés
+
+19.86418
+26.99491
+53.14092
+
+19.86418
+46.85908
+100.00000
+
+du Total
+
+% cumulés
+
+17.14771
+28.01358
+54.83871
+
+17.14771
+45.16129
+100.00000
+
+du Total
+
+% cumulés
+
+17.54685
+34.58262
+47.70017
+0.17036
+0.00000
+0.00000
+
+17.54685
+52.12947
+99.82964
+100.00000
+100.00000
+100.00000
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Fréquences de psy_adulte_humil
+�������������������������������������������������������
+Modalités
+Quantités
+%
+�������������������������������������������������������
+Fortement
+87
+Moyennement
+172
+Pas du tout
+327
+0
+1
+1
+0
+2
+0
+�������������������������������������������������������
+
+du Total
+
+% cumulés
+
+14.82112
+29.30153
+55.70698
+0.17036
+0.00000
+0.00000
+
+14.82112
+44.12266
+99.82964
+100.00000
+100.00000
+100.00000
+
+descriptives(PSY, c("psy_parent_demot",
+"mpsy_parent_moins_perf",
+"Mpsy_parent_perdu_confiance",
+"mpsy_parent_image_corps",
+"mpsy_parent_peur",
+"mpsy_parent_colere",
+"Mpsy_parent_triste",
+"Mpsy_parent_stress",
+"Mpsy_parent_ta_faute",
+"Mpsy_parent_humiliation"),freq=TRUE)
+
+##
+## STATISTIQUES DESCRIPTIVES
+##
+## Statistiques descriptives
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+psy_parent_demot mpsy_parent_moins_perf Mpsy_parent_perdu_confiance mpsy_parent_image_corps mp
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+## N
+123
+45
+45
+45
+45
+45
+## Manquants
+588
+666
+666
+666
+666
+##
+Moyenne
+##
+Médiane
+##
+Ecart-type
+##
+Minimum
+##
+Maximum
+## �����������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������������
+##
+##
+## FRÉQUENCES
+##
+## Fréquences de psy_parent_demot
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+0
+67
+54.47154
+54.47154
+##
+1
+8
+6.50407
+60.97561
+##
+2
+3
+2.43902
+63.41463
+##
+Moyennement
+19
+15.44715
+78.86179
+##
+Pas du tout
+12
+9.75610
+88.61789
+##
+Fortement
+14
+11.38211
+100.00000
+## �������������������������������������������������������
+##
+##
+## Fréquences de mpsy_parent_moins_perf
+## �������������������������������������������������������
+##
+Modalités
+Quantités
+% du Total
+% cumulés
+## �������������������������������������������������������
+##
+Moyennement
+22
+48.88889
+48.88889
+##
+Pas du tout
+16
+35.55556
+84.44444
+##
+Fortement
+7
+15.55556
+100.00000
+## �������������������������������������������������������
+##
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Fréquences de Mpsy_parent_perdu_confiance
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Fortement
+13
+28.88889
+Pas du tout
+17
+37.77778
+Moyennement
+15
+33.33333
+�������������������������������������������������������
+
+Fréquences de mpsy_parent_image_corps
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Pas du tout
+27
+60.00000
+Fortement
+7
+15.55556
+Moyennement
+11
+24.44444
+�������������������������������������������������������
+
+Fréquences de mpsy_parent_peur
+�������������������������������������������������������
+Modalités
+Quantités
+%
+�������������������������������������������������������
+Pas du tout
+27
+Moyennement
+12
+Fortement
+6
+�������������������������������������������������������
+
+% cumulés
+28.88889
+66.66667
+100.00000
+
+% cumulés
+60.00000
+75.55556
+100.00000
+
+du Total
+
+% cumulés
+
+60.00000
+26.66667
+13.33333
+
+60.00000
+86.66667
+100.00000
+
+Fréquences de mpsy_parent_colere
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+17
+37.77778
+Pas du tout
+12
+26.66667
+Fortement
+16
+35.55556
+�������������������������������������������������������
+
+Fréquences de Mpsy_parent_triste
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+15
+33.33333
+Pas du tout
+9
+20.00000
+Fortement
+21
+46.66667
+�������������������������������������������������������
+
+Fréquences de Mpsy_parent_stress
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+13
+28.88889
+Pas du tout
+21
+46.66667
+Fortement
+11
+24.44444
+�������������������������������������������������������
+
+Fréquences de Mpsy_parent_ta_faute
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+
+% cumulés
+37.77778
+64.44444
+100.00000
+
+% cumulés
+33.33333
+53.33333
+100.00000
+
+% cumulés
+28.88889
+75.55556
+100.00000
+
+% cumulés
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+�������������������������������������������������������
+Moyennement
+19
+Pas du tout
+13
+Fortement
+13
+�������������������������������������������������������
+
+42.22222
+28.88889
+28.88889
+
+Fréquences de Mpsy_parent_humiliation
+�������������������������������������������������������
+Modalités
+Quantités
+% du Total
+�������������������������������������������������������
+Moyennement
+16
+35.55556
+Pas du tout
+21
+46.66667
+Fortement
+8
+17.77778
+�������������������������������������������������������
+
+#descriptives(PSY, , freq=TRUE)
+
+42.22222
+71.11111
+100.00000
+
+% cumulés
+35.55556
+82.22222
+100.00000
+
+

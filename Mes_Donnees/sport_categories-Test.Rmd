@@ -1,0 +1,62 @@
+---
+title: "spor_categories-Test"
+author: "Christoph"
+date: "2023-07-05"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    # keep_tex: yes
+geometry: margin=0.5cm
+---
+
+# Libraries
+
+```{r}
+library(openxlsx)                                         # Fichiers Excel
+library(dplyr)
+#library(purrr)                                            
+#library(tibble)
+```
+
+# Lire les Donnees
+
+```{r}
+setwd("/home/christoph/Bureau/Travail+Hobby/Statistiques/Théo")        # hp
+
+Donnees <- read.xlsx("new_polished_itemname.xlsx") 
+View(Donnees)
+```
+
+
+# Dico
+
+```{r}
+PrincCat <- Donnees %>% select(Indique.le.sport.principal.que.tu.pratiques, Catégories.sport)
+PrincCat <- PrincCat[-1,]
+View(PrincCat)
+```
+
+
+# Entrées uniques
+
+```{r}
+uniques <- unique(PrincCat)
+View(uniques)
+```
+
+
+# Sauvegarder 
+
+```{r}
+setwd("/home/christoph/Bureau/Travail+Hobby/Statistiques/Théo")        # hp
+write.csv(uniques, "sport2categorie.csv")
+```
+
+
+
+
+
+

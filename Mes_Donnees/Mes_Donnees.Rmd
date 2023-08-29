@@ -1,0 +1,206 @@
+---
+title: "Mes_Données"
+author: "Christoph"
+date: "2023-06-16..07-01"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    # keep_tex: yes
+geometry: margin=0.5cm
+---
+
+```{r}
+library(openxlsx)                                         # Fichiers Excel
+library(dplyr)
+```
+
+
+# Colnames
+
+```{r}
+#setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")  # mac
+setwd("/home/christoph/Bureau/Travail+Hobby/Statistiques/Théo")        # hp
+
+for( fname in NULL ){
+#for( fname in c("new_polished_itemname-CHP2.xlsx", "Qu.3/TR_ Master stat (job)/QEMS_data_F.xlsx","Qu.3/TR_ Master stat (job)/QEMS_data_FE.xlsx","Qu.3/TR_ Master stat (job)/QEMS_data_S.xlsx","Qu.3/TR_ Master stat (job)/QEMS_data_SE.xlsx") ){
+  
+  print(noquote(paste("-----------------",fname,": -----------------")))
+  df <- read.xlsx(fname) #, sheetName ="Questionnaire sur l'Expérience")  # / sheet1
+  print( colnames(df) )
+}
+```
+
+(La *F*rance n'a pas de cantons)
+
+
+# Construire le Résultat
+
+```{r}
+sortunique <- function(vec){
+  return( sort(unique(vec)) )
+}
+```
+
+```{r}
+#setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")  # mac
+setwd("/home/christoph/Bureau/Travail+Hobby/Statistiques/Théo")        # hp
+
+xl <- read.xlsx("Qu.3/TR_ Master stat (job)/QEMS_data_S.xlsx")
+
+source   <- rep("QEMS_data_S",nrow(xl))
+sourcedf <- data.frame(source)
+
+S_df<-cbind(sourcedf,xl)
+#S_df_entries <- lapply(S_df, sortunique)  
+#S_df_entries                               # Liste von Vektoren aber keine data frame, da Spalten versch. lang!  
+
+#View(S_df)
+```
+
+```{r}
+xl <- read.xlsx("Qu.3/TR_ Master stat (job)/QEMS_data_SE.xlsx")
+
+source   <- rep("QEMS_data_SE",nrow(xl))
+sourcedf <- data.frame(source)
+
+SE_df<-cbind(sourcedf,xl)
+#View(SE_df)
+```
+
+```{r}
+xl <- read.xlsx("Qu.3/TR_ Master stat (job)/QEMS_data_F.xlsx")
+
+source   <- rep("QEMS_data_F",nrow(xl))
+sourcedf <- data.frame(source)
+
+F_df<-cbind(sourcedf,xl)
+#View(F_df)
+```
+
+```{r}
+xl <- read.xlsx("Qu.3/TR_ Master stat (job)/QEMS_data_FE.xlsx")
+
+source   <- rep("QEMS_data_FE",nrow(xl))
+sourcedf <- data.frame(source)
+
+FE_df<-cbind(sourcedf,xl)
+#View(FE_df)
+```
+
+## Traduire noms des colonnes 
+
+functionne pour la plus grande partie, du rest je m'occuperai au fur et mesure... 
+
+```{r}
+#setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")  # mac
+setwd("/home/christoph/Bureau/Travail+Hobby/Statistiques/Théo")        # hp
+
+traduction <- read.xlsx("new_polished_itemname:lignes1,2.xlsx") 
+View(traduction)
+```
+
+```{r}
+for (i in 1:length(S_df)) {        # weder Schleife über Liste noch Funktion klappte 
+  name <- colnames(S_df)[i]
+  for (j in 1:length(traduction)) {
+    if ( name == colnames(traduction)[j]) {
+      colnames(S_df)[i] <- traduction[1,j]
+} } }
+for (i in 1:length(SE_df)) {        
+  name <- colnames(SE_df)[i]
+  for (j in 1:length(traduction)) {
+    if ( name == colnames(traduction)[j]) {
+      colnames(SE_df)[i] <- traduction[1,j]
+    } } }
+
+for (i in 1:length(F_df)) {       
+  name <- colnames(F_df)[i]
+  for (j in 1:length(traduction)) {
+    if ( name == colnames(traduction)[j]) {
+      colnames(F_df)[i] <- traduction[1,j]
+} } }
+for (i in 1:length(FE_df)) {        
+  name <- colnames(FE_df)[i]
+  for (j in 1:length(traduction)) {
+    if ( name == colnames(traduction)[j]) {
+      colnames(FE_df)[i] <- traduction[1,j]
+    } } }
+
+# N'ont pas functionné: 
+colnames(S_df )[11] <- "niveau_de_pratique"
+colnames(SE_df)[11] <- "niveau_de_pratique"
+colnames(F_df )[11] <- "niveau_de_pratique"
+colnames(FE_df)[11] <- "niveau_de_pratique"
+
+#View(SE_df)
+#View(S_df )
+
+#View(FE_df)
+#View(F_df )
+```
+
+
+<!-- zu langsam auf Mac, travaille sur hp-: -->
+
+`
+# contiennent que de NA, du coup type=double et je dois convertir:
+for( col in c("msex_paire_consideration_normale", "msex_paire_necessaire_perf", 
+              "Msex_paire_fait_partie_compet"   , "msex_paire_demotive"       ,
+              "msex_paire_moins_perf"           , "msex_paire_perdu_confiance",
+              "Msex_paire_image_corps"          , "Msex_paire_peur_2"         ,
+              "msex_paire_colere"                                                # which(colnames(SE_df) == "msex_paire_colere") -> 319. schneller(?) match
+              # noch Probleme folgend => Version unten hier 
+              ) ){
+  SE_df[col] <- as.character(SE_df[col])
+}
+
+```{r}
+for( col in c(1:653) ){                       #
+  if( sum(is.na(SE_df[col])) == 70 ){         #  
+    SE_df[col] <- "NA"
+} }
+
+resultS <- bind_rows(S_df, SE_df)         # trop lent => hp...kaggle!!
+#View(resultS)
+```
+
+```{r}
+# contiennent que de NA, du coup type=double et je dois convertir:
+
+#for( col in c("mpsy_paire_normlisation") ){    # gibt's nicht => teste Spaltennummer:
+#for( col in c(261:273,323:330,332:335,337:349,352:359) ){                      # geht 
+    #FE_df[col] <- as.character(FE_df[col])        # => 14 * c(NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA)  :((
+#    FE_df[col] <- "NA"
+#}
+
+#F_df[423] <- "NA"
+for( col in c(1:651) ){                       #
+  if( sum(is.na(F_df[col])) == 284 ){         #
+    F_df[col] <- "NA"
+} }
+
+
+for( col in c(1:651) ){                       #
+  if( sum(is.na(FE_df[col])) == 14 ){         #  
+    FE_df[col] <- "NA"
+} }
+
+resultF <- bind_rows(F_df, FE_df)       
+#View(resultF)
+```
+```{r}
+result <- bind_rows(resultS, resultF)
+View(result)
+```
+
+```{r}
+setwd("/home/christoph/Bureau/Travail+Hobby/Statistiques/Théo")        # hp
+
+write.xlsx(result, "Mes_Donnees.xlsx")
+```
+
+
+

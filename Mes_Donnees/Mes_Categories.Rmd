@@ -1,0 +1,94 @@
+---
+title: "Mes_Categories"
+author: "Christoph"
+date: "2023-07-03..6"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    # keep_tex: yes
+geometry: margin=0.5cm
+---
+
+# Libraries
+
+```{r}
+library(openxlsx)                                         # Fichiers Excel
+library(dplyr)
+library(purrr)                                            # \\ nötig ??
+library(tibble)
+```
+
+
+# Lire les Donnees
+
+```{r}
+setwd("/home/christoph/Bureau/Travail+Hobby/Statistiques/Théo")        # hp
+Mes_Donnees <- read.xlsx("Mes_Donnees.xlsx")
+#View(Mes_Donnees)
+```
+
+
+# Construire ```Categorie_age``` 
+
+```{r}
+categorie_from_age <- function(input){
+  age <- as.numeric(substr(input,1,2))
+  
+  return( case_when(
+    age < 16                  ~ "error: age < 16",
+    (16 <= age) & (age <= 19) ~ "16-19 ans"      ,
+    (20 <= age) & (age <= 23) ~ "20-23 ans"      ,
+    .default                  = "24 ans et plus"
+  )  )
+}
+
+Categorie_age <- map(Mes_Donnees$age,categorie_from_age)
+Mes_Categories <- add_column(Mes_Donnees, Categorie_age, .after="age") 
+View(Mes_Categories)
+```
+
+# Construire ```sport_categories``` 
+
+## Lire Dico
+
+qui était fait par sport_categories-Test.Rmd
+
+```{r}
+setwd("/home/christoph/Bureau/Travail+Hobby/Statistiques/Théo")        # hp
+
+dico <- read.csv("sport2categorie.csv")
+dico[1] <- NULL                                                # enlever index 
+
+# ligne 100 dit: "Football" est "sport d'equipe", mais "Football" est plutôt 
+# "football", alors enlever cette ligne:
+dico <- dico[-100,]                   
+
+colnames(dico) <- c("sport_principal", "sport_categories")
+
+View(dico)
+```
+
+```{r}
+categorie_from_sport <- function(sport){
+  traduction <- filter(dico, sport_principal==sport)$sport_categories
+
+  traduction <- replace(
+    traduction, identical(traduction,character(0)) , "autres")  # "==" geht nicht 
+  
+  print(paste( "categorie_from_sport: sport, traduction =", sport, traduction))
+  
+  return( traduction )
+}
+
+sport_categories <- map(Mes_Donnees$sport_principal,categorie_from_sport)
+Mes_Categories <- add_column(Mes_Categories, sport_categories, .after="sport_principal") 
+View(Mes_Categories)
+```
+
+```{r}
+setwd("/home/christoph/Bureau/Travail+Hobby/Statistiques/Théo")        # hp
+write.xlsx(Mes_Categories, "Mes_Categories.xlsx")
+```

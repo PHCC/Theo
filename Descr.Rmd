@@ -1,0 +1,78 @@
+---
+title: "Théo"
+author: "Christoph"
+date: "2023-05-02..03"
+output:
+  pdf_document:
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    keep_tex: yes
+geometry: margin=0.5cm
+---
+
+---
+#    latex-engine: xelatex
+---
+
+# Libraries
+
+```{r, comment=FALSE, warning=FALSE, message=FALSE}
+library(xlsx)                                         # Fichiers Excel
+library(jmv)                                          # Analyses Jamovi
+library(dplyr)                                        # filter etc.
+#library(tigerstats)                                   # beaux tableaux croisés
+```
+
+
+# Données
+
+## Lire
+
+```{r}
+setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
+TOUT <- read.xlsx("new_polished_itemname-CHP.xlsx", sheetName ="Sheet1")[1:506]  # colonnes vides à la fin
+```
+
+
+## Afficher
+
+(sur écran mais pas dans le PDF)
+
+```{r}
+View(TOUT)
+
+colnames(TOUT)   # Noms des Variables
+```
+
+
+## Statistiques Descriptives TOUT
+
+```{r}
+descriptives(TOUT, c("Categorie_age","sport_categories","sexe_genre","niveau_de_pratique","avant_12_ans"), 
+             freq=TRUE)
+```
+
+Ces résultats corréspondent à ```new_polished_itemname-TOUT.omv``` que j'ai fait comme contrôle.
+
+
+# MPS
+
+```{r}
+MPS <- filter(TOUT,  Mphysique_pairs_item1==1 | Mphysique_paire_item2==1         | Mphysique_paire_item3==1          | 
+     Mphysique_adulte_secoue_agrippe_item1==1 | Mphysique_adulte_frappe_item2==1 | Mphysique_adulte_etouffe_item3==1 |
+     Mphysique_parent_secoue==1               | Mphysique_parent_frappe==1       | Mphysique_parent_ettoufe==1         )
+```
+
+
+## Statistiques Descriptives 
+
+```{r}
+descriptives(MPS, c("Categorie_age","sport_categories","sexe_genre","niveau_de_pratique","avant_12_ans"), 
+             freq=TRUE)
+```
+
+Ces résultats corréspondent à ```new_polished_itemname-MP.omv``` .
+
+Mais ces ne sont pas encore les prévalences mais plutôt les caractéristiques sociodémographiques des répondants.
+

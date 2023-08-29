@@ -1,0 +1,2230 @@
+Théo
+Christoph
+2023-05-02..08
+
+Libraries
+library(xlsx)
+library(jmv)
+library(dplyr)
+#library(tigerstats)
+
+# Fichiers Excel
+# Analyses Jamovi
+# filter etc.
+# beaux tableaux croisés
+
+Données
+Lire
+setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
+TOUT <- read.xlsx("new_polished_itemname-CHP.xlsx", sheetName ="Sheet1")[1:506]
+
+# colonnes vides à la fin
+
+Afficher
+(sur écran mais pas dans le PDF ou word)
+View(TOUT)
+#colnames(TOUT)
+
+# Noms des Variables
+
+Calcul des Prévalences
+Pour les prévalences de MPS (etc.) dans les différents classes sociodémographiques il faut
+• d’abord filtrer la classe
+• puis décrire ma nouvelle variable MPS (etc.) oui/non
+inv.table <- function(maltyp, categorie, titres) {
+print(noquote(""))
+print(noquote(paste( "------------ Tableau cas/non-cas pour la catégorie ",categorie," : ------------------" )))
+#print("titres="
+); print(titres)
+col1 <- c( sum(
+filter(TOUT, !!as.symbol(categorie) == titres[1])[maltyp], na.rm=TRUE),
+sum(1 - filter(TOUT, !!as.symbol(categorie) == titres[1])[maltyp], na.rm=TRUE) )
+df <- data.frame(col1)
+for (i in 2:length(titres) ) {
+col <- c( sum(
+filter(TOUT, !!as.symbol(categorie) == titres[i])[maltyp], na.rm=TRUE),
+sum(1 - filter(TOUT, !!as.symbol(categorie) == titres[i])[maltyp], na.rm=TRUE) )
+df <- cbind(df,col)
+}
+rownames(df) = c(paste(maltyp,"oui"), paste(maltyp,"no"))
+colnames(df) <- titres
+print(df)
+return(df)
+}
+
+prevalences <- function(it){
+print(noquote("Prévalences selon cette catégorie:"))
+print( it[1,]/(it[1,]+it[2,]) )
+print(noquote(""))
+print(chisq.test(it))
+}
+tab_prev <- function(maltyp){
+print(noquote(paste("========================== maltraitance",maltyp,": ===================================")))
+prev_age <- inv.table(maltyp, "Categorie_age", c("16-19 ans ","20-23 ans","24 ans et plus"))
+prevalences(prev_age)
+
+# titre auto
+
+prev_sexe <- inv.table(maltyp, "sexe_genre", c("Une fille","Un garçon","Les catégories ne me correspondent pas"))
+prevalences(prev_sexe)
+
+prev_sport <- inv.table(maltyp, "sport_categories", c("athletisme/sport endurance", "sport individuel", "sport ar
+prevalences(prev_sport)
+prev_niveau <- inv.table(maltyp, "niveau_de_pratique", c("National", "Régional", "Autre",
+"International", "Inter-régional (inter-cantonal)", "Régional (cantonal)"))
+prevalences(prev_niveau)
+prev_12ans <- inv.table(maltyp, "avant_12_ans", c(0,1))
+prevalences(prev_12ans)
+
+#
+
+}
+
+MPS
+TOUT$MPS <- TOUT$Mphysique_pairs_item1==1
+TOUT$Mphysique_paire_item3==1
+
+| TOUT$Mphysique_paire_item2==1
+|
+
+|
+
+TOUT$Mphysique_adulte_secoue_agrippe_item1==1 | TOUT$Mphysique_adulte_frappe_item2==1 |
+TOUT$Mphysique_adulte_etouffe_item3==1
+|
+TOUT$Mphysique_parent_secoue==1
+TOUT$Mphysique_parent_ettoufe==1
+
+| TOUT$Mphysique_parent_frappe==1
+
+|
+
+TOUT$MPS <- if_else(TOUT$MPS, 1, 0)
+MPS <- filter(TOUT, MPS==1)
+
+Statistiques Descriptives
+descriptives(MPS, c("Categorie_age", "sexe_genre", "sport_categories", "niveau_de_pratique", "avant_12_ans"),
+freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+�������������������������������������������������������������������������������������������������������
+Categorie_age
+sexe_genre
+sport_categories
+�������������������������������������������������������������������������������������������������������
+N
+143
+143
+143
+Manquants
+0
+0
+0
+Moyenne
+Médiane
+Ecart-type
+Minimum
+
+niveau_de_pratique
+
+avant_12_ans
+
+143
+0
+
+143
+0
+0.7272727
+1.000000
+0.4469272
+0.000000
+
+#
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Maximum
+�������������������������������������������������������������������������������������������������������
+
+1.000000
+
+FRÉQUENCES
+Fréquences de Categorie_age
+����������������������������������������������������������
+Modalités
+Quantités
+����������������������������������������������������������
+16-19 ans
+52
+20-23 ans
+44
+24 ans et plus
+47
+����������������������������������������������������������
+
+% du Total
+
+% cumulés
+
+36.36364
+30.76923
+32.86713
+
+36.36364
+67.13287
+100.00000
+
+Fréquences de sexe_genre
+����������������������������������������������������������������������������������
+Modalités
+Quantités
+����������������������������������������������������������������������������������
+Les catégories ne me correspondent pas
+1
+Un garçon
+76
+Une fille
+66
+����������������������������������������������������������������������������������
+
+Fréquences de sport_categories
+����������������������������������������������������������������������
+Modalités
+Quantités
+����������������������������������������������������������������������
+athletisme/sport endurance
+9
+autres
+6
+basket-ball
+24
+football
+21
+sport artistique
+22
+sport d'equipe
+22
+sport de combat
+9
+sport endurance
+1
+sport individuel
+29
+����������������������������������������������������������������������
+
+0.69930
+53.14685
+46.15385
+
+0.69930
+53.84615
+100.00000
+
+% cumulés
+
+6.29371
+4.19580
+16.78322
+14.68531
+15.38462
+15.38462
+6.29371
+0.69930
+20.27972
+
+6.29371
+10.48951
+27.27273
+41.95804
+57.34266
+72.72727
+79.02098
+79.72028
+100.00000
+
+% du Total
+
+% cumulés
+
+11.88811
+14.68531
+18.18182
+31.46853
+12.58741
+11.18881
+
+11.88811
+26.57343
+44.75524
+76.22378
+88.81119
+100.00000
+
+% cumulés
+27.27273
+100.00000
+
+Plupart > 12 ans, alors probablement 0 signifie < 12 ans.
+
+% cumulés
+
+% du Total
+
+Fréquences de niveau_de_pratique
+���������������������������������������������������������������������������
+Modalités
+Quantités
+���������������������������������������������������������������������������
+Autre
+17
+Inter-régional (inter-cantonal)
+21
+International
+26
+National
+45
+Régional
+18
+Régional (cantonal)
+16
+���������������������������������������������������������������������������
+
+Fréquences de avant_12_ans
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+0
+39
+27.27273
+1
+104
+72.72727
+�����������������������������������������������������
+
+% du Total
+
+Ces résultats corréspondent à new_polished_itemname-MP.omv .
+Mais ces ne sont pas encore les prévalences mais plutôt les frequences des caractéristiques sociodémographiques des cas MPS.
+
+Prévalences
+Prévalences sont les frequences de MPS dans les différentes classes sociodémographiques.
+tab_prev("MPS")
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+[1] ========================== maltraitance MPS : ===================================
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie Categorie_age : -----------------16-19 ans 20-23 ans 24 ans et plus
+MPS oui
+52
+44
+47
+MPS no
+257
+208
+162
+[1] Prévalences selon cette catégorie:
+16-19 ans 20-23 ans 24 ans et plus
+MPS oui 0.1682848 0.1746032
+0.2248804
+[1]
+Pearson's Chi-squared test
+data: it
+X-squared = 2.9465, df = 2, p-value = 0.2292
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie sexe_genre
+Une fille Un garçon Les catégories ne me correspondent pas
+MPS oui
+66
+76
+1
+MPS no
+317
+311
+0
+[1] Prévalences selon cette catégorie:
+Une fille Un garçon Les catégories ne me correspondent pas
+MPS oui 0.1723238 0.1963824
+1
+[1]
+
+: ------------------
+
+## Warning in chisq.test(it): L’approximation du Chi-2 est peut-être incorrecte
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Pearson's Chi-squared test
+data: it
+X-squared = 5.1348, df = 2, p-value = 0.07673
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie sport_categories : -----------------athletisme/sport endurance sport individuel sport artistique
+MPS oui
+9
+29
+22
+MPS no
+60
+115
+118
+basket-ball sport d'equipe autres sport de combat sport endurance
+MPS oui
+24
+22
+6
+9
+1
+MPS no
+78
+112
+35
+30
+7
+football
+MPS oui
+21
+MPS no
+73
+[1] Prévalences selon cette catégorie:
+athletisme/sport endurance sport individuel sport artistique
+MPS oui
+0.1304348
+0.2013889
+0.1571429
+basket-ball sport d'equipe
+autres sport de combat sport endurance
+MPS oui
+0.2352941
+0.1641791 0.1463415
+0.2307692
+0.125
+football
+MPS oui 0.2234043
+[1]
+
+## Warning in chisq.test(it): L’approximation du Chi-2 est peut-être incorrecte
+##
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Pearson's Chi-squared test
+data: it
+X-squared = 6.4809, df = 8, p-value = 0.5935
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie niveau_de_pratique : -----------------National Régional Autre International Inter-régional (inter-cantonal)
+MPS oui
+45
+18
+17
+26
+21
+MPS no
+190
+77
+92
+109
+57
+Régional (cantonal)
+MPS oui
+16
+MPS no
+103
+[1] Prévalences selon cette catégorie:
+National Régional
+Autre International
+MPS oui 0.1914894 0.1894737 0.1559633
+0.1925926
+Inter-régional (inter-cantonal) Régional (cantonal)
+MPS oui
+0.2692308
+0.1344538
+[1]
+Pearson's Chi-squared test
+data: it
+X-squared = 6.4124, df = 5, p-value = 0.2681
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie
+0
+1
+MPS oui 39 104
+MPS no 161 467
+[1] Prévalences selon cette catégorie:
+0
+1
+MPS oui 0.195 0.1821366
+[1]
+
+avant_12_ans
+
+: ------------------
+
+Pearson's Chi-squared test with Yates' continuity correction
+data: it
+X-squared = 0.088257, df = 1, p-value = 0.7664
+
+Petites discussions MPS
+• la prévalence de MAP est de 16.8% chez les 16-19 ans, 17.5% chez les 20-23 ans et 22.5% chez les 24 ans ou plus
+• 100% prevalence dans la catégorie Les catégories ne me correspondent pas - mais il n’y avait qu’un seul cas
+
+PSY
+TOUT$PSY <- TOUT$Mpsy_paire_ignoré_item1==1 | TOUT$Mpsy_paire_investissement_item2==1 |
+TOUT$Mpsy_paire_critique_perf_item3==1 | TOUT$Mpsy_paire_apparence_item4==1 |
+TOUT$Mpsy_paire_rumeur_item5==1 | TOUT$Mpsy_paire_humiliation_item6==1 |
+TOUT$Mpsy_paire_menace_exclusion_item7==1 | TOUT$mpsy_paire_menace_physique_item8==1 |
+TOUT$Mpsy_paire_encourager_humiliation_item9==1 | TOUT$mpsy_paire_limite_contacte_item10==1 |
+TOUT$Mpsy_adulte_ignoer_item1==1 | TOUT$mpsy_adulte_critique_invesstissement_item2==1 |
+TOUT$mpsy_adulte_critique_perf_item2==1 | TOUT$mpsy_adulte_critiquer_apparence_item3==1 |
+TOUT$mpsy_adulte_rumeur_item4==1 | TOUT$mpsy_adulte_ridiculiser_item5==1 |
+TOUT$Mpsy_adulte_crier_dessus_item6==1 | TOUT$mpsy_adulte_menace_expulsion_item7==1 |
+TOUT$mpsy_adulte_menacephysi_item8==1 | TOUT$mpsy_adulte_humiliation_autrui_item9==1 |
+TOUT$mpsy_adulte_limitation_contact_item10==1 | TOUT$mpsy_adulte_jouer_blesser_item11==1 |
+TOUT$mpsy_adulte_entrainer_a_vomir_item12==1 | TOUT$mpsy_adulte_dopage_item13==1 |
+
+TOUT$mpsy_adulte_poids_ideal_item13==1 |
+TOUT$Mpsy_parent_ignorer_item1==1 | TOUT$mpsy_parent_invesstissment_item2==1 |
+TOUT$mpsy_parent_critique_perf_item3==1 | TOUT$Mpsy_parent_critique_corps_item4==1 |
+TOUT$mpsy_parent_rumeur_item5==1 | TOUT$mpsy_parent_ridiculisà_perf_item6==1 |
+TOUT$mpsy_parent_crier_dessus_item7==1 | TOUT$Mpsy_parent_menace_physique_item8==1 |
+TOUT$Mpsy_parent_blesser_adversaire_item9==1 | TOUT$Mpsy_parent_limite_contact_item10==1 |
+TOUT$Mpsy_parent_blessé_soi_mm_item11==1 | TOUT$mpsy_parent_vomir_item12==1 |
+TOUT$mpsy_parent_dopage_item13==1 | TOUT$Mpsy_parent_poids_ideal_item14==1
+TOUT$PSY <- if_else(TOUT$PSY, 1, 0)
+PSY <- filter(TOUT, PSY==1)
+
+Statistiques Descriptives
+descriptives(PSY, c("Categorie_age","sexe_genre","sport_categories","niveau_de_pratique","avant_12_ans"),
+freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+�������������������������������������������������������������������������������������������������������
+Categorie_age
+sexe_genre
+sport_categories
+�������������������������������������������������������������������������������������������������������
+N
+464
+464
+464
+Manquants
+0
+0
+0
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�������������������������������������������������������������������������������������������������������
+
+niveau_de_pratique
+
+avant_12_ans
+
+464
+0
+
+464
+0
+0.7672414
+1.000000
+0.4230458
+0.000000
+1.000000
+
+FRÉQUENCES
+Fréquences de Categorie_age
+����������������������������������������������������������
+Modalités
+Quantités
+����������������������������������������������������������
+16-19 ans
+186
+20-23 ans
+153
+24 ans et plus
+125
+����������������������������������������������������������
+
+% du Total
+
+% cumulés
+
+40.08621
+32.97414
+26.93966
+
+40.08621
+73.06034
+100.00000
+
+Fréquences de sexe_genre
+����������������������������������������������������������������������������������
+Modalités
+Quantités
+����������������������������������������������������������������������������������
+Les catégories ne me correspondent pas
+1
+Un garçon
+215
+Une fille
+248
+����������������������������������������������������������������������������������
+
+Fréquences de sport_categories
+����������������������������������������������������������������������
+Modalités
+Quantités
+����������������������������������������������������������������������
+athletisme/sport endurance
+39
+
+% du Total
+
+% cumulés
+
+0.21552
+46.33621
+53.44828
+
+0.21552
+46.55172
+100.00000
+
+% du Total
+
+% cumulés
+
+8.40517
+
+8.40517
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+autres
+basket-ball
+football
+sport artistique
+sport d'equipe
+sport de combat
+sport endurance
+sport individuel
+����������������������������������������������������������������������
+
+21
+63
+60
+91
+78
+23
+6
+83
+
+4.52586
+13.57759
+12.93103
+19.61207
+16.81034
+4.95690
+1.29310
+17.88793
+
+Fréquences de niveau_de_pratique
+���������������������������������������������������������������������������
+Modalités
+Quantités
+���������������������������������������������������������������������������
+Autre
+57
+Inter-régional (inter-cantonal)
+51
+International
+82
+National
+145
+Régional
+54
+Régional (cantonal)
+75
+���������������������������������������������������������������������������
+
+Fréquences de avant_12_ans
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+0
+108
+23.27586
+1
+356
+76.72414
+�����������������������������������������������������
+
+12.93103
+26.50862
+39.43966
+59.05172
+75.86207
+80.81897
+82.11207
+100.00000
+
+% du Total
+
+% cumulés
+
+12.28448
+10.99138
+17.67241
+31.25000
+11.63793
+16.16379
+
+12.28448
+23.27586
+40.94828
+72.19828
+83.83621
+100.00000
+
+% cumulés
+23.27586
+100.00000
+
+Prévalences
+tab_prev("PSY")
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+[1] ========================== maltraitance PSY : ===================================
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie Categorie_age : -----------------16-19 ans 20-23 ans 24 ans et plus
+PSY oui
+186
+153
+125
+PSY no
+122
+93
+84
+[1] Prévalences selon cette catégorie:
+16-19 ans 20-23 ans 24 ans et plus
+PSY oui 0.6038961 0.6219512
+0.5980861
+[1]
+Pearson's Chi-squared test
+data: it
+X-squared = 0.30883, df = 2, p-value = 0.8569
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie sexe_genre
+Une fille Un garçon Les catégories ne me correspondent pas
+PSY oui
+248
+215
+1
+PSY no
+130
+170
+0
+[1] Prévalences selon cette catégorie:
+Une fille Un garçon Les catégories ne me correspondent pas
+PSY oui 0.6560847 0.5584416
+1
+[1]
+
+: ------------------
+
+## Warning in chisq.test(it): L’approximation du Chi-2 est peut-être incorrecte
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Pearson's Chi-squared test
+data: it
+X-squared = 8.2727, df = 2, p-value = 0.01598
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie sport_categories : -----------------athletisme/sport endurance sport individuel sport artistique
+PSY oui
+39
+83
+91
+PSY no
+29
+58
+48
+basket-ball sport d'equipe autres sport de combat sport endurance
+PSY oui
+63
+78
+21
+23
+6
+PSY no
+38
+55
+19
+18
+1
+football
+PSY oui
+60
+PSY no
+34
+[1] Prévalences selon cette catégorie:
+athletisme/sport endurance sport individuel sport artistique
+PSY oui
+0.5735294
+0.5886525
+0.6546763
+basket-ball sport d'equipe autres sport de combat sport endurance
+PSY oui
+0.6237624
+0.5864662 0.525
+0.5609756
+0.8571429
+football
+PSY oui 0.6382979
+[1]
+
+## Warning in chisq.test(it): L’approximation du Chi-2 est peut-être incorrecte
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Pearson's Chi-squared test
+data: it
+X-squared = 5.9118, df = 8, p-value = 0.6571
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie niveau_de_pratique : -----------------National Régional Autre International Inter-régional (inter-cantonal)
+PSY oui
+145
+54
+57
+82
+51
+PSY no
+86
+40
+52
+52
+26
+Régional (cantonal)
+PSY oui
+75
+PSY no
+44
+[1] Prévalences selon cette catégorie:
+National Régional
+Autre International
+PSY oui 0.6277056 0.5744681 0.5229358
+0.6119403
+Inter-régional (inter-cantonal) Régional (cantonal)
+PSY oui
+0.6623377
+0.6302521
+[1]
+Pearson's Chi-squared test
+data: it
+X-squared = 5.3343, df = 5, p-value = 0.3765
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie
+0
+1
+PSY oui 108 356
+PSY no
+88 212
+[1] Prévalences selon cette catégorie:
+0
+1
+PSY oui 0.5510204 0.6267606
+[1]
+
+avant_12_ans
+
+Pearson's Chi-squared test with Yates' continuity correction
+
+: ------------------
+
+##
+## data: it
+## X-squared = 3.1948, df = 1, p-value = 0.07387
+
+NEG
+TOUT$NEG <- TOUT$Neg_adulte_entrainer_blesse_item1==1 | TOUT$neg_adulte_dopage_soutenu_item2==1 |
+TOUT$neg_adulte_poids_ideal_item3==1
+| TOUT$Neg_adulte_louper_ecole_item4==1
+|
+TOUT$Neg_adulte_laisser_humilier_item5==1 |
+TOUT$Neg_parent_laisser_entrainer_blesser_item1==1 | TOUT$Neg_parent_dopage_item2==1 |
+TOUT$Neg_parent_poids_ideal_item3==1
+| TOUT$Neg_parent_arret_ecole_item4==1 |
+TOUT$neg_parent_laisser_humilier_autrui_item5==1
+TOUT$NEG <- if_else(TOUT$NEG, 1, 0)
+NEG <- filter(TOUT, NEG==1)
+
+Statistiques Descriptives
+descriptives(NEG, c("Categorie_age","sexe_genre","sport_categories","niveau_de_pratique","avant_12_ans"),
+freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+�������������������������������������������������������������������������������������������������������
+Categorie_age
+sexe_genre
+sport_categories
+�������������������������������������������������������������������������������������������������������
+N
+108
+108
+108
+Manquants
+0
+0
+0
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�������������������������������������������������������������������������������������������������������
+
+FRÉQUENCES
+Fréquences de Categorie_age
+����������������������������������������������������������
+Modalités
+Quantités
+����������������������������������������������������������
+16-19 ans
+40
+20-23 ans
+36
+24 ans et plus
+32
+����������������������������������������������������������
+
+% du Total
+
+% cumulés
+
+37.03704
+33.33333
+29.62963
+
+37.03704
+70.37037
+100.00000
+
+Fréquences de sexe_genre
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+Un garçon
+44
+40.74074
+Une fille
+64
+59.25926
+�����������������������������������������������������
+
+% cumulés
+40.74074
+100.00000
+
+niveau_de_pratique
+
+avant_12_ans
+
+108
+0
+
+108
+0
+0.7685185
+1.000000
+0.4237457
+0.000000
+1.000000
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Fréquences de sport_categories
+����������������������������������������������������������������������
+Modalités
+Quantités
+����������������������������������������������������������������������
+athletisme/sport endurance
+15
+autres
+3
+basket-ball
+12
+football
+13
+sport artistique
+18
+sport d'equipe
+12
+sport de combat
+6
+sport endurance
+1
+sport individuel
+28
+����������������������������������������������������������������������
+
+% du Total
+
+% cumulés
+
+13.88889
+2.77778
+11.11111
+12.03704
+16.66667
+11.11111
+5.55556
+0.92593
+25.92593
+
+13.88889
+16.66667
+27.77778
+39.81481
+56.48148
+67.59259
+73.14815
+74.07407
+100.00000
+
+Fréquences de niveau_de_pratique
+���������������������������������������������������������������������������
+Modalités
+Quantités
+���������������������������������������������������������������������������
+Autre
+8
+Inter-régional (inter-cantonal)
+11
+International
+24
+National
+38
+Régional
+9
+Régional (cantonal)
+18
+���������������������������������������������������������������������������
+
+Fréquences de avant_12_ans
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+0
+25
+23.14815
+1
+83
+76.85185
+�����������������������������������������������������
+
+% du Total
+
+% cumulés
+
+7.40741
+10.18519
+22.22222
+35.18519
+8.33333
+16.66667
+
+7.40741
+17.59259
+39.81481
+75.00000
+83.33333
+100.00000
+
+% cumulés
+23.14815
+100.00000
+
+Prévalences
+tab_prev("NEG")
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+[1] ========================== maltraitance NEG : ===================================
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie Categorie_age : -----------------16-19 ans 20-23 ans 24 ans et plus
+NEG oui
+40
+36
+32
+NEG no
+263
+212
+177
+[1] Prévalences selon cette catégorie:
+16-19 ans 20-23 ans 24 ans et plus
+NEG oui 0.1320132 0.1451613
+0.15311
+[1]
+Pearson's Chi-squared test
+data: it
+X-squared = 0.47976, df = 2, p-value = 0.7867
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie sexe_genre
+Une fille Un garçon Les catégories ne me correspondent pas
+NEG oui
+64
+44
+0
+NEG no
+312
+340
+1
+[1] Prévalences selon cette catégorie:
+
+: ------------------
+
+##
+Une fille Un garçon Les catégories ne me correspondent pas
+## NEG oui 0.1702128 0.1145833
+0
+## [1]
+## Warning in chisq.test(it): L’approximation du Chi-2 est peut-être incorrecte
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Pearson's Chi-squared test
+data: it
+X-squared = 4.9934, df = 2, p-value = 0.08236
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie sport_categories : -----------------athletisme/sport endurance sport individuel sport artistique
+NEG oui
+15
+28
+18
+NEG no
+53
+112
+120
+basket-ball sport d'equipe autres sport de combat sport endurance
+NEG oui
+12
+12
+3
+6
+1
+NEG no
+88
+123
+36
+36
+7
+football
+NEG oui
+13
+NEG no
+78
+[1] Prévalences selon cette catégorie:
+athletisme/sport endurance sport individuel sport artistique
+NEG oui
+0.2205882
+0.2
+0.1304348
+basket-ball sport d'equipe
+autres sport de combat sport endurance
+NEG oui
+0.12
+0.08888889 0.07692308
+0.1428571
+0.125
+football
+NEG oui 0.1428571
+[1]
+
+## Warning in chisq.test(it): L’approximation du Chi-2 est peut-être incorrecte
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Pearson's Chi-squared test
+data: it
+X-squared = 12.368, df = 8, p-value = 0.1355
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie niveau_de_pratique : -----------------National Régional Autre International Inter-régional (inter-cantonal)
+NEG oui
+38
+9
+8
+24
+11
+NEG no
+197
+86
+97
+107
+66
+Régional (cantonal)
+NEG oui
+18
+NEG no
+100
+[1] Prévalences selon cette catégorie:
+National
+Régional
+Autre International
+NEG oui 0.1617021 0.09473684 0.07619048
+0.1832061
+Inter-régional (inter-cantonal) Régional (cantonal)
+NEG oui
+0.1428571
+0.1525424
+[1]
+Pearson's Chi-squared test
+data: it
+X-squared = 8.1606, df = 5, p-value = 0.1476
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie
+0
+1
+NEG oui 25 83
+NEG no 172 481
+[1] Prévalences selon cette catégorie:
+
+avant_12_ans
+
+: ------------------
+
+##
+##
+##
+##
+##
+##
+##
+##
+
+0
+1
+NEG oui 0.1269036 0.1471631
+[1]
+Pearson's Chi-squared test with Yates' continuity correction
+data: it
+X-squared = 0.3398, df = 1, p-value = 0.5599
+
+SEX
+TOUT$SEX <- TOUT$Msex_paire_remarque_apparence_item1==1
+| TOUT$Msex_paire_proposition_sex_item2==1
+TOUT$msex_paire_exhibitionisme_item3==1
+| TOUT$msex_paire_photo_intime_item4==1
+TOUT$msex_paire_attouchement_item5==1
+| TOUT$Msex_paire_embrasser_item6==1
+TOUT$msex_paire_frotter_partie_intime_item7==1 | TOUT$msex_paire_viol_penetration_item7==1
+TOUT$Msex_paire_avec_sans_penetration_non_consentie_item8==1
+|
+TOUT$Msex_adulte_remarque_sex_item1==1
+TOUT$Msex_adulte_exhibition_partie_intime_item2==1
+TOUT$msex_adulte_force_a_toucher_item3==1
+TOUT$msex_adulte_embrasser_bouche_item5==1
+TOUT$Msex_adulte_tentation_relation_sex_item7==1
+
+|
+|
+|
+|
+|
+
+|
+|
+|
+|
+
+TOUT$msex_adulte_envoi_image_sex_item2==1
+|
+TOUT$msex_adulte_photo_partie_intime_item3==1
+|
+TOUT$msex_adulte_toucher_malalaise_item4==1
+|
+TOUT$Msex_adulte_frotter_partie_intime_item6==1 |
+TOUT$Msex_adulte_forcer_relation_sex_avec_sans_pen
+
+TOUT$SEX <- if_else(TOUT$SEX, 1, 0)
+SEX <- filter(TOUT, SEX==1)
+
+Statistiques Descriptives
+descriptives(SEX, c("Categorie_age","sexe_genre","sport_categories","niveau_de_pratique","avant_12_ans"),
+freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+�������������������������������������������������������������������������������������������������������
+Categorie_age
+sexe_genre
+sport_categories
+�������������������������������������������������������������������������������������������������������
+N
+85
+85
+85
+Manquants
+0
+0
+0
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�������������������������������������������������������������������������������������������������������
+
+FRÉQUENCES
+Fréquences de Categorie_age
+����������������������������������������������������������
+Modalités
+Quantités
+����������������������������������������������������������
+16-19 ans
+32
+20-23 ans
+27
+24 ans et plus
+26
+����������������������������������������������������������
+
+% du Total
+
+% cumulés
+
+37.64706
+31.76471
+30.58824
+
+37.64706
+69.41176
+100.00000
+
+niveau_de_pratique
+
+avant_12_ans
+
+85
+0
+
+85
+0
+0.7764706
+1.000000
+0.4190826
+0.000000
+1.000000
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Fréquences de sexe_genre
+����������������������������������������������������������������������������������
+Modalités
+Quantités
+����������������������������������������������������������������������������������
+Les catégories ne me correspondent pas
+1
+Un garçon
+23
+Une fille
+61
+����������������������������������������������������������������������������������
+
+Fréquences de sport_categories
+����������������������������������������������������������������������
+Modalités
+Quantités
+����������������������������������������������������������������������
+athletisme/sport endurance
+5
+autres
+3
+basket-ball
+12
+football
+6
+sport artistique
+24
+sport d'equipe
+4
+sport de combat
+1
+sport individuel
+30
+����������������������������������������������������������������������
+
+% cumulés
+
+1.17647
+27.05882
+71.76471
+
+1.17647
+28.23529
+100.00000
+
+% du Total
+
+% cumulés
+
+5.88235
+3.52941
+14.11765
+7.05882
+28.23529
+4.70588
+1.17647
+35.29412
+
+5.88235
+9.41176
+23.52941
+30.58824
+58.82353
+63.52941
+64.70588
+100.00000
+
+Fréquences de niveau_de_pratique
+���������������������������������������������������������������������������
+Modalités
+Quantités
+���������������������������������������������������������������������������
+Autre
+6
+Inter-régional (inter-cantonal)
+7
+International
+17
+National
+32
+Régional
+7
+Régional (cantonal)
+16
+���������������������������������������������������������������������������
+
+Fréquences de avant_12_ans
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+0
+19
+22.35294
+1
+66
+77.64706
+�����������������������������������������������������
+
+% du Total
+
+% du Total
+
+% cumulés
+
+7.05882
+8.23529
+20.00000
+37.64706
+8.23529
+18.82353
+
+7.05882
+15.29412
+35.29412
+72.94118
+81.17647
+100.00000
+
+% cumulés
+22.35294
+100.00000
+
+Prévalences
+tab_prev("SEX")
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+[1] ========================== maltraitance SEX : ===================================
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie Categorie_age : -----------------16-19 ans 20-23 ans 24 ans et plus
+SEX oui
+32
+27
+26
+SEX no
+278
+225
+186
+[1] Prévalences selon cette catégorie:
+16-19 ans 20-23 ans 24 ans et plus
+SEX oui 0.1032258 0.1071429
+0.1226415
+[1]
+Pearson's Chi-squared test
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+data: it
+X-squared = 0.51286, df = 2, p-value = 0.7738
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie sexe_genre : -----------------Une fille Un garçon Les catégories ne me correspondent pas
+SEX oui
+61
+23
+1
+SEX no
+324
+366
+0
+[1] Prévalences selon cette catégorie:
+Une fille Un garçon Les catégories ne me correspondent pas
+SEX oui 0.1584416 0.05912596
+1
+[1]
+
+## Warning in chisq.test(it): L’approximation du Chi-2 est peut-être incorrecte
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Pearson's Chi-squared test
+data: it
+X-squared = 27.673, df = 2, p-value = 9.791e-07
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie sport_categories : -----------------athletisme/sport endurance sport individuel sport artistique
+SEX oui
+5
+30
+24
+SEX no
+64
+114
+117
+basket-ball sport d'equipe autres sport de combat sport endurance
+SEX oui
+12
+4
+3
+1
+0
+SEX no
+90
+130
+38
+41
+8
+football
+SEX oui
+6
+SEX no
+88
+[1] Prévalences selon cette catégorie:
+athletisme/sport endurance sport individuel sport artistique
+SEX oui
+0.07246377
+0.2083333
+0.1702128
+basket-ball sport d'equipe
+autres sport de combat sport endurance
+SEX oui
+0.1176471
+0.02985075 0.07317073
+0.02380952
+0
+football
+SEX oui 0.06382979
+[1]
+
+## Warning in chisq.test(it): L’approximation du Chi-2 est peut-être incorrecte
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Pearson's Chi-squared test
+data: it
+X-squared = 36.174, df = 8, p-value = 1.632e-05
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie niveau_de_pratique : -----------------National Régional Autre International Inter-régional (inter-cantonal)
+SEX oui
+32
+7
+6
+17
+7
+SEX no
+205
+89
+103
+120
+70
+Régional (cantonal)
+SEX oui
+16
+SEX no
+103
+[1] Prévalences selon cette catégorie:
+National
+Régional
+Autre International
+SEX oui 0.1350211 0.07291667 0.05504587
+0.1240876
+Inter-régional (inter-cantonal) Régional (cantonal)
+SEX oui
+0.09090909
+0.1344538
+[1]
+Pearson's Chi-squared test
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+data: it
+X-squared = 7.5362, df = 5, p-value = 0.1837
+[1]
+[1] ------------ Tableau cas/non-cas pour la catégorie
+0
+1
+SEX oui 19 66
+SEX no 180 510
+[1] Prévalences selon cette catégorie:
+0
+1
+SEX oui 0.09547739 0.1145833
+[1]
+
+avant_12_ans
+
+Pearson's Chi-squared test with Yates' continuity correction
+data: it
+X-squared = 0.37455, df = 1, p-value = 0.5405
+
+: ------------------
+
+

@@ -1,0 +1,734 @@
+---
+title: "Listes.Rmd"
+author: "Christoph"
+date: "2023-05-08...13"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    keep_tex: yes
+  word_document:
+    toc: no
+    toc_depth: '3'
+geometry: margin=0.5cm
+---
+
+
+# MPS
+
+- paire : 3 items, 3 interpretations, 10 conséquences
+- adulte: 3 items, 2 interpretations, 10 conséquences
+- parent: 3 item , 1 interpretation ,  1 conséquence="Mphysique_parent_suite_a"
+
+```
+TOUT$MPS <- TOUT$Mphysique_pairs_item1==1                 | TOUT$Mphysique_paire_item2==1         | 
+                TOUT$Mphysique_paire_item3==1             | 
+  
+            TOUT$Mphysique_adulte_secoue_agrippe_item1==1 | TOUT$Mphysique_adulte_frappe_item2==1 | 
+                TOUT$Mphysique_adulte_etouffe_item3==1    |
+  
+            TOUT$Mphysique_parent_secoue==1               | TOUT$Mphysique_parent_frappe==1       | 
+                TOUT$Mphysique_parent_ettoufe==1
+```
+
+## 3.1.1 Interpretation MPS
+
+```
+descriptives(MPS, c("Mphysique_paire_normalisation", "Mphysique_paire_necessite_perf",
+                    "Mphysique_paire_faire_partie"),
+             freq=TRUE)
+descriptives(MPS, c("Mphysique_adulte_auteur_normlisation", "Mphysique_adute_domotivation"),
+             freq=TRUE)
+descriptives(MPS, c("Mphysique_parent_consideration"),
+             freq=TRUE)
+```
+
+
+## Qu. 3.2.1 Conséquences de la MPS
+
+```
+descriptives(MPS, c("Mphysique_paire_demotivation"  , "Mphysique_paire_moins_performé",                      
+                    "Mphysique_paire_perteconfiance", "Mphysique_paire_image_neg"     ,
+                    "Mphysique_paire_peur"          , "Mphysique_paire_colere"        ,                      
+                    "Mphysique_paire_triste"        , "Mphysique_paire_stress"        ,   
+                    "Mphysique_paire_ta_faute"      , "Mphysique_paire_humiliation"    ),
+             freq=TRUE)
+descriptives(MPS, c("Mphysique_adute_domotivation"  , "Mphysique_adulte_performance", 
+                    "Mphysique_adulte_confiance"    , "Mphysique_adulte_imagecorps" ,
+                    "Mphysique_adulte_peur"         , "Mphysique_adulte_colere"     ,
+                    "Mphysique_adulte_triste"       , "Mphysique_adulte_stress"     ,
+                    "Mphysique_adulte_responsabilite", "Mphysique_adulte_humiliation"  ),
+             freq=TRUE)
+descriptives(MPS,   "Mphysique_parent_suite_a", 
+             freq=TRUE)
+```
+
+
+# PSY
+
+## paire: 4 catégories
+
+1. 
+  - 1 item
+    1. "Mpsy_paire_ignoré_item1"
+  
+  - 3 interpretations
+    1. "Mpsy_paire_normalisation"
+    2. "Mpsy_paire_necessite"
+    3. "Mpsy_paire_partie_entrainement"
+  
+  - 10 conséquences
+    1. "Mpsy_paire_démotivation"
+    2. "Mpsy_paire_moins_performe"
+    3. "Mpsy_paire_perdu_confiance"
+    4. "Mpsy_paire_image_corps"
+    5. "Mpsy_paire_peur"
+    6. "Mpsy_paire_colere"
+    7. "Mpsy_paire_triste"
+    8. "Mpsy_paire_stress"
+    9. "MPsy_paire_ta_faute"
+    10. "Mpsy_paire_humiliation"
+
+2. 
+- 5 items
+  1. "Mpsy_paire_investissement_item2"
+  2. "Mpsy_paire_critique_perf_item3"
+  3. "Mpsy_paire_apparence_item4"
+  4. "Mpsy_paire_rumeur_item5"
+  5. "Mpsy_paire_humiliation_item6"
+  
+- 3 interpretations
+  1. "Mpsy_paire_consideration"
+  2. "mpsy_paire_neccesiteperf"
+  3. "Mpsy_paire_partie_compet"
+
+- 10 conséquences
+  1. "Mpsy_paire_demotive"
+  2. "mpsy_paire_moins_perf"
+  3. "Mpsy_paire_perte_confiance"
+  4. "mpsy_paire_image_corps"
+  5. "Mpsy_paire_peur_2"
+  6. "Mpsy_paire_colere_2"
+  7. "Mpsy_paire_triste_2"
+  8. "Mpsy_paire_stress_2"
+  9. "mpsy_paire_faute"
+  10. "Mpsy_paire_humiliation_2"
+
+
+3. 
+- 2 items
+  1. "Mpsy_paire_menace_exclusion_item7"
+  2. "mpsy_paire_menace_physique_item8"
+  
+- 3 interpretations
+  1. "mpsy_paire_normlisation"
+  2. "mpsy_paire_necessite_perf"
+  3. "mpsy_paire_partie_entrainement"
+  
+- 10 conséquences
+  1. "mpsy_paire_demotive_sport"
+  2. "mpsy_paire_moins_perf_2"
+  3. "mpsy_paire_perdu_confiance"
+  4. "Mpsy_paire_image_corps_2"
+  5. "Mpsy_paire_peur_3"
+  6. "Mpsy_paire_colere_3"
+  7. "mpsy_paire_triste"
+  8. "mpsy_paire_stress"
+  9. "Mpsy_paire_ta_faute"
+  10. "Mpsy_paire_humiliation_3"
+
+4. 
+- 2 items
+  1. "Mpsy_paire_encourager_humiliation_item9"
+  2. "mpsy_paire_limite_contacte_item10"
+  
+- 3 interpretations
+  1. "Mpsy_paire_normalisation_2"
+  2. "mpsy_paire_necessaireperf"
+  3. "mpsy_paire_partie_entrainement_2"
+  
+- 10 conséquences
+  1. "mpsy_paire_demotive"
+  2. "mpsy_paire_moins_perf_3"
+  3. "mpsy_paire_perte_confiance"
+  4. "mpsy_paire_image_neg"
+  5. "mpsy_paire_peur"
+  6. "mpsy_paire_colere"
+  7. "mpsy_paire_triste_2"
+  8. "Mpsy_paire_stress_3"
+  9. "Mpsy_paire_faute"
+  10. "mpsy_paire_humiliation"
+
+Du coup, additioner "Mpsy_paire_normalisation"+"Mpsy_paire_consideration" -??C'EST CORRECT??- +"mpsy_paire_normlisation"+"Mpsy_paire_normalisation_2" etc.
+
+### adulte: 4 catégories
+
+1. 
+
+- 2 items
+  1. "Mpsy_adulte_ignoer_item1"
+  2. "mpsy_adulte_auteur"
+  
+- 3 interpretations
+  1. "mpsy_adulte_considerer"
+  2. "mpsy_adulte_necessaire"
+  3. "Mpsy_adulte_faisant_partie"
+  
+- 10 conséquences
+  1. "Mpsy_adulte_demotive"
+  2. "mpsy_adulte_moins_perf"
+  3. "Mpsy_adulte_perdu_confiance"
+  4. "mpsy_adulte_image_corps"
+  5. "mpsy_adulte_peur"
+  6. "mpsy_adulte_colere"
+  7. "mpsy_adulte_triste"
+  8. "mpsy_adulte_stress"
+  9. "mpsy_adulte_ta_faute"
+  10. "mpsy_adulte_humiliation"
+
+2. 
+
+- 6 items (C'EST CORRECT? du disais 5)
+  1. "mpsy_adulte_critique_invesstissement_item2"
+  2. "mpsy_adulte_critique_perf_item2"
+  3. "mpsy_adulte_critiquer_apparence_item3"
+  4. "mpsy_adulte_rumeur_item4"
+  5. "mpsy_adulte_ridiculiser_item5"
+  6. "Mpsy_adulte_crier_dessus_item6"
+  
+- 3 interpretations
+  1. "Mpsy_adulte_consideration"
+  2. "mpsy_adulte_necessaire_2"
+  3. "Mpsy_adulte_partie_compet"
+  
+- 10 conséquences
+  1. "Mpsy_adulte_demotive_2"
+  2. "mpsy_adulte_moins_perf_2"
+  3. "Mpsy_adulte_perduconfiance"
+  4. "Mpsy_adulte_image_corps"
+  5. "mpsy_adulte_peur_2"
+  6. "mpsy_adulte_colere_2"
+  7. "mpsy_adulte_triste_2"
+  8. "mpsy_adulte_stress_2"
+  9. "mpsy_adulte_ta_faute_2"
+  10. "mpsy_adulte_humiliation_2"
+
+3. 
+
+- 2 items
+  1. "mpsy_adulte_menace_expulsion_item7"
+  2. "mpsy_adulte_menacephysi_item8"
+  
+- 3 interpretations
+  1. "Mpsy_adulte_auteur_considerer_normal"
+  2. "mpsy_adulte_necessaireperf"
+  3. "mpsy_adulte_partie_entrainement"
+  
+- 10 conséquences
+  1. "mpsy_adulte_demotive"
+  2. "mpsy_adulte_moins_perf_3"
+  3. "mpsy_adulte_perdu_confiance"
+  4. "mpsy_adulte_image_neg"
+  5. "mpsy_adulte_peur_3"
+  6. "mpsy_adulte_colere_3"
+  7. "mpsy_adulte_triste_3"
+  8. "Mpsy_Adulte_stress"
+  9. "mpsy_adulte_ta_faute_3"
+  10. "mpsy_adulte_ressenti_humuliation"
+
+4. 
+
+- 6 items
+  1. "mpsy_adulte_humiliation_autrui_item9"
+  2. "mpsy_adulte_limitation_contact_item10"
+  3. "mpsy_adulte_jouer_blesser_item11"
+  4. "mpsy_adulte_entrainer_a_vomir_item12"
+  5. "mpsy_adulte_dopage_item13"
+  6. "mpsy_adulte_poids_ideal_item13"
+  
+- 3 interpretations
+  1. "mpsy_adulte_considération_normale"
+  2. "mpsy_adulte_necessaire_perf"
+  3. "mpsy_adulte_partie_compet"
+  
+- 10 conséquences
+  1. "mpsy_adulte_demotive_sport"
+  2. "Mpsy_adulte_moins_perf"
+  3. "mpsy_adulte_perdu_confiance_2"
+  4. "Mpsy_adulte_image_neg"
+  5. "Mpsy_adulte_peur"
+  6. "mpsy_adulte_colère"
+  7. "Mpsy_adulte_triste"
+  8. "mpsy_adulte_stress_3"
+  9. "mpsy_adulte_ta_faute_4"
+  10. "Mpsy_adulte_humiliation"
+
+
+### parent: 4 catégories (14 items, Franzoni p. 91f) 
+
+1. 
+
+- 1 item
+  1. "Mpsy_parent_ignorer_item1"
+- 0 interpretation <-?? EST-CE POSSIBLE ??
+- 10 conséquences <-?? EST-CE CORRECT ?? je n'arrive pas bien à comparer avec Franzoni 
+  1. "mpsy_parent_demotiver_sport"
+  2. "mpsy_parent_moins_perf"
+  3. "Mpsy_parent_perdu_confiance"
+  4. "mpsy_parent_image_corps"
+  5. "mpsy_parent_peur"
+  6. "mpsy_parent_colere"
+  7. "Mpsy_parent_triste"
+  8. "Mpsy_parent_stress"
+  9. "Mpsy_parent_ta_faute"
+  10. "Mpsy_parent_humiliation"
+
+2. 
+
+- 6 items
+  1. "mpsy_parent_invesstissment_item2"
+  2. "mpsy_parent_critique_perf_item3"
+  3. "Mpsy_parent_critique_corps_item4"
+  4. "mpsy_parent_rumeur_item5"
+  5. "mpsy_parent_ridiculisà_perf_item6"
+  6. "mpsy_parent_crier_dessus_item7"
+  
+- 3 interpretations
+  1. "Mpsy_parent_normalisation"
+  2. "mpsy_parent_necessaire"
+  3. "mpsy_parent_faisant_partie"
+  
+- 1 conséquence
+  1. "Mpsy_parent_perdu_confiance_2"
+  
+3. 
+
+- 1 item
+  1. "Mpsy_parent_menace_physique_item8"
+  
+- 3 interpretations
+  2. "mpsy_parent_necessaire_perf"
+  3. "Mpsy_parent_faisant_partie_entrainement"
+  
+- 5 conséquences
+  1. "mpsy_parent_normalisation"
+  1. "Mpsy_parent_perdu_confiance_3"
+  2. "Mpsy_parent_peur"
+  3. "Mpsy_parent_colere"
+  4. "Mpsy_parent_triste_2"
+  5. "Mpsy_parent_stress_2"
+ 
+4. 
+
+- 6 items
+  1. "Mpsy_parent_blesser_adversaire_item9"
+  2. "Mpsy_parent_limite_contact_item10"
+  3. "Mpsy_parent_blessé_soi_mm_item11"
+  4. "mpsy_parent_vomir_item12"
+  5. "mpsy_parent_dopage_item13"
+  6. "Mpsy_parent_poids_ideal_item14"
+  
+- 3 interpretations
+  1. "Mpsy_parent_consideration_normal"
+  2. "mpsy_parent_necessaire_perf_2"
+  3. "Mpsy_parent_partie_compet"
+  
+- 1 conséquence
+  1. "Mpsy_parent_demotiver"
+
+
+# NEG
+
+et adultes et parents 3 catégories (Franzoni p. 95), additioner!
+
+## Adultes
+
+1. 
+
+- 3  items
+  1. Neg_adulte_entrainer_blesse_item1"
+  2. "neg_adulte_dopage_soutenu_item2"
+  3. "neg_adulte_poids_ideal_item3"
+  
+- 3 interpretations
+  1. "Neg_adulte_normalite"
+  2. "Neg_adulte_necessaire_perf"
+  3. "Neg_adulte_faisant_partie"
+  
+- 10 conséquences
+  1. "Neg_adulte_demotiver"
+  2. "Neg_adulte_moins_perf"
+  3. "Neg_adulte_perdu_confiance"
+  4. "Neg_adulte_image_neg_corps"
+  5. "Neg_adulte_peur"
+  6. "Neg_adulte_colere"
+  7. "Neg_adulte_triste"
+  8. "Neg_adulte_stress"
+  9. "Neg_adulte_ta_faute"
+  10. "Neg_adulte_humiliation"
+
+2. 
+- 1  item
+  1. "Neg_adulte_louper_ecole_item4"
+  
+- 3 interpretations
+  1. "neg_adulte_normalite"
+  2. "Neg_adulte_necessaire_perf_2"
+  3. "neg_adulte_faisant_partie" 
+  
+- 10 conséquences
+  1. "Neg_adulte_demotive"
+  2. "Neg_adulte_moins_perf_2"
+  3. "Neg_adulte_perdu_confiance_2"
+  4. "Neg_adulte_image_coprs"
+  5. "Neg_Adulte_peur"
+  6. "Neg_adulte_colere_2"
+  7. "Neg_adulte_triste_2"
+  8. "Neg_adulte_stress_2"
+  9. "Neg_adulte_ta_faute_2"
+  10. "Neg_adulte_humiliation_2"
+
+3. 
+- 1 item
+  1. "Neg_adulte_laisser_humilier_item5"
+  
+- 3 interpretations
+  1. "Neg_adulte_normalite_2" 
+  2. "Neg_adulte_necessaire_perf_3"
+  3. "Neg_adulte_faisant_partie_perf"  -
+  
+- 10 conséquences
+  1. "Neg_adulte_demotive_2"
+  2. "Neg_adulte_moins_perf_3"
+  3. "Neg_adulte_perdu_confiance_3"
+  4. "Neg_adulte_image_corps"
+  5. "Neg_adulte_peur_2"
+  6. "Neg_adulte_colere_3"
+  7. "Neg_adulte_triste_3"
+  8. "Neg_adulte_stress_3"
+  9. "Neg_adulte_ta_faute_3"
+  10. "Neg_adulte_humiliation_3"
+
+## Parents
+
+1.
+
+- 4 items
+  1. "Neg_parent_laisser_entrainer_blesser_item1"
+  2. "Neg_parent_dopage_item2"
+  3. "Neg_parent_poids_ideal_item3"
+  
+- 3 interpretations  
+  1. "Neg_parent_normalite"
+  2. "neg_parent_necessaire_perf"
+  3. "neg_parent_faisant_partie"
+
+- 2  conséquences
+  1. "neg_parent_demotive"
+  2. "neg_parent_moins_perf"
+
+2. 
+
+- 1 item
+  1. "Neg_parent_arret_ecole_item4"
+  
+- 3 interpretations
+  1. "neg_parent_normalite"
+  2. "Neg_parent_necessaire_perf"
+  3. "neg_parent_faisant_partie_2"
+  
+- 1 conséquence
+  1. "neg_parent_demotive_2"
+
+3. 
+
+- 1 item 
+  1. "neg_parent_laisser_humilier_autrui_item5"
+  
+- 2 interpretations
+  1. "Neg_adulte_necessaire"                       - ?? ici, "adulte" signifie "parent" ??
+  2. "neg_parent_faisant_partie_3"
+  
+- 2 conséquences
+  1. "Neg_parent_demotive"
+  2. "neg_adulte_moins_perf"                      - ?? ici, "adulte" signifie "parent" ??
+
+
+# SEX
+
+- et paires et adultes 7 catégories, la première avec 2 items (Franzoni p. 92) - additionner!
+- = et paires et adultes 8 items
+
+## Paires
+
+1.  
+
+- 2 items
+  1. "Msex_paire_remarque_apparence_item1"
+  2. "Msex_paire_proposition_sex_item2"
+
+- 3 interpretations
+  1. "msex_paire_normalite"
+  2. "Msex_paire_necesstite"
+  3. "msex_paire_partie_compet"
+  
+- 10 conséquences
+  1. "Msex_paire_demotive"
+  2. "Msex_paire_moins_perf"
+  3. "Msex_paire_perdu_confiance"
+  4. "Msex_paire_image_neg_corps"
+  5. "msex_paire_peur"
+  6. "Msex_paire_colere"
+  7. "msex_paire_triste"
+  8. "msex_paire_stress"
+  9. "Msex_paire_ta_faute"
+  10. "Msex_paire_humiliation"
+  
+2.  
+
+- 1 items 
+  1. "msex_paire_exhibitionisme_item3"
+
+- 3 interpretations
+  1. "msex_paire_consideration_normale"
+  2. "msex_paire_necessaire_perf"
+  3. "Msex_paire_fait_partie_compet"
+  
+- 10 conséquences
+  1. "msex_paire_demotive"
+  2. "msex_paire_moins_perf"
+  3. "msex_paire_perdu_confiance"
+  4. "Msex_paire_image_corps"
+  5. "Msex_paire_peur_2"
+  6. "msex_paire_colere"
+  7. "msex_paire_triste_2"
+  8. "msex_paire_stress_2"
+  9. "msex_paire_ta_faute"
+  10. "msex_paire_humiliation"
+  
+3. 
+
+- 1 item
+  1. "msex_paire_photo_intime_item4"
+
+- 3 interpretations
+  1. "msex_paire_normalite_2"
+  2. "msex_paire_consideration_necessaire_perf"
+  3. "msex_paire_consideration_partie_perf"
+  
+- 10 conséquences
+  1. "Msex_paire_consideration_demotive"
+  2. "msex_paire_moins_perf_2"
+  3. "msex_paire_perdu_confiance_2"
+  4. "Msex_paire_image_corps_2"
+  5. "msex_paire_peur_3"
+  6. "msex_paire_colere_3"
+  7. "msex._paire_triste"
+  8. "msex_paire_stress_3"
+  9. "msex_paire_ta_faute_3"
+  10. "msex_paire_humiliation_2"
+  
+4. 
+
+- 1 items
+  1. "msex_paire_photo_intime_item4"
+
+- 3 interpretations
+  1. "Msex_paire_normalite" -(sans accent)
+  2. "msex_paire_neccesite_perf"
+  3. "Msex_paire_partie_entrainement"
+  
+- ici il n'y a que 9 conséquences
+  1. "Msex_paire_demotive_2"
+  2. "msex_paire_moins_perf_3"
+  3. "msex_paire_perdu_confiance_3"
+  4. "msex_paire_image_neg"
+  5. "msex_paire_peur_4"
+  6. "msex_paire_peur_5"
+  7. "msex_paire_triste_3"
+  8. "msex_paire_stress_4"
+  9. "msex_paire_ta_faute_4" 
+  
+5. 
+
+- 1 items
+  1. "msex_paire_attouchement_item5"
+
+- 3 interpretations
+  1. "Msex_paire_normalité" -(avec accent)
+  2. "msex_paire_necessaire_perf_2"
+  3. "Msex_paire_faisant_partie_entrainement"
+  
+- ici il n'y a que 6 conséquences
+  1. "msex_paire_moins_perf_4"
+  2. "Msex_paire_perte_confiance"
+  3. "Msex_paire_peur"
+  4. "msex_paire_colere_4"
+  5. "msex_paire_triste_4"
+  6. "msex_paire_stress_5" 
+  
+6.
+
+- 2 items
+  1. "Msex_paire_embrasser_item6"
+  2. "msex_paire_frotter_partie_intime_item7"
+
+- 3 interpretations
+  1. "msex_paire_normalite_3"
+  2. "msex_paire_necessaire_perf_3"
+  3. "msex_paire_faisant_partie"
+  
+- ici il n'y a que 5 conséquences
+  1. "msex_paire_moins_perf_5"
+  2. "msex_paire_peur_6"
+  3. "msex_paire_colere_5"
+  4. "msex_paire_triste_5"
+  5. "msex_paire_stress_6" 
+  
+7.
+
+- 1 item
+  1. "Msex_paire_avec_sans_penetration_non_consentie_item8"
+  
+- 2 interpretations  
+  1. "msex_paire_normalite_4"
+  2. "msex_paire_necessaire_perf_4"  
+  
+- ici il n'y a que 5 conséquences
+  1. "msex_paire_moins_perf_6"
+  2. "msex_paire_peur_7"
+  3. "msex_paire_colere_6"
+  4. "msex_paire_triste_6"
+  5. "msex_paire_stress_7" 
+
+## Adultes
+
+1. 
+
+- 2 items
+  1. "Msex_adulte_remarque_sex_item1"
+  2. "msex_adulte_envoi_image_sex_item2"  
+  
+- 3  interpretations 
+  1. "Msex_adulte_normalite"
+  2. "msex_adulte_necessaire_perf"
+  3. "Msex_adulte_fsisant_partie"    
+  
+- 10 conséquences  
+  1. "msex_adulte_demotive"
+  2. "Msex_adulte_moins_perf"
+  3. "msex_adulte_perdu_confiance"
+  4. "msex_adulte_image_corps"
+  5. "msex_adulte_peur"
+  6. "msex_adulte_colere"
+  7. "msex_adulte_triste"
+  8. "msex_adulte_stress"
+  9. "msex_adulte_ta_faute"
+  10. "msex_adulte_humiliation"
+
+2. 
+
+- 1 item
+   1. "Msex_adulte_exhibition_partie_intime_item2"
+   
+- 2  interpretations
+   1. "msex_adulte_normalite"
+   2. "msex_adulte_necessaire_perf_5"
+   
+- 5 conséquences 
+   1. "msex_adulte_moins_perf"
+   2. "msex_adulte_peur_6"
+   3. "msex_adulte_colere_6"
+   4. "Msex_adulte_triste"
+   5. "msex_adulte_stress..2."
+   
+3. 
+
+- 1 item
+   1. "msex_adulte_photo_partie_intime_item3"
+  
+- 2 interpretations
+   1. "Msex_adulte_normalité"
+   2. "msex_adulte_necessaire_perf_3"
+   
+- 5 conséquences
+   1. "msex_adulte_moins_perf_7"
+   2. "msex_adulte_peur_3"
+   3. "msex_adulte_colere_7"
+   4. "msex_adulte_triste_2"
+   5. "msex_adulte_stress_3"
+   
+4. 
+
+- 1 item
+   1."msex_adulte_force_a_toucher_item3"
+   
+- 2 interpretations
+   1. "msex_adulte_normalite_2"
+   2. "msex_adulte_necessaire_perf_7"
+   
+- 5 conséquences
+   1. "msex_adulte_moins_perf_8"
+   2. "Msex_adulte_peur"
+   3. "msex_adulte_colere_4"
+   4. "msex_adulte_triste_8"
+   5. "msex_adulte_stress_8"
+   
+5. 
+
+- 3 items
+   1. "msex_adulte_toucher_malalaise_item4"
+   2. "msex_adulte_embrasser_bouche_item5"
+   3. "Msex_adulte_frotter_partie_intime_item6"
+   
+- 3 interpretations
+   1. "Msex_adulte_normalite_2"
+   2. "msex_adulte_necessaire_perf_5..2."
+   3. "msex_adulte_faisant_partie"
+   
+- 10 conséquences
+   1. "Msex_adulte_demotive"
+   2. "msex_adulte_moins_perf_4"
+   3. "Msex_adulte_perdu_confiance"
+   4. "Msex_adulte_image_neg_corps"
+   5. "msex_adulte_peur_4"
+   6. "msex_adulte_colere_5"
+   7. "msex_adulte_triste_4"
+   8. "msex_adulte_stress_5"
+   9. "msex_adulte_ta_faute_2"
+   10. "Msex_adulte_humiliation"
+
+6. 
+
+- 1 item
+   1. "Msex_adulte_tentation_relation_sex_item7"
+   
+- 2 interpretations
+   1. "msex_adulte_normalite_7"
+   2. "msex_adulte_necessaire_perf_8"
+   
+- 5 conséquences
+   1. "msex_adulte_moins_perf_5"
+   2. "msex_adulte_peur_9"
+   3. "Msex_adulte_colere"
+   4. "msex_adulte_triste_9"
+   5. "msex_adulte_stress_9"
+
+7. 
+
+- 1 item
+   1. "Msex_adulte_forcer_relation_sex_avec_sans_pene_item8"
+   
+- 2 interpretations
+   1. "msex_adulte_normalite_4"
+   2. "msex_adulte_necessaire_perf_9"
+   
+- 5 conséquences
+   1. "msex_adulte_moins_perf_10"
+   2. "msex_adulte_peur_10"
+   3. "msex_adulte_colere_10"
+   4. "msex_adulte_triste_10"
+   5. "msex_adulte_stress_10"
+

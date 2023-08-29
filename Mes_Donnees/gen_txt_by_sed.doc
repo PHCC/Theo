@@ -1,0 +1,2 @@
+.txt's erzeugt durch :
+sed -e 's/##//' Mes_Données.txt | sed -e 's/[0-9]//g' | sed -e 's/\[\]//' |sed -e 's/^ *//' > Mes_DonnéesB.txt

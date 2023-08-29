@@ -1,0 +1,2764 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=0.5cm]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Théo3.Rmd},
+  pdfauthor={Christoph},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Théo3.Rmd}
+\author{Christoph}
+\date{2023-05-08\ldots06-07\ldots{}}
+
+\begin{document}
+\maketitle
+
+\hypertarget{libraries}{%
+\section{Libraries}\label{libraries}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(xlsx)                                         }\CommentTok{\# Fichiers Excel}
+\FunctionTok{library}\NormalTok{(jmv)                                          }\CommentTok{\# Analyses Jamovi}
+\FunctionTok{library}\NormalTok{(dplyr)                                        }\CommentTok{\# filter etc.}
+\FunctionTok{library}\NormalTok{(purrr)                                        }\CommentTok{\# add2}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{donnuxe9es}{%
+\section{Données}\label{donnuxe9es}}
+
+\hypertarget{lire}{%
+\subsection{Lire}\label{lire}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo"}\NormalTok{)}
+
+\CommentTok{\#TOUT \textless{}{-} read.xlsx("QEMS\_all{-}corr.xlsx", sheetName ="sheet1")  \# java.lang.OutOfMemoryError: GC overhead limit exceeded}
+\FunctionTok{load}\NormalTok{(}\StringTok{"QEMS\_all.RData"}\NormalTok{)}
+\CommentTok{\#View(dataset)}
+
+\NormalTok{traduction }\OtherTok{\textless{}{-}} \FunctionTok{read.xlsx}\NormalTok{(}\StringTok{"new\_polished\_itemname:lignes1,2.xlsx"}\NormalTok{, }\AttributeTok{sheetName =}\StringTok{"sheet1"}\NormalTok{)}
+\CommentTok{\#View(traduction)}
+
+\CommentTok{\#TOUT \textless{}{-} read.xlsx("new\_polished\_itemname{-}CHP.xlsx", sheetName ="Sheet1")[1:506]  \# colonnes vides à la fin}
+\end{Highlighting}
+\end{Shaded}
+
+traduire noms des colonnes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{TOUT }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(dataset)  }\CommentTok{\# deep copy}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(TOUT)) \{}
+  \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(traduction)) \{}
+\NormalTok{    name }\OtherTok{\textless{}{-}} \FunctionTok{gsub}\NormalTok{(}\StringTok{" "}\NormalTok{,}\StringTok{"."}\NormalTok{,}\FunctionTok{colnames}\NormalTok{(TOUT)[i])}
+\NormalTok{    name }\OtherTok{\textless{}{-}} \FunctionTok{gsub}\NormalTok{(}\StringTok{","}\NormalTok{,}\StringTok{"."}\NormalTok{,name)}
+\NormalTok{    name }\OtherTok{\textless{}{-}} \FunctionTok{gsub}\NormalTok{(}\StringTok{"{-}"}\NormalTok{,}\StringTok{"."}\NormalTok{,name)}
+    \ControlFlowTok{if}\NormalTok{ ( name }\SpecialCharTok{==}  \FunctionTok{colnames}\NormalTok{(traduction)[j]) \{}
+      \CommentTok{\# importé differément, donc " " est devenu "." dans traduction !}
+      
+      \CommentTok{\#print(paste("ancien dataset",i,"traduction",j,":",colnames(TOUT)[i],"{-}\textgreater{}",traduction[1,j]))}
+      \FunctionTok{colnames}\NormalTok{(TOUT)[i] }\OtherTok{\textless{}{-}}\NormalTok{ traduction[}\DecValTok{1}\NormalTok{,j]}
+\NormalTok{    \}}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{afficher}{%
+\subsection{Afficher}\label{afficher}}
+
+(sur écran mais pas dans le PDF ou word)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#View(TOUT)}
+\CommentTok{\#colnames(TOUT)   \# Noms des Variables}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{mps}{%
+\section{MPS}\label{mps}}
+
+\begin{itemize}
+\tightlist
+\item
+  paire, adulte, parent : 1 catégorie, 3 items, 3 interpretations, 10
+  conséquences = OK
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{TOUT}\SpecialCharTok{$}\NormalTok{MPS }\OtherTok{\textless{}{-}}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_pairs\_item1}\SpecialCharTok{!=}\StringTok{"Jamais"}                 \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_paire\_item2}\SpecialCharTok{!=}\StringTok{"Jamais"}         \SpecialCharTok{|} 
+\NormalTok{                TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_paire\_item3}\SpecialCharTok{!=}\StringTok{"Jamais"}             \SpecialCharTok{|} 
+  
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_adulte\_secoue\_agrippe\_item1}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_adulte\_frappe\_item2}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|} 
+\NormalTok{                TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_adulte\_etouffe\_item3}\SpecialCharTok{!=}\StringTok{"Jamais"}    \SpecialCharTok{|}
+  
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_parent\_secoue}\SpecialCharTok{!=}\StringTok{"Jamais"}               \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_parent\_frappe}\SpecialCharTok{!=}\StringTok{"Jamais"}       \SpecialCharTok{|} 
+\NormalTok{                TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_parent\_ettoufe}\SpecialCharTok{!=}\StringTok{"Jamais"}              \CommentTok{\# NA reste NA, c\textquotesingle{}est bon!}
+
+\NormalTok{TOUT}\SpecialCharTok{$}\NormalTok{MPS }\OtherTok{\textless{}{-}} \FunctionTok{if\_else}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{MPS, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+
+\NormalTok{MPS }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(TOUT, MPS}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{interpretation-mps}{%
+\subsection{3.1.1 Interpretation MPS}\label{interpretation-mps}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# recoder... }
+
+\CommentTok{\# ... par exemple compter tout sauf "Pas du tout": }
+\CommentTok{\#MPS$Mphysique\_paire\_normalisation  \textless{}{-} MPS$Mphysique\_paire\_normalisation!="Pas du tout"  }
+\CommentTok{\#MPS$Mphysique\_paire\_necessite\_perf \textless{}{-} MPS$Mphysique\_paire\_necessite\_perf!="Pas du tout"}
+\CommentTok{\#MPS$Mphysique\_paire\_faire\_partie   \textless{}{-} MPS$Mphysique\_paire\_faire\_partie!="Pas du tout"}
+
+\FunctionTok{descriptives}\NormalTok{(MPS, }\FunctionTok{c}\NormalTok{(}\StringTok{"Mphysique\_paire\_normalisation"}\NormalTok{, }
+                    \StringTok{"Mphysique\_paire\_necessite\_perf"}\NormalTok{,}
+                    \StringTok{"Mphysique\_paire\_faire\_partie"}\NormalTok{),}
+             \AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                                                                         
+##  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##                  Mphysique_paire_normalisation    Mphysique_paire_necessite_perf    Mphysique_paire_faire_partie   
+##  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##    N                                       282                               282                             282   
+##    Manquants                                62                                62                              62   
+##    Moyenne                                                                                                         
+##    Médiane                                                                                                         
+##    Ecart-type                                                                                                      
+##    Minimum                                                                                                         
+##    Maximum                                                                                                         
+##  ───────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de Mphysique_paire_normalisation             
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           84      29.78723     29.78723   
+##    Pas du tout          119      42.19858     71.98582   
+##    Tout à fait           66      23.40426     95.39007   
+##    Ne sait pas           13       4.60993    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_paire_necessite_perf            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           68      24.11348     24.11348   
+##    Pas du tout          166      58.86525     82.97872   
+##    Tout à fait           39      13.82979     96.80851   
+##    Ne sait pas            9       3.19149    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_paire_faire_partie              
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           77      27.30496     27.30496   
+##    Pas du tout          120      42.55319     69.85816   
+##    Tout à fait           80      28.36879     98.22695   
+##    Ne sait pas            5       1.77305    100.00000   
+##  ───────────────────────────────────────────────────────
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{MPS}\SpecialCharTok{$}\NormalTok{Mphysique\_adulte\_auteur\_normlisation }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(MPS}\SpecialCharTok{$}\NormalTok{Mphysique\_adulte\_auteur\_normlisation)}
+\FunctionTok{descriptives}\NormalTok{(MPS, }\FunctionTok{c}\NormalTok{(}\StringTok{"Mphysique\_adulte\_auteur\_normlisation"}\NormalTok{, }
+                    \StringTok{"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...1"}\NormalTok{,}
+                    \StringTok{"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...2"}\NormalTok{), }
+            \AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                                                                                                                                                        
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##                  Mphysique_adulte_auteur_normlisation    Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...1    Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...2   
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##    N                                               40                                                                    0                                                                    0   
+##    Manquants                                      304                                                                  344                                                                  344   
+##    Moyenne                                   3.225000                                                                  NaN                                                                  NaN   
+##    Médiane                                   3.000000                                                                  NaN                                                                  NaN   
+##    Ecart-type                                1.887713                                                                  NaN                                                                  NaN   
+##    Minimum                                   1.000000                                                                  NaN                                                                  NaN   
+##    Maximum                                   7.000000                                                                  NaN                                                                  NaN   
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de Mphysique_adulte_auteur_normlisation    
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##    1                    5      12.50000     12.50000   
+##    2                    9      22.50000     35.00000   
+##    3                   19      47.50000     82.50000   
+##    7                    7      17.50000    100.00000   
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...1 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...2 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##  ───────────────────────────────────────────────────────────────────────────────
+\end{verbatim}
+
+\begin{verbatim}
+# à partir d'ici tout est NA, même pas la peine de convertir car les tableaux seront vides 
+#                    "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...1",
+#                    "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...2"), 
+#
+#descriptives(MPS, c("Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...3", 
+#                    "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...4",
+#                    "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...5" ),
+\end{verbatim}
+
+\hypertarget{qu.-3.2.1-consuxe9quences-de-la-mps}{%
+\subsection{Qu. 3.2.1 Conséquences de la
+MPS}\label{qu.-3.2.1-consuxe9quences-de-la-mps}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{descriptives}\NormalTok{(MPS, }\FunctionTok{c}\NormalTok{(}\StringTok{"Mphysique\_paire\_demotivation"}\NormalTok{  , }\StringTok{"Mphysique\_paire\_moins\_performé"}\NormalTok{,                      }
+                    \StringTok{"Mphysique\_paire\_perteconfiance"}\NormalTok{, }\StringTok{"Mphysique\_paire\_image\_neg"}\NormalTok{     ,}
+                    \StringTok{"Mphysique\_paire\_peur"}\NormalTok{          , }\StringTok{"Mphysique\_paire\_colere"}\NormalTok{        ,                      }
+                    \StringTok{"Mphysique\_paire\_triste"}\NormalTok{        , }\StringTok{"Mphysique\_paire\_stress"}\NormalTok{        ,   }
+                    \StringTok{"Mphysique\_paire\_ta\_faute"}\NormalTok{      , }\StringTok{"Mphysique\_paire\_humiliation"}\NormalTok{    ),}
+             \AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                                                                                                                                                                                                                                                                        
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##                  Mphysique_paire_demotivation    Mphysique_paire_moins_performé    Mphysique_paire_perteconfiance    Mphysique_paire_image_neg    Mphysique_paire_peur    Mphysique_paire_colere    Mphysique_paire_triste    Mphysique_paire_stress    Mphysique_paire_ta_faute    Mphysique_paire_humiliation   
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##    N                                      282                               282                               282                          282                     282                       282                       282                       282                         282                            282   
+##    Manquants                               62                                62                                62                           62                      62                        62                        62                        62                          62                             62   
+##    Moyenne                                                                                                                                                                                                                                                                                                        
+##    Médiane                                                                                                                                                                                                                                                                                                        
+##    Ecart-type                                                                                                                                                                                                                                                                                                     
+##    Minimum                                                                                                                                                                                                                                                                                                        
+##    Maximum                                                                                                                                                                                                                                                                                                        
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de Mphysique_paire_demotivation              
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             16       5.67376      5.67376   
+##    Moyennement           44      15.60284     21.27660   
+##    Pas du tout          222      78.72340    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_paire_moins_performé            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           51      18.08511     18.08511   
+##    Pas du tout          221      78.36879     96.45390   
+##    Fortement             10       3.54610    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_paire_perteconfiance            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             18       6.38298      6.38298   
+##    Moyennement           48      17.02128     23.40426   
+##    Pas du tout          216      76.59574    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_paire_image_neg                 
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             16       5.67376      5.67376   
+##    Moyennement           36      12.76596     18.43972   
+##    Pas du tout          230      81.56028    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_paire_peur                      
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             24       8.51064      8.51064   
+##    Moyennement           79      28.01418     36.52482   
+##    Pas du tout          179      63.47518    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_paire_colere                    
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             96      34.04255     34.04255   
+##    Moyennement          123      43.61702     77.65957   
+##    Pas du tout           63      22.34043    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_paire_triste                    
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             23       8.15603      8.15603   
+##    Moyennement           61      21.63121     29.78723   
+##    Pas du tout          198      70.21277    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_paire_stress                    
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             29      10.28369     10.28369   
+##    Moyennement           83      29.43262     39.71631   
+##    Pas du tout          170      60.28369    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_paire_ta_faute                  
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           56      19.85816     19.85816   
+##    Pas du tout          207      73.40426     93.26241   
+##    Fortement             19       6.73759    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_paire_humiliation               
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             32      11.34752     11.34752   
+##    Moyennement           73      25.88652     37.23404   
+##    Pas du tout          177      62.76596    100.00000   
+##  ───────────────────────────────────────────────────────
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{descriptives}\NormalTok{(MPS, }\FunctionTok{c}\NormalTok{(}\StringTok{"Mphysique\_adute\_domotivation"}\NormalTok{  , }\StringTok{"Mphysique\_adulte\_performance"}\NormalTok{, }
+                    \StringTok{"Mphysique\_adulte\_confiance"}\NormalTok{    , }\StringTok{"Mphysique\_adulte\_imagecorps"}\NormalTok{ ,}
+                    \StringTok{"Mphysique\_adulte\_peur"}\NormalTok{         , }\StringTok{"Mphysique\_adulte\_colere"}\NormalTok{     ,}
+                    \StringTok{"Mphysique\_adulte\_triste"}\NormalTok{       , }\StringTok{"Mphysique\_adulte\_stress"}\NormalTok{     ,}
+                    \StringTok{"Mphysique\_adulte\_responsabilite"}\NormalTok{, }\StringTok{"Mphysique\_adulte\_humiliation"}\NormalTok{  ),}
+             \AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                                                                                                                                                                                                                                                                                
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##                  Mphysique_adute_domotivation    Mphysique_adulte_performance    Mphysique_adulte_confiance    Mphysique_adulte_imagecorps    Mphysique_adulte_peur    Mphysique_adulte_colere    Mphysique_adulte_triste    Mphysique_adulte_stress    Mphysique_adulte_responsabilite    Mphysique_adulte_humiliation   
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##    N                                      115                             115                           115                            115                      115                        115                        115                        115                                115                             115   
+##    Manquants                              229                             229                           229                            229                      229                        229                        229                        229                                229                             229   
+##    Moyenne                                                                                                                                                                                                                                                                                                                
+##    Médiane                                                                                                                                                                                                                                                                                                                
+##    Ecart-type                                                                                                                                                                                                                                                                                                             
+##    Minimum                                                                                                                                                                                                                                                                                                                
+##    Maximum                                                                                                                                                                                                                                                                                                                
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de Mphysique_adute_domotivation              
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           34      29.56522     29.56522   
+##    Pas du tout           73      63.47826     93.04348   
+##    Fortement              8       6.95652    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_adulte_performance              
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           26      22.60870     22.60870   
+##    Pas du tout           75      65.21739     87.82609   
+##    Fortement             14      12.17391    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_adulte_confiance                
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             20      17.39130     17.39130   
+##    Moyennement           36      31.30435     48.69565   
+##    Pas du tout           59      51.30435    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_adulte_imagecorps               
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             19      16.52174     16.52174   
+##    Moyennement           28      24.34783     40.86957   
+##    Pas du tout           68      59.13043    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_adulte_peur                     
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Pas du tout           68      59.13043     59.13043   
+##    Moyennement           31      26.95652     86.08696   
+##    Fortement             16      13.91304    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_adulte_colere                   
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             27      23.47826     23.47826   
+##    Moyennement           37      32.17391     55.65217   
+##    Pas du tout           51      44.34783    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_adulte_triste                   
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           34      29.56522     29.56522   
+##    Pas du tout           60      52.17391     81.73913   
+##    Fortement             21      18.26087    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_adulte_stress                   
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             32      27.82609     27.82609   
+##    Moyennement           35      30.43478     58.26087   
+##    Pas du tout           48      41.73913    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_adulte_responsabilite           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             31      26.95652     26.95652   
+##    Moyennement           35      30.43478     57.39130   
+##    Pas du tout           49      42.60870    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_adulte_humiliation              
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             22      19.13043     19.13043   
+##    Moyennement           42      36.52174     55.65217   
+##    Pas du tout           51      44.34783    100.00000   
+##  ───────────────────────────────────────────────────────
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{MPS}\SpecialCharTok{$}\NormalTok{Mphysique\_parent\_consideration }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(MPS}\SpecialCharTok{$}\NormalTok{Mphysique\_parent\_consideration)      }\CommentTok{\# Il n\textquotesingle{}y a aucune entrée, correct??}
+\FunctionTok{descriptives}\NormalTok{(MPS, }\FunctionTok{c}\NormalTok{(}\StringTok{"Mphysique\_parent\_consideration"}\NormalTok{, }\StringTok{"Mphysique\_parent\_suite\_a"}\NormalTok{,                        }
+                    \StringTok{"Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..1"}\NormalTok{, }
+                      \StringTok{"Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..2"}\NormalTok{,}
+                    \StringTok{"Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..3"}\NormalTok{,        }
+                      \StringTok{"Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..4"}\NormalTok{,}
+                    \StringTok{"Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..5"}\NormalTok{,}
+                      \StringTok{"Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..6"}\NormalTok{, }
+                    \StringTok{"Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..7"}\NormalTok{,}
+                      \StringTok{"Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..8"}\NormalTok{),}
+             \AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##                  Mphysique_parent_consideration    Mphysique_parent_suite_a    Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..1    Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..2    Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..3    Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..4    Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..5    Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..6    Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..7    Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..8   
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##    N                                         40                           0                                                                    0                                                                    0                                                                    0                                                                    0                                                                    0                                                                    0                                                                    0                                                                    0   
+##    Manquants                                304                         344                                                                  344                                                                  344                                                                  344                                                                  344                                                                  344                                                                  344                                                                  344                                                                  344   
+##    Moyenne                             2.750000                         NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN   
+##    Médiane                             1.000000                         NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN   
+##    Ecart-type                          2.250356                         NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN   
+##    Minimum                             1.000000                         NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN   
+##    Maximum                             6.000000                         NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN                                                                  NaN   
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de Mphysique_parent_consideration          
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##    1                   23      57.50000     57.50000   
+##    3                    5      12.50000     70.00000   
+##    6                   12      30.00000    100.00000   
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mphysique_parent_suite_a                
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..1 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..2 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..3 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..4 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..5 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..6 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..7 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..8 
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────────────────────────────── 
+##  ───────────────────────────────────────────────────────────────────────────────
+\end{verbatim}
+
+\hypertarget{neg}{%
+\section{NEG}\label{neg}}
+
+et adultes et parents 3 catégories (Franzoni p.~95) avec 5 items au
+total
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{TOUT}\SpecialCharTok{$}\NormalTok{NEG }\OtherTok{\textless{}{-}}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_entrainer\_blesse\_item1}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{neg\_adulte\_dopage\_soutenu\_item2}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{neg\_adulte\_poids\_ideal\_item3     }\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_louper\_ecole\_item4}\SpecialCharTok{!=}\StringTok{"Jamais"}   \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_laisser\_humilier\_item5}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Neg\_parent\_laisser\_entrainer\_blesser\_item1}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Neg\_parent\_dopage\_item2}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Neg\_parent\_poids\_ideal\_item3}\SpecialCharTok{!=}\StringTok{"Jamais"}               \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Neg\_parent\_arret\_ecole\_item4}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{neg\_parent\_laisser\_humilier\_autrui\_item5}\SpecialCharTok{!=}\StringTok{"Jamais"}
+
+\NormalTok{TOUT}\SpecialCharTok{$}\NormalTok{NEG }\OtherTok{\textless{}{-}} \FunctionTok{if\_else}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{NEG, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+
+\NormalTok{NEG }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(TOUT, NEG}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{interpretation}{%
+\subsection{Interpretation}\label{interpretation}}
+
+--------------- ``additionner'' les catégories: ------------- `
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{add1 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x, y)\{}
+  \ControlFlowTok{if}\NormalTok{(}\FunctionTok{is.na}\NormalTok{(x))\{}\FunctionTok{return}\NormalTok{(y)\}}
+  \FunctionTok{return}\NormalTok{(x)                 }\CommentTok{\# weder x noch y NA: abfangen!}
+\NormalTok{\}}
+\CommentTok{\#add1(1,NA)}
+\CommentTok{\#add1(NA,1)}
+
+\NormalTok{add2 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x\_, y\_)\{}
+  \FunctionTok{return}\NormalTok{( }\FunctionTok{unlist}\NormalTok{(}\FunctionTok{map2}\NormalTok{(x\_,y\_,add1)) )}
+\NormalTok{\}}
+\CommentTok{\#add2( c(1,2,NA), c(NA,3,4) )}
+
+\NormalTok{add3 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x\_, y\_, z\_)\{}
+  \FunctionTok{return}\NormalTok{( }\FunctionTok{add2}\NormalTok{(}\FunctionTok{add2}\NormalTok{(x\_,y\_),z\_) )}
+\NormalTok{\}}
+\CommentTok{\#add3( c(1,2,NA), c(NA,3,4), c(0,NA,5) )}
+
+\NormalTok{add4 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(w\_, x\_, y\_, z\_)\{}
+  \FunctionTok{return}\NormalTok{( }\FunctionTok{add2}\NormalTok{(}\FunctionTok{add3}\NormalTok{(w\_,x\_,y\_),z\_) )}
+\NormalTok{\}}
+\CommentTok{\#add4( c(NA, 2,3,4), c(10,NA,30,40), c(100,200,NA,400), c(1000,2000,3000,NA) )}
+
+\NormalTok{add5 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x1\_, x2\_, x3\_, x4\_, x5\_)\{}
+  \FunctionTok{return}\NormalTok{( }\FunctionTok{add2}\NormalTok{(}\FunctionTok{add3}\NormalTok{(x1\_, x2\_, x3\_),}\FunctionTok{add2}\NormalTok{(x4\_, x5\_)) )}
+\NormalTok{\}}
+
+\NormalTok{add6 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x1\_, x2\_, x3\_, x4\_, x5\_, x6\_)\{}
+  \FunctionTok{return}\NormalTok{( }\FunctionTok{add2}\NormalTok{(}\FunctionTok{add3}\NormalTok{(x1\_, x2\_, x3\_),}\FunctionTok{add3}\NormalTok{(x4\_, x5\_, x6\_)) )}
+\NormalTok{\}}
+\CommentTok{\#add6( c(NA,2,3,4,5,6), c(10,NA,30,40,50,60), c(100,200,NA,400,500,600), c(1000,2000,3000,NA,5000,6000),c(10000,20000,30000,40000,NA,60000),c(100000,200000,300000,400000,500000,NA))}
+
+\NormalTok{add7 }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(x1\_, x2\_, x3\_, x4\_, x5\_, x6\_, x7\_)\{}
+  \FunctionTok{return}\NormalTok{( }\FunctionTok{add2}\NormalTok{(}\FunctionTok{add4}\NormalTok{(x1\_, x2\_, x3\_, x4\_),}\FunctionTok{add3}\NormalTok{(x5\_, x6\_, x7\_)) )}
+\NormalTok{\}}
+\CommentTok{\#add7( c(NA,2,3,4,5,6,7), c(10,NA,30,40,50,60,70), c(100,200,NA,400,500,600,700), c(1000,2000,3000,NA,5000,6000,7000),c(10000,20000,30000,40000,NA,60000,70000),c(100000,200000,300000,400000,500000,NA,700000),c(1000000,2000000,3000000,4000000,5000000,6000000,NA))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{je-vais-mieux-programmer-laddition}{%
+\section{je vais mieux programmer
+l'addition:}\label{je-vais-mieux-programmer-laddition}}
+
+add \textless- function(df) \{ vec \textless- NULL View(df) N \textless-
+nrow(df) print(N) for (i in 1:10)\{ \# N!! \#print(df{[}i,{]}) print()
+vec{[}i{]} \textless- as.vector(na.omit(df{[}i,{]})){[}1{]} \# premier
+element != NA \} return( vec) \} \# na.omit(select(df,
+colonnes){[}ligne,{]}){[}1{]} \# max(select(df, colonnes){[}ligne,{]})
+
+\hypertarget{il-y-a-des-ids-avec-entruxe9es-sur-plusieurs-catuxe9gories}{%
+\section{il y a des IDs avec entrées sur plusieurs
+catégories!}\label{il-y-a-des-ids-avec-entruxe9es-sur-plusieurs-catuxe9gories}}
+
+\hypertarget{thuxe9o-ne-devrait-pas-exister-mais-prendre-la-moins-forte-min}{%
+\section{Théo: ne devrait pas exister, mais prendre la moins forte: min
+!}\label{thuxe9o-ne-devrait-pas-exister-mais-prendre-la-moins-forte-min}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{neg\_adult\_nec  }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_necessaire\_perf, NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_necessaire\_perf\_2, NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_necessaire\_perf\_3)}
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{neg\_adult\_part }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_faisant\_partie,NEG}\SpecialCharTok{$}\NormalTok{neg\_adulte\_faisant\_partie, NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_faisant\_partie\_perf)}
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{neg\_adult\_norm }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_normalite, NEG}\SpecialCharTok{$}\NormalTok{neg\_adulte\_normalite, NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_normalite\_2)}
+
+\FunctionTok{descriptives}\NormalTok{(NEG, }\FunctionTok{c}\NormalTok{(}\StringTok{"neg\_adult\_norm"}\NormalTok{, }\StringTok{"neg\_adult\_nec"}\NormalTok{, }\StringTok{"neg\_adult\_part"}\NormalTok{),}\AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)  }\CommentTok{\# Hier war schon Fehler !}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                           
+##  ─────────────────────────────────────────────────────────────────── 
+##                  neg_adult_norm    neg_adult_nec    neg_adult_part   
+##  ─────────────────────────────────────────────────────────────────── 
+##    N                        312              315               315   
+##    Manquants                 53               50                50   
+##    Moyenne                                                           
+##    Médiane                                                           
+##    Ecart-type                                                        
+##    Minimum                                                           
+##    Maximum                                                           
+##  ─────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de neg_adult_norm                            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement          127      40.70513     40.70513   
+##    Ne sait pas           16       5.12821     45.83333   
+##    Pas du tout           77      24.67949     70.51282   
+##    Tout à fait           92      29.48718    100.00000   
+##    0                      0       0.00000    100.00000   
+##    2                      0       0.00000    100.00000   
+##    1                      0       0.00000    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de neg_adult_nec                             
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement          101      32.06349     32.06349   
+##    Ne sait pas           17       5.39683     37.46032   
+##    Pas du tout           96      30.47619     67.93651   
+##    Tout à fait          101      32.06349    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de neg_adult_part                            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement          113      35.87302     35.87302   
+##    Ne sait pas           15       4.76190     40.63492   
+##    Pas du tout           66      20.95238     61.58730   
+##    Tout à fait          121      38.41270    100.00000   
+##  ───────────────────────────────────────────────────────
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#NEG$neg\_adult\_norm \textless{}{-} add(select(NEG, Neg\_adulte\_normalite, neg\_adulte\_normalite, Neg\_adulte\_normalite\_2))}
+\CommentTok{\#descriptives(NEG, c("neg\_adult\_norm"),freq=TRUE)}
+\end{Highlighting}
+\end{Shaded}
+
+(avec le temps je vais chercher d'où il viennent ces niveaux 0 2 1, mais
+ils ne dérangent pas)
+
+\hypertarget{consuxe9quences-adultes}{%
+\subsection{Conséquences adultes}\label{consuxe9quences-adultes}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_adulte\_demotivation }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_demotiver,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_demotive,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_demotive\_2)}
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_adulte\_perf }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_moins\_perf,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_moins\_perf\_2,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_moins\_perf\_3)}
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_adulte\_confiance }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_perdu\_confiance,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_perdu\_confiance\_2,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_perdu\_confiance\_3)}
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_adulte\_image }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_image\_neg\_corps,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_image\_coprs,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_image\_corps)}
+                             
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_adulte\_peur }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_peur,NEG}\SpecialCharTok{$}\NormalTok{Neg\_Adulte\_peur,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_peur\_2)}
+
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_adulte\_colere }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_colere,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_colere\_2,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_colere\_3)}
+
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_adulte\_triste }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_triste,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_triste\_2,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_triste\_3)}
+
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_adulte\_stress }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_stress,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_stress\_2,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_stress\_3)}
+
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_adulte\_faute }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_ta\_faute,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_ta\_faute\_2,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_ta\_faute\_3)}
+
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_adulte\_humiliation }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_humiliation,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_humiliation\_2,NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_humiliation\_3)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{descriptives}\NormalTok{(NEG, }\FunctionTok{c}\NormalTok{(}\StringTok{"NEG\_adulte\_demotivation"}\NormalTok{, }
+                    \StringTok{"NEG\_adulte\_perf"}\NormalTok{, }
+                    \StringTok{"NEG\_adulte\_confiance"}\NormalTok{, }
+                    \StringTok{"NEG\_adulte\_image"}\NormalTok{, }
+                    \StringTok{"NEG\_adulte\_peur"}\NormalTok{, }
+                    \StringTok{"NEG\_adulte\_colere"}\NormalTok{, }
+                    \StringTok{"NEG\_adulte\_triste"}\NormalTok{, }
+                    \StringTok{"NEG\_adulte\_stress"}\NormalTok{, }
+                    \StringTok{"NEG\_adulte\_faute"}\NormalTok{, }
+                    \StringTok{"Neg\_adulte\_humiliation"}\NormalTok{),}\AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                                                                                                                                                                                                
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##                  NEG_adulte_demotivation    NEG_adulte_perf    NEG_adulte_confiance    NEG_adulte_image    NEG_adulte_peur    NEG_adulte_colere    NEG_adulte_triste    NEG_adulte_stress    NEG_adulte_faute    Neg_adulte_humiliation   
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##    N                                 315                315                     315                 315                315                  315                  315                  315                 315                       289   
+##    Manquants                          50                 50                      50                  50                 50                   50                   50                   50                  50                        76   
+##    Moyenne                                                                                                                                                                                                                                
+##    Médiane                                                                                                                                                                                                                                
+##    Ecart-type                                                                                                                                                                                                                             
+##    Minimum                                                                                                                                                                                                                                
+##    Maximum                                                                                                                                                                                                                                
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de NEG_adulte_demotivation                   
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           48      15.23810     15.23810   
+##    Pas du tout          253      80.31746     95.55556   
+##    Fortement             14       4.44444    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de NEG_adulte_perf                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             69      21.90476     21.90476   
+##    Moyennement          107      33.96825     55.87302   
+##    Pas du tout          139      44.12698    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de NEG_adulte_confiance                      
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           55      17.46032     17.46032   
+##    Pas du tout          228      72.38095     89.84127   
+##    Fortement             32      10.15873    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de NEG_adulte_image                          
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           35      11.11111     11.11111   
+##    Pas du tout          256      81.26984     92.38095   
+##    Fortement             24       7.61905    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de NEG_adulte_peur                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             24       7.61905      7.61905   
+##    Moyennement           55      17.46032     25.07937   
+##    Pas du tout          236      74.92063    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de NEG_adulte_colere                         
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           52      16.50794     16.50794   
+##    Pas du tout          239      75.87302     92.38095   
+##    Fortement             24       7.61905    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de NEG_adulte_triste                         
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             24       7.61905      7.61905   
+##    Moyennement           42      13.33333     20.95238   
+##    Pas du tout          249      79.04762    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de NEG_adulte_stress                         
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             51      16.19048     16.19048   
+##    Moyennement           75      23.80952     40.00000   
+##    Pas du tout          189      60.00000    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de NEG_adulte_faute                          
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             40      12.69841     12.69841   
+##    Moyennement           48      15.23810     27.93651   
+##    Pas du tout          227      72.06349    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Neg_adulte_humiliation                    
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           27       9.34256      9.34256   
+##    Pas du tout          250      86.50519     95.84775   
+##    Fortement             12       4.15225    100.00000   
+##  ───────────────────────────────────────────────────────
+\end{verbatim}
+
+\hypertarget{parent}{%
+\subsection{Parent}\label{parent}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{neg\_parent\_norm }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(NEG}\SpecialCharTok{$}\NormalTok{Neg\_parent\_normalite      , NEG}\SpecialCharTok{$}\NormalTok{neg\_parent\_normalite        , }
+\NormalTok{                            NEG}\SpecialCharTok{$}\NormalTok{Tu.as.considéré.cette.négligence.émotionnelle.comme....normale..}\DecValTok{1}\NormalTok{)}
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{neg\_parent\_nec  }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(NEG}\SpecialCharTok{$}\NormalTok{neg\_parent\_necessaire\_perf, NEG}\SpecialCharTok{$}\NormalTok{Neg\_parent\_necessaire\_perf, NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_necessaire)}
+
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{neg\_parent\_part }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(NEG}\SpecialCharTok{$}\NormalTok{neg\_parent\_faisant\_partie , NEG}\SpecialCharTok{$}\NormalTok{neg\_parent\_faisant\_partie\_2, NEG}\SpecialCharTok{$}\NormalTok{neg\_parent\_faisant\_partie\_3)}
+
+\FunctionTok{descriptives}\NormalTok{(NEG, }\FunctionTok{c}\NormalTok{(}\StringTok{"neg\_parent\_norm"}\NormalTok{, }\StringTok{"neg\_parent\_nec"}\NormalTok{, }\StringTok{"neg\_parent\_part"}\NormalTok{),}\AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                              
+##  ────────────────────────────────────────────────────────────────────── 
+##                  neg_parent_norm    neg_parent_nec    neg_parent_part   
+##  ────────────────────────────────────────────────────────────────────── 
+##    N                         190               190                190   
+##    Manquants                 175               175                175   
+##    Moyenne              2.678947                                        
+##    Médiane              3.000000                                        
+##    Ecart-type           1.304075                                        
+##    Minimum                     1                                        
+##    Maximum                     4                                        
+##  ────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de neg_parent_norm                         
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##    1                   62      32.63158     32.63158   
+##    2                   15       7.89474     40.52632   
+##    3                   35      18.42105     58.94737   
+##    4                   78      41.05263    100.00000   
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de neg_parent_nec                            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           54      28.42105     28.42105   
+##    Ne sait pas           17       8.94737     37.36842   
+##    Pas du tout           48      25.26316     62.63158   
+##    Tout à fait           71      37.36842    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de neg_parent_part                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           50      26.31579     26.31579   
+##    Ne sait pas           14       7.36842     33.68421   
+##    Pas du tout           49      25.78947     59.47368   
+##    Tout à fait           77      40.52632    100.00000   
+##  ───────────────────────────────────────────────────────
+\end{verbatim}
+
+\hypertarget{consuxe9quences-parent}{%
+\subsection{Conséquences parent}\label{consuxe9quences-parent}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_parent\_demotiv }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{neg\_parent\_demotive,NEG}\SpecialCharTok{$}\NormalTok{neg\_parent\_demotive\_2,NEG}\SpecialCharTok{$}\NormalTok{Neg\_parent\_demotive)}
+                                    
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_parent\_perf }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{neg\_parent\_moins\_perf,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c}\FloatTok{.1}\NormalTok{,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{neg\_adulte\_moins\_perf)  }\CommentTok{\# Théo: ce n\textquotesingle{}est pas adulte mais parent, OK , aussi Neg\_adulte\_necessaire!!!}
+ \CommentTok{\# Argumente gibts nich, dann kein Resultat !!}
+  
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_parent\_conf }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..}\DecValTok{1}\NormalTok{,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c}\FloatTok{.1}\NormalTok{,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..}\DecValTok{1}\NormalTok{)}
+  
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_parent\_image }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..}\DecValTok{2}\NormalTok{,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c}\FloatTok{.2}\NormalTok{,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..}\DecValTok{2}\NormalTok{)}
+  
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_parent\_peur }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..}\DecValTok{3}\NormalTok{,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c}\FloatTok{.3}\NormalTok{,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..}\DecValTok{3}\NormalTok{)}
+  
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_parent\_colere }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..}\DecValTok{4}\NormalTok{,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c}\FloatTok{.4}\NormalTok{,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..}\DecValTok{4}\NormalTok{)}
+  
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_parent\_triste }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..}\DecValTok{5}\NormalTok{,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c}\FloatTok{.5}\NormalTok{,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..}\DecValTok{5}\NormalTok{)}
+  
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_parent\_stress }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..}\DecValTok{6}\NormalTok{,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c}\FloatTok{.6}\NormalTok{,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..}\DecValTok{6}\NormalTok{)}
+  
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_parent\_faute }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..}\DecValTok{7}\NormalTok{,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c}\FloatTok{.7}\NormalTok{,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..}\DecValTok{7}\NormalTok{)}
+  
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{NEG\_parent\_humil }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..}\DecValTok{8}\NormalTok{,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c}\FloatTok{.8}\NormalTok{,}
+\NormalTok{  NEG}\SpecialCharTok{$}\NormalTok{Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..}\DecValTok{8}\NormalTok{)}
+
+\FunctionTok{descriptives}\NormalTok{(NEG, }\FunctionTok{c}\NormalTok{(}\StringTok{"NEG\_parent\_demotiv"}\NormalTok{, }
+                    \StringTok{"NEG\_parent\_perf"}\NormalTok{, }
+                \CommentTok{\#    NEG\_parent\_perf}
+                    \StringTok{"NEG\_parent\_conf"}\NormalTok{, }
+                    \StringTok{"NEG\_parent\_image"}\NormalTok{, }
+                    \StringTok{"NEG\_parent\_peur"}\NormalTok{, }
+                    \StringTok{"NEG\_parent\_colere"}\NormalTok{, }
+                    \StringTok{"NEG\_parent\_triste"}\NormalTok{, }
+                    \StringTok{"NEG\_parent\_stress"}\NormalTok{, }
+                    \StringTok{"NEG\_parent\_faute"}\NormalTok{, }
+                    \StringTok{"NEG\_parent\_humil"}\NormalTok{),}\AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                                                                                                                                                                                
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##                  NEG_parent_demotiv    NEG_parent_perf    NEG_parent_conf    NEG_parent_image    NEG_parent_peur    NEG_parent_colere    NEG_parent_triste    NEG_parent_stress    NEG_parent_faute    NEG_parent_humil   
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##    N                            190                  0                  0                   0                  0                    0                    0                    0                   0                   0   
+##    Manquants                    175                365                365                 365                365                  365                  365                  365                 365                 365   
+##    Moyenne                                         NaN                NaN                 NaN                NaN                  NaN                  NaN                  NaN                 NaN                 NaN   
+##    Médiane                                         NaN                NaN                 NaN                NaN                  NaN                  NaN                  NaN                 NaN                 NaN   
+##    Ecart-type                                      NaN                NaN                 NaN                NaN                  NaN                  NaN                  NaN                 NaN                 NaN   
+##    Minimum                                         NaN                NaN                 NaN                NaN                  NaN                  NaN                  NaN                 NaN                 NaN   
+##    Maximum                                         NaN                NaN                 NaN                NaN                  NaN                  NaN                  NaN                 NaN                 NaN   
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de NEG_parent_demotiv                      
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##    1                  170      89.47368     89.47368   
+##    0                   17       8.94737     98.42105   
+##    2                    3       1.57895    100.00000   
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de NEG_parent_perf                         
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de NEG_parent_conf                         
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de NEG_parent_image                        
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de NEG_parent_peur                         
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de NEG_parent_colere                       
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de NEG_parent_triste                       
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de NEG_parent_stress                       
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de NEG_parent_faute                        
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de NEG_parent_humil                        
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##  ─────────────────────────────────────────────────────
+\end{verbatim}
+
+Les Analyses decriptives sont toutes vides auf le NEG\_parent\_demotiv.
+J'ai contrôlé dans mes données que c'est correct.
+
+\hypertarget{sex}{%
+\section{SEX}\label{sex}}
+
+\begin{itemize}
+\tightlist
+\item
+  et paires et adultes 7 catégories, la première avec 2 items (Franzoni
+  p.~92)
+\item
+  paires 9 items
+\item
+  adultes 8 items
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{TOUT}\SpecialCharTok{$}\NormalTok{SEX }\OtherTok{\textless{}{-}}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Msex\_paire\_remarque\_apparence\_item1}\SpecialCharTok{!=}\StringTok{"Jamais"}    \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Msex\_paire\_proposition\_sex\_item2}\SpecialCharTok{!=}\StringTok{"Jamais"}  \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{msex\_paire\_exhibitionisme\_item3}\SpecialCharTok{!=}\StringTok{"Jamais"}        \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{msex\_paire\_photo\_intime\_item4}\SpecialCharTok{!=}\StringTok{"Jamais"}     \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{msex\_paire\_attouchement\_item5}\SpecialCharTok{!=}\StringTok{"Jamais"}          \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Msex\_paire\_embrasser\_item6}\SpecialCharTok{!=}\StringTok{"Jamais"}        \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{msex\_paire\_frotter\_partie\_intime\_item7}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{msex\_paire\_viol\_penetration\_item7}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Msex\_paire\_avec\_sans\_penetration\_non\_consentie\_item8}\SpecialCharTok{!=}\StringTok{"Jamais"}    \SpecialCharTok{|}
+
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_remarque\_sex\_item1}\SpecialCharTok{!=}\StringTok{"Jamais"}             \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{msex\_adulte\_envoi\_image\_sex\_item2}\SpecialCharTok{!=}\StringTok{"Jamais"}       \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_exhibition\_partie\_intime\_item2}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{msex\_adulte\_photo\_partie\_intime\_item3}\SpecialCharTok{!=}\StringTok{"Jamais"}   \SpecialCharTok{|}
+\NormalTok{            TOUT[}\StringTok{"msex\_adulte\_force{-}a\_toucher\_item3"}\NormalTok{]}\SpecialCharTok{!=}\StringTok{"Jamais"}       \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{msex\_adulte\_toucher\_malalaise\_item4}\SpecialCharTok{!=}\StringTok{"Jamais"}     \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{msex\_adulte\_embrasser\_bouche\_item5}\SpecialCharTok{!=}\StringTok{"Jamais"}         \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_frotter\_partie\_intime\_item6}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_tentation\_relation\_sex\_item7}\SpecialCharTok{!=}\StringTok{"Jamais"}   \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_forcer\_relation\_sex\_avec\_sans\_pene\_item8}\SpecialCharTok{!=}\StringTok{"Jamais"} 
+  
+\NormalTok{TOUT}\SpecialCharTok{$}\NormalTok{SEX }\OtherTok{\textless{}{-}} \FunctionTok{if\_else}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{SEX, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+
+\NormalTok{SEX }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(TOUT, SEX}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{interpretations}{%
+\subsection{Interpretations}\label{interpretations}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_paire\_norm }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_normalite,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_consideration\_normale,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_normalite\_2,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_normalite,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_normalité,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_normalite\_3,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_normalite\_4)  }\CommentTok{\# 7}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_adulte\_norm }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_normalite,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_normalite,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_normalité,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_normalite\_2,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_normalite\_2,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_normalite\_7,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_normalite\_4)  }\CommentTok{\# 7}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_paire\_nec }\OtherTok{\textless{}{-}} \FunctionTok{add6}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_necesstite,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_necessaire\_perf,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_neccesite\_perf,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_necessaire\_perf\_2,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_necessaire\_perf\_3,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_necessaire\_perf\_4)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_paire\_partie }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_partie\_compet,  }
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_fait\_partie\_compet,        }
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_consideration\_partie\_perf,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_partie\_entrainement,    }
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_faisant\_partie\_entrainement,                    }
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_faisant\_partie,                                 }
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..}\DecValTok{1}\NormalTok{)  }\CommentTok{\# 7}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_adulte\_nec }\OtherTok{\textless{}{-}} \FunctionTok{add6}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_necessaire\_perf,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_necessaire\_perf\_5,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_necessaire\_perf\_3,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_necessaire\_perf\_7,}
+\CommentTok{\#SEX["msex\_adulte\_necessaire\_perf\_5 (2)"],   des problèmes que je dois encore resoudre, puis add7() !}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_necessaire\_perf\_8,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_necessaire\_perf\_9 )   }\CommentTok{\# 7}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_adulte\_partie }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_fsisant\_partie,             }\CommentTok{\# 398}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..}\DecValTok{2}\NormalTok{,    }\CommentTok{\# 419}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..}\DecValTok{3}\NormalTok{,    }\CommentTok{\# 440}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..}\DecValTok{4}\NormalTok{,    }\CommentTok{\# 461}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_faisant\_partie,                                           }\CommentTok{\# 484}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..}\DecValTok{5}\NormalTok{,    }\CommentTok{\# 505}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..}\DecValTok{6}\NormalTok{) }\CommentTok{\# 7  526}
+
+\FunctionTok{descriptives}\NormalTok{(SEX, }\FunctionTok{c}\NormalTok{(}\StringTok{"sex\_paire\_norm"}\NormalTok{ , }\StringTok{"sex\_paire\_nec"}\NormalTok{, }\StringTok{"sex\_paire\_partie"}\NormalTok{)  ,}\AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                             
+##  ───────────────────────────────────────────────────────────────────── 
+##                  sex_paire_norm    sex_paire_nec    sex_paire_partie   
+##  ───────────────────────────────────────────────────────────────────── 
+##    N                        140              132                 140   
+##    Manquants                 38               46                  38   
+##    Moyenne                                                  1.978571   
+##    Médiane                                                  2.000000   
+##    Ecart-type                                              0.4402069   
+##    Minimum                                                         1   
+##    Maximum                                                         5   
+##  ───────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de sex_paire_norm                            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           34      24.28571     24.28571   
+##    Pas du tout           87      62.14286     86.42857   
+##    Tout à fait           12       8.57143     95.00000   
+##    Ne sait pas            7       5.00000    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_paire_nec                             
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement            5       3.78788      3.78788   
+##    Pas du tout          125      94.69697     98.48485   
+##    Tout à fait            2       1.51515    100.00000   
+##    Ne sait pas            0       0.00000    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_paire_partie                        
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##    1                   11       7.85714      7.85714   
+##    2                  124      88.57143     96.42857   
+##    3                    3       2.14286     98.57143   
+##    4                    1       0.71429     99.28571   
+##    5                    1       0.71429    100.00000   
+##  ─────────────────────────────────────────────────────
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{descriptives}\NormalTok{(SEX, }\FunctionTok{c}\NormalTok{(}\StringTok{"sex\_adulte\_norm"}\NormalTok{, }\StringTok{"sex\_adulte\_nec"}\NormalTok{, }\StringTok{"sex\_adulte\_partie"}\NormalTok{),}\AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                                
+##  ──────────────────────────────────────────────────────────────────────── 
+##                  sex_adulte_norm    sex_adulte_nec    sex_adulte_partie   
+##  ──────────────────────────────────────────────────────────────────────── 
+##    N                          80                56                   74   
+##    Manquants                  98               122                  104   
+##    Moyenne                                                     1.297297   
+##    Médiane                                                     1.000000   
+##    Ecart-type                                                 0.7536165   
+##    Minimum                                                            1   
+##    Maximum                                                            4   
+##  ──────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de sex_adulte_norm                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Pas du tout           60      75.00000     75.00000   
+##    Moyennement           15      18.75000     93.75000   
+##    Tout à fait            3       3.75000     97.50000   
+##    Ne sait pas            2       2.50000    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_adulte_nec                            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Pas du tout           53      94.64286     94.64286   
+##    Tout à fait            2       3.57143     98.21429   
+##    Moyennement            1       1.78571    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_adulte_partie                       
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##    1                   62      83.78378     83.78378   
+##    2                    5       6.75676     90.54054   
+##    3                    4       5.40541     95.94595   
+##    4                    3       4.05405    100.00000   
+##  ─────────────────────────────────────────────────────
+\end{verbatim}
+
+\hypertarget{consuxe9quences-paires}{%
+\subsection{Conséquences Paires}\label{consuxe9quences-paires}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# "Msex\_paire\_consideration\_demotive"  \# ici ?? plutôt non, y a toujours 10 cons.}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_paire\_demotivation }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_demotive,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_demotive,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_consideration\_demotive,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_demotive\_2,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t}\FloatTok{.1}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t}\FloatTok{.2}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t}\FloatTok{.3}\NormalTok{)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_paire\_perf }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_moins\_perf,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_moins\_perf,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_moins\_perf\_2,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_moins\_perf\_3,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_moins\_perf\_4,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_moins\_perf\_5,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_moins\_perf\_6)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_paire\_confiance }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_perdu\_confiance,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_perdu\_confiance,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_perdu\_confiance\_2,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_perdu\_confiance\_3,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_perte\_confiance,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..}\DecValTok{1}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..}\DecValTok{2}\NormalTok{)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_paire\_image }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_image\_neg\_corps,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_image\_corps,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_image\_corps\_2,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_image\_neg,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t}\FloatTok{.1}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t}\FloatTok{.2}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t}\FloatTok{.3}\NormalTok{)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_paire\_peur }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_peur,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_peur\_2,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_peur\_3,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_peur\_4,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_peur,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_peur\_6,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_peur\_7)   }\CommentTok{\# ici il suit triste\_6, pas colère!}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_paire\_colere }\OtherTok{\textless{}{-}} \FunctionTok{add6}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_colere,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_colere,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_colere\_3,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_peur\_5,   }
+\CommentTok{\# suivait à peur alors je crois que c\textquotesingle{}était colère!?}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_colere\_4,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_colere\_5)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_paire\_triste }\OtherTok{\textless{}{-}} \FunctionTok{add6}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_triste,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_triste\_2,}
+\CommentTok{\#SEX["msex:\_paire\_triste"],  DEBUG!!}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_triste\_3,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_triste\_4,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_triste\_5,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_triste\_6)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_paire\_stress }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_stress,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_stress\_2,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_stress\_3,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_stress\_4,  }
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_stress\_5,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_stress\_6,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_stress\_7)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_paire\_faute }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_ta\_faute,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_ta\_faute,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_ta\_faute\_3,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_ta\_faute\_4,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa}\FloatTok{.1}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa}\FloatTok{.2}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa}\FloatTok{.3}\NormalTok{)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_paire\_humiliation }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_humiliation,    }\CommentTok{\# 10  303        OK}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_humiliation,    }\CommentTok{\# 10  317}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_humiliation\_2,  }\CommentTok{\# 10  330}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..}\DecValTok{1}\NormalTok{,  }\CommentTok{\# 10 344}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..}\DecValTok{2}\NormalTok{,  }\CommentTok{\# 10 359}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..}\DecValTok{3}\NormalTok{,  }\CommentTok{\# 10  373}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..}\DecValTok{4}\NormalTok{)  }\CommentTok{\# 10  386}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{descriptives}\NormalTok{(SEX, }\FunctionTok{c}\NormalTok{(}\StringTok{"sex\_paire\_perf"}\NormalTok{, }\StringTok{"sex\_paire\_demotivation"}\NormalTok{, }\StringTok{"sex\_paire\_confiance"}\NormalTok{, }\StringTok{"sex\_paire\_image"}\NormalTok{, }\StringTok{"sex\_paire\_peur"}\NormalTok{, }\StringTok{"sex\_paire\_colere"}\NormalTok{, }\StringTok{"sex\_paire\_triste"}\NormalTok{, }\StringTok{"sex\_paire\_stress"}\NormalTok{, }\StringTok{"sex\_paire\_faute"}\NormalTok{, }\StringTok{"sex\_paire\_humiliation"}\NormalTok{),}\AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                                                                                                                                                                                      
+##  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##                  sex_paire_perf    sex_paire_demotivation    sex_paire_confiance    sex_paire_image    sex_paire_peur    sex_paire_colere    sex_paire_triste    sex_paire_stress    sex_paire_faute    sex_paire_humiliation   
+##  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##    N                        140                       139                    139                139               140                 140                 132                 140                139                      130   
+##    Manquants                 38                        39                     39                 39                38                  38                  46                  38                 39                       48   
+##    Moyenne                                       2.000000               1.935252           1.971223                                                                                         1.949640                 2.500000   
+##    Médiane                                              2                      2                  2                                                                                                2                 3.000000   
+##    Ecart-type                                   0.4170288              0.4846728          0.5639206                                                                                        0.4051076                0.7071068   
+##    Minimum                                              1                      1                  1                                                                                                1                        1   
+##    Maximum                                              4                      4                  4                                                                                                4                        4   
+##  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de sex_paire_perf                            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           11       7.85714      7.85714   
+##    Pas du tout          120      85.71429     93.57143   
+##    Fortement              9       6.42857    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_paire_demotivation                  
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##    1                   11       7.91367      7.91367   
+##    2                  118      84.89209     92.80576   
+##    3                    9       6.47482     99.28058   
+##    4                    1       0.71942    100.00000   
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_paire_confiance                     
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##    1                   20      14.38849     14.38849   
+##    2                  109      78.41727     92.80576   
+##    3                    9       6.47482     99.28058   
+##    4                    1       0.71942    100.00000   
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_paire_image                         
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##    1                   23      16.54676     16.54676   
+##    2                   98      70.50360     87.05036   
+##    3                   17      12.23022     99.28058   
+##    4                    1       0.71942    100.00000   
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_paire_peur                            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           27      19.28571     19.28571   
+##    Pas du tout          104      74.28571     93.57143   
+##    Fortement              9       6.42857    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_paire_colere                          
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           37      26.42857     26.42857   
+##    Pas du tout           78      55.71429     82.14286   
+##    Fortement             25      17.85714    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_paire_triste                          
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           18      13.63636     13.63636   
+##    Pas du tout          104      78.78788     92.42424   
+##    Fortement             10       7.57576    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_paire_stress                          
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           32      22.85714     22.85714   
+##    Pas du tout           95      67.85714     90.71429   
+##    Fortement             13       9.28571    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_paire_faute                         
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##    1                   14      10.07194     10.07194   
+##    2                  119      85.61151     95.68345   
+##    3                    5       3.59712     99.28058   
+##    4                    1       0.71942    100.00000   
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_paire_humiliation                   
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##    1                   15      11.53846     11.53846   
+##    2                   36      27.69231     39.23077   
+##    3                   78      60.00000     99.23077   
+##    4                    1       0.76923    100.00000   
+##  ─────────────────────────────────────────────────────
+\end{verbatim}
+
+\hypertarget{interpruxe9tation-adultes}{%
+\subsection{Interprétation Adultes}\label{interpruxe9tation-adultes}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{descriptives}\NormalTok{(SEX, }\FunctionTok{c}\NormalTok{(}\StringTok{"sex\_adulte\_norm"}\NormalTok{, }\StringTok{"sex\_adulte\_nec"}\NormalTok{, }\StringTok{"sex\_adulte\_partie"}\NormalTok{),}\AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                                
+##  ──────────────────────────────────────────────────────────────────────── 
+##                  sex_adulte_norm    sex_adulte_nec    sex_adulte_partie   
+##  ──────────────────────────────────────────────────────────────────────── 
+##    N                          80                56                   74   
+##    Manquants                  98               122                  104   
+##    Moyenne                                                     1.297297   
+##    Médiane                                                     1.000000   
+##    Ecart-type                                                 0.7536165   
+##    Minimum                                                            1   
+##    Maximum                                                            4   
+##  ──────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de sex_adulte_norm                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Pas du tout           60      75.00000     75.00000   
+##    Moyennement           15      18.75000     93.75000   
+##    Tout à fait            3       3.75000     97.50000   
+##    Ne sait pas            2       2.50000    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_adulte_nec                            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Pas du tout           53      94.64286     94.64286   
+##    Tout à fait            2       3.57143     98.21429   
+##    Moyennement            1       1.78571    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_adulte_partie                       
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##    1                   62      83.78378     83.78378   
+##    2                    5       6.75676     90.54054   
+##    3                    4       5.40541     95.94595   
+##    4                    3       4.05405    100.00000   
+##  ─────────────────────────────────────────────────────
+\end{verbatim}
+
+\hypertarget{consuxe9quences-adultes-1}{%
+\subsection{Conséquences Adultes}\label{consuxe9quences-adultes-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_adulte\_demotivation }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_demotive,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t}\FloatTok{.4}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t}\FloatTok{.5}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t}\FloatTok{.6}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_demotive,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t}\FloatTok{.7}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t}\FloatTok{.8}\NormalTok{)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_adulte\_perf }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_moins\_perf,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_moins\_perf,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_moins\_perf\_7,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_moins\_perf\_8,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_moins\_perf\_4,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_moins\_perf\_5,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_moins\_perf\_10)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_adulte\_confiance }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_perdu\_confiance,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..}\DecValTok{3}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..}\DecValTok{4}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..}\DecValTok{5}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_perdu\_confiance,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..}\DecValTok{6}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..}\DecValTok{7}\NormalTok{)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_adulte\_image }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_image\_corps,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t}\FloatTok{.4}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t}\FloatTok{.5}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t}\FloatTok{.6}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_image\_neg\_corps,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t}\FloatTok{.7}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t}\FloatTok{.8}\NormalTok{)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_adulte\_peur }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_peur,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_peur\_6,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_peur\_3,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_peur,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_peur\_4,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_peur\_9,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_peur\_10)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_adulte\_colere }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_colere,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_colere\_6,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_colere\_7,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_colere\_4,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_colere\_5,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_colere,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_colere\_10)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_adulte\_triste }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_triste,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_triste,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_triste\_2,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_triste\_8,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_triste\_4,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_triste\_9,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_triste\_10)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_adulte\_stress }\OtherTok{\textless{}{-}} \FunctionTok{add6}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_stress,}
+\CommentTok{\#SEX["msex\_adulte\_stress (2)"], DEBUG !!}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_stress\_3,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_stress\_8,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_stress\_5,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_stress\_9,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_stress\_10)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_adulte\_faute }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_ta\_faute,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa}\FloatTok{.4}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa}\FloatTok{.5}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa}\FloatTok{.6}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_ta\_faute\_2,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa}\FloatTok{.7}\NormalTok{,}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa}\FloatTok{.8}\NormalTok{)}
+
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{sex\_adulte\_humiliation }\OtherTok{\textless{}{-}} \FunctionTok{add7}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_humiliation,    }\CommentTok{\# 10 408}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..}\DecValTok{5}\NormalTok{,   }\CommentTok{\# 10 429}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..}\DecValTok{6}\NormalTok{,  }\CommentTok{\# 10  450      }
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..}\DecValTok{7}\NormalTok{,  }\CommentTok{\# 10  471}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_humiliation,   }\CommentTok{\# 10  494}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..}\DecValTok{8}\NormalTok{,   }\CommentTok{\# 10  515}
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..}\DecValTok{9}\NormalTok{)   }\CommentTok{\# 10  536}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{descriptives}\NormalTok{(SEX, }\FunctionTok{c}\NormalTok{(}\StringTok{"sex\_adulte\_perf"}\NormalTok{, }\StringTok{"sex\_adulte\_demotivation"}\NormalTok{, }\StringTok{"sex\_adulte\_confiance"}\NormalTok{, }\StringTok{"sex\_adulte\_image"}\NormalTok{, }\StringTok{"sex\_adulte\_peur"}\NormalTok{, }\StringTok{"sex\_adulte\_colere"}\NormalTok{, }\StringTok{"sex\_adulte\_triste"}\NormalTok{, }\StringTok{"sex\_adulte\_stress"}\NormalTok{, }\StringTok{"sex\_adulte\_faute"}\NormalTok{, }\StringTok{"sex\_adulte\_humiliation"}\NormalTok{),}\AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                                                                                                                                                                                                
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##                  sex_adulte_perf    sex_adulte_demotivation    sex_adulte_confiance    sex_adulte_image    sex_adulte_peur    sex_adulte_colere    sex_adulte_triste    sex_adulte_stress    sex_adulte_faute    sex_adulte_humiliation   
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##    N                          80                         74                      74                  74                 80                   80                   80                   79                  74                        74   
+##    Manquants                  98                        104                     104                 104                 98                   98                   98                   99                 104                       104   
+##    Moyenne                                         1.364865                1.445946            2.162162                                                                                              1.243243                  1.824324   
+##    Médiane                                         1.000000                1.000000            3.000000                                                                                              1.000000                  2.000000   
+##    Ecart-type                                     0.7133622               0.7788627           0.9219846                                                                                             0.5184490                 0.7999676   
+##    Minimum                                                1                       1                   1                                                                                                     1                         1   
+##    Maximum                                                3                       3                   3                                                                                                     3                         3   
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de sex_adulte_perf                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Pas du tout           57      71.25000     71.25000   
+##    Fortement              4       5.00000     76.25000   
+##    Moyennement           19      23.75000    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_adulte_demotivation                 
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##    1                   57      77.02703     77.02703   
+##    2                    7       9.45946     86.48649   
+##    3                   10      13.51351    100.00000   
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_adulte_confiance                    
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##    1                   54      72.97297     72.97297   
+##    2                    7       9.45946     82.43243   
+##    3                   13      17.56757    100.00000   
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_adulte_image                        
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##    1                   26      35.13514     35.13514   
+##    2                   10      13.51351     48.64865   
+##    3                   38      51.35135    100.00000   
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_adulte_peur                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Pas du tout           48      60.00000     60.00000   
+##    Fortement             11      13.75000     73.75000   
+##    Moyennement           21      26.25000    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_adulte_colere                         
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Pas du tout           37      46.25000     46.25000   
+##    Fortement             18      22.50000     68.75000   
+##    Moyennement           25      31.25000    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_adulte_triste                         
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Pas du tout           63      78.75000     78.75000   
+##    Fortement              6       7.50000     86.25000   
+##    Moyennement           11      13.75000    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_adulte_stress                         
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           23      29.11392     29.11392   
+##    Fortement             10      12.65823     41.77215   
+##    Pas du tout           46      58.22785    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_adulte_faute                        
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##    1                   59      79.72973     79.72973   
+##    2                   12      16.21622     95.94595   
+##    3                    3       4.05405    100.00000   
+##  ───────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de sex_adulte_humiliation                  
+##  ───────────────────────────────────────────────────── 
+##    Modalités    Quantités    % du Total    % cumulés   
+##  ───────────────────────────────────────────────────── 
+##    1                   31      41.89189     41.89189   
+##    2                   25      33.78378     75.67568   
+##    3                   18      24.32432    100.00000   
+##  ─────────────────────────────────────────────────────
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{psy}{%
+\section{PSY}\label{psy}}
+
+\begin{itemize}
+\tightlist
+\item
+  parent: 4 catégories (14 items, Franzoni p.~91f)
+\end{itemize}
+
+catégorie 1.: 1 item, 0 interpretation, 10 conséquences \textless-??
+EST-CE CORRECT ?? je n'arrive pas bien à comparer avec Franzoni
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{TOUT}\SpecialCharTok{$}\NormalTok{PSY }\OtherTok{\textless{}{-}}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_ignoré\_item1}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_investissement\_item2}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_critique\_perf\_item3}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_apparence\_item4}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_rumeur\_item5}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_humiliation\_item6}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_menace\_exclusion\_item7}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_menace\_physique\_item8}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_encourager\_humiliation\_item9}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_limite\_contacte\_item10}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_ignoer\_item1}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_critique\_invesstissement\_item2}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_critique\_perf\_item2}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_critiquer\_apparence\_item3}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_rumeur\_item4}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_ridiculiser\_item5}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_crier\_dessus\_item6}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_menace\_expulsion\_item7}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_menacephysi\_item8}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_humiliation\_autrui\_item9}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_limitation\_contact\_item10}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_jouer\_blesser\_item11}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_entrainer\_a\_vomir\_item12}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_dopage\_item13}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_poids\_ideal\_item13}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_ignorer\_item1}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_invesstissment\_item2}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_critique\_perf\_item3}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_critique\_corps\_item4}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_rumeur\_item5}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_ridiculisà\_perf\_item6}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_crier\_dessus\_item7}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_menace\_physique\_item8}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|} 
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_blesser\_adversaire\_item9}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_limite\_contact\_item10}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|} 
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_blessé\_soi\_mm\_item11}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_vomir\_item12}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|} 
+\NormalTok{            TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_dopage\_item13}\SpecialCharTok{!=}\StringTok{"Jamais"} \SpecialCharTok{|}\NormalTok{ TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_poids\_ideal\_item14}\SpecialCharTok{!=}\StringTok{"Jamais"} 
+  
+\NormalTok{TOUT}\SpecialCharTok{$}\NormalTok{PSY }\OtherTok{\textless{}{-}} \FunctionTok{if\_else}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{PSY, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+\NormalTok{PSY }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(TOUT, PSY}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{qu.-3.1.2-interpretation-psy}{%
+\subsection{Qu. 3.1.2 Interpretation
+PSY}\label{qu.-3.1.2-interpretation-psy}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_paire\_norm }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_normalisation, }
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_normlisation, }
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_normalisation\_2)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_paire\_nec }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_necessite,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_necessite\_perf, }
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_necessaireperf)                           }
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_paire\_part }\OtherTok{\textless{}{-}} \FunctionTok{add3}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_partie\_entrainement,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_partie\_entrainement,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_partie\_entrainement\_2)}
+
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_adulte\_norm }\OtherTok{\textless{}{-}} \FunctionTok{add2}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_auteur\_considerer\_normal, }
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_considération\_normale)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_adulte\_nec }\OtherTok{\textless{}{-}} \FunctionTok{add2}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_necessaire\_perf, }
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_necessaireperf)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_adulte\_part }\OtherTok{\textless{}{-}} \FunctionTok{add2}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_partie\_entrainement,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_partie\_compet)}
+
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_parent\_norm }\OtherTok{\textless{}{-}} \FunctionTok{add2}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_normalisation, }
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_consideration\_normal)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_parent\_nec }\OtherTok{\textless{}{-}} \FunctionTok{add2}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_necessaire,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_necessaire\_perf\_2)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_parent\_part }\OtherTok{\textless{}{-}} \FunctionTok{add2}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_faisant\_partie,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_partie\_compet)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{descriptives}\NormalTok{(PSY, }\FunctionTok{c}\NormalTok{(}\StringTok{"psy\_paire\_norm"}\NormalTok{ , }\StringTok{"psy\_paire\_nec"}\NormalTok{,  }\StringTok{"psy\_paire\_part"}\NormalTok{ ),}\AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                           
+##  ─────────────────────────────────────────────────────────────────── 
+##                  psy_paire_norm    psy_paire_nec    psy_paire_part   
+##  ─────────────────────────────────────────────────────────────────── 
+##    N                        468              468               468   
+##    Manquants                243              243               243   
+##    Moyenne                                                           
+##    Médiane                                                           
+##    Ecart-type                                                        
+##    Minimum                                                           
+##    Maximum                                                           
+##  ─────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de psy_paire_norm                            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement          191      40.81197     40.81197   
+##    Pas du tout          216      46.15385     86.96581   
+##    Tout à fait           36       7.69231     94.65812   
+##    Ne sait pas           25       5.34188    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_paire_nec                             
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           69      14.74359     14.74359   
+##    Pas du tout          358      76.49573     91.23932   
+##    Tout à fait           28       5.98291     97.22222   
+##    Ne sait pas           13       2.77778    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_paire_part                            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement          128      27.35043     27.35043   
+##    Pas du tout          268      57.26496     84.61538   
+##    Tout à fait           56      11.96581     96.58120   
+##    Ne sait pas           16       3.41880    100.00000   
+##  ───────────────────────────────────────────────────────
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{descriptives}\NormalTok{(PSY, }\FunctionTok{c}\NormalTok{(}\StringTok{"psy\_adulte\_norm"}\NormalTok{, }\StringTok{"psy\_adulte\_nec"}\NormalTok{, }\StringTok{"psy\_adulte\_part"}\NormalTok{),}\AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                              
+##  ────────────────────────────────────────────────────────────────────── 
+##                  psy_adulte_norm    psy_adulte_nec    psy_adulte_part   
+##  ────────────────────────────────────────────────────────────────────── 
+##    N                         420               420                420   
+##    Manquants                 291               291                291   
+##    Moyenne                                                              
+##    Médiane                                                              
+##    Ecart-type                                                           
+##    Minimum                                                              
+##    Maximum                                                              
+##  ────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de psy_adulte_norm                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement          152      36.19048     36.19048   
+##    Ne sait pas            9       2.14286     38.33333   
+##    Pas du tout          147      35.00000     73.33333   
+##    Tout à fait          112      26.66667    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_adulte_nec                            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement          142      33.80952     33.80952   
+##    Ne sait pas           11       2.61905     36.42857   
+##    Pas du tout          107      25.47619     61.90476   
+##    Tout à fait          160      38.09524    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_adulte_part                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement          127      30.23810     30.23810   
+##    Ne sait pas            7       1.66667     31.90476   
+##    Pas du tout          127      30.23810     62.14286   
+##    Tout à fait          159      37.85714    100.00000   
+##  ───────────────────────────────────────────────────────
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{descriptives}\NormalTok{(PSY, }\FunctionTok{c}\NormalTok{(}\StringTok{"psy\_parent\_norm"}\NormalTok{, }\StringTok{"psy\_parent\_nec"}\NormalTok{, }\StringTok{"psy\_parent\_part"}\NormalTok{),}\AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                              
+##  ────────────────────────────────────────────────────────────────────── 
+##                  psy_parent_norm    psy_parent_nec    psy_parent_part   
+##  ────────────────────────────────────────────────────────────────────── 
+##    N                         299               299                299   
+##    Manquants                 412               412                412   
+##    Moyenne                                                              
+##    Médiane                                                              
+##    Ecart-type                                                           
+##    Minimum                                                              
+##    Maximum                                                              
+##  ────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de psy_parent_norm                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement          111      37.12375     37.12375   
+##    Ne sait pas           10       3.34448     40.46823   
+##    Pas du tout           95      31.77258     72.24080   
+##    Tout à fait           83      27.75920    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_parent_nec                            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           79      26.42140     26.42140   
+##    Ne sait pas            9       3.01003     29.43144   
+##    Pas du tout          133      44.48161     73.91304   
+##    Tout à fait           78      26.08696    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_parent_part                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           69      23.07692     23.07692   
+##    Ne sait pas           12       4.01338     27.09030   
+##    Pas du tout          134      44.81605     71.90635   
+##    Tout à fait           84      28.09365    100.00000   
+##  ───────────────────────────────────────────────────────
+\end{verbatim}
+
+\hypertarget{qu.-3.2.1-consuxe9quences-psy}{%
+\subsection{Qu. 3.2.1 Conséquences
+PSY}\label{qu.-3.2.1-consuxe9quences-psy}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_paire\_demot }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_démotivation, }
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_demotive,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_demotive\_sport,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_demotive)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_paire\_perf }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_moins\_performe,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_moins\_perf,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_moins\_perf\_2,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_moins\_perf\_3)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_paire\_conf }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_perdu\_confiance,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_perte\_confiance,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_perdu\_confiance,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_perte\_confiance)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_paire\_image }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_image\_corps,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_image\_corps,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_image\_corps\_2,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_image\_neg)  }
+
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_paire\_peur }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_peur,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_peur\_2,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_peur\_3,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_peur)}
+
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_paire\_colere }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_colere,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_colere\_2,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_colere\_3,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_colere)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_paire\_triste }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_triste,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_triste\_2,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_triste,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_triste\_2)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_paire\_stress }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_stress,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_stress\_2,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_stress,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_stress\_3) }
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_paire\_faute }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{MPsy\_paire\_ta\_faute, }
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_faute,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_ta\_faute,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_faute) }
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_paire\_humil }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_humiliation,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_humiliation\_2,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_humiliation\_3,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_humiliation)}
+
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_adulte\_demot }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_demotive, }
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_demotive\_2,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_demotive,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_demotive\_sport)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_adulte\_perf }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_moins\_perf,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_moins\_perf\_2,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_moins\_perf\_3,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_moins\_perf)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_adulte\_conf }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_perdu\_confiance, }
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_perduconfiance,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_perdu\_confiance,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_perdu\_confiance\_2)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_adulte\_peur }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_peur, }
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_peur\_2,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_peur\_3,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_peur)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_adulte\_image }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_image\_corps,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_image\_corps,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_image\_neg,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_image\_neg)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_adulte\_faute }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_ta\_faute,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_ta\_faute\_2,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_ta\_faute\_3,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_ta\_faute\_4)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_adulte\_humil }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_humiliation,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_humiliation\_2,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_ressenti\_humuliation,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_humiliation)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_adulte\_colere }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_colere,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_colere\_2,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_colere\_3,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_colère)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_adulte\_triste }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_triste, }
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_triste\_2,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_triste\_3,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_triste)}
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_adulte\_stress }\OtherTok{\textless{}{-}} \FunctionTok{add4}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_stress,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_stress\_2,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_Adulte\_stress,}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_stress\_3)}
+
+
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{psy\_parent\_demot }\OtherTok{\textless{}{-}} \FunctionTok{add2}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_demotiver\_sport, }
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_demotiver)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{descriptives}\NormalTok{(PSY, }\FunctionTok{c}\NormalTok{(}\StringTok{"psy\_paire\_perf"}\NormalTok{, }\StringTok{"psy\_paire\_demot"}\NormalTok{, }\StringTok{"psy\_paire\_conf"}\NormalTok{, }\StringTok{"psy\_paire\_image"}\NormalTok{, }\StringTok{"psy\_paire\_peur"}\NormalTok{, }\StringTok{"psy\_paire\_colere"}\NormalTok{, }\StringTok{"psy\_paire\_triste"}\NormalTok{, }\StringTok{"psy\_paire\_stress"}\NormalTok{, }\StringTok{"psy\_paire\_faute"}\NormalTok{, }\StringTok{"psy\_paire\_humil"}\NormalTok{),}\AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                                                                                                                                                                    
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##                  psy_paire_perf    psy_paire_demot    psy_paire_conf    psy_paire_image    psy_paire_peur    psy_paire_colere    psy_paire_triste    psy_paire_stress    psy_paire_faute    psy_paire_humil   
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##    N                        656                656               656                656               656                 656                 656                 656                656                656   
+##    Manquants                 55                 55                55                 55                55                  55                  55                  55                 55                 55   
+##    Moyenne                                                                                                                                                                                                    
+##    Médiane                                                                                                                                                                                                    
+##    Ecart-type                                                                                                                                                                                                 
+##    Minimum                                                                                                                                                                                                    
+##    Maximum                                                                                                                                                                                                    
+##  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de psy_paire_perf                            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             63       9.60366      9.60366   
+##    Moyennement          171      26.06707     35.67073   
+##    Pas du tout          422      64.32927    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_paire_demot                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             72      10.97561     10.97561   
+##    Moyennement          166      25.30488     36.28049   
+##    Pas du tout          418      63.71951    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_paire_conf                            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement            103      15.70122     15.70122   
+##    Moyennement          211      32.16463     47.86585   
+##    Pas du tout          342      52.13415    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_paire_image                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             73      11.12805     11.12805   
+##    Moyennement          133      20.27439     31.40244   
+##    Pas du tout          450      68.59756    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_paire_peur                            
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             27       4.11585      4.11585   
+##    Moyennement           86      13.10976     17.22561   
+##    Pas du tout          543      82.77439    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_paire_colere                          
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement            127      19.35976     19.35976   
+##    Moyennement          284      43.29268     62.65244   
+##    Pas du tout          245      37.34756    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_paire_triste                          
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement            139      21.18902     21.18902   
+##    Moyennement          216      32.92683     54.11585   
+##    Pas du tout          301      45.88415    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_paire_stress                          
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             83      12.65244     12.65244   
+##    Moyennement          179      27.28659     39.93902   
+##    Pas du tout          394      60.06098    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_paire_faute                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             87      13.26220     13.26220   
+##    Moyennement          234      35.67073     48.93293   
+##    Pas du tout          335      51.06707    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_paire_humil                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement            110      16.76829     16.76829   
+##    Moyennement          202      30.79268     47.56098   
+##    Pas du tout          344      52.43902    100.00000   
+##  ───────────────────────────────────────────────────────
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{descriptives}\NormalTok{(PSY, }\FunctionTok{c}\NormalTok{(}\StringTok{"psy\_adulte\_perf"}\NormalTok{, }\StringTok{"psy\_adulte\_demot"}\NormalTok{, }\StringTok{"psy\_adulte\_conf"}\NormalTok{, }\StringTok{"psy\_adulte\_image"}\NormalTok{, }\StringTok{"psy\_adulte\_peur"}\NormalTok{, }\StringTok{"psy\_adulte\_colere"}\NormalTok{, }\StringTok{"psy\_adulte\_triste"}\NormalTok{, }\StringTok{"psy\_adulte\_stress"}\NormalTok{, }\StringTok{"psy\_adulte\_faute"}\NormalTok{, }\StringTok{"psy\_adulte\_humil"}\NormalTok{),}\AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                                                                                                                                                                              
+##  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##                  psy_adulte_perf    psy_adulte_demot    psy_adulte_conf    psy_adulte_image    psy_adulte_peur    psy_adulte_colere    psy_adulte_triste    psy_adulte_stress    psy_adulte_faute    psy_adulte_humil   
+##  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##    N                         587                 587                587                 587                589                  589                  589                  589                 587                 587   
+##    Manquants                 124                 124                124                 124                122                  122                  122                  122                 124                 124   
+##    Moyenne                                                                                                                                                                                                              
+##    Médiane                                                                                                                                                                                                              
+##    Ecart-type                                                                                                                                                                                                           
+##    Minimum                                                                                                                                                                                                              
+##    Maximum                                                                                                                                                                                                              
+##  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de psy_adulte_perf                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             94      16.01363     16.01363   
+##    Moyennement          149      25.38330     41.39693   
+##    Pas du tout          343      58.43271     99.82964   
+##    0                      1       0.17036    100.00000   
+##    1                      0       0.00000    100.00000   
+##    2                      0       0.00000    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_adulte_demot                          
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             94      16.01363     16.01363   
+##    Moyennement          160      27.25724     43.27087   
+##    Pas du tout          332      56.55877     99.82964   
+##    0                      1       0.17036    100.00000   
+##    1                      0       0.00000    100.00000   
+##    2                      0       0.00000    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_adulte_conf                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement            122      20.78365     20.78365   
+##    Moyennement          161      27.42760     48.21124   
+##    Pas du tout          303      51.61840     99.82964   
+##    0                      1       0.17036    100.00000   
+##    1                      0       0.00000    100.00000   
+##    2                      0       0.00000    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_adulte_image                          
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             62      10.56218     10.56218   
+##    Moyennement           84      14.31005     24.87223   
+##    Pas du tout          440      74.95741     99.82964   
+##    0                      1       0.17036    100.00000   
+##    2                      0       0.00000    100.00000   
+##    1                      0       0.00000    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_adulte_peur                           
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             38       6.45161      6.45161   
+##    Moyennement           83      14.09168     20.54329   
+##    Pas du tout          468      79.45671    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_adulte_colere                         
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement            146      24.78778     24.78778   
+##    Moyennement          210      35.65365     60.44143   
+##    Pas du tout          233      39.55857    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_adulte_triste                         
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement            117      19.86418     19.86418   
+##    Moyennement          159      26.99491     46.85908   
+##    Pas du tout          313      53.14092    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_adulte_stress                         
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement            101      17.14771     17.14771   
+##    Moyennement          165      28.01358     45.16129   
+##    Pas du tout          323      54.83871    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_adulte_faute                          
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement            103      17.54685     17.54685   
+##    Moyennement          203      34.58262     52.12947   
+##    Pas du tout          280      47.70017     99.82964   
+##    0                      1       0.17036    100.00000   
+##    2                      0       0.00000    100.00000   
+##    1                      0       0.00000    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de psy_adulte_humil                          
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             87      14.82112     14.82112   
+##    Moyennement          172      29.30153     44.12266   
+##    Pas du tout          327      55.70698     99.82964   
+##    0                      1       0.17036    100.00000   
+##    1                      0       0.00000    100.00000   
+##    2                      0       0.00000    100.00000   
+##  ───────────────────────────────────────────────────────
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{descriptives}\NormalTok{(PSY, }\FunctionTok{c}\NormalTok{(}\StringTok{"psy\_parent\_demot"}\NormalTok{,}
+\StringTok{"mpsy\_parent\_moins\_perf"}\NormalTok{,}
+\StringTok{"Mpsy\_parent\_perdu\_confiance"}\NormalTok{, }
+\StringTok{"mpsy\_parent\_image\_corps"}\NormalTok{,}
+\StringTok{"mpsy\_parent\_peur"}\NormalTok{, }
+\StringTok{"mpsy\_parent\_colere"}\NormalTok{,}
+\StringTok{"Mpsy\_parent\_triste"}\NormalTok{, }
+\StringTok{"Mpsy\_parent\_stress"}\NormalTok{,}
+\StringTok{"Mpsy\_parent\_ta\_faute"}\NormalTok{, }
+\StringTok{"Mpsy\_parent\_humiliation"}\NormalTok{),}\AttributeTok{freq=}\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  STATISTIQUES DESCRIPTIVES
+## 
+##  Statistiques descriptives                                                                                                                                                                                                                                       
+##  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##                  psy_parent_demot    mpsy_parent_moins_perf    Mpsy_parent_perdu_confiance    mpsy_parent_image_corps    mpsy_parent_peur    mpsy_parent_colere    Mpsy_parent_triste    Mpsy_parent_stress    Mpsy_parent_ta_faute    Mpsy_parent_humiliation   
+##  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+##    N                          123                        45                             45                         45                  45                    45                    45                    45                      45                         45   
+##    Manquants                  588                       666                            666                        666                 666                   666                   666                   666                     666                        666   
+##    Moyenne                                                                                                                                                                                                                                                       
+##    Médiane                                                                                                                                                                                                                                                       
+##    Ecart-type                                                                                                                                                                                                                                                    
+##    Minimum                                                                                                                                                                                                                                                       
+##    Maximum                                                                                                                                                                                                                                                       
+##  ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── 
+## 
+## 
+##  FRÉQUENCES
+## 
+##  Fréquences de psy_parent_demot                          
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    0                     67      54.47154     54.47154   
+##    1                      8       6.50407     60.97561   
+##    2                      3       2.43902     63.41463   
+##    Moyennement           19      15.44715     78.86179   
+##    Pas du tout           12       9.75610     88.61789   
+##    Fortement             14      11.38211    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de mpsy_parent_moins_perf                    
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           22      48.88889     48.88889   
+##    Pas du tout           16      35.55556     84.44444   
+##    Fortement              7      15.55556    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mpsy_parent_perdu_confiance               
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Fortement             13      28.88889     28.88889   
+##    Pas du tout           17      37.77778     66.66667   
+##    Moyennement           15      33.33333    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de mpsy_parent_image_corps                   
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Pas du tout           27      60.00000     60.00000   
+##    Fortement              7      15.55556     75.55556   
+##    Moyennement           11      24.44444    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de mpsy_parent_peur                          
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Pas du tout           27      60.00000     60.00000   
+##    Moyennement           12      26.66667     86.66667   
+##    Fortement              6      13.33333    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de mpsy_parent_colere                        
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           17      37.77778     37.77778   
+##    Pas du tout           12      26.66667     64.44444   
+##    Fortement             16      35.55556    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mpsy_parent_triste                        
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           15      33.33333     33.33333   
+##    Pas du tout            9      20.00000     53.33333   
+##    Fortement             21      46.66667    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mpsy_parent_stress                        
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           13      28.88889     28.88889   
+##    Pas du tout           21      46.66667     75.55556   
+##    Fortement             11      24.44444    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mpsy_parent_ta_faute                      
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           19      42.22222     42.22222   
+##    Pas du tout           13      28.88889     71.11111   
+##    Fortement             13      28.88889    100.00000   
+##  ─────────────────────────────────────────────────────── 
+## 
+## 
+##  Fréquences de Mpsy_parent_humiliation                   
+##  ─────────────────────────────────────────────────────── 
+##    Modalités      Quantités    % du Total    % cumulés   
+##  ─────────────────────────────────────────────────────── 
+##    Moyennement           16      35.55556     35.55556   
+##    Pas du tout           21      46.66667     82.22222   
+##    Fortement              8      17.77778    100.00000   
+##  ───────────────────────────────────────────────────────
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#descriptives(PSY, , freq=TRUE)}
+\end{Highlighting}
+\end{Shaded}
+
+
+\end{document}

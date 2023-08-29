@@ -1,0 +1,1885 @@
+21.8.2013
+
+
+Bonsoir Théo,
+
+merci pour tes discussions d'exemple. J'aurai peut-être des petites question quand je fais cette analyse.
+
+Je te souhaite une bonne réussite demain avec des profs!
+Christoph
+
+
+Petit resumé des analyses
+
+----- Question 1 et 2: --------------------
+
+On a commence par les pourcentages des répondants des différents classes selon les variables sociodémographiques
+
+Categorie_age sexe_genre sport_categories niveau_de_pratique avant_12_ans 
+
+Puis on a calculé les prévalences de MPS (etc.) dans ces classes sociodémographiques .
+
+On a performé des tests khi-carré pour voir si quelques classes sont plus susceptibles pour les différents maltraitantes. C'était le cas mais plutôt rarement d'une manière significative.
+
+
+----- Question 3: --------------------
+
+Plusieurs versions:
+
+A On avait commencé avec la présentation des pourcentages pour chaque item seul de chaque catégorie. Mais ce sont beaucoup trop de chiffres, une interprétation claire n'est pas possible
+
+B pour chaque item, les différents catégories étaient additionnées. Les résultats sont les pourcentages des différentes sommes de scores (une somme de scores contient toujours de l' information et du nombre des réponses et du score des réponses, su coup elle n'est pas facile à interpréter). 
+
+Puis on voulait plutôt additionner les items pour les différentes catégories. 
+
+C Dans une première version, j'ai présenté les pourcentages des différentes sommes de scores.
+
+D Mais on s'est plutôt intéressé aux rangs des différents items, du coup pour chaque item j'ai trié les sommes des scores (on a discuté ce PDF aujourd'hui) 
+
+
+----- Question 4: --------------------
+
+Pour chaque maltraitante on a déterminé les pourcentages pour 
+
+1. adulte/pairs/parents 
+2. les adultes en détail (entraineur/assistent etc.)/pairs/parents
+3. que les adultes en détail
+
+
+
+
+
+19.8.2023
+
+Salut Théo,
+
+j'ai programmé les rangs des items additionnés comme discute. Tu les trouves dans le fichier joint, toujours précédé par 
+
+## [1] "Trié:"
+
+Est-ce compréhensible? Â part ça:
+
+- j'ai repêché les items dont la traduction automatique n'a pas bien fonctionné, du coup y en a plus que dans le fichier dernier 
+- un de problèmes que j'avais appelé minime (un NA additionné mène à la somme NA) c'est avéré plus important, du coup je l'ai résolu. Maintenant aucune somme est NA mais 0 si que des NA sont additionnés. Si tu t'intéresses qu'au rang ça ne dérange pas mais je pourrais encore améliorer (que des NA additionnés donne somme NA)
+
+Veut-on se parler avant ton RdV aux profs? Je pourrais aujourd'hui à partir de 17:00 ou lundi à 11:00 ou à 19:00
+
+Bonne journée,
+Christoph
+
+------------------------------------------------------------------ 
+
+10.8.2023
+
+fait: 
+
+- question 3 nouvelle version
+- mes 2 questions étaient d'une importance minime
+
+ferai jusqu'à la semaine prochaine:
+
+- conséquence/interprétation catégorie maximum + ordre de toutes (laisse sommes, que pour comparaison)
+
+plus tard:
+
+- connaissance élargi des données manquantes dans l'Excel compilé - je commence un peu
+- mes propres données - peut-être, on verra
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------
+
+Salut Théo,
+
+ma discussion des heures estimés depuis la facture de juin:
+
+- en juillet, jusqu'ici, j'ai travaillé 5.6 heures. C'était 
+  - 1,3 heures pour programmer la nouvelle version question 3 avec les vielles données 
+  - et 4,3 heures pour établir un nouveau Excel de toutes les données sans données manquantes. Là il y avait bc à faire: raccourcir les très longues noms des colonnes, programmer catégorie_age et sport_catégories, avec ses propres problèmes comme football que l'on avait discuté etc.
+
+Ce qui reste à faire: dépend forcement de ce que l'on veut avoir:
+- J'estime quelques heures pour la nouvelle version (addition des items) question 3 avec les vielles données, programmation et discussion. Ca ressemble au travail pour l'ancienne version (addition des catégories), mais différence dans l'addition. Dès que j'aurai l'élargissement de ton exemple (dernier email dans cette file), je pourrai mieux estimer. Tu peux me confirmer que ça ne concerne que la question 3 et pas les autres?
+- établir un nouveau Excel de toutes les données sans données manquantes: J'avais assumé que ça ira sans problèmes, mais malheureusement les données ne sont pas très consistantes, il y a beaucoup de possibilités d'en perdre. Il faut traiter bc des cas différemment, discuter et faire de tests (comme vu dans le travail de ton ami - il n'a pas mal travaillé, mais il n'a pas assez testé et ajusté). Je ne connais les problèmes que quand je les rencontre - du coup, hélas, je ne me vois pas dans la mesure d'estimer l'effort (ça sera différent si moi j'avais fait ces 4 Excel).
+
+Je comprends que cela est un bon problème pour toi. C'est pour ça que je propose de finir  nouvelle version question 3 avec les vielles données, et puis (dans 1...2 heures) établir un statut des données manquantes: Combien en manquent? Existent-elles toutes dans les 4 Excel d'origine? Je n'avais vu que quelques cas où c'était comme ça. Peut-être il ne manquent que quelques pourcent et on les peux laisser manquantes sans grand problème? 
+
+Après ce test on saura. 
+
+Qu'est-ce que tu en penses?
+
+Bonne soirée,
+Christoph
+ 
+
+--------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------------
+
+
+Salut Théo,
+
+oui je comprends, c'était beaucoup de travail.
+
+Comme annoncé dernièrement je suis en train de faire question 3 nouvelle version, mais vielles données, avec
+
+1. addition des items pour chaque catégorie
+2. recodage simple: je compte tout sauf "pas du tout"
+
+Pour sauver des heures je propose: Je ne continuerai ma propre organisation des données que dans les cas que 
+- tu n'es pas heureux avec les  beaucoup des données manquantes
+- ou tes profs demandent la cause des beaucoup des données manquantes
+
+Avec cette organisation je n'avais que commencé un peu. J'ai vite vu que ça sera beaucoup de travail et je suis revenu vers toi. 
+
+C'est bon comme ça?
+
+Bonne soirée,
+Christoph
+
+
+
+--------------------------------------------------------------------------------------
+
+Salut Théo,
+
+j'ai avancé avec mes propres données: J'ai calculé les
+- categories_age
+- sport_categories
+
+Il y avait quelques petites soucies, par exemple dans new_polished_itemname, "Football" normalement est pris dans la catégorie "football", mais une fois aussi dans "sport d'equipe" (j'ai enlevé da deuxième traduction).
+
+Puis j'ai refait la question 1 avec ces données. Et là j'ai vu des nouvelles petites soucies - parfois ton ami a raté des données pour une raison quelconque, et parfois c'était moi. Tout ça peut être resolu mais il prend vraiment *beaucoup* de temps.
+
+Du coup, maintenant je preferais proceder dans un ordre différent:
+1. je ferai la question 3 nouvelle version mais vielles donnés. Ayant fini on aura en principe tous les résultats pour ta thèse. Un skype tôt dans la semaine aiderait
+2. seulement ensuite je chercherai les données manquantes, jusqu'à ce que nous sommes contents. Faire cela lorsqu'il manque toujours le résultat principal pour question 3 s'est averé trop stressant
+
+Es-tu d'accord?
+
+Bonne soirée,
+Christoph
+
+--------------------------------------------------------------------------------------
+
+Merci Théo,
+
+oui, je devrais m'exprimer plus précisement. À l'instant je travaille dans un autre monde: J'ai joint les données *brutes* des 4 Excel d'origin. Là j'avais pas mal de petites soucies téchniques - parfois il m'a fallu adapter le type d'une colonne, la traduction  automatique des titres n'a pas toujours functionné, j'ai fait de tests pour eviter des problèmes avec des données manquantes comme dans le grand Excel de ton ami, etc.
+
+Maintenant comme discuté j'adapter le code pour question 1, 2 et 4 pour les refaire avec mes nouvelles données. Je t'enverrai les résultats au fur et mesure. Ce travail m'est bien clair, on avait discuté ces questions profondement. En revanche, un skype sera bien quand j'aurai commencé avec question 3 nouvelle version - ça te va?
+
+Bonne dimanche!
+
+Christoph
+
+--------------------------------------------------------------------------------------
+
+\\ son email ici !!
+
+--------------------------------------------------------------------------------------
+
+Question 3 : 
+Pour Maltraitance psychologique adulte : 
+
+Faire une addition des- items de chaque catégorie. 
+
+Par exemple pour maltraitance psychologique adulte : 
+
+catégorie 1 : 
+Insuffisance de soutien à l'égard d'un athlète = addition 1 item
+
+catégorie 2 :
+Abus verbal et dépréciation d'un athlète = addition 6 items
+
+Etc. 
+
++ extrait Franzoni
+
++ Représentation visuelle...
+
+--------------------------------------------------------------------------------------
+
+Salut Théo,
+
+quelques détails:
+
+1) les fichiers QEMS_data_F.xlsx et QEMS_data_FE.xlsx manquent l'information du canton. C'est la France! pas grave.
+
+2) est correcte mon intention de faire le recodage comme suit:
+
+"Non"   0
+"Oui"   1
+"N/A" N/A
+
+"Jamais"                  0
+"1 fois"                  1                                       
+"Quelques fois"           2         
+"Souvent/régulièrement"   3
+"Pas de réponse"        N/A
+
+"Pas du tout"   0
+"Moyennement"   1
+"Fortement"     2
+"Tout à fait"   3
+"Ne sait pas" N/A
+
+3) Je dois refaire les sport-catégories. Il sera bien de discuter le catégories dans un skype, 
+car il y a trop de sports différents. Par exemple
+ [13] "Basket ball"                                                                           
+ [14] "Basket-ball"                                                                           
+ [15] "basketball"                                                                            
+ [16] "Basketball"                                                                            
+ [17] "Basketball 🏀"                                                                         
+ [18] "Basketball tu"                                                                         
+Ici il n'y a pas trop à discuter mais il y a de cas moins clairs. 
+
+-> je suis new_polished_itemname.xlsx:
+  sport principal -> sport_catégories
+
+4) J'avais vu quelques variables dans l'Excel compilé mais pas dans les fichiers originaux que je n'utilise pas. Alors je n'ai pas besoin de les calculer - OK.
+
+5) Je preferais de travailler avec les (cette fois: tous les) titres courtes. En traduisant je suis new_polished_itemname.xlsx - OK
+
+après les données:
+
+-> Qu.3 interprétation et conséquences: pas additionner mais suivre en détail (whatsapp 23.6. et email 23.6.) p.e. 
+  - MPS 1 catégorie 3 items pour les paires 
+  - PSY 1. catégorie = insuffisance ... 
+        2. catégorie
+
+  pas additionner les catégories mais les items!!!! 
+
+
+-----------------------------------------------------------------------------------------
+
+Salut Théo,
+
+comme annoncé je suis en train de construire mes propres données input. Il y a pas mal de cas spéciaux à traiter, par exemple le format de 4 fichiers Excel n'est pas toujours identique - dans l'un il y a les chiffres 1, 2, ... où dans l'autre il y a les textes "Jamais"/"Quelques fois" etc. (ou "Oui"/"Non" ou "Pas du Tout" etc.) J'avais déjà vu ce mélange dans le résultat et il est clairement mieux de résoudre ce type de problème maintenant. 
+
+J'enverrai une discussion plus détaillée les prochains jours. Et si il y a des problèmes que je ne comprends pas avoir un petit skype, ça va?
+
+Â bientôt,
+Christoph 
+
+-----------------------------------------------------------------------------------------
+Théo wa: tu avances?
+-----------------------------------------------------------------------------------------
+
+fait:
+
+- ajouté Mphysique_parent interprétations, mais sont vides
+- Mphysique_parent_consideration est déjà conséquence - c'était déjà bon
+- > Maltraitance physique adulte : faisant partie + nécessaire à la performance
+Ces colonnes 
+  Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...1
+  Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...2
+sont vides dans mon import (que NA dans TOUT ou MPS). 
+
+Contrôles:
+- QEMS_all.csv : je n'arrive pas à ouvrir avec Excel
+- QEMS_all.omv : oui, ces 2 colonnes sont vides
+- je n'ai pas un seul fichier Excel  
+
+
+Négligence
+- parent est vide sauf démotivation - contrôlé données R, contrôle jamovi :
+neg_parent_moins_perf
+Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..1
+Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..2
+Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..3
+Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..4
+Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..5
+Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..6
+Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..7
+Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..8
+- je n'arrive pas à naviger dans jamovi vers ces colonnes (quand j'agrandis une colonne pour pouvoir lire le titre, l'écran saute bcp.) mais je suppose c'est bon comme l'autre cas haut
+
+-----------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Recodage  : 
+===========
+
+0=jamais / 1 tout le reste
+
+- recoder que question 3 (1, 2 déjà fait)
+- recoder maltraitance + interpretation + consequences
+- j'aimerais d'abord finir la version non-recorde et l'avoir contrôle par toi à partir de mercredi, puis recoder
+- (je ferai ensemble avec meilleure programmation addition et problème IDs avec entrées sur plusieurs catégories, Théo: ne devrait pas exister, mais prendre la moins forte: minimum
+
+- quelques colonnes contiennent niveaux "pas du tout" etc. + chiffres 0, 1, 2 : enlever les chiffres
+
+
+Parties manquantes:
+===================
+
+> Maltraitance physique adulte : faisant partie + nécessaire à la performance
+Ces colonnes sont vides dans mon import (que NA dans TOUT ou MPS). Contrôlerai encore XL->jamovi
+
+> Maltraitance physique parent : faisant partie + nécessaire à la performance + conséquence
+Mphysique_parent_consideration est déjà conséquence
+
+
+> Négligence adulte : conséquences
+Désolé, en fait j'ai loupé toutes les conséquences Négligence. Je les ai fait.
+- adulte est bon
+- parent est vide sauf démotivation - contrôlé données R, contrôlerai encore XL->jamovi
+
+> Maltraitance psychologique paire :  normalisation + faisant partie + nécessaire à la performance 
+> Maltraitance psychologique parent : normalisation + faisant partie + nécessaire à la performance
+
+Trop bête. J'avais calculé tout ça et juste oublié de l'imprimer; c'est fait.
+
+
+Autres petits points à faire:
+=============================
+
+- l'ordre n'est pas toujours idéntique:
+  . parfois pour paire/adulte/parent: interprétation, puis pour paire/adulte/parent: conséquences - mieux!
+  (. parfois pour paire interprétation suivi tout de par conséquences, puis adulte ..., puis parent)-pas comme ceci
+
+- (formatage PDF à améliorer?                )-plutôt non
+- (plus de remarques "Théo: ..." dans le .Rmd)-tout clarifié
+
+---------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------------------
+
+Salut Théo,
+
+oui, pour la maltraitance physique on avait déjà vu qu'il manque peut-être déjà quelque chose. Je vais examiner cela + psy demain, peut-être c'est assez clair pourquoi.
+
+À demain,
+Christoph 
+
+---- On Thu, 01 Jun 2023 15:19:32 +0200 Theo Tonossi <tonossi.theo@gmail.com> wrote ---
+
+Salut Christoph, 
+
+J'ai eu plus de temps pour prendre plus en considération le dossier que tu m'a envoyé. J'ai vu tes commentaires et j'essaie d'y répondre, pour le recodage pour prendre ce qui est :  > pas du tout, je pense que c'est une bonne idée. Dès lors, un athlète normalise une maltraitance s'il a répondu : "moyennement" ou "tout à fait". 
+
+J'ai regardé plus en détail les résultats, je me suis rendu compte qu'il manque des réponses d'interprétation et de conséquence si j'ai bien observé : 
+
+Maltraitance physique adulte : faisant partie + nécessaire à la performance
+Maltraitance physique parent : faisant partie + nécessaire à la performance + conséquence
+Négligence adulte : conséquences
+Maltraitance psychologique pair :  normalisation + faisant partie + nécessaire à la performance 
+Maltraitance psychologique parent : normalisation + faisant partie + nécessaire à la performance  
+
+Je suis disponible dimanche pour faire un skype si tu es disponible 
+
+Merci pour ton travail et bon week end 
+Théo 
+
+-- Le lun. 29 mai 2023 à 00:25, Christoph Pahl <christoph@statistiknachhilfe.ch> a écrit :
+
+
+Voilà toute question 3.
+
+Il y a encore quelques petits couacs que j'aimerais poursuivre / discuter (conséquences MPS = 0?? Chiffres 0 1 2 qui - rarement - basculent la statistique)
+
+Bonne chance et je discuterai tout!
+Christoph
+
+---- On Sun, 28 May 2023 21:23:29 +0200 Christoph Pahl <christoph@statistiknachhilfe.ch> wrote ---
+
+J'ai additionné les catégories SEX. 
+
+C'est bon pour les interprétations, mais avec les conséquences y a un problème pour plusieurs maltraitantes. D'où mon appel, je dois d'abord mieux comprendre le problème de plusieurs catégories cochées.
+
+Tu a au moins une idée du résultat par les chiffres des différentes catégories non-additionnées dans le fichier que j'ai envoyé hier.
+
+Je travaille sur PSY...
+
+---- On Sun, 28 May 2023 17:16:39 +0200 Christoph Pahl <christoph@statistiknachhilfe.ch> wrote ---
+
+Jusqu'ici sont additionnées les catégories de MPS, NEG, SEX seulement l'interpretation. Je travaille et enverrai les conséquences, puis PSY. Aussi j'enleverai tout ce texte qui m'a aidé à la programmation.
+
+
+-------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Salut Théo,
+
+> Est-il possible d'avoir des % pour chaque auteur
+
+Peut-être je ne comprends pas bien la question, mais ça on a déjà dans le PDF,
+
+- soit les pourcentages des adultes/pairs/parents, photo 1
+- soit les pourcentages des adultes détaillés (il y a autre, entraineur, entraineurassistant)/pairs/parents, photo 2
+- soit les pourcentages que des adultes détaillés, photo 3
+
+> et une p-valeur 
+
+Certainement. Mais comme expliqué pour question 1, la valeur p ne sort pas de la table seule, mais plutôt du test d'une hypothèse pour lequel les données étaient pris de la table. 
+
+Un exemple d'hypothèse de la question 1: "La survenue de MPS dépend de la catégorie d'âge"
+
+Quels hypothèses voulions-nous tester pour les auteurs? Peut-être
+
+"adultes/pairs/parents sont responsables pour les maltraitantes physiques aux parts égaux"  ?
+
+Il sera difficile de bien tester des hypothèses pour les adultes détaillés car beaucoup de catégories sont vides.
+
+Dès que l'on a clarifié ça je ferai les tests khi-carré, puis les autres maltraitantes et puis question 3.
+
+Bone soirée,
+Christoph
+
+
+
+
+--------------------------------------------------------------------------------------
+
+Salut Christoph, 
+
+Oui c'est exactement ça ! Est-il possible d'avoir des % pour chaque auteur et une p-valeur ou non ? 
+Dès à présent nous devrons communiquer par le biais de mon autre adresse mail si cela est ok pour toi : tonossi.theo@gmail-com
+
+Merci pour ton aide et à bientôt 
+
+De : Christoph Pahl <christoph@statistiknachhilfe.ch> ------------------------------------
+Envoyé : mardi 23 mai 2023 18:44
+
+Bonsoir Théo,
+
+je travaille sur question 4. 
+
+Par exemple, l'entraineur est un auteur si la réponse à Mphysique_adulte_auteur_entraineur n'est pas 0, c'est correct?
+
+Et je fais 3 statistiques descriptives différentes:
+1. paire / parent / adulte
+2. paire / parent / adulte détaille
+3. que adulte détaille
+
+ça t'aide?
+
+Joint mes résultats pour MPS. Si tu es d'accord, je ferai vite les autres maltraitantes, puis je finirai question 3.
+
+À bientôt,
+Christoph
+
+-----------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Salut Christoph, 
+
+Oui c'est exactement ça ! Est-il possible d'avoir des % pour chaque auteur et une p-valeur ou non ? 
+Dès à présent nous devrons communiquer par le biais de mon autre adresse mail si cela est ok pour toi : tonossi.theo@gmail-com
+
+
+
+Merci pour ton aide et à bientôt 
+De : Christoph Pahl <christoph@statistiknachhilfe.ch>
+Envoyé : mardi 23 mai 2023 18:44
+À : Théo Tonossi <theo.tonossi@unil.ch>
+Objet : RE: Variables Question 3
+ 
+Bonsoir Théo,
+
+je travaille sur question 4.
+
+Par exemple, l'entraineur est un auteur si la réponse à Mphysique_adulte_auteur_entraineur n'est pas 0, est-ce correct?
+
+Et je fais 3 statistiques descriptives différentes:
+1. paire / parent / adulte
+2. paire / parent / adulte détaille
+3. que adulte détaille
+
+ça t'aide?
+
+Joint mes résultats pour MPS. Si tu es d'accord, je ferai vite les autres maltraitantes, puis je finirai question 3.
+
+À bientôt,
+Christoph
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Salut Chritoph, 
+
+Oui il me semble que tu as bien compris. Mon but est de montrer le % de maltraitance sexuelle (par exemple) engendrée par les paires. Il me semble donc que l'addition des catégories des interprétations de maltraitance sexuelle pour les paires est la bonne chose à faire. 
+
+Donc addition (par exemple pour msex_paire) : 
+
+
+-des interprétations des 9 items (7 catégories) de MSEX_paire
+-...
+
+Est-ce que c'est clair pour toi ? 
+
+-----------------------------------------------------------------------------------------
+
+Salut Théo,
+
+je me suis pas mal battu avec les données. Comme expliqué au téléphone:
+
+- j'ai réussi à importer le fichier jamovi complet dans R 
+- j'ai partiellement réussi une traduction automatique (en utilisant les premières deux lignes de ton Excel comme dictionnaire) des longues noms item dans le courts noms (quelques sont trop longues, R les coupe puis mon algorithme de traduction échoue)
+- je suis en train d'adapter mon analyse. J'ai fini MPS, NEG, SEX et je travaille sur PSY
+
+Il manque encore l'addition des catégories. J'aimerais être sur de t'avoir bien compris:
+
+Par exemple interprétation SEX paires avec 7 catégories, la première avec 2 items: J'additionne simplement
+     cat. 1 interpretation 1
+   + cat. 2 interpretation 1
+   + ...
+   + cat. 7 interpretation 1
+
+  et pareil pour interpretation 2, interprétation 3. Puis je fais la statistique descriptive avec ces sommes, est-ce correct? Cela équivaut à une identification catégorie1=catégorie2=... Certainement pas mal, sinon c'est trop.
+
+Pareil pour les conséquences.
+
+Je joins mon document status quo et je te prie de le déjà contrôler un peu; il y a plusieurs questions dedans. Le document final sera plus court après les additions, et beaucoup de tableaux sont vides.
+
+Comme discuté au téléphone, une maltraitance ocurre sauf "Jamais", j'ai codé ainsi. Mais 
+ja n'ai pas touché les autres modalités, comme par exemple "Moyennement / Pas du tout / Tout à fait", ils sont comme cela dans l'analyse descriptive.
+
+Maintenant je suis bien dans le flux avec cette question 3. Mais comme j'ai déjà proposé il sera peut-être mieux de faire la question 4 maintenant. ça devrait aller beaucoup plus vite, puis j'ai ton retour et je finis qu. 3, qu'est-ce que tu en penses?
+ 
+À bientôt,
+Christoph
+
+-------------- nicht mehr nötig: ------------------
+
+je me bats pas mal avec les données. J'utilise les données complètes pour question 3, mais je n'arrivais pas à travailler avec les noms des colonnes originales - ils sont simplement trop longues, dans RStudio je ne les vois pas dans toute leur longueur et souvent je ne peux pas les différencier.
+
+Donc j'ai programmé une traduction des noms anciens dans les nouveaux noms. ça fonctionne pour la plupart, mais pas toujours. Un exemple de titres renommés avec un problème récurrent:
+
+[641] "Neg_adulte_necessaire"                                              "neg_parent_faisant_partie_3"                                       
+[643] "Neg_parent_demotive"                                                "neg_adulte_moins_perf"                                             
+[645] "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..1"  "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..2"  
+
+Les 4 premiers cas ont fonctionné, les 2 derniers non. 
+
+J'utilise  new_polished_itemname.xlsx pour la traduction automatique: nom première ligne -> nom deuxième ligne.
+R a coupé les titres trop longues, remplacé des lettres exotiques par "." et ajouté "1" ou "2" pour les différencier. 
+
+Mais dans l'export de données QEMS_all.omv ça c'est passé mieux, pas de coupure, points, chiffres additionnelles. De tels cas je dois traiter à la main (trouver ceux qui sont interprétation ou conséquence) ce qui prends un certain temps (toujours: changer des titres est plus vite que compléter les données).
+
+Tu dois rendre ton travail fin mai, c'est correct? Je proposerais: 
+- je t'envoi mon analyse question 3 le samedi, peut-être pas encore complète
+- la semaine prochaine je travaille sur question 4 des auteurs. ça devrait aller vite si il n'y a pas de problème pareil.
+
+Je suis désolé pour cela et j'espère que ça ira.
+
+Bonne soirée,
+Christoph 
+
+--------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Merci Théo,
+
+- à ton premier email:
+
+je vais exporter les données des fichiers jamovi, puis les importer pour faire un Excel complet (je ne travaille plus avec Jamovi, ce logiciel n'est pas adapté à la complexité de ton questionnaire). Tes descriptions semblent compréhensibles, peut-être j'enverrai 1, 2 questions par email
+
+- à ton deuxième email: 
+
+ça explique bien et je vais bientôt travailler sur qu. 4 dans ta nouvelle numération
+
+Â bientôt,
+Christoph
+
+--------------------------------------------------------------------------------------
+
+French
+To:
+English
+
+Translate
+
+
+Salut Christoph, 
+
+Voici un deuxième mail pour t'expliquer comment la question des auteurs se forme. 
+
+Les auteurs de maltraitances sont soit : 
+les pairs
+les parents 
+les adultes du champs sportif 
+Il serait intéressant que pour chaque forme de maltraitance je puisse ressortir les % des auteurs de maltraitance. 
+
+Exemple : la maltraitance physique est à 45% administrée par les pairs.
+
+
+
+Les items sur les adultes ont cependant une question en plus pour préciser qui a administré la maltraitance : 
+
+Maltraitance physique item 1-3 : photo 1 
+
+Maltraitance psychologique item 2-6 : photo 2
+
+Maltraitance psychologique item 7-8 : photo 3 
+
+Maltraitance psychologique item 9-13 : photo 4 
+
+Maltraitance sexuelle item 1-3 : photo 5 
+
+Maltraitance sexuelle item 4-6 : photo 6 
+
+Négligence item 1-3 : photo 7 
+
+Négligence item 4 : photo 8 
+
+Négligence item 5 : photo 9 
+
+Il serait ici intéressant de pouvoir préciser selon la maltraitance, qui administre le plus souvent les maltraitances. 
+
+Exemple : l'arbitre est l'adulte du champ sportif qui administre le plus de négligence
+
+Voilà je suis à ta disposition pour toutes autres questions et si tu n'as pas tout bien compris n'hésite surtout pas. 
+
+Bonne journée et à bientôt 
+
+Théo 
+
+
+De : Théo Tonossi <theo.tonossi@unil.ch>
+Envoyé : lundi 15 mai 2023 10:30
+À : Christoph Pahl <christoph@statistiknachhilfe.ch>
+Objet : RE: Variables Question 3
+ 
+Salut Christoph, 
+
+Effectivement certains petits problèmes se sont glissés dans l'excel. Je ne sais pas pourquoi mais certaines données ne sont pas apparues. Je vais essayer d'être le plus clair possible : 
+
+Je t'envoie un excel et un document jamovi : 
+
+Le document jamovi  est le document avec seulement les variables manquantes. Cependant il n'est pas encore catégorisé et trié selon les catégories de sport. 
+
+Le deuxième est "new_polished_itemname" celui-ci est catégorisé, cependant certaines questions de normalisation et conséquence n'y figurent pas (aucune idée pourquoi). C'est à cause de cela que des questions d'interprétation et de conséquences sont manquantes.
+
+
+Voilà ce qu'il faudrait faire : 
+
+
+Prendre les catégories sportives de ""new_polished_itemname", les mettre en lien avec le jamovi pour pouvoir compléter les données manquantes (effectivement les catégories sportives du jamovi ne sont pas ordrées). 
+
+Je vais maintenant t'expliquer où se trouve les données manquantes pour te faire gagner du temps : 
+
+Les variables manquantes sont donc dans le document jamovi il faudra simplement les additionner aux autres interprétations et aux autres conséquences déjà prises en compte : 
+
+
+Dans ce document jamovi  les variables manquantes sont dans l'ordre comme cela : 
+
+
+
+Maltraitance physique
+
+MPS, parent item 1-3 : 
+
+Manque les trois interprétations et les 10 conséquences
+exemple : MPhyique_parents_Normalite
+
+
+
+Maltraitance psychologique
+
+
+Mpsy, parent item 2-6 :
+
+Manque les 10 conséquences
+exemple : Mpsy_parent_demotiver
+
+Mspy, parent item 8 :
+
+Manque 5 conséquences
+
+Mpsy, parent item 9-14
+
+Manque 10 conséquences
+
+Maltraitance sexuelle : 
+
+Msex, paire item 4
+
+Manque une conséquence
+exemple : Msex_pair_humiliation
+
+Msex, paire item 5 
+
+Manque 4 conséquences
+
+Msex, paire item 6-7
+
+Manque 5 conséquences
+exemple : Msex_paire_demotive
+Msex, paire item 8 
+
+Manque 1 interprétation
+5 conséquences
+
+Msex, adulte item 2
+
+manque 1 interprétation 
+Manque 5 conséquences
+Msex, adulte item 3
+
+manque 1 interprétation
+Manque 5 conséquences
+Msex, adulte 2ème item 3 (msex_adulte_force_a_toucher_item3)
+
+manque une interprétation
+Manque 5 cpnséquences
+
+Msex, adulte item 7
+
+Manque une interprétation
+manque 5 conséquences
+
+Msex, adulte item 8
+
+Manque une interprétation
+Manque 5 conséquences
+
+
+Negligence
+
+Neg, parent, item 1-3
+
+Manque 8 conséquences 
+Neg, parent, item 4
+
+Manque 9 conséquences
+
+Neg, parent, item 5
+
+Manque 1 interprétation
+8 consélquences
+
+Est-ce que tu comprends ou tu aurais besoin d'éclaircissement par skype ? 
+
+Bonne journée 
+
+Théo 
+
+--------------------------------------------------------------------------------------
+
+Bonsoir Théo,
+
+j'ai bien compris la documentation de catégories dans Franzoni.  Pour chaque cas je liste le nombre des catégories et les items, intérpretations, conséquences.
+
+J'ai encore un problème avec "auteur". En général, "auteur" est toute autre chose (je crois), mais tu disais que "mpsy_adulte_auteur" est un item (2em item de la première catégorie de "mpsy_adulte"). Est-ce correct? Existent-ils d'autre cas d'un mot "...auteur..." que je dois considérer comme item? Je joins mon fichier des titres.
+
+Je suis en train de programmer tout ça et vais bien finir tôt la semaine prochaine. Stp pourrais-tu contrôler (un peu) mes listes dans le PDF joint. J'ai bien marqué 2 endroits où j'ai certains doutes, "adulte" devrait être "parent" ? MPS j'avait fait avant, du coup il y a le code et pas une liste.
+
+Merci et bon weekend,
+Christoph
+
+\\ PDF + txt !!
+
+--------------------------------------------------------------------------------------
+
+Salut Théo,
+
+j'ai ajouté les test khi-carré pour les catégories de sport.
+
+L'interpretation des valeurs p est une question de convention. D'habitude on appelle une signification de
+10%   faiblement significative
+ 5%   significative
+ 1%   très significative
+0.1%  extrêmement significative
+
+(en général, le seuil alpha donne la valeur p maximale pour un résultat significatif)
+
+La centaine des travaux où j'ai aidé jusqu'ici avaient fixé le seuil alpha à 5%. L'article de ta prof prend alpha = 0.01 = 1% ce qui est plus exigeant - je déconseille mais il faut demander le seuil souhaité à ta prof. Même avec ce seuil là on a deux tests significatives:
+
+Par exemple :
+9.791e-07 = 9.8 x 10^(-7) (10 à l'exposant de -7, tu peux mieux écrire par word: -7 petit, plus haut, sans parenthèses)
+9.8 x 10^(-7) = 0.00000098, alors c'est vraiment très petit
+
+et 1.632e-05 sembable. 
+
+Avec le seuil plus commun de 0.05 on a un résultat significatif de plus: PSY et
+[1] ------------ Tableau cas/non-cas pour la catégorie sexe_genre
+X-squared = 8.2727, df = 2, p-value = 0.01598
+
+Pour la régression logistique il me faudra tout le contexte pour voir si ça marche pour nous. Tu pourrais m'envoyer l'article entier ou le lien stp?
+ 
+Merci,
+Christoph
+
+* * * * *
+
+[1] ========================== maltraitance MPS : ===================================
+[1] ------------ Tableau cas/non-cas pour la catégorie Categorie_age : -----------------16-19 ans 20-23 ans 24 ans et plus
+X-squared = 2.9465, df = 2, p-value = 0.2292
+[1] ------------ Tableau cas/non-cas pour la catégorie sexe_genre
+X-squared = 5.1348, df = 2, p-value = 0.07673
+[1] ------------ Tableau cas/non-cas pour la catégorie sport_categories : -----------------athletisme/sport endurance sport individuel sport artistique
+X-squared = 6.4809, df = 8, p-value = 0.5935
+[1] ------------ Tableau cas/non-cas pour la catégorie niveau_de_pratique : -----------------National Régional Autre International Inter-régional (inter-cantonal)
+X-squared = 6.4124, df = 5, p-value = 0.2681
+[1] ------------ Tableau cas/non-cas pour la catégorie
+X-squared = 0.088257, df = 1, p-value = 0.7664
+[1] ========================== maltraitance PSY : ===================================
+[1] ------------ Tableau cas/non-cas pour la catégorie Categorie_age : -----------------16-19 ans 20-23 ans 24 ans et plus
+X-squared = 0.30883, df = 2, p-value = 0.8569
+[1] ------------ Tableau cas/non-cas pour la catégorie sexe_genre
+X-squared = 8.2727, df = 2, p-value = 0.01598
+[1] ------------ Tableau cas/non-cas pour la catégorie sport_categories : -----------------athletisme/sport endurance sport individuel sport artistique
+X-squared = 5.9118, df = 8, p-value = 0.6571
+[1] ------------ Tableau cas/non-cas pour la catégorie niveau_de_pratique : -----------------National Régional Autre International Inter-régional (inter-cantonal)
+X-squared = 5.3343, df = 5, p-value = 0.3765
+[1] ------------ Tableau cas/non-cas pour la catégorie
+## X-squared = 3.1948, df = 1, p-value = 0.07387
+[1] ========================== maltraitance NEG : ===================================
+[1] ------------ Tableau cas/non-cas pour la catégorie Categorie_age : -----------------16-19 ans 20-23 ans 24 ans et plus
+X-squared = 0.47976, df = 2, p-value = 0.7867
+[1] ------------ Tableau cas/non-cas pour la catégorie sexe_genre
+X-squared = 4.9934, df = 2, p-value = 0.08236
+[1] ------------ Tableau cas/non-cas pour la catégorie sport_categories : -----------------athletisme/sport endurance sport individuel sport artistique
+X-squared = 12.368, df = 8, p-value = 0.1355
+[1] ------------ Tableau cas/non-cas pour la catégorie niveau_de_pratique : -----------------National Régional Autre International Inter-régional (inter-cantonal)
+X-squared = 8.1606, df = 5, p-value = 0.1476
+[1] ------------ Tableau cas/non-cas pour la catégorie
+X-squared = 0.3398, df = 1, p-value = 0.5599
+[1] ========================== maltraitance SEX : ===================================
+[1] ------------ Tableau cas/non-cas pour la catégorie Categorie_age : -----------------16-19 ans 20-23 ans 24 ans et plus
+X-squared = 0.51286, df = 2, p-value = 0.7738
+[1] ------------ Tableau cas/non-cas pour la catégorie sexe_genre : -----------------Une fille Un garçon Les catégories ne me correspondent pas
+X-squared = 27.673, df = 2, p-value = 9.791e-07
+[1] ------------ Tableau cas/non-cas pour la catégorie sport_categories : -----------------athletisme/sport endurance sport individuel sport artistique
+X-squared = 36.174, df = 8, p-value = 1.632e-05
+[1] ------------ Tableau cas/non-cas pour la catégorie niveau_de_pratique : -----------------National Régional Autre International Inter-régional (inter-cantonal)
+X-squared = 7.5362, df = 5, p-value = 0.1837
+[1] ------------ Tableau cas/non-cas pour la catégorie
+X-squared = 0.37455, df = 1, p-value = 0.5405
+
+
+
+-----------------------------------------------------------------------
+
+Salut Théo,
+
+j'ai
+- enlevé un petit problème du fichier matin (il n'y avait pas avant_12_ans)
+- analysé PSY, SEX, NEG
+- ajouté les tests khi-carré. L'hypothèse null est lignes et colonnes sont indépendantes, par exemple: la présence de maltraitance sexuelle ne dépend pas du sexe de la victime. L'analyse descriptive montre que les filles ont presque 3 fois de risque, et le test donne une valeur p < .001, alors ce résultat est extrêmement significatif. Mais avant 12 ans ne fait pas de différence significative, p > .05 .
+
+Trouver les bonnes variables de sélection était un peu de travail - pour la plupart elles finissent par _itemX mais pas toujours, les majuscules deviennent parfois des miniscules et les noms des variables ne sont pas toujours identiques.
+
+Mais dans le code R on peut bien contrôler, si tu pourrais m'aider un peu stp, ci-dessous.
+
+J'aimerai bien tout expliquer et écouter tes explications pour avancer.
+
+Bonne soirée, 
+Christoph
+
+-----------------------------------------------------------------------
+
+PSY j'ai trouvé
+
+"Mpsy_paire_ignoré_item1"
+"Mpsy_paire_investissement_item2"
+"Mpsy_paire_critique_perf_item3"
+"Mpsy_paire_apparence_item4"
+"Mpsy_paire_rumeur_item5"
+"Mpsy_paire_humiliation_item6"
+"Mpsy_paire_menace_exclusion_item7"
+"mpsy_paire_menace_physique_item8"
+"Mpsy_paire_encourager_humiliation_item9"
+"mpsy_paire_limite_contacte_item10"
+
+il n'y a pas de psy_paire item11 à 14 je crois, ça c'est plutôt du bossing
+
+
+"Mpsy_adulte_ignoer_item1"
+"mpsy_adulte_critique_invesstissement_item2"
+"mpsy_adulte_critique_perf_item2"
+"mpsy_adulte_critiquer_apparence_item3"
+"mpsy_adulte_rumeur_item4"
+"mpsy_adulte_ridiculiser_item5"
+"Mpsy_adulte_crier_dessus_item6"
+"mpsy_adulte_menace_expulsion_item7"
+"mpsy_adulte_menacephysi_item8"
+"mpsy_adulte_humiliation_autrui_item9"
+"mpsy_adulte_limitation_contact_item10"
+"mpsy_adulte_jouer_blesser_item11"
+"mpsy_adulte_entrainer_a_vomir_item12"
+"mpsy_adulte_dopage_item13"
+"mpsy_adulte_poids_ideal_item13"
+
+ce sont 14 items
+ 
+
+"Mpsy_parent_ignorer_item1"
+"mpsy_parent_invesstissment_item2"
+"mpsy_parent_critique_perf_item3"
+"Mpsy_parent_critique_corps_item4"
+"mpsy_parent_rumeur_item5"
+"mpsy_parent_ridiculisà_perf_item6"
+"mpsy_parent_crier_dessus_item7"
+"Mpsy_parent_menace_physique_item8"
+"Mpsy_parent_blesser_adversaire_item9"
+"Mpsy_parent_limite_contact_item10"
+"Mpsy_parent_blessé_soi_mm_item11"
+"mpsy_parent_vomir_item12"
+"mpsy_parent_dopage_item13"
+"Mpsy_parent_poids_ideal_item14"
+
+ce sont 14 items
+
+(dans Franzoni je compte quand même 15 items, pas 14)
+
+---------------------------------------------------------
+
+SEX j'ai trouvé
+
+"Msex_paire_remarque_apparence_item1"
+"Msex_paire_proposition_sex_item2"
+"msex_paire_exhibitionisme_item3"
+"msex_paire_photo_intime_item4"
+"msex_paire_attouchement_item5"
+"Msex_paire_embrasser_item6"
+"msex_paire_frotter_partie_intime_item7"
+"msex_paire_viol_penetration_item7"
+"Msex_paire_avec_sans_penetration_non_consentie_item8"
+
+"Msex_adulte_remarque_sex_item1"
+"msex_adulte_envoi_image_sex_item2"
+"Msex_adulte_exhibition_partie_intime_item2"
+"msex_adulte_photo_partie_intime_item3"
+"msex_adulte_force_a_toucher_item3"
+"msex_adulte_toucher_malalaise_item4"
+"msex_adulte_embrasser_bouche_item5"
+"Msex_adulte_frotter_partie_intime_item6"
+"Msex_adulte_tentation_relation_sex_item7"
+"Msex_adulte_forcer_relation_sex_avec_sans_pene_item8"
+
+- c'est tout ou il me manquent quelles variables? Dans Franzoni je trouve 11 items.
+
+(MPS et NEG j'ai tout trouvé)
+
+--------------------------------------------------------------------------
+
+Salut Théo,
+
+comme j'ai noté la dernier fois, mes Jamovi jusqu'ici ne donnent pas encore les prévalances, mais les caractéristiques des répondants. 
+
+Pour avoir les prévalences il faut bien réorganiser les données puis calculer. C'est trop compliqué pour Jamovi et beaucoup plus vite avec R. J'utilise le package jmv sur lequel Jamovi est basé, comme ça tu reconnais l'output.
+
+Pour comparaison j'ai répété l'analyse avec R, puis j'ai calculé la prévalence dans le PDF joint. Seulement MPS et âge jusqu'ici, mais si tout est compréhensible, je ferai vite
+- les autres variables sociodémographiques
+- PSY, SEX, NEG
+- les tests khi-carré pour les valeurs p
+
+C'est OK pur toi ?
+
+Bonne journée,
+Christoph
+
+--------------------------------------------------------------------------
+
+joint l'analyse maltraitance psy. Le filtre a 10+15+14 conditions, ce chiffre est comme dans l'article. Avec Jamovi 2.3.21.10 je contrôle le filtre en cliquant sur "Données", puis "Filtres".
+
+Pour genre je prends "sex_genre" et pour le sport je prends "sport_cleaned", est-ce OK?
+
+Je ferai une mise à jour de MPS ou ce 2 variables n'étaient pas bien inclues.
+
+J'ai 2 petites leçons a donner, du coup ça + sexe + négligence viendront bien plus tard le soir.
+
+---- On Fri, 28 Apr 2023 13:20:59 +0200 Théo Tonossi_ <theo.tonossi@unil.ch> wrote ---
+
+Merci beaucoup ! Oui c'est top 
+
+De : Christoph Pahl <christoph@statistiknachhilfe.ch>
+Envoyé : vendredi 28 avril 2023 13:04
+À : Théo Tonossi <theo.tonossi@unil.ch>
+Objet : RE: description MPS
+ 
+Merci, oui lentement je comprends mieux.
+
+Il m'a fallu encore ajouter les 3 parents (joint), maintenant j'ai un filtre de 9 conditions.
+
+J'enverrai les autres au fur et mesure et tu peux déjà écrire. 
+
+
+
+---- On Fri, 28 Apr 2023 12:27:32 +0200 Théo Tonossi_ <theo.tonossi@unil.ch> wrote ---
+
+Je te remets ma description aussi je suis sur que maintenant ça peut t'aider : 
+
+Important : Les questions de base sont des items et sont renommées ainsi dans le tableau excel. exemple : Mphysique_pair_item1. Ensuite viennent s'ajouter les questions d'interprétation (normalisation/faisant partie/necessaire à la perf) et de conséquence (triste/peur/humiliation etc) seulement si le répondant à répondu 1/2/3 (une fois/quelque fois/souvent) à l'item de base. Quant à elles, les questions d'interprétation et de conséquence sont répondues par : 0/1/2 (pas du tout/moyennement/tout à fait). 
+
+Donc une échelle de mesure différente
+
+De : Christoph Pahl <christoph@statistiknachhilfe.ch> ------------------------------------
+Envoyé : vendredi 28 avril 2023 12:17
+À : Théo Tonossi <theo.tonossi@unil.ch>
+Objet : description MPS
+ 
+Salut Théo,
+
+le problème est vraiment de comprendre le questionnaire, puis ça va vite.
+
+Pour les MPS j'ai filtré par 
+
+(Mphysique_pairs_item1==1)or(Mphysique_paire_item2==1)or(Mp ... lte_etouffe_item3==1)or(Mphysique_adulte_etouffe_item3==1)
+
+difficile de tout copier mais tu peux voir le filtre dans le Jamovi joint. Est-ce que ça me donne tous le victimes ou il manque des cas?
+
+Puis j'ai fait les statistiques.
+
+Si tout est bon je vais continuer avec les autres formes de maltraitance.
+
+Merci,
+Christoph
+
+--------------------------------------------------------------------------
+
+\\ Lohnt anderen thread rein ??
+
+--------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Salut Théo,
+
+j'envoi les statistiques descriptives *à une variable*. C'est en principe ce qui tu as fait, mais 
+- avec les données du nouvel Excel (dont une ligne enlevée, joint. Dans tous les logiciels statistiques on a une seule ligne pour les noms de variables, sinon ça donne des valeurs manquantes etc.) 
+- l'échelle statistique "age" adaptée: elle est ordinale
+- même "niveau_de_pratique" pourrait bien être traité comme ordinal, mais il nous faut clarifier le niveau "Autre"
+- les 3 dernières variables sont binaires (ou dichotoms: nominal à 2 valeurs). Jamovi les traite à l'interval: ainsi la moyenne donne déjà la fraction des réponses positives. Mais tous les chiffres suivants ( ... 75-ème percentile) sont moins pertinents
+
+Pour les statistiques *à 2 variables ou plus* (dont tu parles, pour répondre à ta question) ou des graphiques il y a trop de variantes et il faut se parler au préalable, puis je peux vite les faire. Probablement des simples tableaux croisé suffisent, mais je dois être sûr comment tu veux répondre aux questions. Ta mise à jour des questions de recherche explique plus, mais je ne comprends pas tout, désolé.
+
+C'est possible le samedi à 11:00 (ou 17:00 ou encore plus tard)? Je n'aime plus zoom depuis qu'il faut se reconnecter toutes les 25 min, tu as skype ou un compte google pour leur meet?
+
+À bientôt,
+Christoph
+
+--------------------------------------------------------------------------
+
+Salut Christoph, 
+
+Merci pour les informations, est-ce que tu penses pouvoir m'envoyer les analyses descriptives pour répondre à la première question d'ici demain pour que je puisse commencer à écrire (je devrais rendre un premier jet des résultats dans une semaine). Pour les questions plus précises concernant les auteurs et l'expérience, si tu veux on pourra faire un zoom ou on peut partager l'écran. Ainsi je pourrai te guider et répondre à tes questions s'il y a en. 
+
+Encore un grand merci 
+Théo
+
+De : Christoph Pahl <christoph@statistiknachhilfe.ch> Envoyé : mercredi 26 avril 2023 Merci Théo,
+
+je vais étudier tes fichiers. Ce matin j'ai fait un peu des statistiques descriptives pour l'échantillon (j'ai changé un peu l'age et le sport mais je vais comparer avec ton nouveau Excel).
+
+Pour la facturation: Tu reçois une facture par mois. C'est un peu tard pour tout bien suivre, alors moi j'envoie toujours un petit relevé à la fin de semaine. Et dès que j'ai fini une tâche que je comptabilise, je te la montre et on discute pour bien savoir qu'est-ce que je travaille et qu'est-ce que tu paies.
+
+À bientôt,
+Christoph
+
+---- On Wed, 26 Apr 2023 17:06:07 +0200 Théo Tonossi <theo.tonossi@unil.ch> wrote ---
+
+Salut Christophe, 
+
+Voici donc plusieurs éléments qui vont t'aider pour les analyses statistiques. J'ai remis mes questions de recherches au propre et détaillées ! Elles sont dans le dossier "question de recherche". Je te transmets aussi le dossier excel avec les catégories d'âge et de sport correctes (new_polished_itemname). Je te transmets aussi mon jamovi car j'avais déjà fait quelque éléments (les moyennes par exemple). Cependant les catégories d'âge et de sport ne sont pas correct dans le jamovi (elles le sont dans l'excel).
+
+Important : Les questions de base sont des items et sont renommées ainsi dans le tableau excel. exemple : Mphysique_pair_item1. Ensuite viennent s'ajouter les questions d'interprétation (normalisation/faisant partie/necessaire à la perf) et de conséquence (triste/peur/humiliation etc) seulement si le répondant à répondu 1/2/3 (une fois/quelque fois/souvent) à l'item de base. Quant à elles, les questions d'interprétation et de conséquence sont répondues par : 0/1/2 (pas du tout/moyennement/tout à fait). 
+
+Je reste à ta disposition si tu as des questions. Effectivement, le questionnaire peut être difficile à comprendre dans sa structure (cf. photo bleu ciel). 
+
+Je te mets donc aussi le document brut excel (22janv2023-QEMS) pour que tu puisses voir comment les variables sont codées : exemple jamais = 0 / une fois = 1/ etc. 
+
+Merci pour ton aide et à bientôt
+
+Théo 
+
+--------------------------------------------------------------------------
+
+26.4. 
+ - nettoyé xlsx un petit peu ("danse ... et ..." unique)
+ - ajusté echelle âge -> ordinal
+ - statistiques descriptives: 
+   . âge     plus que 30 -> 35 
+   . canton  manquantes? enlevé (cantonal), (inter-cantonal)
+   . sexe
+   . niveau
+   . sport principal ("et aussi..." n'est pas principal?)
+
+--------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Bonjour Christophe, 
+
+Merci pour ton message. 
+
+Je vais essayer d'être le plus clair possible. Je travail donc sur les 4 formes de maltraitances dans le sport (physique/sexuelle/psychologique et négligence). Un questionnaire a été établi l'année passée pour calculé l'expérience et mettre en avant de manière précise les auteurs (adulte) de ces maltraitances. 
+
+Ces deux nouveautés viennent combler les lacunes des questionnaires déjà établis jusqu'à aujourd'hui. Le questionnaire se présente donc ainsi (cf photo bleu ciel). 
+
+Premièrement, la question de la maltraitance physique va être étudiée à l'aide de 3 items pour chaque sous-echelle (pair/adulte/parent) (donc 9 en tout). Après chaque catégorie (cf. photo ciel bleu), si le répondant répond positivement à une maltraitance, alors des questions vont être ajoutées pour renseigner sur l'expérience (l'expérience englobe l'interprétation et les conséquences) : (interprétation 3 questions (normalisation/faisant partie du sport/ necessaire à la perf) et conséquence 10 question (triste/image du corps etc)). De plus, pour la sous-echelle adulte, si une réponse est positive, alors une question s'ajoute pour connaitre l'auteur (coach, medecin etc) de celle-ci. Ensuite, on passe à la catégorie suivante avec d'autre item et ces questions sous-jacentes qui s'ajoutent.  
+
+Je te mets en copie mes questions de recherche ( qui ne sont pas encore assez précises, à discuter avec toi ). Je te mets aussi l'avancée de mon travail qui est rédigé jusqu'à la méthodologie mais qui doit aussi être retravaillé. Je te mets aussi la structure du questionnaire pour que tu puisses comprendre le sens des analyses à faire, les items sont naturellement dans l'ordre des différentes maltraitances selon les catégories et les auteurs (pairs/adulte/parent). 
+
+Je voulais donc savoir si tu avais une idée de comment je pourrais procéder avec ces analyses et si tu avais une idée de comment mettre en place des questions de recherche plus précises et qui font du sens. Je t'ai aussi mis les tableaux qui me semblaient être bons pour répondre à mes questions de recherche (ma professeur ne les a pas trouvé adéquats).
+
+Je te mets aussi le travail de master de Franzoni en copie (construction du questionnaire). Dans les annexes se trouve le questionnaire. 
+
+
+Redis moi si demain tu ne comprends pas quelque chose ou si tu as des questions. je serai au taquet pour te répondre sur mon téléphone : 0788480548
+
+Une bonne fin de dimanche et à mardi 11h ! 
+
+Théo Tonossi
+
+De : Christoph Pahl <christoph@statistiknachhilfe.ch> ----------------------------------
+Envoyé : samedi 22 avril 2023 16:21
+À : Théo Tonossi <theo.tonossi@unil.ch>
+Objet : Statistiques Travail de Master
+ 
+Bonjour Théo,
+
+merci pour ta demande à Statistiknachhilfe.ch . Je suis docteur en physique et j'aide les étudiants de toutes matières en statistique et analyse de données.
+
+J'ai jeté un œil à ton fichier Excel. S'il te plaît, pourrais-tu m'envoyer des documents pour comprendre ton travail: Une explication des données, tes questions de recherche, les méthodes prévues, ton texte si déjà existant.  J'aimerais bien étudier ça le lundi, et avoir un petit appel le mardi pour tout clarifier. Est-ce que ça te va, peut-être 11:00 ?
+
+À bientôt,
+Christoph

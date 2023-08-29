@@ -1,0 +1,855 @@
+---
+title: "Théo3.Rmd"
+author: "Christoph"
+date: "2023-05-08...06-07..."
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    keep_tex: yes
+  word_document:
+    toc: no
+    toc_depth: '3' 
+geometry: margin=0.5cm
+---
+
+
+# Libraries
+
+```{r, comment=FALSE, warning=FALSE, message=FALSE}
+library(xlsx)                                         # Fichiers Excel
+library(jmv)                                          # Analyses Jamovi
+library(dplyr)                                        # filter etc.
+library(purrr)                                        # add2
+```
+
+
+# Données
+
+## Lire 
+
+```{r}
+setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
+
+#TOUT <- read.xlsx("QEMS_all-corr.xlsx", sheetName ="sheet1")  # java.lang.OutOfMemoryError: GC overhead limit exceeded
+load("QEMS_all.RData")
+#View(dataset)
+
+traduction <- read.xlsx("new_polished_itemname:lignes1,2.xlsx", sheetName ="sheet1")
+#View(traduction)
+
+#TOUT <- read.xlsx("new_polished_itemname-CHP.xlsx", sheetName ="Sheet1")[1:506]  # colonnes vides à la fin
+```
+
+traduire noms des colonnes
+
+```{r}
+TOUT <- data.frame(dataset)  # deep copy
+
+for (i in 1:length(TOUT)) {
+  for (j in 1:length(traduction)) {
+    name <- gsub(" ",".",colnames(TOUT)[i])
+    name <- gsub(",",".",name)
+    name <- gsub("-",".",name)
+    if ( name ==  colnames(traduction)[j]) {
+      # importé differément, donc " " est devenu "." dans traduction !
+      
+      #print(paste("ancien dataset",i,"traduction",j,":",colnames(TOUT)[i],"->",traduction[1,j]))
+      colnames(TOUT)[i] <- traduction[1,j]
+    }
+  }
+}
+```
+
+
+## Afficher
+
+(sur écran mais pas dans le PDF ou word)
+
+```{r}
+#View(TOUT)
+#colnames(TOUT)   # Noms des Variables
+```
+
+
+# MPS
+
+- paire, adulte, parent : 1 catégorie, 3 items, 3 interpretations, 10 conséquences = OK                           
+
+```{r}
+TOUT$MPS <- TOUT$Mphysique_pairs_item1!="Jamais"                 | TOUT$Mphysique_paire_item2!="Jamais"         | 
+                TOUT$Mphysique_paire_item3!="Jamais"             | 
+  
+            TOUT$Mphysique_adulte_secoue_agrippe_item1!="Jamais" | TOUT$Mphysique_adulte_frappe_item2!="Jamais" | 
+                TOUT$Mphysique_adulte_etouffe_item3!="Jamais"    |
+  
+            TOUT$Mphysique_parent_secoue!="Jamais"               | TOUT$Mphysique_parent_frappe!="Jamais"       | 
+                TOUT$Mphysique_parent_ettoufe!="Jamais"              # NA reste NA, c'est bon!
+
+TOUT$MPS <- if_else(TOUT$MPS, 1, 0)
+
+MPS <- filter(TOUT, MPS==1)
+```
+
+
+## 3.1.1 Interpretation MPS
+
+```{r}
+# recoder... 
+
+# ... par exemple compter tout sauf "Pas du tout": 
+#MPS$Mphysique_paire_normalisation  <- MPS$Mphysique_paire_normalisation!="Pas du tout"  
+#MPS$Mphysique_paire_necessite_perf <- MPS$Mphysique_paire_necessite_perf!="Pas du tout"
+#MPS$Mphysique_paire_faire_partie   <- MPS$Mphysique_paire_faire_partie!="Pas du tout"
+
+descriptives(MPS, c("Mphysique_paire_normalisation", 
+                    "Mphysique_paire_necessite_perf",
+                    "Mphysique_paire_faire_partie"),
+             freq=TRUE)
+
+MPS$Mphysique_adulte_auteur_normlisation <- as.numeric(MPS$Mphysique_adulte_auteur_normlisation)
+descriptives(MPS, c("Mphysique_adulte_auteur_normlisation", 
+                    "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...1",
+                    "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...2"), 
+            freq=TRUE)
+```
+
+```
+# à partir d'ici tout est NA, même pas la peine de convertir car les tableaux seront vides 
+#                    "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...1",
+#                    "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...2"), 
+#
+#descriptives(MPS, c("Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...3", 
+#                    "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...4",
+#                    "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...5" ),
+```
+
+
+## Qu. 3.2.1 Conséquences de la MPS
+
+```{r}
+descriptives(MPS, c("Mphysique_paire_demotivation"  , "Mphysique_paire_moins_performé",                      
+                    "Mphysique_paire_perteconfiance", "Mphysique_paire_image_neg"     ,
+                    "Mphysique_paire_peur"          , "Mphysique_paire_colere"        ,                      
+                    "Mphysique_paire_triste"        , "Mphysique_paire_stress"        ,   
+                    "Mphysique_paire_ta_faute"      , "Mphysique_paire_humiliation"    ),
+             freq=TRUE)
+
+descriptives(MPS, c("Mphysique_adute_domotivation"  , "Mphysique_adulte_performance", 
+                    "Mphysique_adulte_confiance"    , "Mphysique_adulte_imagecorps" ,
+                    "Mphysique_adulte_peur"         , "Mphysique_adulte_colere"     ,
+                    "Mphysique_adulte_triste"       , "Mphysique_adulte_stress"     ,
+                    "Mphysique_adulte_responsabilite", "Mphysique_adulte_humiliation"  ),
+             freq=TRUE)
+
+MPS$Mphysique_parent_consideration <- as.numeric(MPS$Mphysique_parent_consideration)      # Il n'y a aucune entrée, correct??
+descriptives(MPS, c("Mphysique_parent_consideration", "Mphysique_parent_suite_a",                        
+                    "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..1", 
+                      "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..2",
+                    "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..3",        
+                      "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..4",
+                    "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..5",
+                      "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..6", 
+                    "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..7",
+                      "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..8"),
+             freq=TRUE)
+```
+
+
+# NEG 
+
+et adultes et parents 3 catégories (Franzoni p. 95) avec 5 items au total
+
+```{r}
+TOUT$NEG <- TOUT$Neg_adulte_entrainer_blesse_item1!="Jamais" | TOUT$neg_adulte_dopage_soutenu_item2!="Jamais" |
+            TOUT$neg_adulte_poids_ideal_item3     !="Jamais" | TOUT$Neg_adulte_louper_ecole_item4!="Jamais"   |
+            TOUT$Neg_adulte_laisser_humilier_item5!="Jamais" |
+
+            TOUT$Neg_parent_laisser_entrainer_blesser_item1!="Jamais" | TOUT$Neg_parent_dopage_item2!="Jamais" |
+            TOUT$Neg_parent_poids_ideal_item3!="Jamais"               | TOUT$Neg_parent_arret_ecole_item4!="Jamais" |
+            TOUT$neg_parent_laisser_humilier_autrui_item5!="Jamais"
+
+TOUT$NEG <- if_else(TOUT$NEG, 1, 0)
+
+NEG <- filter(TOUT, NEG==1)
+```
+
+
+## Interpretation
+
+--------------- "additionner" les catégories: -------------
+`
+```{r}
+add1 <- function(x, y){
+  if(is.na(x)){return(y)}
+  return(x)                 # weder x noch y NA: abfangen!
+}
+#add1(1,NA)
+#add1(NA,1)
+
+add2 <- function(x_, y_){
+  return( unlist(map2(x_,y_,add1)) )
+}
+#add2( c(1,2,NA), c(NA,3,4) )
+
+add3 <- function(x_, y_, z_){
+  return( add2(add2(x_,y_),z_) )
+}
+#add3( c(1,2,NA), c(NA,3,4), c(0,NA,5) )
+
+add4 <- function(w_, x_, y_, z_){
+  return( add2(add3(w_,x_,y_),z_) )
+}
+#add4( c(NA, 2,3,4), c(10,NA,30,40), c(100,200,NA,400), c(1000,2000,3000,NA) )
+
+add5 <- function(x1_, x2_, x3_, x4_, x5_){
+  return( add2(add3(x1_, x2_, x3_),add2(x4_, x5_)) )
+}
+
+add6 <- function(x1_, x2_, x3_, x4_, x5_, x6_){
+  return( add2(add3(x1_, x2_, x3_),add3(x4_, x5_, x6_)) )
+}
+#add6( c(NA,2,3,4,5,6), c(10,NA,30,40,50,60), c(100,200,NA,400,500,600), c(1000,2000,3000,NA,5000,6000),c(10000,20000,30000,40000,NA,60000),c(100000,200000,300000,400000,500000,NA))
+
+add7 <- function(x1_, x2_, x3_, x4_, x5_, x6_, x7_){
+  return( add2(add4(x1_, x2_, x3_, x4_),add3(x5_, x6_, x7_)) )
+}
+#add7( c(NA,2,3,4,5,6,7), c(10,NA,30,40,50,60,70), c(100,200,NA,400,500,600,700), c(1000,2000,3000,NA,5000,6000,7000),c(10000,20000,30000,40000,NA,60000,70000),c(100000,200000,300000,400000,500000,NA,700000),c(1000000,2000000,3000000,4000000,5000000,6000000,NA))
+
+```
+
+# je vais mieux programmer l'addition: 
+add <- function(df) {
+  vec <- NULL
+  View(df)
+  N <- nrow(df)
+  print(N)
+  for (i in 1:10){  # N!!
+    #print(df[i,])
+    print()
+    vec[i] <- as.vector(na.omit(df[i,]))[1]   # premier element != NA
+  }
+  return( vec)
+}
+#    na.omit(select(df, colonnes)[ligne,])[1]
+#    max(select(df, colonnes)[ligne,])
+
+# il y a des IDs avec entrées sur plusieurs catégories!
+# Théo: ne devrait pas exister, mais prendre la moins forte: min !
+
+```{r}
+NEG$neg_adult_nec  <- add3(NEG$Neg_adulte_necessaire_perf, NEG$Neg_adulte_necessaire_perf_2, NEG$Neg_adulte_necessaire_perf_3)
+NEG$neg_adult_part <- add3(NEG$Neg_adulte_faisant_partie,NEG$neg_adulte_faisant_partie, NEG$Neg_adulte_faisant_partie_perf)
+NEG$neg_adult_norm <- add3(NEG$Neg_adulte_normalite, NEG$neg_adulte_normalite, NEG$Neg_adulte_normalite_2)
+
+descriptives(NEG, c("neg_adult_norm", "neg_adult_nec", "neg_adult_part"),freq=TRUE)  # Hier war schon Fehler !
+
+#NEG$neg_adult_norm <- add(select(NEG, Neg_adulte_normalite, neg_adulte_normalite, Neg_adulte_normalite_2))
+#descriptives(NEG, c("neg_adult_norm"),freq=TRUE)
+```
+
+(avec le temps je vais chercher d'où il viennent ces niveaux 0 2 1, mais ils ne dérangent pas)
+
+## Conséquences adultes
+
+```{r}
+NEG$NEG_adulte_demotivation <- add3(
+  NEG$Neg_adulte_demotiver,NEG$Neg_adulte_demotive,NEG$Neg_adulte_demotive_2)
+NEG$NEG_adulte_perf <- add3(
+  NEG$Neg_adulte_moins_perf,NEG$Neg_adulte_moins_perf_2,NEG$Neg_adulte_moins_perf_3)
+NEG$NEG_adulte_confiance <- add3(
+  NEG$Neg_adulte_perdu_confiance,NEG$Neg_adulte_perdu_confiance_2,NEG$Neg_adulte_perdu_confiance_3)
+NEG$NEG_adulte_image <- add3(
+  NEG$Neg_adulte_image_neg_corps,NEG$Neg_adulte_image_coprs,NEG$Neg_adulte_image_corps)
+                             
+NEG$NEG_adulte_peur <- add3(NEG$Neg_adulte_peur,NEG$Neg_Adulte_peur,NEG$Neg_adulte_peur_2)
+
+NEG$NEG_adulte_colere <- add3(NEG$Neg_adulte_colere,NEG$Neg_adulte_colere_2,NEG$Neg_adulte_colere_3)
+
+NEG$NEG_adulte_triste <- add3(NEG$Neg_adulte_triste,NEG$Neg_adulte_triste_2,NEG$Neg_adulte_triste_3)
+
+NEG$NEG_adulte_stress <- add3(NEG$Neg_adulte_stress,NEG$Neg_adulte_stress_2,NEG$Neg_adulte_stress_3)
+
+NEG$NEG_adulte_faute <- add3(
+  NEG$Neg_adulte_ta_faute,NEG$Neg_adulte_ta_faute_2,NEG$Neg_adulte_ta_faute_3)
+
+NEG$NEG_adulte_humiliation <- add3(
+  NEG$Neg_adulte_humiliation,NEG$Neg_adulte_humiliation_2,NEG$Neg_adulte_humiliation_3)
+```
+
+```{r}
+descriptives(NEG, c("NEG_adulte_demotivation", 
+                    "NEG_adulte_perf", 
+                    "NEG_adulte_confiance", 
+                    "NEG_adulte_image", 
+                    "NEG_adulte_peur", 
+                    "NEG_adulte_colere", 
+                    "NEG_adulte_triste", 
+                    "NEG_adulte_stress", 
+                    "NEG_adulte_faute", 
+                    "Neg_adulte_humiliation"),freq=TRUE) 
+```
+
+
+## Parent
+
+```{r}
+NEG$neg_parent_norm <- add3(NEG$Neg_parent_normalite      , NEG$neg_parent_normalite        , 
+                            NEG$Tu.as.considéré.cette.négligence.émotionnelle.comme....normale..1)
+NEG$neg_parent_nec  <- add3(NEG$neg_parent_necessaire_perf, NEG$Neg_parent_necessaire_perf, NEG$Neg_adulte_necessaire)
+
+NEG$neg_parent_part <- add3(NEG$neg_parent_faisant_partie , NEG$neg_parent_faisant_partie_2, NEG$neg_parent_faisant_partie_3)
+
+descriptives(NEG, c("neg_parent_norm", "neg_parent_nec", "neg_parent_part"),freq=TRUE)
+```
+
+
+## Conséquences parent
+
+```{r}
+NEG$NEG_parent_demotiv <- add3(
+  NEG$neg_parent_demotive,NEG$neg_parent_demotive_2,NEG$Neg_parent_demotive)
+                                    
+NEG$NEG_parent_perf <- add3(
+  NEG$neg_parent_moins_perf,
+  NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.1,
+  NEG$neg_adulte_moins_perf)  # Théo: ce n'est pas adulte mais parent, OK , aussi Neg_adulte_necessaire!!!
+ # Argumente gibts nich, dann kein Resultat !!
+  
+NEG$NEG_parent_conf <- add3(
+  NEG$Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..1,
+  NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.1,
+  NEG$Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..1)
+  
+NEG$NEG_parent_image <- add3(
+  NEG$Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..2,
+  NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.2,
+  NEG$Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..2)
+  
+NEG$NEG_parent_peur <- add3(
+  NEG$Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..3,
+  NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.3,
+  NEG$Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..3)
+  
+NEG$NEG_parent_colere <- add3(
+  NEG$Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..4,
+  NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.4,
+  NEG$Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..4)
+  
+NEG$NEG_parent_triste <- add3(
+  NEG$Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..5,
+  NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.5,
+  NEG$Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..5)
+  
+NEG$NEG_parent_stress <- add3(
+  NEG$Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..6,
+  NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.6,
+  NEG$Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..6)
+  
+NEG$NEG_parent_faute <- add3(
+  NEG$Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..7,
+  NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.7,
+  NEG$Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..7)
+  
+NEG$NEG_parent_humil <- add3(
+  NEG$Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..8,
+  NEG$Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.8,
+  NEG$Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..8)
+
+descriptives(NEG, c("NEG_parent_demotiv", 
+                    "NEG_parent_perf", 
+                #    NEG_parent_perf
+                    "NEG_parent_conf", 
+                    "NEG_parent_image", 
+                    "NEG_parent_peur", 
+                    "NEG_parent_colere", 
+                    "NEG_parent_triste", 
+                    "NEG_parent_stress", 
+                    "NEG_parent_faute", 
+                    "NEG_parent_humil"),freq=TRUE)
+```
+
+
+Les Analyses decriptives sont toutes vides auf le NEG_parent_demotiv. J'ai contrôlé dans mes données que c'est correct.
+
+
+# SEX
+
+- et paires et adultes 7 catégories, la première avec 2 items (Franzoni p. 92) 
+- paires 9 items
+- adultes 8 items
+
+```{r}
+TOUT$SEX <- TOUT$Msex_paire_remarque_apparence_item1!="Jamais"    | TOUT$Msex_paire_proposition_sex_item2!="Jamais"  |
+            TOUT$msex_paire_exhibitionisme_item3!="Jamais"        | TOUT$msex_paire_photo_intime_item4!="Jamais"     |
+            TOUT$msex_paire_attouchement_item5!="Jamais"          | TOUT$Msex_paire_embrasser_item6!="Jamais"        |
+            TOUT$msex_paire_frotter_partie_intime_item7!="Jamais" | TOUT$msex_paire_viol_penetration_item7!="Jamais" |
+            TOUT$Msex_paire_avec_sans_penetration_non_consentie_item8!="Jamais"    |
+
+            TOUT$Msex_adulte_remarque_sex_item1!="Jamais"             | TOUT$msex_adulte_envoi_image_sex_item2!="Jamais"       |
+            TOUT$Msex_adulte_exhibition_partie_intime_item2!="Jamais" | TOUT$msex_adulte_photo_partie_intime_item3!="Jamais"   |
+            TOUT["msex_adulte_force-a_toucher_item3"]!="Jamais"       | TOUT$msex_adulte_toucher_malalaise_item4!="Jamais"     |
+            TOUT$msex_adulte_embrasser_bouche_item5!="Jamais"         | TOUT$Msex_adulte_frotter_partie_intime_item6!="Jamais" |
+            TOUT$Msex_adulte_tentation_relation_sex_item7!="Jamais"   | TOUT$Msex_adulte_forcer_relation_sex_avec_sans_pene_item8!="Jamais" 
+  
+TOUT$SEX <- if_else(TOUT$SEX, 1, 0)
+
+SEX <- filter(TOUT, SEX==1)
+```
+
+
+## Interpretations
+
+```{r}
+SEX$sex_paire_norm <- add7(SEX$msex_paire_normalite,
+SEX$msex_paire_consideration_normale,
+SEX$msex_paire_normalite_2,
+SEX$Msex_paire_normalite,
+SEX$Msex_paire_normalité,
+SEX$msex_paire_normalite_3,
+SEX$msex_paire_normalite_4)  # 7
+
+SEX$sex_adulte_norm <- add7(SEX$Msex_adulte_normalite,
+SEX$msex_adulte_normalite,
+SEX$Msex_adulte_normalité,
+SEX$msex_adulte_normalite_2,
+SEX$Msex_adulte_normalite_2,
+SEX$msex_adulte_normalite_7,
+SEX$msex_adulte_normalite_4)  # 7
+
+SEX$sex_paire_nec <- add6(SEX$Msex_paire_necesstite,
+SEX$msex_paire_necessaire_perf,
+SEX$msex_paire_neccesite_perf,
+SEX$msex_paire_necessaire_perf_2,
+SEX$msex_paire_necessaire_perf_3,
+SEX$msex_paire_necessaire_perf_4)
+
+SEX$sex_paire_partie <- add7(SEX$msex_paire_partie_compet,  
+SEX$Msex_paire_fait_partie_compet,        
+SEX$msex_paire_consideration_partie_perf,
+SEX$Msex_paire_partie_entrainement,    
+SEX$Msex_paire_faisant_partie_entrainement,                    
+SEX$msex_paire_faisant_partie,                                 
+SEX$Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..1)  # 7
+
+SEX$sex_adulte_nec <- add6(SEX$msex_adulte_necessaire_perf,
+SEX$msex_adulte_necessaire_perf_5,
+SEX$msex_adulte_necessaire_perf_3,
+SEX$msex_adulte_necessaire_perf_7,
+#SEX["msex_adulte_necessaire_perf_5 (2)"],   des problèmes que je dois encore resoudre, puis add7() !
+SEX$msex_adulte_necessaire_perf_8,
+SEX$msex_adulte_necessaire_perf_9 )   # 7
+
+SEX$sex_adulte_partie <- add7(SEX$Msex_adulte_fsisant_partie,             # 398
+SEX$Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..2,    # 419
+SEX$Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..3,    # 440
+SEX$Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..4,    # 461
+SEX$msex_adulte_faisant_partie,                                           # 484
+SEX$Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..5,    # 505
+SEX$Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..6) # 7  526
+
+descriptives(SEX, c("sex_paire_norm" , "sex_paire_nec", "sex_paire_partie")  ,freq=TRUE)
+descriptives(SEX, c("sex_adulte_norm", "sex_adulte_nec", "sex_adulte_partie"),freq=TRUE)
+```
+
+
+## Conséquences Paires
+
+```{r}
+# "Msex_paire_consideration_demotive"  # ici ?? plutôt non, y a toujours 10 cons.
+
+SEX$sex_paire_demotivation <- add7(SEX$Msex_paire_demotive,
+SEX$msex_paire_demotive,
+SEX$Msex_paire_consideration_demotive,
+SEX$Msex_paire_demotive_2,
+SEX$Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.1,
+SEX$Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.2,
+SEX$Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.3)
+
+SEX$sex_paire_perf <- add7(SEX$Msex_paire_moins_perf,
+SEX$msex_paire_moins_perf,
+SEX$msex_paire_moins_perf_2,
+SEX$msex_paire_moins_perf_3,
+SEX$msex_paire_moins_perf_4,
+SEX$msex_paire_moins_perf_5,
+SEX$msex_paire_moins_perf_6)
+
+SEX$sex_paire_confiance <- add7(SEX$Msex_paire_perdu_confiance,
+SEX$msex_paire_perdu_confiance,
+SEX$msex_paire_perdu_confiance_2,
+SEX$msex_paire_perdu_confiance_3,
+SEX$Msex_paire_perte_confiance,
+SEX$Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..1,
+SEX$Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..2)
+
+SEX$sex_paire_image <- add7(SEX$Msex_paire_image_neg_corps,
+SEX$Msex_paire_image_corps,
+SEX$Msex_paire_image_corps_2,
+SEX$msex_paire_image_neg,
+SEX$Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.1,
+SEX$Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.2,
+SEX$Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.3)
+
+SEX$sex_paire_peur <- add7(SEX$msex_paire_peur,
+SEX$Msex_paire_peur_2,
+SEX$msex_paire_peur_3,
+SEX$msex_paire_peur_4,
+SEX$Msex_paire_peur,
+SEX$msex_paire_peur_6,
+SEX$msex_paire_peur_7)   # ici il suit triste_6, pas colère!
+
+SEX$sex_paire_colere <- add6(SEX$Msex_paire_colere,
+SEX$msex_paire_colere,
+SEX$msex_paire_colere_3,
+SEX$msex_paire_peur_5,   
+# suivait à peur alors je crois que c'était colère!?
+SEX$msex_paire_colere_4,
+SEX$msex_paire_colere_5)
+
+SEX$sex_paire_triste <- add6(SEX$msex_paire_triste,
+SEX$msex_paire_triste_2,
+#SEX["msex:_paire_triste"],  DEBUG!!
+SEX$msex_paire_triste_3,
+SEX$msex_paire_triste_4,
+SEX$msex_paire_triste_5,
+SEX$msex_paire_triste_6)
+
+SEX$sex_paire_stress <- add7(SEX$msex_paire_stress,
+SEX$msex_paire_stress_2,
+SEX$msex_paire_stress_3,
+SEX$msex_paire_stress_4,  
+SEX$msex_paire_stress_5,
+SEX$msex_paire_stress_6,
+SEX$msex_paire_stress_7)
+
+SEX$sex_paire_faute <- add7(SEX$Msex_paire_ta_faute,
+SEX$msex_paire_ta_faute,
+SEX$msex_paire_ta_faute_3,
+SEX$msex_paire_ta_faute_4,
+SEX$Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.1,
+SEX$Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.2,
+SEX$Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.3)
+
+SEX$sex_paire_humiliation <- add7(SEX$Msex_paire_humiliation,    # 10  303        OK
+SEX$msex_paire_humiliation,    # 10  317
+SEX$msex_paire_humiliation_2,  # 10  330
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..1,  # 10 344
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..2,  # 10 359
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..3,  # 10  373
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..4)  # 10  386
+```
+
+```{r}
+descriptives(SEX, c("sex_paire_perf", "sex_paire_demotivation", "sex_paire_confiance", "sex_paire_image", "sex_paire_peur", "sex_paire_colere", "sex_paire_triste", "sex_paire_stress", "sex_paire_faute", "sex_paire_humiliation"),freq=TRUE)
+```
+
+## Interprétation Adultes
+
+```{r}
+descriptives(SEX, c("sex_adulte_norm", "sex_adulte_nec", "sex_adulte_partie"),freq=TRUE)
+```
+
+## Conséquences Adultes
+
+```{r}
+SEX$sex_adulte_demotivation <- add7(SEX$msex_adulte_demotive,
+SEX$Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.4,
+SEX$Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.5,
+SEX$Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.6,
+SEX$Msex_adulte_demotive,
+SEX$Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.7,
+SEX$Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.8)
+
+SEX$sex_adulte_perf <- add7(SEX$Msex_adulte_moins_perf,
+SEX$msex_adulte_moins_perf,
+SEX$msex_adulte_moins_perf_7,
+SEX$msex_adulte_moins_perf_8,
+SEX$msex_adulte_moins_perf_4,
+SEX$msex_adulte_moins_perf_5,
+SEX$msex_adulte_moins_perf_10)
+
+SEX$sex_adulte_confiance <- add7(SEX$msex_adulte_perdu_confiance,
+SEX$Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..3,
+SEX$Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..4,
+SEX$Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..5,
+SEX$Msex_adulte_perdu_confiance,
+SEX$Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..6,
+SEX$Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..7)
+
+SEX$sex_adulte_image <- add7(SEX$msex_adulte_image_corps,
+SEX$Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.4,
+SEX$Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.5,
+SEX$Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.6,
+SEX$Msex_adulte_image_neg_corps,
+SEX$Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.7,
+SEX$Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.8)
+
+SEX$sex_adulte_peur <- add7(SEX$msex_adulte_peur,
+SEX$msex_adulte_peur_6,
+SEX$msex_adulte_peur_3,
+SEX$Msex_adulte_peur,
+SEX$msex_adulte_peur_4,
+SEX$msex_adulte_peur_9,
+SEX$msex_adulte_peur_10)
+
+SEX$sex_adulte_colere <- add7(SEX$msex_adulte_colere,
+SEX$msex_adulte_colere_6,
+SEX$msex_adulte_colere_7,
+SEX$msex_adulte_colere_4,
+SEX$msex_adulte_colere_5,
+SEX$Msex_adulte_colere,
+SEX$msex_adulte_colere_10)
+
+SEX$sex_adulte_triste <- add7(SEX$msex_adulte_triste,
+SEX$Msex_adulte_triste,
+SEX$msex_adulte_triste_2,
+SEX$msex_adulte_triste_8,
+SEX$msex_adulte_triste_4,
+SEX$msex_adulte_triste_9,
+SEX$msex_adulte_triste_10)
+
+SEX$sex_adulte_stress <- add6(SEX$msex_adulte_stress,
+#SEX["msex_adulte_stress (2)"], DEBUG !!
+SEX$msex_adulte_stress_3,
+SEX$msex_adulte_stress_8,
+SEX$msex_adulte_stress_5,
+SEX$msex_adulte_stress_9,
+SEX$msex_adulte_stress_10)
+
+SEX$sex_adulte_faute <- add7(SEX$msex_adulte_ta_faute,
+SEX$Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.4,
+SEX$Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.5,
+SEX$Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.6,
+SEX$msex_adulte_ta_faute_2,
+SEX$Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.7,
+SEX$Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.8)
+
+SEX$sex_adulte_humiliation <- add7(SEX$msex_adulte_humiliation,    # 10 408
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..5,   # 10 429
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..6,  # 10  450      
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..7,  # 10  471
+SEX$Msex_adulte_humiliation,   # 10  494
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..8,   # 10  515
+SEX$Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..9)   # 10  536
+```
+
+```{r}
+descriptives(SEX, c("sex_adulte_perf", "sex_adulte_demotivation", "sex_adulte_confiance", "sex_adulte_image", "sex_adulte_peur", "sex_adulte_colere", "sex_adulte_triste", "sex_adulte_stress", "sex_adulte_faute", "sex_adulte_humiliation"),freq=TRUE)
+```
+
+----------------------------------------------------------------------------------------------------
+
+# PSY 
+
+- parent: 4 catégories (14 items, Franzoni p. 91f) 
+
+catégorie 1.: 1 item, 0 interpretation, 10 conséquences <-?? EST-CE CORRECT ?? je n'arrive pas bien à comparer avec Franzoni 
+
+
+```{r}
+TOUT$PSY <- TOUT$Mpsy_paire_ignoré_item1!="Jamais" | TOUT$Mpsy_paire_investissement_item2!="Jamais" |
+            TOUT$Mpsy_paire_critique_perf_item3!="Jamais" | TOUT$Mpsy_paire_apparence_item4!="Jamais" |
+            TOUT$Mpsy_paire_rumeur_item5!="Jamais" | TOUT$Mpsy_paire_humiliation_item6!="Jamais" |
+            TOUT$Mpsy_paire_menace_exclusion_item7!="Jamais" | TOUT$mpsy_paire_menace_physique_item8!="Jamais" |
+            TOUT$Mpsy_paire_encourager_humiliation_item9!="Jamais" | TOUT$mpsy_paire_limite_contacte_item10!="Jamais" |
+
+            TOUT$Mpsy_adulte_ignoer_item1!="Jamais" | TOUT$mpsy_adulte_critique_invesstissement_item2!="Jamais" |
+            TOUT$mpsy_adulte_critique_perf_item2!="Jamais" | TOUT$mpsy_adulte_critiquer_apparence_item3!="Jamais" |
+            TOUT$mpsy_adulte_rumeur_item4!="Jamais" | TOUT$mpsy_adulte_ridiculiser_item5!="Jamais" |
+            TOUT$Mpsy_adulte_crier_dessus_item6!="Jamais" | TOUT$mpsy_adulte_menace_expulsion_item7!="Jamais" |
+            TOUT$mpsy_adulte_menacephysi_item8!="Jamais" | TOUT$mpsy_adulte_humiliation_autrui_item9!="Jamais" |
+            TOUT$mpsy_adulte_limitation_contact_item10!="Jamais" | TOUT$mpsy_adulte_jouer_blesser_item11!="Jamais" |
+            TOUT$mpsy_adulte_entrainer_a_vomir_item12!="Jamais" | TOUT$mpsy_adulte_dopage_item13!="Jamais" |
+            TOUT$mpsy_adulte_poids_ideal_item13!="Jamais" |
+
+            TOUT$Mpsy_parent_ignorer_item1!="Jamais" | TOUT$mpsy_parent_invesstissment_item2!="Jamais" |
+            TOUT$mpsy_parent_critique_perf_item3!="Jamais" | TOUT$Mpsy_parent_critique_corps_item4!="Jamais" |
+            TOUT$mpsy_parent_rumeur_item5!="Jamais" | TOUT$mpsy_parent_ridiculisà_perf_item6!="Jamais" |
+            TOUT$mpsy_parent_crier_dessus_item7!="Jamais" | TOUT$Mpsy_parent_menace_physique_item8!="Jamais" | 
+            TOUT$Mpsy_parent_blesser_adversaire_item9!="Jamais" | TOUT$Mpsy_parent_limite_contact_item10!="Jamais" | 
+            TOUT$Mpsy_parent_blessé_soi_mm_item11!="Jamais" | TOUT$mpsy_parent_vomir_item12!="Jamais" | 
+            TOUT$mpsy_parent_dopage_item13!="Jamais" | TOUT$Mpsy_parent_poids_ideal_item14!="Jamais" 
+  
+TOUT$PSY <- if_else(TOUT$PSY, 1, 0)
+PSY <- filter(TOUT, PSY==1)
+```
+
+
+## Qu. 3.1.2 Interpretation PSY 
+
+```{r}
+PSY$psy_paire_norm <- add3(PSY$Mpsy_paire_normalisation, 
+PSY$mpsy_paire_normlisation, 
+PSY$Mpsy_paire_normalisation_2)
+
+PSY$psy_paire_nec <- add3(PSY$Mpsy_paire_necessite,
+PSY$mpsy_paire_necessite_perf, 
+PSY$mpsy_paire_necessaireperf)                           
+
+PSY$psy_paire_part <- add3(PSY$Mpsy_paire_partie_entrainement,
+PSY$mpsy_paire_partie_entrainement,
+PSY$mpsy_paire_partie_entrainement_2)
+
+
+PSY$psy_adulte_norm <- add2(PSY$Mpsy_adulte_auteur_considerer_normal, 
+PSY$mpsy_adulte_considération_normale)
+
+PSY$psy_adulte_nec <- add2(PSY$mpsy_adulte_necessaire_perf, 
+PSY$mpsy_adulte_necessaireperf)
+
+PSY$psy_adulte_part <- add2(PSY$mpsy_adulte_partie_entrainement,
+PSY$mpsy_adulte_partie_compet)
+
+
+PSY$psy_parent_norm <- add2(PSY$Mpsy_parent_normalisation, 
+PSY$Mpsy_parent_consideration_normal)
+
+PSY$psy_parent_nec <- add2(PSY$mpsy_parent_necessaire,
+PSY$mpsy_parent_necessaire_perf_2)
+
+PSY$psy_parent_part <- add2(PSY$mpsy_parent_faisant_partie,
+PSY$Mpsy_parent_partie_compet)
+```
+
+```{r}
+descriptives(PSY, c("psy_paire_norm" , "psy_paire_nec",  "psy_paire_part" ),freq=TRUE)
+descriptives(PSY, c("psy_adulte_norm", "psy_adulte_nec", "psy_adulte_part"),freq=TRUE)
+descriptives(PSY, c("psy_parent_norm", "psy_parent_nec", "psy_parent_part"),freq=TRUE)
+```
+
+## Qu. 3.2.1 Conséquences PSY
+
+```{r}
+PSY$psy_paire_demot <- add4(PSY$Mpsy_paire_démotivation, 
+PSY$Mpsy_paire_demotive,
+PSY$mpsy_paire_demotive_sport,
+PSY$mpsy_paire_demotive)
+
+PSY$psy_paire_perf <- add4(PSY$Mpsy_paire_moins_performe,
+PSY$mpsy_paire_moins_perf,
+PSY$mpsy_paire_moins_perf_2,
+PSY$mpsy_paire_moins_perf_3)
+
+PSY$psy_paire_conf <- add4(PSY$Mpsy_paire_perdu_confiance,
+PSY$Mpsy_paire_perte_confiance,
+PSY$mpsy_paire_perdu_confiance,
+PSY$mpsy_paire_perte_confiance)
+
+PSY$psy_paire_image <- add4(PSY$Mpsy_paire_image_corps,
+PSY$mpsy_paire_image_corps,
+PSY$Mpsy_paire_image_corps_2,
+PSY$mpsy_paire_image_neg)  
+
+
+PSY$psy_paire_peur <- add4(PSY$Mpsy_paire_peur,
+PSY$Mpsy_paire_peur_2,
+PSY$Mpsy_paire_peur_3,
+PSY$mpsy_paire_peur)
+
+
+PSY$psy_paire_colere <- add4(PSY$Mpsy_paire_colere,
+PSY$Mpsy_paire_colere_2,
+PSY$Mpsy_paire_colere_3,
+PSY$mpsy_paire_colere)
+
+PSY$psy_paire_triste <- add4(PSY$Mpsy_paire_triste,
+PSY$Mpsy_paire_triste_2,
+PSY$mpsy_paire_triste,
+PSY$mpsy_paire_triste_2)
+
+PSY$psy_paire_stress <- add4(PSY$Mpsy_paire_stress,
+PSY$Mpsy_paire_stress_2,
+PSY$mpsy_paire_stress,
+PSY$Mpsy_paire_stress_3) 
+
+PSY$psy_paire_faute <- add4(PSY$MPsy_paire_ta_faute, 
+PSY$mpsy_paire_faute,
+PSY$Mpsy_paire_ta_faute,
+PSY$Mpsy_paire_faute) 
+
+PSY$psy_paire_humil <- add4(PSY$Mpsy_paire_humiliation,
+PSY$Mpsy_paire_humiliation_2,
+PSY$Mpsy_paire_humiliation_3,
+PSY$mpsy_paire_humiliation)
+
+
+PSY$psy_adulte_demot <- add4(PSY$Mpsy_adulte_demotive, 
+PSY$Mpsy_adulte_demotive_2,
+PSY$mpsy_adulte_demotive,
+PSY$mpsy_adulte_demotive_sport)
+
+PSY$psy_adulte_perf <- add4(PSY$mpsy_adulte_moins_perf,
+PSY$mpsy_adulte_moins_perf_2,
+PSY$mpsy_adulte_moins_perf_3,
+PSY$Mpsy_adulte_moins_perf)
+
+PSY$psy_adulte_conf <- add4(PSY$Mpsy_adulte_perdu_confiance, 
+PSY$Mpsy_adulte_perduconfiance,
+PSY$mpsy_adulte_perdu_confiance,
+PSY$mpsy_adulte_perdu_confiance_2)
+
+PSY$psy_adulte_peur <- add4(PSY$mpsy_adulte_peur, 
+PSY$mpsy_adulte_peur_2,
+PSY$mpsy_adulte_peur_3,
+PSY$Mpsy_adulte_peur)
+
+PSY$psy_adulte_image <- add4(PSY$mpsy_adulte_image_corps,
+PSY$Mpsy_adulte_image_corps,
+PSY$mpsy_adulte_image_neg,
+PSY$Mpsy_adulte_image_neg)
+
+PSY$psy_adulte_faute <- add4(PSY$mpsy_adulte_ta_faute,
+PSY$mpsy_adulte_ta_faute_2,
+PSY$mpsy_adulte_ta_faute_3,
+PSY$mpsy_adulte_ta_faute_4)
+
+PSY$psy_adulte_humil <- add4(PSY$mpsy_adulte_humiliation,
+PSY$mpsy_adulte_humiliation_2,
+PSY$mpsy_adulte_ressenti_humuliation,
+PSY$Mpsy_adulte_humiliation)
+
+PSY$psy_adulte_colere <- add4(PSY$mpsy_adulte_colere,
+PSY$mpsy_adulte_colere_2,
+PSY$mpsy_adulte_colere_3,
+PSY$mpsy_adulte_colère)
+
+PSY$psy_adulte_triste <- add4(PSY$mpsy_adulte_triste, 
+PSY$mpsy_adulte_triste_2,
+PSY$mpsy_adulte_triste_3,
+PSY$Mpsy_adulte_triste)
+
+PSY$psy_adulte_stress <- add4(PSY$mpsy_adulte_stress,
+PSY$mpsy_adulte_stress_2,
+PSY$Mpsy_Adulte_stress,
+PSY$mpsy_adulte_stress_3)
+
+
+PSY$psy_parent_demot <- add2(PSY$mpsy_parent_demotiver_sport, 
+PSY$Mpsy_parent_demotiver)
+```
+
+
+```{r}
+descriptives(PSY, c("psy_paire_perf", "psy_paire_demot", "psy_paire_conf", "psy_paire_image", "psy_paire_peur", "psy_paire_colere", "psy_paire_triste", "psy_paire_stress", "psy_paire_faute", "psy_paire_humil"),freq=TRUE)
+
+descriptives(PSY, c("psy_adulte_perf", "psy_adulte_demot", "psy_adulte_conf", "psy_adulte_image", "psy_adulte_peur", "psy_adulte_colere", "psy_adulte_triste", "psy_adulte_stress", "psy_adulte_faute", "psy_adulte_humil"),freq=TRUE)
+
+descriptives(PSY, c("psy_parent_demot",
+"mpsy_parent_moins_perf",
+"Mpsy_parent_perdu_confiance", 
+"mpsy_parent_image_corps",
+"mpsy_parent_peur", 
+"mpsy_parent_colere",
+"Mpsy_parent_triste", 
+"Mpsy_parent_stress",
+"Mpsy_parent_ta_faute", 
+"Mpsy_parent_humiliation"),freq=TRUE)
+
+
+#descriptives(PSY, , freq=TRUE)
+```
+
+
+

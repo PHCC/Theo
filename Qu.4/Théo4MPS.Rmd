@@ -1,0 +1,227 @@
+---
+title: "Théo4"
+author: "Christoph"
+date: "2023-05-22..23"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    keep_tex: yes
+  word_document:
+    toc: no
+    toc_depth: '3'
+geometry: margin=0.5cm
+---
+
+
+# Libraries
+
+```{r, comment=FALSE, warning=FALSE, message=FALSE}
+library(xlsx)                                         # Fichiers Excel
+library(jmv)                                          # Analyses Jamovi
+library(dplyr)                                        # filter etc.
+#library(tigerstats)                                   # beaux tableaux croisés
+```
+
+
+# Données
+
+## Lire
+
+```{r}
+setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
+TOUT <- read.xlsx("new_polished_itemname-CHP2.xlsx", sheetName ="Sheet1")[1:506]  # enlever colonnes vides à la fin
+```
+
+
+## Afficher
+
+(sur écran mais pas dans le PDF ou word)
+
+```{r}
+#View(TOUT)
+#colnames(TOUT)   # Noms des Variables
+```
+
+
+# MPS
+
+```{r}
+TOUT$MPS <- TOUT$Mphysique_pairs_item1 > 0                 | TOUT$Mphysique_paire_item2 > 0         | 
+                TOUT$Mphysique_paire_item3 > 0             | 
+  
+            TOUT$Mphysique_adulte_secoue_agrippe_item1 > 0 | TOUT$Mphysique_adulte_frappe_item2 > 0 | 
+                TOUT$Mphysique_adulte_etouffe_item3 > 0    |
+  
+            TOUT$Mphysique_parent_secoue > 0               | TOUT$Mphysique_parent_frappe > 0       | 
+                TOUT$Mphysique_parent_ettoufe > 0
+
+TOUT$MPS <- if_else(TOUT$MPS, 1, 0)
+MPS <- filter(TOUT, MPS==1)
+
+#View(MPS)
+```
+
+
+## Recoder
+
+```{r}
+MPS$auteur_pairs   <- MPS$Mphysique_pairs_item1   > 0 | MPS$Mphysique_paire_item2    > 0 | MPS$Mphysique_paire_item3    > 0
+
+MPS$auteur_parents <- MPS$Mphysique_parent_secoue > 0 | MPS$Mphysique_parent_frappe  > 0 | MPS$Mphysique_parent_ettoufe > 0
+
+MPS$auteur_adulte  <- MPS$Mphysique_adulte_auteur_entraineur          > 0 |
+                      MPS$Mphysique_adulte_auteur_entraineurassistant > 0 |
+                      MPS$Mphysique_adulte_auteur_prepaphysique       > 0 |
+                      MPS$Mphysique_adulte_auteur_medecin             > 0 |
+                      MPS$Mphysique_adulte_auteur_psy                 > 0 |
+                      MPS$Mphysique_adulte_auteur_arbitre             > 0 |
+                      MPS$Mphysique_adulte_auteur_autre               > 0 
+
+MPS$auteur <- as.factor(case_when(MPS$auteur_pairs   ~ "pairs"  ,
+                                  MPS$auteur_parents ~ "parents",
+                                  MPS$auteur_adulte  ~ "adulte" ,
+                                  TRUE               ~ "tout autre"   ))
+
+MPS$auteur_detail <- as.factor(case_when(
+                       MPS$auteur_pairs   ~ "pairs"  ,
+                       MPS$auteur_parents ~ "parents",
+                       MPS$Mphysique_adulte_auteur_entraineur          > 0 ~ "entraineur"         ,
+                       MPS$Mphysique_adulte_auteur_entraineurassistant > 0 ~ "entraineurassistant",
+                       MPS$Mphysique_adulte_auteur_prepaphysique       > 0 ~ "prepaphysique"      ,
+                       MPS$Mphysique_adulte_auteur_medecin             > 0 ~ "medecin"            ,
+                       MPS$Mphysique_adulte_auteur_psy                 > 0 ~ "psy"                ,
+                       MPS$Mphysique_adulte_auteur_arbitre             > 0 ~ "arbitre"            ,
+                       MPS$Mphysique_adulte_auteur_autre               > 0 ~ "autre"              ,
+                       TRUE               ~ "tout autre"   ))
+```
+  
+"Mphysique_adulte_auteur_entraineur"
+"Mphysique_adulte_auteur_entraineurassistant"
+"Mphysique_adulte_auteur_prepaphysique"
+"Mphysique_adulte_auteur_medecin"
+"Mphysique_adulte_auteur_psy"
+"Mphysique_adulte_auteur_arbitre"
+"Mphysique_adulte_auteur_autre"
+
+
+## Statistiques Descriptives 
+
+### 1. Les grands groupes
+
+```{r}
+descriptives(MPS, c("auteur"), freq=TRUE)
+```
+
+
+### 2. Les grands groupes mais adultes detaillés
+
+```{r}
+descriptives(MPS, c("auteur_detail"), freq=TRUE)
+```
+
+Entraineurassistant et surtout entraineur (+ un autre) sont les seuls auteurs adultes, ça pourrait changer pour les autres maltraitances.
+
+
+### 3. Que les adultes detaillés
+
+```{r}
+MPS %>% filter(auteur=="adulte") %>% descriptives(c("auteur_detail"), freq=TRUE)
+```
+
+\newpage
+
+--------------------- SEX, NEG, PSY seront vite faits quand MPS est accepté -------------------------
+
+# PSY
+
+```
+TOUT$PSY <- TOUT$Mpsy_paire_ignoré_item1 > 0 | TOUT$Mpsy_paire_investissement_item2 > 0 |
+            TOUT$Mpsy_paire_critique_perf_item3 > 0 | TOUT$Mpsy_paire_apparence_item4 > 0 |
+            TOUT$Mpsy_paire_rumeur_item5 > 0 | TOUT$Mpsy_paire_humiliation_item6 > 0 |
+            TOUT$Mpsy_paire_menace_exclusion_item7 > 0 | TOUT$mpsy_paire_menace_physique_item8 > 0 |
+            TOUT$Mpsy_paire_encourager_humiliation_item9 > 0 | TOUT$mpsy_paire_limite_contacte_item10 > 0 |
+
+            TOUT$Mpsy_adulte_ignoer_item1 > 0 | TOUT$mpsy_adulte_critique_invesstissement_item2 > 0 |
+            TOUT$mpsy_adulte_critique_perf_item2 > 0 | TOUT$mpsy_adulte_critiquer_apparence_item3 > 0 |
+            TOUT$mpsy_adulte_rumeur_item4 > 0 | TOUT$mpsy_adulte_ridiculiser_item5 > 0 |
+            TOUT$Mpsy_adulte_crier_dessus_item6 > 0 | TOUT$mpsy_adulte_menace_expulsion_item7 > 0 |
+            TOUT$mpsy_adulte_menacephysi_item8 > 0 | TOUT$mpsy_adulte_humiliation_autrui_item9 > 0 |
+            TOUT$mpsy_adulte_limitation_contact_item10 > 0 | TOUT$mpsy_adulte_jouer_blesser_item11 > 0 |
+            TOUT$mpsy_adulte_entrainer_a_vomir_item12 > 0 | TOUT$mpsy_adulte_dopage_item13 > 0 |
+            TOUT$mpsy_adulte_poids_ideal_item13 > 0 |
+
+            TOUT$Mpsy_parent_ignorer_item1 > 0 | TOUT$mpsy_parent_invesstissment_item2 > 0 |
+            TOUT$mpsy_parent_critique_perf_item3 > 0 | TOUT$Mpsy_parent_critique_corps_item4 > 0 |
+            TOUT$mpsy_parent_rumeur_item5 > 0 | TOUT$mpsy_parent_ridiculisà_perf_item6 > 0 |
+            TOUT$mpsy_parent_crier_dessus_item7 > 0 | TOUT$Mpsy_parent_menace_physique_item8 > 0 | 
+            TOUT$Mpsy_parent_blesser_adversaire_item9 > 0 | TOUT$Mpsy_parent_limite_contact_item10 > 0 | 
+            TOUT$Mpsy_parent_blessé_soi_mm_item11 > 0 | TOUT$mpsy_parent_vomir_item12 > 0 | 
+            TOUT$mpsy_parent_dopage_item13 > 0 | TOUT$Mpsy_parent_poids_ideal_item14 > 0 
+  
+TOUT$PSY <- if_else(TOUT$PSY, 1, 0)
+PSY <- filter(TOUT, PSY==1)
+```
+
+## Statistiques Descriptives 
+
+```
+descriptives(PSY, c(""), 
+             freq=TRUE)
+```
+
+
+# NEG
+
+```
+TOUT$NEG <- TOUT$Neg_adulte_entrainer_blesse_item1 > 0 | TOUT$neg_adulte_dopage_soutenu_item2 > 0 |
+            TOUT$neg_adulte_poids_ideal_item3 > 0      | TOUT$Neg_adulte_louper_ecole_item4 > 0   |
+            TOUT$Neg_adulte_laisser_humilier_item5 > 0 |
+
+            TOUT$Neg_parent_laisser_entrainer_blesser_item1 > 0 | TOUT$Neg_parent_dopage_item2 > 0 |
+            TOUT$Neg_parent_poids_ideal_item3 > 0               | TOUT$Neg_parent_arret_ecole_item4 > 0 |
+            TOUT$neg_parent_laisser_humilier_autrui_item5 > 0
+
+TOUT$NEG <- if_else(TOUT$NEG, 1, 0)
+
+NEG <- filter(TOUT, NEG==1)
+```
+
+## Statistiques Descriptives 
+
+```
+descriptives(NEG, c(""), 
+             freq=TRUE)
+```
+
+
+# SEX
+
+```
+TOUT$SEX <- TOUT$Msex_paire_remarque_apparence_item1 > 0    | TOUT$Msex_paire_proposition_sex_item2 > 0  |
+            TOUT$msex_paire_exhibitionisme_item3 > 0        | TOUT$msex_paire_photo_intime_item4 > 0     |
+            TOUT$msex_paire_attouchement_item5 > 0          | TOUT$Msex_paire_embrasser_item6 > 0        |
+            TOUT$msex_paire_frotter_partie_intime_item7 > 0 | TOUT$msex_paire_viol_penetration_item7 > 0 |
+            TOUT$Msex_paire_avec_sans_penetration_non_consentie_item8 > 0    |
+
+            TOUT$Msex_adulte_remarque_sex_item1 > 0             | TOUT$msex_adulte_envoi_image_sex_item2 > 0       |
+            TOUT$Msex_adulte_exhibition_partie_intime_item2 > 0 | TOUT$msex_adulte_photo_partie_intime_item3 > 0   |
+  
+            TOUT$msex_adulte_force.a_toucher_item3 > 0          |                                                      
+                                                                TOUT$msex_adulte_toucher_malalaise_item4 > 0     |
+            TOUT$msex_adulte_embrasser_bouche_item5 > 0         | TOUT$Msex_adulte_frotter_partie_intime_item6 > 0 |
+            TOUT$Msex_adulte_tentation_relation_sex_item7 > 0   | TOUT$Msex_adulte_forcer_relation_sex_avec_sans_pene_item8 > 0 
+  
+TOUT$SEX <- if_else(TOUT$SEX, 1, 0)
+
+SEX <- filter(TOUT, SEX==1)
+```
+
+## Statistiques Descriptives 
+
+```
+descriptives(SEX, c(""), 
+             freq=TRUE)
+```

@@ -1,0 +1,1406 @@
+---
+title: "Théo3max.Rmd Question 3 Maximum, pas Somme"
+author: "Christoph"
+date: "2023-08-28..."
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    keep_tex: yes
+  word_document:
+    toc: no
+    toc_depth: '3' 
+geometry: margin=0.5cm
+---
+
+
+# Libraries
+
+```{r, comment=FALSE, warning=FALSE, message=FALSE}
+library(xlsx)                                         # Fichiers Excel
+library(jmv)                                          # Analyses Jamovi
+library(dplyr)                                        # filter etc.
+#library(MatrixGenerics)                               # rowMaxs - pas pour ma version de R
+#library(matrixStats)                               # rowMaxs - que pour matrix, pas dta frame
+```
+
+
+# Données
+
+## Lire 
+
+```{r}
+setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
+
+#TOUT <- read.xlsx("QEMS_all-corr.xlsx", sheetName ="sheet1")  # java.lang.OutOfMemoryError: GC overhead limit exceeded
+load("QEMS_all.RData")
+#View(dataset)
+
+traduction <- read.xlsx("new_polished_itemname:lignes1,2.xlsx", sheetName ="sheet1")
+#View(traduction)
+
+#TOUT <- read.xlsx("new_polished_itemname-CHP.xlsx", sheetName ="Sheet1")[1:506]  # colonnes vides à la fin
+```
+
+traduire noms des colonnes
+
+```{r}
+TOUT <- data.frame(dataset)  # deep copy
+
+for (i in 1:length(TOUT)) {
+  for (j in 1:length(traduction)) {
+    name <- gsub(" ",".",colnames(TOUT)[i])
+    name <- gsub(",",".",name)
+    name <- gsub("-",".",name)
+    if ( name ==  colnames(traduction)[j]) {
+      # importé differément, donc " " est devenu "." dans traduction !
+      
+      #print(paste("ancien dataset",i,"traduction",j,":",colnames(TOUT)[i],"->",traduction[1,j]))
+      colnames(TOUT)[i] <- traduction[1,j]
+    }
+  }
+  
+  TOUT[,i] <- as.numeric(TOUT[,i])              # convertir facteurs dans de chiffres
+  TOUT[,i][!(TOUT[,i] %in% c(1:5,NA))] <- NA    # quelques entrées pas {1,2,3,4,5} -> NA
+}
+```
+
+
+## Afficher
+
+(sur écran mais pas dans le PDF ou word)
+
+```{r}
+#View(TOUT)
+#colnames(TOUT)   # Noms des Variables
+```
+
+----------------------------------------------------------------------------------------------------
+
+# MPS
+```
+descriptives(MPS, c("Mphysique_paire_normalisation", 
+                    "Mphysique_paire_necessite_perf",
+                    "Mphysique_paire_faire_partie"),
+             freq=TRUE)
+```
+
+tous les 3: N=282, 62 Manquants. Testé exemple i=37:
+
+- corréspond au .Rdata exporté du .mov
+- corréspond au QEMS_data_F.xlsx 
+- ce sont simplement MPS mais pas par paire
+
+- paire, adulte, parent : 1 catégorie, 3 items, 3 interpretations, 10 conséquences = OK ?                          
+
+```{r}
+TOUT$MPS <- TOUT$Mphysique_pairs_item1!="Jamais"                 | TOUT$Mphysique_paire_item2!="Jamais"         | 
+                TOUT$Mphysique_paire_item3!="Jamais"             | 
+  
+            TOUT$Mphysique_adulte_secoue_agrippe_item1!="Jamais" | TOUT$Mphysique_adulte_frappe_item2!="Jamais" | 
+                TOUT$Mphysique_adulte_etouffe_item3!="Jamais"    |
+  
+            TOUT$Mphysique_parent_secoue!="Jamais"               | TOUT$Mphysique_parent_frappe!="Jamais"       | 
+                TOUT$Mphysique_parent_ettoufe!="Jamais"              # NA reste NA, c'est bon!
+
+TOUT$MPS <- if_else(TOUT$MPS, 1, 0)
+
+MPS <- filter(TOUT, MPS==1)
+```
+
+
+## Paires : 1 Catégorie
+
+```{r}
+vec <- c(
+  "Mphysique_paire_normalisation","Mphysique_paire_necessite_perf","Mphysique_paire_faire_partie") # Var...txt 26-28 = colnames(TOUT).txt 19-21 
+MPS$PaireCat1_Interpretations <- rowMaxs(as.matrix(MPS[,vec],na.rm=T))  
+descriptives(MPS, "PaireCat1_Interpretations",freq=FALSE)
+MPS$PaireCat1_Interpretations<-as.factor(MPS$PaireCat1_Interpretations)
+descriptives(MPS, "PaireCat1_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+
+# Bastle Funktion die das aus Vektor von Namen als Strings macht - hab auf alles unten anwendet !?
+trier <- function(df, names) {
+  mx <- function(x){return(max(df[x],na.rm=T))}
+
+  namedList <- lapply(names,mx)
+  names(namedList) <- names
+  print("Trié:")
+  return( sort(unlist(namedList),decreasing=T) ) 
+}
+
+trier(MPS, vec)  
+```
+
+```{r}
+vec <- c(
+    "Mphysique_paire_demotivation","Mphysique_paire_moins_performé","Mphysique_paire_perteconfiance",  # 29-38 = 22-31
+    "Mphysique_paire_image_neg","Mphysique_paire_peur","Mphysique_paire_colere",
+     "Mphysique_paire_triste","Mphysique_paire_stress","Mphysique_paire_ta_faute",
+     "Mphysique_paire_humiliation"  
+     )
+MPS$PaireCat1_Consequences <- rowMaxs(MPS[vec],na.rm=T)
+descriptives(MPS, "PaireCat1_Consequences",freq=FALSE)
+MPS$PaireCat1_Consequences<-as.factor(MPS$PaireCat1_Consequences)
+descriptives(MPS, "PaireCat1_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(MPS, vec)
+```
+
+
+## Adultes: 1 Catégorie
+
+```{r}
+vec <- c(
+  "Mphysique_adulte_auteur_normlisation",
+   "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...1",
+   "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...2"
+  )  # 49,-,- = 42-44
+MPS$Adult1_Interpretations <- 
+  rowMaxs(MPS[,vec],na.rm=T)
+descriptives(MPS, "Adult1_Interpretations",freq=FALSE)
+MPS$Adult1_Interpretations<-as.factor(MPS$Adult1_Interpretations)
+descriptives(MPS, "Adult1_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(MPS, vec)
+```
+
+(contrôle+ 1*5 + 2*9 + 3*19 = 80, OK)
+
+```{r}
+vec <- c(   # 50-59 = 54-54
+  "Mphysique_adute_domotivation",
+  "Mphysique_adulte_performance",
+  "Mphysique_adulte_confiance","Mphysique_adulte_imagecorps","Mphysique_adulte_peur",
+  "Mphysique_adulte_colere","Mphysique_adulte_triste","Mphysique_adulte_stress",
+  "Mphysique_adulte_responsabilite","Mphysique_adulte_humiliation"
+     )
+MPS$Adult1_Consequences <- rowMaxs(MPS[,vec],na.rm=T)
+descriptives(MPS, "Adult1_Consequences",freq=FALSE)
+MPS$Adult1_Consequences<-as.factor(MPS$Adult1_Consequences)
+descriptives(MPS, "Adult1_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(MPS, vec)
+```
+
+
+## Parents: 1 Catégorie
+
+```{r}
+#MPS$ParentCat1_Interpretations <- MPS[,]  
+vec <- c("Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...3",  # -,-,- = 58-60
+         "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...4",
+         "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...5")
+
+MPS$Parents1_Interpretations <- 
+  rowMaxs(MPS[,vec],na.rm=T)
+descriptives(MPS, "Parents1_Interpretations",freq=FALSE)
+MPS$Parents1_Interpretations<-as.factor(MPS$Parents1_Interpretations)
+descriptives(MPS, "Parents1_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(MPS, vec)
+```
+
+En fait, toutes les valeurs sont NA! par la maximation en négligeant les NA, toutes les valeurs deviennent 0. -??
+
+
+```{r}
+vec <- c("Mphysique_parent_consideration","Mphysique_parent_suite_a",
+         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..1",
+         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..2",
+         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..3",
+         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..4",
+         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..5",
+         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..6",
+         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..7",
+         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..8")
+# 63,64,-,...- = 61-67
+
+MPS$Parents1_Consequences <- rowMaxs(MPS[,vec],na.rm=T)
+descriptives(MPS, "Parents1_Consequences",freq=FALSE)
+MPS$Parents1_Consequences<-as.factor(MPS$Parents1_Consequences)
+descriptives(MPS, "Parents1_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(MPS, vec)
+```
+
+
+# PSY 
+
+```{r}
+TOUT$PSY <- TOUT$Mpsy_paire_ignoré_item1!="Jamais" | TOUT$Mpsy_paire_investissement_item2!="Jamais" |
+            TOUT$Mpsy_paire_critique_perf_item3!="Jamais" | TOUT$Mpsy_paire_apparence_item4!="Jamais" |
+            TOUT$Mpsy_paire_rumeur_item5!="Jamais" | TOUT$Mpsy_paire_humiliation_item6!="Jamais" |
+            TOUT$Mpsy_paire_menace_exclusion_item7!="Jamais" | TOUT$mpsy_paire_menace_physique_item8!="Jamais" |
+            TOUT$Mpsy_paire_encourager_humiliation_item9!="Jamais" | TOUT$mpsy_paire_limite_contacte_item10!="Jamais" |
+
+            TOUT$Mpsy_adulte_ignoer_item1!="Jamais" | TOUT$mpsy_adulte_critique_invesstissement_item2!="Jamais" |
+            TOUT$mpsy_adulte_critique_perf_item2!="Jamais" | TOUT$mpsy_adulte_critiquer_apparence_item3!="Jamais" |
+            TOUT$mpsy_adulte_rumeur_item4!="Jamais" | TOUT$mpsy_adulte_ridiculiser_item5!="Jamais" |
+            TOUT$Mpsy_adulte_crier_dessus_item6!="Jamais" | TOUT$mpsy_adulte_menace_expulsion_item7!="Jamais" |
+            TOUT$mpsy_adulte_menacephysi_item8!="Jamais" | TOUT$mpsy_adulte_humiliation_autrui_item9!="Jamais" |
+            TOUT$mpsy_adulte_limitation_contact_item10!="Jamais" | TOUT$mpsy_adulte_jouer_blesser_item11!="Jamais" |
+            TOUT$mpsy_adulte_entrainer_a_vomir_item12!="Jamais" | TOUT$mpsy_adulte_dopage_item13!="Jamais" |
+            TOUT$mpsy_adulte_poids_ideal_item13!="Jamais" |
+
+            TOUT$Mpsy_parent_ignorer_item1!="Jamais" | TOUT$mpsy_parent_invesstissment_item2!="Jamais" |
+            TOUT$mpsy_parent_critique_perf_item3!="Jamais" | TOUT$Mpsy_parent_critique_corps_item4!="Jamais" |
+            TOUT$mpsy_parent_rumeur_item5!="Jamais" | TOUT$mpsy_parent_ridiculisà_perf_item6!="Jamais" |
+            TOUT$mpsy_parent_crier_dessus_item7!="Jamais" | TOUT$Mpsy_parent_menace_physique_item8!="Jamais" | 
+            TOUT$Mpsy_parent_blesser_adversaire_item9!="Jamais" | TOUT$Mpsy_parent_limite_contact_item10!="Jamais" | 
+            TOUT$Mpsy_parent_blessé_soi_mm_item11!="Jamais" | TOUT$mpsy_parent_vomir_item12!="Jamais" | 
+            TOUT$mpsy_parent_dopage_item13!="Jamais" | TOUT$Mpsy_parent_poids_ideal_item14!="Jamais" 
+  
+TOUT$PSY <- if_else(TOUT$PSY, 1, 0)
+PSY <- filter(TOUT, PSY==1)
+```
+
+
+### Paires: 4 Catégories
+
+#### Catégorie 1
+
+```{r}
+vec <- c("Mpsy_paire_normalisation","Mpsy_paire_necessite","Mpsy_paire_partie_entrainement") # 66-69 = 72-74
+PSY$PairCat1_Interpretations <- rowMaxs(PSY[,vec],na.rm=T)
+descriptives(PSY, "PairCat1_Interpretations",freq=TRUE)
+trier(PSY,vec)
+```
+
+```{r}
+vec <- c("Mpsy_paire_démotivation","Mpsy_paire_moins_performe","Mpsy_paire_perdu_confiance",  # 69-78 = 75-84
+    "Mpsy_paire_image_corps","Mpsy_paire_peur","Mpsy_paire_colere",
+    "Mpsy_paire_triste","Mpsy_paire_stress","MPsy_paire_ta_faute",
+    "Mpsy_paire_humiliation" )
+PSY$PairCat1_Consequences <- rowMaxs(PSY[,vec],na.rm=T )
+descriptives(PSY, "PairCat1_Consequences",freq=FALSE)
+PSY$PairCat1_Consequences<-as.factor(PSY$PairCat1_Consequences)
+descriptives(PSY, "PairCat1_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(PSY,vec)
+```
+
+
+#### Catégorie 2
+
+```{r}
+vec <- c("Mpsy_paire_consideration",  # 84-86 = 90-92
+    "mpsy_paire_neccesiteperf",
+    "Mpsy_paire_partie_compet")
+PSY$PairCat2_Interpretations <- 
+  rowMaxs(PSY[,vec],na.rm=T)
+descriptives(PSY, "PairCat2_Interpretations",freq=TRUE)
+trier(PSY,vec)
+```
+
+```{r}
+vec <- c("Mpsy_paire_demotive","mpsy_paire_moins_perf","Mpsy_paire_perte_confiance",  # 87-96? = 93-102
+    "mpsy_paire_image_corps","Mpsy_paire_peur_2","Mpsy_paire_colere_2",
+    "Mpsy_paire_triste_2","Mpsy_paire_stress_2","mpsy_paire_faute",
+    "Mpsy_paire_humiliation_2"                                  
+     )
+PSY$PairCat2_Consequences <- rowMaxs(PSY[,vec],na.rm=T )
+descriptives(PSY, "PairCat2_Consequences",freq=FALSE)
+PSY$PairCat2_Consequences<-as.factor(PSY$PairCat2_Consequences)
+descriptives(PSY, "PairCat2_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(PSY,vec)
+```
+
+
+#### Catégorie 3
+
+```{r}
+vec <- c("mpsy_paire_normlisation","mpsy_paire_necessite_perf","mpsy_paire_partie_entrainement")  # 99-101 = 105-107
+PSY$PairCat3_Interpretations <- rowMaxs(PSY[,vec],na.rm=T)
+descriptives(PSY, "PairCat3_Interpretations",freq=TRUE)
+trier(PSY,vec)
+```
+
+```{r}
+vec <- c("mpsy_paire_demotive_sport","mpsy_paire_moins_perf_2","mpsy_paire_perdu_confiance",  # 102-111 = 108-117
+    "Mpsy_paire_image_corps_2","Mpsy_paire_peur_3","Mpsy_paire_colere_3",
+    "mpsy_paire_triste","mpsy_paire_stress","Mpsy_paire_ta_faute",
+    "Mpsy_paire_humiliation_3"
+     )
+PSY$PairCat3_Consequences <- rowMaxs(PSY[,vec],na.rm=T)
+descriptives(PSY, "PairCat3_Consequences",freq=FALSE)                    
+PSY$PairCat3_Consequences<-as.factor(PSY$PairCat3_Consequences)
+descriptives(PSY, "PairCat3_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(PSY,vec)
+```
+
+
+#### Catégorie 4
+
+```{r}
+vec <- c("Mpsy_paire_normalisation_2","mpsy_paire_necessaireperf","mpsy_paire_partie_entrainement_2") # 114-116 = 120-122
+PSY$PairCat4_Interpretations <- 
+  rowMaxs(PSY[,vec],na.rm=T) 
+descriptives(PSY, "PairCat4_Interpretations",freq=TRUE)
+trier(PSY,vec)
+```
+
+```{r}
+vec <- c("mpsy_paire_demotive","mpsy_paire_moins_perf_3","mpsy_paire_perte_confiance",  # 117-126 = 123-132
+    "mpsy_paire_image_neg","mpsy_paire_peur","mpsy_paire_colere",
+    "mpsy_paire_triste_2","Mpsy_paire_stress_3","Mpsy_paire_faute",
+    "mpsy_paire_humiliation"
+     )
+PSY$PairCat4_Consequences <- rowMaxs(PSY[,vec],na.rm=T)
+descriptives(PSY, "PairCat4_Consequences",freq=FALSE)
+PSY$PairCat4_Consequences<-as.factor(PSY$PairCat4_Consequences)
+descriptives(PSY, "PairCat4_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(PSY,vec)
+```
+
+
+### Adultes: 4 Catégories
+
+#### Catégorie 1
+
+- 3 items interprétation
+- 10 items conséquences
+
+```{r}
+vec <- c("mpsy_adulte_considerer","mpsy_adulte_necessaire","Mpsy_adulte_faisant_partie")  # 129-131 = 141-143
+PSY$AdultCat1_Interpretations <- rowMaxs(PSY[,vec],na.rm=T) 
+descriptives(PSY, "AdultCat1_Interpretations",freq=TRUE)
+trier(PSY,vec)
+```
+
+```{r}
+vec <- c( "Mpsy_adulte_demotive","mpsy_adulte_moins_perf","Mpsy_adulte_perdu_confiance",  # 132-141 = 144-153
+     "mpsy_adulte_image_corps","mpsy_adulte_peur","mpsy_adulte_colere",
+     "mpsy_adulte_triste","mpsy_adulte_stress","mpsy_adulte_ta_faute",
+     "mpsy_adulte_humiliation")
+PSY$AdultCat1_Consequences <- rowMaxs(PSY[,vec],na.rm=T)
+descriptives(PSY, "AdultCat1_Consequences",freq=FALSE)
+PSY$AdultCat1_Consequences<-as.factor(PSY$AdultCat1_Consequences)
+descriptives(PSY, "AdultCat1_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(PSY,vec)
+```
+
+
+#### Catégorie 2
+
+- 3 items interprétation
+- 10 items conséquences
+
+```{r}
+vec <- c("Mpsy_adulte_consideration","mpsy_adulte_necessaire_2","Mpsy_adulte_partie_compet") # 155-157 = 167-169
+PSY$AdultCat2_Interpretations <- rowMaxs(PSY[,vec],na.rm=T)
+descriptives(PSY, "AdultCat2_Interpretations",freq=TRUE)
+trier(PSY,vec)
+```
+
+```{r}
+vec <- c( "Mpsy_adulte_demotive_2","mpsy_adulte_moins_perf_2","Mpsy_adulte_perduconfiance",  # 158-167 = 170-179
+     "Mpsy_adulte_image_corps","mpsy_adulte_peur_2","mpsy_adulte_colere_2",
+     "mpsy_adulte_triste_2","mpsy_adulte_stress_2","mpsy_adulte_ta_faute_2",
+     "mpsy_adulte_humiliation_2")
+PSY$AdultCat2_Consequences <- rowMaxs(PSY[,vec],na.rm=T)
+descriptives(PSY, "AdultCat2_Consequences",freq=FALSE)
+PSY$AdultCat2_Consequences<-as.factor(PSY$AdultCat2_Consequences)
+descriptives(PSY, "AdultCat2_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F)
+trier(PSY,vec)
+```
+
+
+#### Catégorie 3:
+
+- 3 items interprétation
+- 13 items conséquences
+    
+- recodage: compter tout sauf "Pas du tout" - toujours? On n'aura presque pas de "Pas du tout" !
+- comme ça on perde les cas 3*0 :
+
+```{r}
+# PSY$AdultCat3_Interpretations <- rowMaxs(PSY[,c("mpsy_adulte_considerer","mpsy_adulte_necessaire","Mpsy_adulte_faisant_partie"
+#                              )], na.rm=TRUE)
+# descriptives(PSY, "AdultCat3_Interpretations",freq=TRUE)
+```
+
+- comme ça je perds rien:
+
+```{r}
+vec <- c("Mpsy_adulte_auteur_considerer_normal","mpsy_adulte_necessaireperf",  # 177-179 = 189-191
+        "mpsy_adulte_partie_entrainement") 
+PSY$AdultCat3_Interpretations <- rowMaxs(PSY[,vec],na.rm=T)
+descriptives(PSY, "AdultCat3_Interpretations",freq=TRUE)
+trier(PSY,vec)
+```
+
+- optimal!?: prg. somme = NA pour arguments NA
+
+```{r}
+vec <- c("mpsy_adulte_demotive","mpsy_adulte_moins_perf_3","mpsy_adulte_perdu_confiance",  # 180-189 = 192-201
+    "mpsy_adulte_image_neg","mpsy_adulte_peur_3","mpsy_adulte_colere_3",
+    "mpsy_adulte_triste_3","Mpsy_Adulte_stress","mpsy_adulte_ta_faute_3",
+    "mpsy_adulte_ressenti_humuliation")
+PSY$AdultCat3_Consequences <- rowMaxs(PSY[,vec],na.rm=T)
+descriptives(PSY, "AdultCat3_Consequences",freq=FALSE)
+PSY$AdultCat3_Consequences<-as.factor(PSY$AdultCat3_Consequences)
+descriptives(PSY, "AdultCat3_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F)
+trier(PSY,vec)
+```
+
+
+#### Catégorie 4:
+
+```{r}
+vec <- c("mpsy_adulte_considération_normale","mpsy_adulte_necessaire_perf",  # 203-205 = 215-217  
+         "mpsy_adulte_partie_compet") 
+PSY$AdultCat4_Interpretations <- rowMaxs(PSY[,vec],na.rm=T)
+
+descriptives(PSY, "AdultCat4_Interpretations",freq=FALSE)
+PSY$AdultCat4_Interpretations<-as.factor(PSY$AdultCat4_Interpretations)
+descriptives(PSY, "AdultCat4_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F)
+
+trier(PSY,vec)
+```
+
+```{r}
+vec <- c( "mpsy_adulte_demotive_sport","Mpsy_adulte_moins_perf","mpsy_adulte_perdu_confiance_2", # 206-215 = 218-227
+     "Mpsy_adulte_image_neg","Mpsy_adulte_peur","mpsy_adulte_colère",
+     "Mpsy_adulte_triste","mpsy_adulte_stress_3","mpsy_adulte_ta_faute_4",
+     "Mpsy_adulte_humiliation")
+PSY$AdultCat4_Consequences <- rowMaxs(PSY[,vec],na.rm=T)
+descriptives(PSY, "AdultCat4_Consequences",freq=FALSE)
+PSY$AdultCat4_Consequences<-as.factor(PSY$AdultCat4_Consequences)
+descriptives(PSY, "AdultCat4_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F)
+trier(PSY,vec)
+```
+
+### Parents: 4 Catégories
+
+#### Catégorie 1
+
+```{r}
+vec <- c("Tu.as.considéré.cette.ignorance.indifférence.comme....normale...1",  # - = 229-231
+         "Tu.as.considéré.cette.ignorance.indifférence.comme....nécessair.1",
+         "Tu.as.considéré.cette.ignorance.indifférence.comme....faisant.p.1")
+PSY$ParentCat1_Interpretations <- rowMaxs(PSY[,vec],na.rm=T)  
+descriptives(PSY, "ParentCat1_Interpretations",freq=TRUE)
+trier(PSY,vec)
+```
+
+Les entrées sount toutes NA ce qui donne 0 après l'addition.
+
+```{r}
+vec <- c("mpsy_parent_demotiver_sport","mpsy_parent_moins_perf",         # 217-226 = 232-241
+  "Mpsy_parent_perdu_confiance","mpsy_parent_image_corps","mpsy_parent_peur", 
+    "mpsy_parent_colere","Mpsy_parent_triste","Mpsy_parent_stress",
+    "Mpsy_parent_ta_faute","Mpsy_parent_humiliation"
+     )
+PSY$ParentCat1_Consequences <- rowMaxs(PSY[,vec],na.rm=T)  
+descriptives(PSY, "ParentCat1_Consequences",freq=FALSE)
+PSY$ParentCat1_Consequences<-as.factor(PSY$ParentCat1_Consequences)
+descriptives(PSY, "ParentCat1_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(PSY,vec)
+```
+
+
+#### Catégorie 2
+
+```{r}
+vec <- c("Mpsy_parent_normalisation","mpsy_parent_necessaire","mpsy_parent_faisant_partie")  # 233-235 = 248-250
+PSY$ParentCat2_Interpretations <- rowMaxs(PSY[,vec],na.rm=T)
+descriptives(PSY, "ParentCat2_Interpretations",freq=FALSE)
+PSY$ParentCat2_Interpretations<-as.factor(PSY$ParentCat2_Interpretations)
+descriptives(PSY, "ParentCat2_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(PSY,vec)
+```
+
+```{r}
+vec <- c("Mpsy_parent_perdu_confiance_2",                               # 236,- = 251-260
+         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........1",
+         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........2",
+         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........3",
+         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........4",
+         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........5",
+         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........6",
+         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........7",
+         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........8",
+         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........9"
+     )
+PSY$ParentCat2_Consequences <- rowMaxs(PSY[,vec],na.rm=T)
+descriptives(PSY, "ParentCat2_Consequences",freq=FALSE)
+PSY$ParentCat2_Consequences<-as.factor(PSY$ParentCat2_Consequences)
+descriptives(PSY, "ParentCat2_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(PSY,vec)
+```
+
+Il y a des entrées > 0 seulement pour *Mpsy_parent_perdu_confiance_2*
+
+
+#### Catégorie 3
+
+```{r}
+vec <- c("mpsy_parent_normalisation","mpsy_parent_necessaire_perf",  # 238-240 = 262-264
+                 "Mpsy_parent_faisant_partie_entrainement")
+PSY$ParentCat3_Interpretations <- rowMaxs(PSY[,vec],na.rm=T)  
+descriptives(PSY, "ParentCat3_Interpretations",freq=FALSE)
+PSY$ParentCat3_Interpretations<-as.factor(PSY$ParentCat3_Interpretations)
+descriptives(PSY, "ParentCat3_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(PSY,vec)
+```
+
+```{r}
+vec <- c(
+  "Suite.à.ces.menaces..est.ce.que.tu.as.......été.démotivé.à.cont.1",   # -,241-245,- = 265-274
+  "Suite.à.ces.menaces..est.ce.que.tu.as.......moins.bien.performé.1",
+  "Mpsy_parent_perdu_confiance_3",
+  "Suite.à.ces.menaces..est.ce.que.tu.as.......eu.une.image.négati.1",
+  "Mpsy_parent_peur",
+  "Mpsy_parent_colere",
+  "Mpsy_parent_triste_2",
+  "Mpsy_parent_stress_2",
+  "Suite.à.ces.menaces..est.ce.que.tu.as.......pensé.que.c.était.d.1",
+   "Suite.à.ces.menaces..est.ce.que.tu.as.......ressenti.de.l.humil.1"
+)
+PSY$ParentCat3_Consequences <- rowMaxs(PSY[,vec],na.rm=T )  
+descriptives(PSY, "ParentCat3_Consequences",freq=FALSE)
+PSY$ParentCat3_Consequences<-as.factor(PSY$ParentCat3_Consequences)
+descriptives(PSY, "ParentCat3_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(PSY,vec)
+```
+
+
+#### Catégorie 4
+
+```{r}
+vec <- c("Mpsy_parent_consideration_normal",   # 252-254 = 281-283
+         "mpsy_parent_necessaire_perf_2","Mpsy_parent_partie_compet")
+PSY$ParentCat4_Interpretations <- rowMaxs(PSY[,vec],na.rm=T)  
+descriptives(PSY, "ParentCat4_Interpretations",freq=FALSE)
+PSY$ParentCat4_Interpretations<-as.factor(PSY$ParentCat4_Interpretations)
+descriptives(PSY, "ParentCat4_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(PSY,vec)
+```
+
+```{r}
+vec <- c(          # 255,- = 284-293
+  "Mpsy_parent_demotiver",
+  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.1",
+  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.2",
+  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.3",
+  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.4",
+  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.5",
+  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.6",
+  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.7",
+  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.8",
+  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.9"
+)
+
+PSY$ParentCat4_Consequences <- rowMaxs(PSY[,vec],na.rm=T )  
+descriptives(PSY, "ParentCat4_Consequences",freq=FALSE)
+PSY$ParentCat4_Consequences<-as.factor(PSY$ParentCat4_Consequences)
+descriptives(PSY, "ParentCat4_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(PSY,vec)
+```
+
+Il y des entrées > 0 seulement pour *Mpsy_parent_demotiver*
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+
+# SEX
+
+- et paires et adultes 7 catégories, la première avec 2 items (Franzoni p. 92) 
+- paires 9 items
+- adultes 8 items
+
+```{r}
+TOUT$SEX <- TOUT$Msex_paire_remarque_apparence_item1!="Jamais"    | TOUT$Msex_paire_proposition_sex_item2!="Jamais"  |
+            TOUT$msex_paire_exhibitionisme_item3!="Jamais"        | TOUT$msex_paire_photo_intime_item4!="Jamais"     |
+            TOUT$msex_paire_attouchement_item5!="Jamais"          | TOUT$Msex_paire_embrasser_item6!="Jamais"        |
+            TOUT$msex_paire_frotter_partie_intime_item7!="Jamais" | TOUT$msex_paire_viol_penetration_item7!="Jamais" |
+            TOUT$Msex_paire_avec_sans_penetration_non_consentie_item8!="Jamais"    |
+
+            TOUT$Msex_adulte_remarque_sex_item1!="Jamais"             | TOUT$msex_adulte_envoi_image_sex_item2!="Jamais"       |
+            TOUT$Msex_adulte_exhibition_partie_intime_item2!="Jamais" | TOUT$msex_adulte_photo_partie_intime_item3!="Jamais"   |
+            TOUT["msex_adulte_force-a_toucher_item3"]!="Jamais"       | TOUT$msex_adulte_toucher_malalaise_item4!="Jamais"     |
+            TOUT$msex_adulte_embrasser_bouche_item5!="Jamais"         | TOUT$Msex_adulte_frotter_partie_intime_item6!="Jamais" |
+            TOUT$Msex_adulte_tentation_relation_sex_item7!="Jamais"   | TOUT$Msex_adulte_forcer_relation_sex_avec_sans_pene_item8!="Jamais" 
+  
+TOUT$SEX <- if_else(TOUT$SEX, 1, 0)
+
+SEX <- filter(TOUT, SEX==1)
+```
+
+
+## Paires: 7 Catégories
+
+#### Catégorie 1
+
+```{r}
+vec <- c(  # 258-260 = 296-298
+  "msex_paire_normalite","Msex_paire_necesstite","msex_paire_partie_compet")
+SEX$PaireCat1_Interpretations <- rowMaxs(SEX[,vec],na.rm=T)
+descriptives(SEX, "PaireCat1_Interpretations",freq=FALSE)
+
+SEX$PaireCat1_Interpretations<-as.factor(SEX$PaireCat1_Interpretations)
+descriptives(SEX, "PaireCat1_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+```{r}
+vec <- c(  # 261-270 = 299-308
+  "Msex_paire_demotive","Msex_paire_moins_perf","Msex_paire_perdu_confiance",
+  "Msex_paire_image_neg_corps","msex_paire_peur","Msex_paire_colere",
+  "msex_paire_triste","msex_paire_stress","Msex_paire_ta_faute",
+  "Msex_paire_humiliation"
+  )
+SEX$PaireCat1_Consequences <- rowMaxs(SEX[,vec],
+                                      na.rm=T )
+descriptives(SEX, "PaireCat1_Consequences",freq=FALSE)
+SEX$PaireCat1_Consequences<-as.factor(SEX$PaireCat1_Consequences)
+descriptives(SEX, "PaireCat1_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+
+#### Catégorie 2
+
+```{r}
+VEC <- c(  # 272-274 = 310-312
+  "msex_paire_consideration_normale","msex_paire_necessaire_perf","Msex_paire_fait_partie_compet"
+)
+SEX$PaireCat2_Interpretations <- rowMaxs(SEX[,vec],na.rm=T)
+descriptives(SEX, "PaireCat2_Interpretations",freq=FALSE)
+
+SEX$PaireCat2_Interpretations<-as.factor(SEX$PaireCat2_Interpretations)
+descriptives(SEX, "PaireCat2_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+```{r}
+vec <- c(  # 275-284 = 313-322
+  "msex_paire_demotive","msex_paire_moins_perf","msex_paire_perdu_confiance",
+  "Msex_paire_image_corps","Msex_paire_peur_2","msex_paire_colere",
+  "msex_paire_triste_2","msex_paire_stress_2","msex_paire_ta_faute",
+  "msex_paire_humiliation"
+  )
+SEX$PaireCat2_Consequences <- rowMaxs(SEX[,vec],na.rm=T )
+descriptives(SEX, "PaireCat2_Consequences",freq=FALSE)
+SEX$PaireCat2_Consequences<-as.factor(SEX$PaireCat2_Consequences)
+descriptives(SEX, "PaireCat2_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+
+#### Catégorie 3
+
+```{r}
+vec <- c(  # 286-288 = 324-326
+  "msex_paire_normalite_2","msex_paire_consideration_necessaire_perf","msex_paire_consideration_partie_perf"
+)
+SEX$PaireCat3_Interpretations <- rowMaxs(SEX[,vec],na.rm=T)
+
+descriptives(SEX, "PaireCat3_Interpretations",freq=FALSE)
+SEX$PaireCat3_Interpretations<-as.factor(SEX$PaireCat3_Interpretations)
+descriptives(SEX, "PaireCat3_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+```{r}
+vec <- c(  # 289-298 = 327-336
+  "Msex_paire_consideration_demotive","msex_paire_moins_perf_2","msex_paire_perdu_confiance_2",
+  "Msex_paire_image_corps_2","msex_paire_peur_3","msex_paire_colere_3",
+  "msex:_paire_triste","msex_paire_stress_3","msex_paire_ta_faute_3",
+  "msex_paire_humiliation_2"
+  )
+SEX$PaireCat3_Consequences <- rowMaxs(SEX[,vec],na.rm=T )
+descriptives(SEX, "PaireCat3_Consequences",freq=FALSE)
+
+SEX$PaireCat3_Consequences<-as.factor(SEX$PaireCat3_Consequences)
+descriptives(SEX, "PaireCat3_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+
+#### Catégorie 4
+
+```{r}
+vec <- c(  # 300-302 = 338-340
+  "Msex_paire_normalite","msex_paire_neccesite_perf","Msex_paire_partie_entrainement"
+)
+SEX$PaireCat4_Interpretations <- rowMaxs(SEX[,vec],na.rm=T)
+
+descriptives(SEX, "PaireCat4_Interpretations",freq=FALSE)
+
+SEX$PaireCat4_Interpretations<-as.factor(SEX$PaireCat4_Interpretations)
+descriptives(SEX, "PaireCat4_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+```{r}
+vec <- c(  # 303-311,- = 341-350 
+  "Msex_paire_demotive_2","msex_paire_moins_perf_3","msex_paire_perdu_confiance_3",
+  "msex_paire_image_neg","msex_paire_peur_4","msex_paire_peur_5",
+  "msex_paire_triste_3","msex_paire_stress_4","msex_paire_ta_faute_4",
+  "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..1"
+  )
+SEX$PaireCat4_Consequences <- rowMaxs(SEX[,vec],na.rm=T )
+descriptives(SEX, "PaireCat4_Consequences",freq=FALSE)
+
+SEX$PaireCat4_Consequences<-as.factor(SEX$PaireCat4_Consequences)
+descriptives(SEX, "PaireCat4_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+
+#### Catégorie 5
+
+```{r}
+vec <- c(  # 314-316 = 353-355
+  "Msex_paire_normalité","msex_paire_necessaire_perf_2","Msex_paire_faisant_partie_entrainement"
+)
+SEX$PaireCat5_Interpretations <- rowMaxs(SEX[,vec],na.rm=T)
+
+descriptives(SEX, "PaireCat5_Interpretations",freq=FALSE)
+SEX$PaireCat5_Interpretations<-as.factor(SEX$PaireCat5_Interpretations)
+descriptives(SEX, "PaireCat5_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+```{r}
+vec <- c(  # ..317..322.. = 356-365
+  "Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.1",
+  "msex_paire_moins_perf_4",
+  "Msex_paire_perte_confiance",
+  "Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.1",
+  "Msex_paire_peur",
+  "msex_paire_colere_4",
+  "msex_paire_triste_4",
+  "msex_paire_stress_5",
+  "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.1",
+  "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..2"
+  )
+SEX$PaireCat5_Consequences <- rowMaxs(SEX[,vec] ,na.rm=T)
+descriptives(SEX, "PaireCat5_Consequences",freq=FALSE)
+
+SEX$PaireCat5_Consequences<-as.factor(SEX$PaireCat5_Consequences)
+descriptives(SEX, "PaireCat5_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+#### Catégorie 6
+
+```{r}
+vec <- c(  # 324-326 = 367-369
+  "msex_paire_normalite_3","msex_paire_necessaire_perf_3","msex_paire_faisant_partie"
+)
+SEX$PaireCat6_Interpretations <- rowMaxs(SEX[,vec],na.rm=T)
+descriptives(SEX, "PaireCat6_Interpretations",freq=FALSE)
+
+SEX$PaireCat6_Interpretations<-as.factor(SEX$PaireCat6_Interpretations)
+descriptives(SEX, "PaireCat6_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+```{r}
+vec <- c(  # ..327..331.. = 370-379
+  "Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.2",
+  "msex_paire_moins_perf_5",
+  "Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..1",
+  "Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.2",
+  "msex_paire_peur_6",
+  "msex_paire_colere_5",
+  "msex_paire_triste_5",
+  "msex_paire_stress_6",
+  "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.2",
+  "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..3"
+  )
+SEX$PaireCat6_Consequences <- rowMaxs(SEX[,vec],na.rm=T )
+descriptives(SEX, "PaireCat6_Consequences",freq=FALSE)
+             
+SEX$PaireCat6_Consequences<-as.factor(SEX$PaireCat6_Consequences)
+descriptives(SEX, "PaireCat6_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+
+#### Catégorie 7
+
+```{r}
+vec <- c(  # 333,334,- = 381-383
+  "msex_paire_normalite_4",
+  "msex_paire_necessaire_perf_4",
+  "Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..1"
+)
+SEX$PaireCat7_Interpretations <- rowMaxs(SEX[,vec],na.rm=T)
+
+descriptives(SEX, "PaireCat7_Interpretations",freq=FALSE)
+SEX$PaireCat7_Interpretations<-as.factor(SEX$PaireCat7_Interpretations)
+descriptives(SEX, "PaireCat7_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+```{r}
+vec <- c(  # ..335..339.. = 384-393
+    "Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.3",
+    "msex_paire_moins_perf_6",
+    "Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..2",
+    "Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.3",
+    "msex_paire_peur_7",
+    "msex_paire_colere_6",
+    "msex_paire_triste_6",
+    "msex_paire_stress_7",
+    "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.3",
+    "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..4"
+  )
+SEX$PaireCat7_Consequences <- rowMaxs(SEX[,vec],na.rm=T )
+descriptives(SEX, "PaireCat7_Consequences",freq=FALSE)
+
+SEX$PaireCat7_Consequences<-as.factor(SEX$PaireCat7_Consequences)
+descriptives(SEX, "PaireCat7_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+
+## Adultes: 6 Catégories
+
+#### Catégorie 1
+
+```{r}
+vec <- c(  # 349-351 = 403-405
+  "Msex_adulte_normalite","msex_adulte_necessaire_perf","Msex_adulte_fsisant_partie"
+)
+SEX$AdultCat1_Interpretations <- as.numeric( rowMaxs(SEX[,vec],na.rm=T) )
+
+descriptives(SEX, "PaireCat1_Interpretations",freq=FALSE)
+
+SEX$AdultCat1_Interpretations<-as.factor(SEX$AdultCat1_Interpretations)
+descriptives(SEX, "PaireCat1_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+```{r}
+vec <- c(  # 352-361 = 406-415
+  "msex_adulte_demotive","Msex_adulte_moins_perf","msex_adulte_perdu_confiance",
+  "msex_adulte_image_corps","msex_adulte_peur","msex_adulte_colere",
+  "msex_adulte_triste","msex_adulte_stress","msex_adulte_ta_faute",
+  "msex_adulte_humiliation"
+  )
+SEX$AdultCat1_Consequences <- rowMaxs(SEX[,vec],na.rm=T )
+descriptives(SEX, "PaireCat1_Consequences",freq=FALSE)
+
+SEX$AdultCat1_Consequences<-as.factor(SEX$AdultCat1_Consequences)
+descriptives(SEX, "PaireCat1_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+
+#### Catégorie 2
+
+```{r}
+vec <- c(  # 363,364,- = 424-426
+  "msex_adulte_normalite",
+  "msex_adulte_necessaire_perf_5",
+  "Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..2"
+)
+SEX$AdultCat2_Interpretations <- rowMaxs(SEX[,vec],na.rm=T)
+descriptives(SEX, "PaireCat2_Interpretations",freq=FALSE)
+
+SEX$AdultCat2_Interpretations<-as.factor(SEX$AdultCat2_Interpretations)
+descriptives(SEX, "PaireCat2_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+```{r}
+vec <- c(  # ..365..369.. = 427-436
+  "Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.4",
+  "msex_adulte_moins_perf",
+  "Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..3",
+  "Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.4",
+  "msex_adulte_peur_6",
+  "msex_adulte_colere_6",
+  "Msex_adulte_triste",
+  "msex_adulte_stress (2)",
+  "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.4",
+  "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..5"
+  )
+SEX$AdultCat2_Consequences <- rowMaxs(SEX[,vec],na.rm=T )
+descriptives(SEX, "PaireCat2_Consequences",freq=FALSE)
+
+SEX$AdultCat2_Consequences<-as.factor(SEX$AdultCat2_Consequences)
+descriptives(SEX, "PaireCat2_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+
+#### Catégorie 3
+
+```{r}
+vec <- c(  # 371-372, = 445-447
+  "Msex_adulte_normalité","msex_adulte_necessaire_perf_3",
+  "Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..3"
+)
+SEX$AdultCat3_Interpretations <- rowMaxs(SEX[,vec],na.rm=T)
+descriptives(SEX, "AdultCat3_Interpretations",freq=FALSE)
+
+SEX$AdultCat1_Interpretations<-as.factor(SEX$AdultCat1_Interpretations)
+descriptives(SEX, "AdultCat3_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+```{r}
+vec <- c(  # ..373..377.. = 447-457
+  "Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..3",
+  "Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.5",
+  "msex_adulte_moins_perf_7",
+  "Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..4",
+  "Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.5",
+  "msex_adulte_peur_3",
+  "msex_adulte_colere_7",
+  "msex_adulte_triste_2",
+  "msex_adulte_stress_3",
+  "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.5",
+  "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..6"
+)
+SEX$AdultCat3_Consequences <- rowMaxs(SEX[,vec],na.rm=T )
+descriptives(SEX, "PaireCat3_Consequences",freq=FALSE)
+
+SEX$AdultCat3_Consequences<-as.factor(SEX$AdultCat3_Consequences)
+descriptives(SEX, "PaireCat3_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+
+#### Catégorie 4
+
+```{r}
+vec <- c(  # 379-380 = 466-468
+  "msex_adulte_normalite_2","msex_adulte_necessaire_perf_7","Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..4"
+)
+SEX$AdultCat4_Interpretations <- rowMaxs(SEX[,vec],na.rm=T)
+#SEX$AdultCat4_Interpretations<-as.numeric(SEX$AdultCat4_Interpretations)
+descriptives(SEX, "AdultCat4_Interpretations",freq=FALSE)
+
+SEX$AdultCat4_Interpretations<-as.factor(SEX$AdultCat4_Interpretations)
+descriptives(SEX, "AdultCat4_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+```{r}
+vec <- c(  # ..381..385.. = 469-478
+  "Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.6",
+  "msex_adulte_moins_perf_8",
+  "Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..5",
+  "Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.6",
+  "Msex_adulte_peur",
+  "msex_adulte_colere_4",
+  "msex_adulte_triste_8",
+  "msex_adulte_stress_8",
+  "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.6",
+  "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..7"
+  )
+SEX$AdultCat4_Consequences <- rowMaxs(SEX[,vec],na.rm=T )
+descriptives(SEX, "AdultCat4_Consequences",freq=FALSE)
+
+SEX$AdultCat4_Consequences<-as.factor(SEX$AdultCat4_Consequences)
+descriptives(SEX, "AdultCat4_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+
+#### Catégorie 5
+
+```{r}
+vec <- c(  # 396-398 = 489-491
+  "Msex_adulte_normalite_2","msex_adulte_necessaire_perf_5 (2)","msex_adulte_faisant_partie"  
+)
+SEX$AdultCat5_Interpretations <- rowMaxs(SEX[,vec],na.rm=T)
+descriptives(SEX, "AdultCat5_Interpretations",freq=FALSE)
+
+SEX$AdultCat5_Interpretations<-as.factor(SEX$AdultCat5_Interpretations)
+descriptives(SEX, "AdultCat5_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+```{r}
+vec <- c(  # 399-408 = 492-501
+  "Msex_adulte_demotive","msex_adulte_moins_perf_4","Msex_adulte_perdu_confiance",
+  "Msex_adulte_image_neg_corps","msex_adulte_peur_4","msex_adulte_colere_5",
+  "msex_adulte_triste_4","msex_adulte_stress_5","msex_adulte_ta_faute_2",
+  "Msex_adulte_humiliation"
+  )
+SEX$AdultCat5_Consequences <- rowMaxs(SEX[,vec],na.rm=T )
+descriptives(SEX, "AdultCat5_Consequences",freq=FALSE)
+
+SEX$AdultCat5_Consequences<-as.factor(SEX$AdultCat5_Consequences)
+descriptives(SEX, "AdultCat5_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+
+#### Catégorie 6
+
+```{r}
+vec <- c(  # 410,411,- = 510-512
+  "msex_adulte_normalite_7","msex_adulte_necessaire_perf_8",
+  "Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..5"
+)
+SEX$AdultCat6_Interpretations <- rowMaxs(SEX[,vec],na.rm=T)
+
+descriptives(SEX, "AdultCat6_Interpretations",freq=FALSE)
+
+SEX$AdultCat6_Interpretations<-as.factor(SEX$AdultCat6_Interpretations)
+descriptives(SEX, "AdultCat6_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+```{r}
+SEX$AdultCat6_Consequences <- rowMaxs(SEX[,c(  # ..412..416.. = 513-522
+  "Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.7",
+  "msex_adulte_moins_perf_5",
+  "Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..6",
+  "Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.7",
+  "msex_adulte_peur_9",
+  "Msex_adulte_colere",
+  "msex_adulte_triste_9",
+  "msex_adulte_stress_9",
+  "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.7",
+  "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..8"
+  )],na.rm=T )
+descriptives(SEX, "AdultCat6_Consequences",freq=FALSE)
+SEX$AdultCat6_Consequences<-as.factor(SEX$AdultCat6_Consequences)
+descriptives(SEX, "AdultCat6_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(SEX,vec)
+```
+
+# NEG
+
+et adultes et parents 3 catégories (Franzoni p. 95) avec 5 items au total
+
+```{r}
+TOUT$NEG <- TOUT$Neg_adulte_entrainer_blesse_item1!="Jamais" | TOUT$neg_adulte_dopage_soutenu_item2!="Jamais" |
+            TOUT$neg_adulte_poids_ideal_item3     !="Jamais" | TOUT$Neg_adulte_louper_ecole_item4!="Jamais"   |
+            TOUT$Neg_adulte_laisser_humilier_item5!="Jamais" |
+
+            TOUT$Neg_parent_laisser_entrainer_blesser_item1!="Jamais" | TOUT$Neg_parent_dopage_item2!="Jamais" |
+            TOUT$Neg_parent_poids_ideal_item3!="Jamais"               | TOUT$Neg_parent_arret_ecole_item4!="Jamais" |
+            TOUT$neg_parent_laisser_humilier_autrui_item5!="Jamais"
+
+TOUT$NEG <- if_else(TOUT$NEG, 1, 0)
+
+NEG <- filter(TOUT, NEG==1)
+```
+
+Interpretation: il y a des IDs avec entrées sur plusieurs catégories!
+Théo: ne devrait pas exister, mais prendre la moins forte: min !
+
+
+## Adultes: 3 Catégorie
+
+#### Catégorie 1
+
+```{r}
+vec <- c(  # 435-437
+  "Neg_adulte_normalite","Neg_adulte_necessaire_perf","Neg_adulte_faisant_partie" )
+NEG$AdultCat1_Interpretations <- rowMaxs(NEG[,vec],na.rm=T)
+
+descriptives(NEG, "AdultCat1_Interpretations",freq=FALSE)
+NEG$AdultCat1_Interpretations<-as.factor(NEG$AdultCat1_Interpretations)
+descriptives(NEG, "AdultCat1_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(NEG,vec)
+```
+
+```{r}
+vec <- c(  # 438-447
+  "Neg_adulte_demotiver","Neg_adulte_moins_perf","Neg_adulte_perdu_confiance",
+  "Neg_adulte_image_neg_corps","Neg_adulte_peur","Neg_adulte_colere",
+  "Neg_adulte_triste","Neg_adulte_stress","Neg_adulte_ta_faute",
+  "Neg_adulte_humiliation")
+
+NEG$AdultCat1_Consequences <- rowMaxs(NEG[,vec],na.rm=T)
+descriptives(NEG, "AdultCat1_Consequences",freq=FALSE)
+NEG$AdultCat1_Consequences<-as.factor(NEG$AdultCat1_Consequences)
+descriptives(NEG, "AdultCat1_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(NEG,vec)
+```
+
+
+#### Catégorie 2
+
+```{r}
+vec <- c(  # 456-458
+  "neg_adulte_normalite","Neg_adulte_necessaire_perf_2","neg_adulte_faisant_partie"
+)
+NEG$AdultCat2_Interpretations <- rowMaxs(NEG[,vec],na.rm=T)
+
+descriptives(NEG, "AdultCat2_Interpretations",freq=FALSE)
+NEG$AdultCat2_Interpretations<-as.factor(NEG$AdultCat2_Interpretations)
+descriptives(NEG, "AdultCat2_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(NEG,vec)
+```
+
+```{r}
+vec <- c(  # 459-468
+  "Neg_adulte_demotive","Neg_adulte_moins_perf_2","Neg_adulte_perdu_confiance_2",
+  "Neg_adulte_image_coprs","Neg_Adulte_peur","Neg_adulte_colere_2",
+  "Neg_adulte_triste_2","Neg_adulte_stress_2","Neg_adulte_ta_faute_2",
+  "Neg_adulte_humiliation_2"
+  )
+NEG$AdultCat2_Consequences <- rowMaxs(NEG[,vec],na.rm=T )
+descriptives(NEG, "AdultCat2_Consequences",freq=FALSE)
+NEG$AdultCat2_Consequences<-as.factor(NEG$AdultCat2_Consequences)
+descriptives(NEG, "AdultCat2_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(NEG,vec)
+```
+
+
+#### Catégorie 3
+
+```{r}
+vec <- c(  # 477-479
+  "Neg_adulte_normalite_2","Neg_adulte_necessaire_perf_3","Neg_adulte_faisant_partie_perf"
+)
+NEG$AdultCat3_Interpretations <- rowMaxs(NEG[,vec],na.rm=T)
+
+descriptives(NEG, "AdultCat3_Interpretations",freq=FALSE)
+NEG$AdultCat3_Interpretations<-as.factor(NEG$AdultCat3_Interpretations)
+descriptives(NEG, "AdultCat3_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(NEG,vec)
+```
+
+```{r}
+vec<- c(  # 480-489
+  "Neg_adulte_demotive_2","Neg_adulte_moins_perf_3","Neg_adulte_perdu_confiance_3",
+  "Neg_adulte_image_corps","Neg_adulte_peur_2","Neg_adulte_colere_3",
+  "Neg_adulte_triste_3","Neg_adulte_stress_3","Neg_adulte_ta_faute_3",
+  "Neg_adulte_humiliation_3"
+  )
+NEG$AdultCat3_Consequences <- rowMaxs(NEG[,vec],na.rm=T )
+descriptives(NEG, "AdultCat3_Consequences",freq=FALSE)
+NEG$AdultCat3_Consequences<-as.factor(NEG$AdultCat3_Consequences)
+descriptives(NEG, "AdultCat3_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(NEG,vec)
+```
+
+
+## Parents: 3 Catégories
+
+#### Catégorie 1
+
+```{r}
+vec <- c(  # 493-495
+  "Neg_parent_normalite","neg_parent_necessaire_perf","neg_parent_faisant_partie"  
+)
+NEG$ParentCat1_Interpretations <- rowMaxs(NEG[,vec],na.rm=T)
+
+descriptives(NEG, "ParentCat1_Interpretations",freq=FALSE)
+NEG$ParentCat1_Interpretations<-as.factor(NEG$ParentCat1_Interpretations)
+descriptives(NEG, "ParentCat1_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(NEG,vec)
+```
+
+```{r}
+vec <- c(  # ..496..497.. = 615-624
+  "neg_parent_demotive",
+  "neg_parent_moins_perf",
+  "Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..1",
+  "Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..2",
+  "Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..3",
+  "Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..4",
+  "Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..5",
+  "Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..6",
+  "Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..7",
+  "Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..8"
+  )
+NEG$ParentCat1_Consequences <- rowMaxs(NEG[,vec],na.rm=T )
+descriptives(NEG, "ParentCat1_Consequences",freq=FALSE)
+
+NEG$ParentCat1_Consequences<-as.factor(NEG$ParentCat1_Consequences)
+descriptives(NEG, "ParentCat1_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(NEG,vec)
+```
+
+il n'y a que *neg_parent_demotive*
+
+
+#### Catégorie 2
+
+```{r}
+vec <- c(  # 499-501
+  "neg_parent_normalite","Neg_parent_necessaire_perf","neg_parent_faisant_partie_2"  
+)
+NEG$ParentCat2_Interpretations <- rowMaxs(NEG[,vec],na.rm=T)
+
+descriptives(NEG, "ParentCat2_Interpretations",freq=FALSE)
+NEG$ParentCat2_Interpretations<-as.factor(NEG$ParentCat2_Interpretations)
+descriptives(NEG, "ParentCat2_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(NEG,vec)
+```
+
+```{r}
+vec <- c("neg_parent_demotive_2",  # 52, - = 629-638 
+         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.1",
+         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.2",
+         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.3",
+         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.4",
+         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.5",
+         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.6",
+         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.7",
+         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.8",
+         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.9")
+NEG$ParentCat2_Consequences <- rowMaxs(NEG[,vec],na.rm=T)
+
+descriptives(NEG, "ParentCat2_Consequences",freq=FALSE)
+NEG$ParentCat2_Consequences <-as.factor(NEG$ParentCat2_Consequences )
+descriptives(NEG, "ParentCat2_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(NEG,vec)
+```
+
+Pour *neg_parent_demotive_2* y a 11 entrées au niveau .
+
+
+#### Catégorie 3
+
+```{r}
+vec <- c("Tu.as.considéré.cette.négligence.émotionnelle.comme....normale..1",   # -,504,505 = 640-642
+         "Neg_adulte_necessaire","neg_parent_faisant_partie_3")
+NEG$ParentCat3_Interpretations <- rowMaxs(NEG[,vec],na.rm=T)
+descriptives(NEG, "ParentCat3_Interpretations",freq=FALSE)
+
+NEG$ParentCat3_Interpretations<-as.factor(NEG$ParentCat3_Interpretations)
+descriptives(NEG, "ParentCat3_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(NEG,vec)
+```
+
+*Neg_adulte_necessaire* et *neg_parent_faisant_partie_3* ont les deux une somme 11 des niveaux. -??
+
+```{r}
+vec <- c("Neg_parent_demotive",                 # 506-507,- = 643-652
+         "neg_adulte_moins_perf",
+         "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..1",
+         "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..2",
+         "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..3",
+         "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..4",
+         "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..5",
+         "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..6",
+         "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..7",
+         "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..8")
+NEG$ParentCat3_Consequences <- rowMaxs(NEG[,c(vec)],na.rm=T )
+descriptives(NEG, "ParentCat3_Consequences",freq=FALSE)
+
+NEG$ParentCat3_Consequences<-as.factor(NEG$ParentCat3_Consequences)
+descriptives(NEG, "ParentCat3_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+trier(NEG,vec)
+```
+
+Il y a des entrées seulement pour *NEG_parent_demotiv*. J'ai contrôlé dans mes données que c'est correct.
+

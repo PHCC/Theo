@@ -1,0 +1,651 @@
+----------------- Qu./TR_ Master stat (job)/QEMS_data_S.xlsx : ----------------[] "ID.de.la.réponse"
+"Date.de.soumission"
+"Dernière.page"
+"Langue.de.départ"
+"Tête.de.série"
+"Je.déclare.librement.de.vouloir.participer.à.ce.questionnaire"
+"Indique.ton.âge"
+"Indique.le.canton.dans.lequel.tu.habites"
+"Indique.ton.sexe.à.la.naissance"
+"Indique.ton.niveau.de.pratique.ou.de.compétition "
+"Indique.le.sport.principal.que.tu.pratiques"
+"As-tu.arrêté.de.pratiquer.un.ou.plusieurs.sports.pour.te.concentrer.sur.ton.sport.principal.?"
+"Participes-tu.à.des.entrainements.intensifs.et.des.compétitions.plus.de..mois.par.an.?"
+"As-tu.commencé.ton.sport.principal.avant.l'âge.de..ans.?"
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[t'a.déjà.secoué.ou.agrippé]"
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[t'a.déjà.frappé.(exemples.:.avec.un.obje
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[t'a.déjà.étouffé.ou.étranglé]"
+"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme.:.[normaux]"
+"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme.:.[nécessaires.à.la.performance]"
+"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme.:.[faisant.partie.de.l'entrainement.ou.de.la
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capa
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,.
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,.
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,.
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'entraineur]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'entraineur.assistant]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Le.préparateur.physique.de.l'équipe]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'équipe.médical.(exemples.:.physioth
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Le.psychologue.du.sport.ou.le.prépara
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'arbitre]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Autre]"
+"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme.:.[normaux]"
+"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme.:.[nécessaires.à.la.performance]"
+"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme.:.[faisant.partie.de.l'entrainement.ou.de.la
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[moins.bien.performé]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[perdu.confiance.en.toi.et.tes.capaci
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[eu.peur]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[été.en.colère]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[été.triste]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[été.stressé]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[ressenti.de.l'humiliation]"
+"En.raison.de.tes.performances.sportives.ou.de.tes.comportements.à.l'entrainement.ou.en.compétition,.un.de.
+"En.raison.de.tes.performances.sportives.ou.de.tes.comportements.à.l'entrainement.ou.en.compétition,.un.de.
+"En.raison.de.tes.performances.sportives.ou.de.tes.comportements.à.l'entrainement.ou.en.compétition,.un.de.
+"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme.:.[normaux]"
+"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme.:.[nécessaires.à.la.performance]"
+"Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme.:.[faisant.partie.de.l'entrainement.ou.de.la
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[moins.bien.performé]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[perdu.confiance.en.toi.et.tes.capaci
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[eu.peur]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[été.en.colère]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[été.triste]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[été.stressé]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.ces.événements.de.maltraitance.physique,.est-ce.que.tu.as.… .[ressenti.de.l'humiliation]"
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[t'a.déjà.ignoré.volontairement.ou.s'est.
+"Tu.as.considéré.cette.ignorance/indifférence.comme.:.[normale]"
+"Tu.as.considéré.cette.ignorance/indifférence.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cette.ignorance/indifférence.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétitio
+"Au.moment.où.tu.as.vécu.cette.ignorance/indifférence,.est-ce.que.tu.as.… .[été.démotivé.à.continuer.ton.sp
+"Au.moment.où.tu.as.vécu.cette.ignorance/indifférence,.est-ce.que.tu.as.… .[moins.bien.performé]"
+"Au.moment.où.tu.as.vécu.cette.ignorance/indifférence,.est-ce.que.tu.as.… .[perdu.confiance.en.toi.et.tes.c
+"Au.moment.où.tu.as.vécu.cette.ignorance/indifférence,.est-ce.que.tu.as.… .[eu.une.image.négative.de.ton.co
+"Au.moment.où.tu.as.vécu.cette.ignorance/indifférence,.est-ce.que.tu.as.… .[eu.peur]"
+"Au.moment.où.tu.as.vécu.cette.ignorance/indifférence,.est-ce.que.tu.as.… .[été.en.colère]"
+"Au.moment.où.tu.as.vécu.cette.ignorance/indifférence,.est-ce.que.tu.as.… .[été.triste]"
+"Au.moment.où.tu.as.vécu.cette.ignorance/indifférence,.est-ce.que.tu.as.… .[été.stressé]"
+"Au.moment.où.tu.as.vécu.cette.ignorance/indifférence,.est-ce.que.tu.as.… .[pensé.que.c'était.de.ta.faute]"
+"Au.moment.où.tu.as.vécu.cette.ignorance/indifférence,.est-ce.que.tu.as.… .[ressenti.de.l'humiliation]"
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[a.déjà.critiqué.la.façon.dont.tu.t'inves
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[a.déjà.critiqué.ta.performance]"
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[a.déjà.critiqué.ton.apparence.physique.o
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[a.déjà.lancé.ou.propagé.une.rumeur/un.me
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[t'a.déjà.ridiculisé,.humilié.ou.insulté]
+"Tu.as.considéré.ces.critiques.ou.comportements.comme.:.[normaux]"
+"Tu.as.considéré.ces.critiques.ou.comportements.comme.:.[nécessaires.à.la.performance]"
+"Tu.as.considéré.ces.critiques.ou.comportements.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétit
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.… .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.… .[moins.bien.performé]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.… .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.… .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.… .[eu.peur]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.… .[été.en.colère]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.… .[été.triste]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.… .[été.stressé]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.… .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.… .[ressenti.de.l'humiliation]"
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[t'a.déjà.menacé.d'être.exclu.(exemples.
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[t'a.déjà.menacé.physiquement.mais.sans.
+"Tu.as.considéré.ces.menaces.comme.:.[normales]"
+"Tu.as.considéré.ces.menaces.comme.:.[nécessaires.à.la.performance]"
+"Tu.as.considéré.ces.menaces.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétition]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[t'a.déjà.encouragé.à.humilier,.menacer.
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[t'a.déjà.demandé.ou.encourager.à.limite
+"Tu.as.considéré.les.comportements.qu'on.t'a.demandé.d'adopter.comme.:.[normaux]"
+"Tu.as.considéré.les.comportements.qu'on.t'a.demandé.d'adopter.comme.:.[nécessaires.à.la.performance]"
+"Tu.as.considéré.les.comportements.qu'on.t'a.demandé.d'adopter.comme.:.[faisant.partie.de.l'entrainement.o
+"Suite.à.ces.comportements.que.l'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[été.démotivé.à.continuer
+"Suite.à.ces.comportements.que.l'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.ces.comportements.que.l'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.e
+"Suite.à.ces.comportements.que.l'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[eu.une.image.négative.de
+"Suite.à.ces.comportements.que.l'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.ces.comportements.que.l'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.ces.comportements.que.l'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.ces.comportements.que.l'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.ces.comportements.que.l'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.
+"Suite.à.ces.comportements.que.l'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[ressenti.de.l'humiliatio
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'entraineur]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'entraineur.assistant]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Le.préparateur.physique.de.l'équipe]
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'équipe.médical.(exemples.:.physiot
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Le.psychologue.du.sport.ou.le.prépar
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'arbitre]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Autre]"
+"Tu.as.considéré.cette.ignorance/indifférence.comme.:.[normale]"
+"Tu.as.considéré.cette.ignorance/indifférence.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cette.ignorance/indifférence.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétiti
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.....[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.....[moins.bien.performé]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.....[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.....[eu.une.image.négative.de.ton.corps]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.....[eu.peur]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.....[été.en.colère]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.....[été.triste]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.....[été.stressé]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.....[pensé.que.c'était.de.ta.faute]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.....[ressenti.de.l'humiliation]"
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"La.personne.(ou.les.personnes).qui.t'a.critiqué.ou.qui.a.eu.ces.comportements.était.:.[L'entraineur]"
+"La.personne.(ou.les.personnes).qui.t'a.critiqué.ou.qui.a.eu.ces.comportements.était.:.[L'entraineur.assis
+"La.personne.(ou.les.personnes).qui.t'a.critiqué.ou.qui.a.eu.ces.comportements.était.:.[Le.préparateur.phy
+"La.personne.(ou.les.personnes).qui.t'a.critiqué.ou.qui.a.eu.ces.comportements.était.:.[L'équipe.médical.(
+"La.personne.(ou.les.personnes).qui.t'a.critiqué.ou.qui.a.eu.ces.comportements.était.:.[Le.psychologue.du.
+"La.personne.(ou.les.personnes).qui.t'a.critiqué.ou.qui.a.eu.ces.comportements.était.:.[L'arbitre]"
+"La.personne.(ou.les.personnes).qui.t'a.critiqué.ou.qui.a.eu.ces.comportements.était.:.[Autre]"
+"Tu.as.considéré.ces.critiques.ou.comportements.comme.: .[normaux]"
+"Tu.as.considéré.ces.critiques.ou.comportements.comme.: .[nécessaires.à.la.performance]"
+"Tu.as.considéré.ces.critiques.ou.comportements.comme.: .[faisant.partie.de.l'entrainement.ou.de.la.compét
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"La.personne.(ou.les.personnes).qui.t'a.menacé.était.:.[L'entraineur]"
+"La.personne.(ou.les.personnes).qui.t'a.menacé.était.:.[L'entraineur.assistant]"
+"La.personne.(ou.les.personnes).qui.t'a.menacé.était.:.[Le.préparateur.physique.de.l'équipe]"
+"La.personne.(ou.les.personnes).qui.t'a.menacé.était.:.[L'équipe.médical.(exemples.:.physiothérapeute,.ost
+"La.personne.(ou.les.personnes).qui.t'a.menacé.était.:.[Le.psychologue.du.sport.ou.le.préparateur.mental.d
+"La.personne.(ou.les.personnes).qui.t'a.menacé.était.:.[L'arbitre]"
+"La.personne.(ou.les.personnes).qui.t'a.menacé.était.:.[Autre]"
+"Tu.as.considéré.ces.menaces.comme.: .[normales]"
+"Tu.as.considéré.ces.menaces.comme.: .[nécessaires.à.la.performance]"
+"Tu.as.considéré.ces.menaces.comme.: .[faisant.partie.de.l'entrainement.ou.de.la.compétition]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"La.personne.(ou.les.personnes).qui.t'a.demandé.d'adopter.ces.comportements.était.:.[L'entraineur]"
+"La.personne.(ou.les.personnes).qui.t'a.demandé.d'adopter.ces.comportements.était.:.[L'entraineur.assistan
+"La.personne.(ou.les.personnes).qui.t'a.demandé.d'adopter.ces.comportements.était.:.[Le.préparateur.physiq
+"La.personne.(ou.les.personnes).qui.t'a.demandé.d'adopter.ces.comportements.était.:.[L'équipe.médical.(exe
+"La.personne.(ou.les.personnes).qui.t'a.demandé.d'adopter.ces.comportements.était.:.[Le.psychologue.du.spo
+"La.personne.(ou.les.personnes).qui.t'a.demandé.d'adopter.ces.comportements.était.:.[L'arbitre]"
+"La.personne.(ou.les.personnes).qui.t'a.demandé.d'adopter.ces.comportements.était.:.[Autre]"
+"Tu.as.considéré.ces.comportements.que.l'on.t'a.demandé.d'adopter.comme.:.[normaux]"
+"Tu.as.considéré.ces.comportements.que.l'on.t'a.demandé.d'adopter.comme.:.[nécessaires.à.la.performance]"
+"Tu.as.considéré.ces.comportements.que.l'on.t'a.demandé.d'adopter.comme.:.[faisant.partie.de.l'entrainemen
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.to
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.t
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[eu.une.image.négative.de.to
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.fau
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"En.raison.de.tes.performances.sportives.ou.de.tes.comportements.à.l'entrainement.ou.en.compétition,.un.de
+"Tu.as.considéré.cette.ignorance/indifférence.comme.:.[normale]"
+"Tu.as.considéré.cette.ignorance/indifférence.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cette.ignorance/indifférence.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétiti
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.cette.ignorance/indifférence,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"En.raison.de.tes.performances.sportives.ou.de.tes.comportements.à.l'entrainement.ou.en.compétition,.un.de
+"En.raison.de.tes.performances.sportives.ou.de.tes.comportements.à.l'entrainement.ou.en.compétition,.un.de
+"En.raison.de.tes.performances.sportives.ou.de.tes.comportements.à.l'entrainement.ou.en.compétition,.un.de
+"En.raison.de.tes.performances.sportives.ou.de.tes.comportements.à.l'entrainement.ou.en.compétition,.un.de
+"En.raison.de.tes.performances.sportives.ou.de.tes.comportements.à.l'entrainement.ou.en.compétition,.un.de
+"En.raison.de.tes.performances.sportives.ou.de.tes.comportements.à.l'entrainement.ou.en.compétition,.un.de
+"Tu.as.considéré.ces.critiques.ou.comportements.comme.:.[normaux]"
+"Tu.as.considéré.ces.critiques.ou.comportements.comme.:.[nécessaires.à.la.performance]"
+"Tu.as.considéré.ces.critiques.ou.comportements.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compéti
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.ces.critiques.ou.comportements,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"En.raison.de.tes.performances.sportives.ou.de.tes.comportements.à.l'entrainement.ou.en.compétition,.un.de
+"Tu.as.considéré.ces.menaces.comme.:.[normales]"
+"Tu.as.considéré.ces.menaces.comme.:.[nécessaires.à.la.performance]"
+"Tu.as.considéré.ces.menaces.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétition]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.ces.menaces,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.contexte.sportif,.un.de.tes.parents.ou.un.de.tes.beaux-parents.....[t'a.déjà.demandé.d'humilier,.
+"Dans.le.contexte.sportif,.un.de.tes.parents.ou.un.de.tes.beaux-parents.....[t'a.déjà.demandé.ou.encourage
+"Dans.le.contexte.sportif,.un.de.tes.parents.ou.un.de.tes.beaux-parents.....[t'a.déjà.demandé.de.continuer
+"Dans.le.contexte.sportif,.un.de.tes.parents.ou.un.de.tes.beaux-parents.....[t'a.déjà.demandé.de.t'entrain
+"Dans.le.contexte.sportif,.un.de.tes.parents.ou.un.de.tes.beaux-parents.....[t'a.déjà.demandé.d'utiliser.u
+"Dans.le.contexte.sportif,.un.de.tes.parents.ou.un.de.tes.beaux-parents.....[t'a.déjà.demandé.d'atteindre.
+"Tu.as.considéré.ces.comportements.qu'on.t'a.demandé.d'adopter.comme.:.[normaux]"
+"Tu.as.considéré.ces.comportements.qu'on.t'a.demandé.d'adopter.comme.:.[nécessaires.à.la.performance]"
+"Tu.as.considéré.ces.comportements.qu'on.t'a.demandé.d'adopter.comme.:.[faisant.partie.de.l'entrainement.o
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.to
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.t
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[eu.une.image.négative.de.to
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.fau
+"Suite.à.ces.comportements.qu'on.t'a.demandé.d'adopter,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[t'a.déjà.fait.des.remarques.sexuelles.à
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[t'a.déjà.fait.des.propositions.sexuelle
+"Tu.as.considéré.ces.remarques.ou.propositions.sexuelles.comme.:.[normales]"
+"Tu.as.considéré.ces.remarques.ou.propositions.sexuelles.comme.:.[nécessaires.à.la.performance]"
+"Tu.as.considéré.ces.remarques.ou.propositions.sexuelles.comme.:.[faisant.partie.de.l'entrainement.ou.de.l
+"Suite.à.ces.remarques.ou.propositions.sexuelles,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.spor
+"Suite.à.ces.remarques.ou.propositions.sexuelles,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.ces.remarques.ou.propositions.sexuelles,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.cap
+"Suite.à.ces.remarques.ou.propositions.sexuelles,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corp
+"Suite.à.ces.remarques.ou.propositions.sexuelles,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.ces.remarques.ou.propositions.sexuelles,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.ces.remarques.ou.propositions.sexuelles,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.ces.remarques.ou.propositions.sexuelles,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.ces.remarques.ou.propositions.sexuelles,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.ces.remarques.ou.propositions.sexuelles,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[t'a.déjà.montré.ses.parties.intimes.ou.
+"Tu.as.considéré.ces.actes.de.nature.sexuelle.comme.:.[normaux]"
+"Tu.as.considéré.ces.actes.de.nature.sexuelle.comme.:.[nécessaires.à.la.performance]"
+"Tu.as.considéré.ces.actes.de.nature.sexuelle.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétiti
+"Suite.à.ces.actes.de.nature.sexuelle,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.ces.actes.de.nature.sexuelle,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.ces.actes.de.nature.sexuelle,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.ces.actes.de.nature.sexuelle,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.ces.actes.de.nature.sexuelle,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.ces.actes.de.nature.sexuelle,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.ces.actes.de.nature.sexuelle,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.ces.actes.de.nature.sexuelle,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.ces.actes.de.nature.sexuelle,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.ces.actes.de.nature.sexuelle,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[a.déjà.pris.des.photos.intimes.ou.filme
+"Tu.as.considéré.cela.comme.:.[normal]"
+"Tu.as.considéré.cela.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cela.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétition]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[t'a.déjà.forcé.à.le.toucher.sexuellemen
+"Tu.as.considéré.cela.comme.:.[normal]"
+"Tu.as.considéré.cela.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cela.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétition]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[t'a.déjà.embrassé.sur.la.bouche.sans.qu
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[s'est.déjà.frotté.contre.tes.parties.in
+"Tu.as.considéré.le.fait.de.te.faire.embrasser.ou.toucher.sexuellement.sans.que.tu.ne.le.souhaites.comme.:
+"Tu.as.considéré.le.fait.de.te.faire.embrasser.ou.toucher.sexuellement.sans.que.tu.ne.le.souhaites.comme.:
+"Tu.as.considéré.le.fait.de.te.faire.embrasser.ou.toucher.sexuellement.sans.que.tu.ne.le.souhaites.comme.:
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[a.déjà.tenté.d'avoir.une.relation.sexue
+"Tu.as.considéré.cela.comme.:.[normal]"
+"Tu.as.considéré.cela.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cela.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétition]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.contexte.sportif,.un.athlète.ou.un.groupe.d'athlètes.....[a.déjà.eu.une.relation.sexuelle.avec.ou
+"Tu.as.considéré.cela.comme.:.[normal]"
+"Tu.as.considéré.cela.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cela.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétition]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"La.personne.(ou.les.personnes).qui.t'a.fait.ces.remarques.ou.propositions.sexuelles.ou.qui.t'a.envoyé.ces
+"La.personne.(ou.les.personnes).qui.t'a.fait.ces.remarques.ou.propositions.sexuelles.ou.qui.t'a.envoyé.ces
+"La.personne.(ou.les.personnes).qui.t'a.fait.ces.remarques.ou.propositions.sexuelles.ou.qui.t'a.envoyé.ces
+"La.personne.(ou.les.personnes).qui.t'a.fait.ces.remarques.ou.propositions.sexuelles.ou.qui.t'a.envoyé.ces
+"La.personne.(ou.les.personnes).qui.t'a.fait.ces.remarques.ou.propositions.sexuelles.ou.qui.t'a.envoyé.ces
+"La.personne.(ou.les.personnes).qui.t'a.fait.ces.remarques.ou.propositions.sexuelles.ou.qui.t'a.envoyé.ces
+"La.personne.(ou.les.personnes).qui.t'a.fait.ces.remarques.ou.propositions.sexuelles.ou.qui.t'a.envoyé.ces
+"Tu.as.considéré.ces.remarques,.images,.messages.ou.propositions.sexuelles.comme.:.[normales]"
+"Tu.as.considéré.ces.remarques,.images,.messages.ou.propositions.sexuelles.comme.:.[nécessaires.à.la.perfo
+"Tu.as.considéré.ces.remarques,.images,.messages.ou.propositions.sexuelles.comme.:.[faisant.partie.de.l'en
+"Suite.à.la.réception.de.ces.remarques,.images,.messages.ou.propositions.sexuelles,.est-ce.que.tu.as.... .
+"Suite.à.la.réception.de.ces.remarques,.images,.messages.ou.propositions.sexuelles,.est-ce.que.tu.as.... .
+"Suite.à.la.réception.de.ces.remarques,.images,.messages.ou.propositions.sexuelles,.est-ce.que.tu.as.... .
+"Suite.à.la.réception.de.ces.remarques,.images,.messages.ou.propositions.sexuelles,.est-ce.que.tu.as.... .
+"Suite.à.la.réception.de.ces.remarques,.images,.messages.ou.propositions.sexuelles,.est-ce.que.tu.as.... .
+"Suite.à.la.réception.de.ces.remarques,.images,.messages.ou.propositions.sexuelles,.est-ce.que.tu.as.... .
+"Suite.à.la.réception.de.ces.remarques,.images,.messages.ou.propositions.sexuelles,.est-ce.que.tu.as.... .
+"Suite.à.la.réception.de.ces.remarques,.images,.messages.ou.propositions.sexuelles,.est-ce.que.tu.as.... .
+"Suite.à.la.réception.de.ces.remarques,.images,.messages.ou.propositions.sexuelles,.est-ce.que.tu.as.... .
+"Suite.à.la.réception.de.ces.remarques,.images,.messages.ou.propositions.sexuelles,.est-ce.que.tu.as.... .
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'entraineur]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'entraineur.assistant]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Le.préparateur.physique.de.l'équipe]
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'équipe.médical.(exemples.:.physiot
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Le.psychologue.du.sport.ou.le.prépar
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'arbitre]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Autre]"
+"Tu.as.considéré.cela.comme.:.[normal]"
+"Tu.as.considéré.cela.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cela.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétition]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'entraineur]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'entraineur.assistant]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Le.préparateur.physique.de.l'équipe]
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'équipe.médical.(exemples.:.physiot
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Le.psychologue.du.sport.ou.le.prépar
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'arbitre]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Autre]"
+"Tu.as.considéré.cela.comme.:.[normal]"
+"Tu.as.considéré.cela.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cela.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétition]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'entraineur]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'entraineur.assistant]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Le.préparateur.physique.de.l'équipe]
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'équipe.médical.(exemples.:.physiot
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Le.psychologue.du.sport.ou.le.prépar
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'arbitre]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Autre]"
+"Tu.as.considéré.cela.comme.:.[normale]"
+"Tu.as.considéré.cela.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cela.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétition]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"La.personne.(ou.les.personnes).qui.t'a.touché,.embrassé.ou.caressé.était.:.[L'entraineur]"
+"La.personne.(ou.les.personnes).qui.t'a.touché,.embrassé.ou.caressé.était.:.[L'entraineur.assistant]"
+"La.personne.(ou.les.personnes).qui.t'a.touché,.embrassé.ou.caressé.était.:.[Le.préparateur.physique.de.l'
+"La.personne.(ou.les.personnes).qui.t'a.touché,.embrassé.ou.caressé.était.:.[L'équipe.médical.(exemples.:.
+"La.personne.(ou.les.personnes).qui.t'a.touché,.embrassé.ou.caressé.était.:.[Le.psychologue.du.sport.ou.le
+"La.personne.(ou.les.personnes).qui.t'a.touché,.embrassé.ou.caressé.était.:.[L'arbitre]"
+"La.personne.(ou.les.personnes).qui.t'a.touché,.embrassé.ou.caressé.était.:.[Autre]"
+"Tu.as.considéré.le.fait.de.te.faire.toucher,.embrasser.ou.caresser.comme.:.[normal]"
+"Tu.as.considéré.le.fait.de.te.faire.toucher,.embrasser.ou.caresser.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.le.fait.de.te.faire.toucher,.embrasser.ou.caresser.comme.:.[faisant.partie.de.l'entrainem
+"Après.t'être.fait.toucher,.embrasser.ou.caresser,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.spo
+"Après.t'être.fait.toucher,.embrasser.ou.caresser,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Après.t'être.fait.toucher,.embrasser.ou.caresser,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.ca
+"Après.t'être.fait.toucher,.embrasser.ou.caresser,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.cor
+"Après.t'être.fait.toucher,.embrasser.ou.caresser,.est-ce.que.tu.as.... .[eu.peur]"
+"Après.t'être.fait.toucher,.embrasser.ou.caresser,.est-ce.que.tu.as.... .[été.en.colère]"
+"Après.t'être.fait.toucher,.embrasser.ou.caresser,.est-ce.que.tu.as.... .[été.triste]"
+"Après.t'être.fait.toucher,.embrasser.ou.caresser,.est-ce.que.tu.as.... .[été.stressé]"
+"Après.t'être.fait.toucher,.embrasser.ou.caresser,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Après.t'être.fait.toucher,.embrasser.ou.caresser,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'entraineur]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'entraineur.assistant]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Le.préparateur.physique.de.l'équipe]
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'équipe.médical.(exemples.:.physiot
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Le.psychologue.du.sport.ou.le.prépar
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'arbitre]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Autre]"
+"Tu.as.considéré.cela.comme.:.[normal]"
+"Tu.as.considéré.cela.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cela.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétition]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'entraineur]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'entraineur.assistant]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Le.préparateur.physique.de.l'équipe]
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'équipe.médical.(exemples.:.physiot
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Le.psychologue.du.sport.ou.le.prépar
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[L'arbitre]"
+"La.personne.(ou.les.personnes).qui.a.adopté.ce.comportement.était.:.[Autre]"
+"Tu.as.considéré.cela.comme.:.[normal]"
+"Tu.as.considéré.cela.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cela.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétition]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.sport]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.capacités]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.corps]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[eu.peur]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.en.colère]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.triste]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[été.stressé]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]"
+"Suite.à.cela,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"La.personne.(ou.les.personnes).qui.a.été.physiquement.négligente.envers.toi.était.:.[L'entraineur]"
+"La.personne.(ou.les.personnes).qui.a.été.physiquement.négligente.envers.toi.était.:.[L'entraineur.assista
+"La.personne.(ou.les.personnes).qui.a.été.physiquement.négligente.envers.toi.était.:.[Le.préparateur.physi
+"La.personne.(ou.les.personnes).qui.a.été.physiquement.négligente.envers.toi.était.:.[L'équipe.médical.(ex
+"La.personne.(ou.les.personnes).qui.a.été.physiquement.négligente.envers.toi.était.:.[Le.psychologue.du.sp
+"La.personne.(ou.les.personnes).qui.a.été.physiquement.négligente.envers.toi.était.:.[L'arbitre]"
+"La.personne.(ou.les.personnes).qui.a.été.physiquement.négligente.envers.toi.était.:.[Autre]"
+"Tu.as.considéré.cette.négligence.physique.comme.:.[normale]"
+"Tu.as.considéré.cette.négligence.physique.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cette.négligence.physique.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétition]
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.s
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.c
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[eu.peur]"
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[été.en.colère]"
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[été.triste]"
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[été.stressé]"
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"La.personne.(ou.les.personnes).qui.a.été.négligente.envers.ton.éducation.était.:.[L'entraineur]"
+"La.personne.(ou.les.personnes).qui.a.été.négligente.envers.ton.éducation.était.:.[L'entraineur.assistant]
+"La.personne.(ou.les.personnes).qui.a.été.négligente.envers.ton.éducation.était.:.[Le.préparateur.physique
+"La.personne.(ou.les.personnes).qui.a.été.négligente.envers.ton.éducation.était.:.[L'équipe.médical.(exemp
+"La.personne.(ou.les.personnes).qui.a.été.négligente.envers.ton.éducation.était.:.[Le.psychologue.du.sport
+"La.personne.(ou.les.personnes).qui.a.été.négligente.envers.ton.éducation.était.:.[L'arbitre]"
+"La.personne.(ou.les.personnes).qui.a.été.négligente.envers.ton.éducation.était.:.[Autre]"
+"Tu.as.considéré.cette.négligence.éducationnelle.comme.:.[normale]"
+"Tu.as.considéré.cette.négligence.éducationnelle.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cette.négligence.éducationnelle.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compét
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[été.démotivé.à.continuer
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.e
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[eu.une.image.négative.de
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[eu.peur]"
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[été.en.colère]"
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[été.triste]"
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[été.stressé]"
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[ressenti.de.l'humiliatio
+"Dans.le.cadre.de.ta.pratique.sportive,.un.adulte.de.ton.réseau.sportif.(ex..entraineur,.médecin.du.sport,
+"La.personne.(ou.les.personnes).qui.a.été.émotionnellement.négligente.envers.toi.était.:.[L'entraineur]"
+"La.personne.(ou.les.personnes).qui.a.été.émotionnellement.négligente.envers.toi.était.:.[L'entraineur.ass
+"La.personne.(ou.les.personnes).qui.a.été.émotionnellement.négligente.envers.toi.était.:.[Le.préparateur.p
+"La.personne.(ou.les.personnes).qui.a.été.émotionnellement.négligente.envers.toi.était.:.[L'équipe.médical
+"La.personne.(ou.les.personnes).qui.a.été.émotionnellement.négligente.envers.toi.était.:.[Le.psychologue.d
+"La.personne.(ou.les.personnes).qui.a.été.émotionnellement.négligente.envers.toi.était.:.[L'arbitre]"
+"La.personne.(ou.les.personnes).qui.a.été.émotionnellement.négligente.envers.toi.était.:.[Autre]"
+"Tu.as.considéré.cette.négligence.émotionnelle.comme.:.[normale]"
+"Tu.as.considéré.cette.négligence.émotionnelle.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cette.négligence.émotionnelle.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétit
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.t
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[eu.une.image.négative.de.t
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[eu.peur]"
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[été.en.colère]"
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[été.triste]"
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[été.stressé]"
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.fa
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]
+"Dans.le.contexte.sportif,.un.de.tes.parents.ou.un.de.tes.beaux-parents.....[t'a.déjà.laissé.t'entrainer.o
+"Dans.le.contexte.sportif,.un.de.tes.parents.ou.un.de.tes.beaux-parents.....[savait.que.tu.utilisais.un.pr
+"Dans.le.contexte.sportif,.un.de.tes.parents.ou.un.de.tes.beaux-parents.....[savait.que.tu.essayais.d'atte
+"Tu.as.considéré.cette.négligence.physique.comme.:.[normale]"
+"Tu.as.considéré.cette.négligence.physique.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cette.négligence.physique.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétition]
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.ton.s
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.tes.
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[eu.une.image.négative.de.ton.c
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[eu.peur]"
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[été.en.colère]"
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[été.triste]"
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[été.stressé]"
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.faute]
+"Au.moment.où.cette.négligence.physique.est.arrivée,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]"
+"Dans.le.contexte.sportif,.un.de.tes.parents.ou.un.de.tes.beaux-parents.....[t'a.déjà.demandé.de.manquer.o
+"Tu.as.considéré.cette.négligence.éducationnelle.comme.:.[normale]"
+"Tu.as.considéré.cette.négligence.éducationnelle.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cette.négligence.éducationnelle.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compét
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[été.démotivé.à.continuer
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.e
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[eu.une.image.négative.de
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[eu.peur]"
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[été.en.colère]"
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[été.triste]"
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[été.stressé]"
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.
+"Au.moment.où.cette.négligence.éducationnelle.est.arrivée,.est-ce.que.tu.as.... .[ressenti.de.l'humiliatio
+"Dans.le.contexte.sportif,.un.de.tes.parents.ou.un.de.tes.beaux-parents.....[t'a.déjà.laissé.humilier,.men
+"Tu.as.considéré.cette.négligence.émotionnelle.comme.:.[normale]"
+"Tu.as.considéré.cette.négligence.émotionnelle.comme.:.[nécessaire.à.la.performance]"
+"Tu.as.considéré.cette.négligence.émotionnelle.comme.:.[faisant.partie.de.l'entrainement.ou.de.la.compétit
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[été.démotivé.à.continuer.t
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[moins.bien.performé]"
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[perdu.confiance.en.toi.et.
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[eu.une.image.négative.de.t
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[eu.peur]"
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[été.en.colère]"
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[été.triste]"
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[été.stressé]"
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[pensé.que.c'était.de.ta.fa
+"Au.moment.où.cette.négligence.émotionnelle.est.arrivée,.est-ce.que.tu.as.... .[ressenti.de.l'humiliation]
