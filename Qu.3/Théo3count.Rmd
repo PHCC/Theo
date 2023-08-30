@@ -1,7 +1,7 @@
 ---
-title: "Théo3max.Rmd Question 3 Maximum, pas Somme"
+title: "Théo3count.Rmd Question 3 Count, pas Sum"
 author: "Christoph"
-date: "2023-08-28...30"
+date: "2023-08-30"
 output:
   pdf_document:
     latex_engine: xelatex
@@ -22,8 +22,7 @@ geometry: margin=0.5cm
 library(xlsx)                                         # Fichiers Excel
 library(jmv)                                          # Analyses Jamovi
 library(dplyr)                                        # filter etc.
-#library(MatrixGenerics)                              # rowMaxs - pas pour ma version de R
-library(matrixStats)                                 # rowMaxs - que pour matrix, pas dataframe
+#library(matrixStats)                                 # rowMaxs - que pour matrix, pas dataframe
 ```
 
 
@@ -73,165 +72,9 @@ for (i in 1:length(TOUT)) {
 (sur écran mais pas dans le PDF ou word)
 
 ```{r}
-#View(TOUT)
-#colnames(TOUT)   # Noms des Variables
+View(TOUT)
+colnames(TOUT)   # Noms des Variables
 ```
-
-----------------------------------------------------------------------------------------------------
-
-# MPS
-```
-descriptives(MPS, c("Mphysique_paire_normalisation", 
-                    "Mphysique_paire_necessite_perf",
-                    "Mphysique_paire_faire_partie"),
-             freq=TRUE)
-```
-
-tous les 3: N=282, 62 Manquants. Testé exemple i=37:
-
-- corréspond au .Rdata exporté du .mov
-- corréspond au QEMS_data_F.xlsx 
-- ce sont simplement MPS mais pas par paire
-
-- paire, adulte, parent : 1 catégorie, 3 items, 3 interpretations, 10 conséquences = OK ?                          
-
-```{r}
-TOUT$MPS <- TOUT$Mphysique_pairs_item1!="Jamais"                 | TOUT$Mphysique_paire_item2!="Jamais"         | 
-                TOUT$Mphysique_paire_item3!="Jamais"             | 
-  
-            TOUT$Mphysique_adulte_secoue_agrippe_item1!="Jamais" | TOUT$Mphysique_adulte_frappe_item2!="Jamais" | 
-                TOUT$Mphysique_adulte_etouffe_item3!="Jamais"    |
-  
-            TOUT$Mphysique_parent_secoue!="Jamais"               | TOUT$Mphysique_parent_frappe!="Jamais"       | 
-                TOUT$Mphysique_parent_ettoufe!="Jamais"              # NA reste NA, c'est bon!
-
-TOUT$MPS <- if_else(TOUT$MPS, 1, 0)
-
-MPS <- filter(TOUT, MPS==1)
-```
-
-
-## Paires : 1 Catégorie
-
-```{r}
-vec <- c(
-  "Mphysique_paire_normalisation","Mphysique_paire_necessite_perf","Mphysique_paire_faire_partie") # Var...txt 26-28 = colnames(TOUT).txt 19-21 
-MPS$PaireCat1_Interpretations <- rowMaxs(as.matrix(MPS[,vec],na.rm=T))  
-descriptives(MPS, "PaireCat1_Interpretations",freq=FALSE)
-MPS$PaireCat1_Interpretations<-as.factor(MPS$PaireCat1_Interpretations)
-descriptives(MPS, "PaireCat1_Interpretations",freq=TRUE,
-             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
-             )
-
-# Bastle Funktion die das aus Vektor von Namen als Strings macht - hab auf alles unten anwendet !?
-trier <- function(df, names) {
-  mx <- function(x){return(max(df[x],na.rm=T))}
-
-  namedList <- lapply(names,mx)
-  names(namedList) <- names
-  print("Trié:")
-  return( sort(unlist(namedList),decreasing=T) ) 
-}
-
-#trier(MPS, vec)  
-```
-
-```{r}
-vec <- c(
-    "Mphysique_paire_demotivation","Mphysique_paire_moins_performé","Mphysique_paire_perteconfiance",  # 29-38 = 22-31
-    "Mphysique_paire_image_neg","Mphysique_paire_peur","Mphysique_paire_colere",
-     "Mphysique_paire_triste","Mphysique_paire_stress","Mphysique_paire_ta_faute",
-     "Mphysique_paire_humiliation"  
-     )
-MPS$PaireCat1_Consequences <- rowMaxs(as.matrix(MPS[,vec],na.rm=T))
-descriptives(MPS, "PaireCat1_Consequences",freq=FALSE)
-MPS$PaireCat1_Consequences<-as.factor(MPS$PaireCat1_Consequences)
-descriptives(MPS, "PaireCat1_Consequences",freq=TRUE,
-             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
-             )
-#trier(MPS, vec)
-```
-
-
-## Adultes: 1 Catégorie
-
-```{r}
-vec <- c(
-  "Mphysique_adulte_auteur_normlisation",
-   "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...1",
-   "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...2"
-  )  # 49,-,- = 42-44
-MPS$Adult1_Interpretations <- rowMaxs(as.matrix(MPS[,vec],na.rm=T))
-descriptives(MPS, "Adult1_Interpretations",freq=FALSE)
-MPS$Adult1_Interpretations<-as.factor(MPS$Adult1_Interpretations)
-descriptives(MPS, "Adult1_Interpretations",freq=TRUE,
-             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
-             )
-#trier(MPS, vec)
-```
-
-(contrôle+ 1*5 + 2*9 + 3*19 = 80, OK)
-
-```{r}
-vec <- c(   # 50-59 = 54-54
-  "Mphysique_adute_domotivation",
-  "Mphysique_adulte_performance",
-  "Mphysique_adulte_confiance","Mphysique_adulte_imagecorps","Mphysique_adulte_peur",
-  "Mphysique_adulte_colere","Mphysique_adulte_triste","Mphysique_adulte_stress",
-  "Mphysique_adulte_responsabilite","Mphysique_adulte_humiliation"
-     )
-MPS$Adult1_Consequences <- rowMaxs(as.matrix(MPS[,vec],na.rm=T))
-descriptives(MPS, "Adult1_Consequences",freq=FALSE)
-MPS$Adult1_Consequences<-as.factor(MPS$Adult1_Consequences)
-descriptives(MPS, "Adult1_Consequences",freq=TRUE,
-             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
-             )
-#trier(MPS, vec)
-```
-
-
-## Parents: 1 Catégorie
-
-```{r}
-#MPS$ParentCat1_Interpretations <- MPS[,]  
-vec <- c("Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...3",  # -,-,- = 58-60
-         "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...4",
-         "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...5")
-
-MPS$Parents1_Interpretations <- 
-  rowMaxs(as.matrix(MPS[,vec],na.rm=T))
-descriptives(MPS, "Parents1_Interpretations",freq=FALSE)
-MPS$Parents1_Interpretations<-as.factor(MPS$Parents1_Interpretations)
-descriptives(MPS, "Parents1_Interpretations",freq=TRUE,
-             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
-             )
-#trier(MPS, vec)
-```
-
-En fait, toutes les valeurs sont NA! par la maximation en négligeant les NA, toutes les valeurs deviennent 0. -??
-
-
-```{r}
-vec <- c("Mphysique_parent_consideration","Mphysique_parent_suite_a",
-         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..1",
-         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..2",
-         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..3",
-         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..4",
-         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..5",
-         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..6",
-         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..7",
-         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..8")
-# 63,64,-,...- = 61-67
-
-MPS$Parents1_Consequences <- rowMaxs(as.matrix(MPS[,vec],na.rm=T))
-descriptives(MPS, "Parents1_Consequences",freq=FALSE)
-MPS$Parents1_Consequences<-as.factor(MPS$Parents1_Consequences)
-descriptives(MPS, "Parents1_Consequences",freq=TRUE,
-             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
-             )
-#trier(MPS, vec)
-```
-
 
 # PSY 
 
@@ -269,8 +112,17 @@ PSY <- filter(TOUT, PSY==1)
 #### Catégorie 1
 
 ```{r}
+PSY$Mpsy_paire_normalisation
+PSY$Mpsy_paire_necessite
+PSY$Mpsy_paire_partie_entrainement
+```
+
+
+```{r}
 vec <- c("Mpsy_paire_normalisation","Mpsy_paire_necessite","Mpsy_paire_partie_entrainement") # 66-69 = 72-74
-PSY$PairCat1_Interpretations <- rowMaxs(as.matrix(PSY[,vec]),na.rm=T)
+#PSY$PairCat1_Interpretations <- rowMaxs(as.matrix(PSY[,vec]),na.rm=T)
+PSY$PairCat1_Interpretations <- PSY[,vec]
+
 descriptives(PSY, "PairCat1_Interpretations",freq=TRUE)
 #trier(PSY,vec)
 ```
@@ -280,7 +132,8 @@ vec <- c("Mpsy_paire_démotivation","Mpsy_paire_moins_performe","Mpsy_paire_perd
     "Mpsy_paire_image_corps","Mpsy_paire_peur","Mpsy_paire_colere",
     "Mpsy_paire_triste","Mpsy_paire_stress","MPsy_paire_ta_faute",
     "Mpsy_paire_humiliation" )
-PSY$PairCat1_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T ))
+#PSY$PairCat1_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T ))
+
 descriptives(PSY, "PairCat1_Consequences",freq=FALSE)
 PSY$PairCat1_Consequences<-as.factor(PSY$PairCat1_Consequences)
 descriptives(PSY, "PairCat1_Consequences",freq=TRUE,
@@ -296,8 +149,8 @@ descriptives(PSY, "PairCat1_Consequences",freq=TRUE,
 vec <- c("Mpsy_paire_consideration",  # 84-86 = 90-92
     "mpsy_paire_neccesiteperf",
     "Mpsy_paire_partie_compet")
-PSY$PairCat2_Interpretations <- 
-  rowMaxs(as.matrix(PSY[,vec],na.rm=T))
+#PSY$PairCat2_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T))
+
 descriptives(PSY, "PairCat2_Interpretations",freq=TRUE)
 #trier(PSY,vec)
 ```
@@ -308,7 +161,8 @@ vec <- c("Mpsy_paire_demotive","mpsy_paire_moins_perf","Mpsy_paire_perte_confian
     "Mpsy_paire_triste_2","Mpsy_paire_stress_2","mpsy_paire_faute",
     "Mpsy_paire_humiliation_2"                                  
      )
-PSY$PairCat2_Consequences <- rowMaxs(as.matrix(PSY[,vec]),na.rm=T )
+#PSY$PairCat2_Consequences <- rowMaxs(as.matrix(PSY[,vec]),na.rm=T )
+
 descriptives(PSY, "PairCat2_Consequences",freq=FALSE)
 PSY$PairCat2_Consequences<-as.factor(PSY$PairCat2_Consequences)
 descriptives(PSY, "PairCat2_Consequences",freq=TRUE,
@@ -322,7 +176,8 @@ descriptives(PSY, "PairCat2_Consequences",freq=TRUE,
 
 ```{r}
 vec <- c("mpsy_paire_normlisation","mpsy_paire_necessite_perf","mpsy_paire_partie_entrainement")  # 99-101 = 105-107
-PSY$PairCat3_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T))
+#PSY$PairCat3_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T))
+
 descriptives(PSY, "PairCat3_Interpretations",freq=TRUE)
 #trier(PSY,vec)
 ```
@@ -333,7 +188,8 @@ vec <- c("mpsy_paire_demotive_sport","mpsy_paire_moins_perf_2","mpsy_paire_perdu
     "mpsy_paire_triste","mpsy_paire_stress","Mpsy_paire_ta_faute",
     "Mpsy_paire_humiliation_3"
      )
-PSY$PairCat3_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+#PSY$PairCat3_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+
 descriptives(PSY, "PairCat3_Consequences",freq=FALSE)                    
 PSY$PairCat3_Consequences<-as.factor(PSY$PairCat3_Consequences)
 descriptives(PSY, "PairCat3_Consequences",freq=TRUE,
@@ -347,8 +203,8 @@ descriptives(PSY, "PairCat3_Consequences",freq=TRUE,
 
 ```{r}
 vec <- c("Mpsy_paire_normalisation_2","mpsy_paire_necessaireperf","mpsy_paire_partie_entrainement_2") # 114-116 = 120-122
-PSY$PairCat4_Interpretations <- 
-  rowMaxs(as.matrix(PSY[,vec],na.rm=T) 
+#PSY$PairCat4_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T) 
+
 descriptives(PSY, "PairCat4_Interpretations",freq=TRUE)
 #trier(PSY,vec)
 ```
@@ -359,7 +215,8 @@ vec <- c("mpsy_paire_demotive","mpsy_paire_moins_perf_3","mpsy_paire_perte_confi
     "mpsy_paire_triste_2","Mpsy_paire_stress_3","Mpsy_paire_faute",
     "mpsy_paire_humiliation"
      )
-PSY$PairCat4_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+#PSY$PairCat4_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+
 descriptives(PSY, "PairCat4_Consequences",freq=FALSE)
 PSY$PairCat4_Consequences<-as.factor(PSY$PairCat4_Consequences)
 descriptives(PSY, "PairCat4_Consequences",freq=TRUE,
@@ -378,7 +235,8 @@ descriptives(PSY, "PairCat4_Consequences",freq=TRUE,
 
 ```{r}
 vec <- c("mpsy_adulte_considerer","mpsy_adulte_necessaire","Mpsy_adulte_faisant_partie")  # 129-131 = 141-143
-PSY$AdultCat1_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T) 
+#PSY$AdultCat1_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T) 
+
 descriptives(PSY, "AdultCat1_Interpretations",freq=TRUE)
 #trier(PSY,vec)
 ```
@@ -388,7 +246,8 @@ vec <- c( "Mpsy_adulte_demotive","mpsy_adulte_moins_perf","Mpsy_adulte_perdu_con
      "mpsy_adulte_image_corps","mpsy_adulte_peur","mpsy_adulte_colere",
      "mpsy_adulte_triste","mpsy_adulte_stress","mpsy_adulte_ta_faute",
      "mpsy_adulte_humiliation")
-PSY$AdultCat1_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+#PSY$AdultCat1_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+
 descriptives(PSY, "AdultCat1_Consequences",freq=FALSE)
 PSY$AdultCat1_Consequences<-as.factor(PSY$AdultCat1_Consequences)
 descriptives(PSY, "AdultCat1_Consequences",freq=TRUE,
@@ -405,7 +264,8 @@ descriptives(PSY, "AdultCat1_Consequences",freq=TRUE,
 
 ```{r}
 vec <- c("Mpsy_adulte_consideration","mpsy_adulte_necessaire_2","Mpsy_adulte_partie_compet") # 155-157 = 167-169
-PSY$AdultCat2_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+#PSY$AdultCat2_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+
 descriptives(PSY, "AdultCat2_Interpretations",freq=TRUE)
 #trier(PSY,vec)
 ```
@@ -415,7 +275,8 @@ vec <- c( "Mpsy_adulte_demotive_2","mpsy_adulte_moins_perf_2","Mpsy_adulte_perdu
      "Mpsy_adulte_image_corps","mpsy_adulte_peur_2","mpsy_adulte_colere_2",
      "mpsy_adulte_triste_2","mpsy_adulte_stress_2","mpsy_adulte_ta_faute_2",
      "mpsy_adulte_humiliation_2")
-PSY$AdultCat2_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+#PSY$AdultCat2_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+
 descriptives(PSY, "AdultCat2_Consequences",freq=FALSE)
 PSY$AdultCat2_Consequences<-as.factor(PSY$AdultCat2_Consequences)
 descriptives(PSY, "AdultCat2_Consequences",freq=TRUE,
@@ -443,7 +304,8 @@ descriptives(PSY, "AdultCat2_Consequences",freq=TRUE,
 ```{r}
 vec <- c("Mpsy_adulte_auteur_considerer_normal","mpsy_adulte_necessaireperf",  # 177-179 = 189-191
         "mpsy_adulte_partie_entrainement") 
-PSY$AdultCat3_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+#PSY$AdultCat3_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+
 descriptives(PSY, "AdultCat3_Interpretations",freq=TRUE)
 #trier(PSY,vec)
 ```
@@ -455,7 +317,8 @@ vec <- c("mpsy_adulte_demotive","mpsy_adulte_moins_perf_3","mpsy_adulte_perdu_co
     "mpsy_adulte_image_neg","mpsy_adulte_peur_3","mpsy_adulte_colere_3",
     "mpsy_adulte_triste_3","Mpsy_Adulte_stress","mpsy_adulte_ta_faute_3",
     "mpsy_adulte_ressenti_humuliation")
-PSY$AdultCat3_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+#PSY$AdultCat3_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+
 descriptives(PSY, "AdultCat3_Consequences",freq=FALSE)
 PSY$AdultCat3_Consequences<-as.factor(PSY$AdultCat3_Consequences)
 descriptives(PSY, "AdultCat3_Consequences",freq=TRUE,
@@ -469,7 +332,7 @@ descriptives(PSY, "AdultCat3_Consequences",freq=TRUE,
 ```{r}
 vec <- c("mpsy_adulte_considération_normale","mpsy_adulte_necessaire_perf",  # 203-205 = 215-217  
          "mpsy_adulte_partie_compet") 
-PSY$AdultCat4_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+#PSY$AdultCat4_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
 
 descriptives(PSY, "AdultCat4_Interpretations",freq=FALSE)
 PSY$AdultCat4_Interpretations<-as.factor(PSY$AdultCat4_Interpretations)
@@ -484,7 +347,8 @@ vec <- c( "mpsy_adulte_demotive_sport","Mpsy_adulte_moins_perf","mpsy_adulte_per
      "Mpsy_adulte_image_neg","Mpsy_adulte_peur","mpsy_adulte_colère",
      "Mpsy_adulte_triste","mpsy_adulte_stress_3","mpsy_adulte_ta_faute_4",
      "Mpsy_adulte_humiliation")
-PSY$AdultCat4_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+#PSY$AdultCat4_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+
 descriptives(PSY, "AdultCat4_Consequences",freq=FALSE)
 PSY$AdultCat4_Consequences<-as.factor(PSY$AdultCat4_Consequences)
 descriptives(PSY, "AdultCat4_Consequences",freq=TRUE,
@@ -500,7 +364,8 @@ descriptives(PSY, "AdultCat4_Consequences",freq=TRUE,
 vec <- c("Tu.as.considéré.cette.ignorance.indifférence.comme....normale...1",  # - = 229-231
          "Tu.as.considéré.cette.ignorance.indifférence.comme....nécessair.1",
          "Tu.as.considéré.cette.ignorance.indifférence.comme....faisant.p.1")
-PSY$ParentCat1_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)  
+#PSY$ParentCat1_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)  
+
 descriptives(PSY, "ParentCat1_Interpretations",freq=TRUE)
 #trier(PSY,vec)
 ```
@@ -513,7 +378,8 @@ vec <- c("mpsy_parent_demotiver_sport","mpsy_parent_moins_perf",         # 217-2
     "mpsy_parent_colere","Mpsy_parent_triste","Mpsy_parent_stress",
     "Mpsy_parent_ta_faute","Mpsy_parent_humiliation"
      )
-PSY$ParentCat1_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)  
+#PSY$ParentCat1_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)  
+
 descriptives(PSY, "ParentCat1_Consequences",freq=FALSE)
 PSY$ParentCat1_Consequences<-as.factor(PSY$ParentCat1_Consequences)
 descriptives(PSY, "ParentCat1_Consequences",freq=TRUE,
@@ -527,7 +393,8 @@ descriptives(PSY, "ParentCat1_Consequences",freq=TRUE,
 
 ```{r}
 vec <- c("Mpsy_parent_normalisation","mpsy_parent_necessaire","mpsy_parent_faisant_partie")  # 233-235 = 248-250
-PSY$ParentCat2_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+#PSY$ParentCat2_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+
 descriptives(PSY, "ParentCat2_Interpretations",freq=FALSE)
 PSY$ParentCat2_Interpretations<-as.factor(PSY$ParentCat2_Interpretations)
 descriptives(PSY, "ParentCat2_Interpretations",freq=TRUE,
@@ -548,7 +415,8 @@ vec <- c("Mpsy_parent_perdu_confiance_2",                               # 236,- 
          "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........8",
          "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........9"
      )
-PSY$ParentCat2_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+#PSY$ParentCat2_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)
+
 descriptives(PSY, "ParentCat2_Consequences",freq=FALSE)
 PSY$ParentCat2_Consequences<-as.factor(PSY$ParentCat2_Consequences)
 descriptives(PSY, "ParentCat2_Consequences",freq=TRUE,
@@ -565,7 +433,8 @@ Il y a des entrées > 0 seulement pour *Mpsy_parent_perdu_confiance_2*
 ```{r}
 vec <- c("mpsy_parent_normalisation","mpsy_parent_necessaire_perf",  # 238-240 = 262-264
                  "Mpsy_parent_faisant_partie_entrainement")
-PSY$ParentCat3_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)  
+#PSY$ParentCat3_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)  
+
 descriptives(PSY, "ParentCat3_Interpretations",freq=FALSE)
 PSY$ParentCat3_Interpretations<-as.factor(PSY$ParentCat3_Interpretations)
 descriptives(PSY, "ParentCat3_Interpretations",freq=TRUE,
@@ -587,7 +456,8 @@ vec <- c(
   "Suite.à.ces.menaces..est.ce.que.tu.as.......pensé.que.c.était.d.1",
    "Suite.à.ces.menaces..est.ce.que.tu.as.......ressenti.de.l.humil.1"
 )
-PSY$ParentCat3_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T )  
+#PSY$ParentCat3_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T )  
+
 descriptives(PSY, "ParentCat3_Consequences",freq=FALSE)
 PSY$ParentCat3_Consequences<-as.factor(PSY$ParentCat3_Consequences)
 descriptives(PSY, "ParentCat3_Consequences",freq=TRUE,
@@ -602,7 +472,8 @@ descriptives(PSY, "ParentCat3_Consequences",freq=TRUE,
 ```{r}
 vec <- c("Mpsy_parent_consideration_normal",   # 252-254 = 281-283
          "mpsy_parent_necessaire_perf_2","Mpsy_parent_partie_compet")
-PSY$ParentCat4_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)  
+#PSY$ParentCat4_Interpretations <- rowMaxs(as.matrix(PSY[,vec],na.rm=T)  
+
 descriptives(PSY, "ParentCat4_Interpretations",freq=FALSE)
 PSY$ParentCat4_Interpretations<-as.factor(PSY$ParentCat4_Interpretations)
 descriptives(PSY, "ParentCat4_Interpretations",freq=TRUE,
@@ -624,8 +495,8 @@ vec <- c(          # 255,- = 284-293
   "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.8",
   "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.9"
 )
+#PSY$ParentCat4_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T )  
 
-PSY$ParentCat4_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T )  
 descriptives(PSY, "ParentCat4_Consequences",freq=FALSE)
 PSY$ParentCat4_Consequences<-as.factor(PSY$ParentCat4_Consequences)
 descriptives(PSY, "ParentCat4_Consequences",freq=TRUE,
@@ -636,8 +507,169 @@ descriptives(PSY, "ParentCat4_Consequences",freq=TRUE,
 
 Il y des entrées > 0 seulement pour *Mpsy_parent_demotiver*
 
--------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 
+# MPS
+
+```
+descriptives(MPS, c("Mphysique_paire_normalisation", 
+                    "Mphysique_paire_necessite_perf",
+                    "Mphysique_paire_faire_partie"),
+             freq=TRUE)
+```
+
+tous les 3: N=282, 62 Manquants. Testé exemple i=37:
+
+- corréspond au .Rdata exporté du .mov
+- corréspond au QEMS_data_F.xlsx 
+- ce sont simplement MPS mais pas par paire
+
+- paire, adulte, parent : 1 catégorie, 3 items, 3 interpretations, 10 conséquences = OK ?                          
+
+```{r}
+TOUT$MPS <- TOUT$Mphysique_pairs_item1!="Jamais"                 | TOUT$Mphysique_paire_item2!="Jamais"         | 
+                TOUT$Mphysique_paire_item3!="Jamais"             | 
+  
+            TOUT$Mphysique_adulte_secoue_agrippe_item1!="Jamais" | TOUT$Mphysique_adulte_frappe_item2!="Jamais" | 
+                TOUT$Mphysique_adulte_etouffe_item3!="Jamais"    |
+  
+            TOUT$Mphysique_parent_secoue!="Jamais"               | TOUT$Mphysique_parent_frappe!="Jamais"       | 
+                TOUT$Mphysique_parent_ettoufe!="Jamais"              # NA reste NA, c'est bon!
+
+TOUT$MPS <- if_else(TOUT$MPS, 1, 0)
+
+MPS <- filter(TOUT, MPS==1)
+```
+
+
+## Paires : 1 Catégorie
+
+```{r}
+vec <- c(
+  "Mphysique_paire_normalisation","Mphysique_paire_necessite_perf","Mphysique_paire_faire_partie") # Var...txt 26-28 = colnames(TOUT).txt 19-21 
+#MPS$PaireCat1_Interpretations <- rowMaxs(as.matrix(MPS[,vec],na.rm=T))  
+
+descriptives(MPS, "PaireCat1_Interpretations",freq=FALSE)
+MPS$PaireCat1_Interpretations<-as.factor(MPS$PaireCat1_Interpretations)
+descriptives(MPS, "PaireCat1_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+```
+
+# Bastle Funktion die das aus Vektor von Namen als Strings macht - hab auf alles unten anwendet !?
+trier <- function(df, names) {
+  mx <- function(x){return(max(df[x],na.rm=T))}
+
+  namedList <- lapply(names,mx)
+  names(namedList) <- names
+  print("Trié:")
+  return( sort(unlist(namedList),decreasing=T) ) 
+}
+
+#trier(MPS, vec)  
+
+
+```{r}
+vec <- c(
+    "Mphysique_paire_demotivation","Mphysique_paire_moins_performé","Mphysique_paire_perteconfiance",  # 29-38 = 22-31
+    "Mphysique_paire_image_neg","Mphysique_paire_peur","Mphysique_paire_colere",
+     "Mphysique_paire_triste","Mphysique_paire_stress","Mphysique_paire_ta_faute",
+     "Mphysique_paire_humiliation"  
+     )
+#MPS$PaireCat1_Consequences <- rowMaxs(as.matrix(MPS[,vec],na.rm=T))
+
+descriptives(MPS, "PaireCat1_Consequences",freq=FALSE)
+MPS$PaireCat1_Consequences<-as.factor(MPS$PaireCat1_Consequences)
+descriptives(MPS, "PaireCat1_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+#trier(MPS, vec)
+```
+
+
+## Adultes: 1 Catégorie
+
+```{r}
+vec <- c(
+  "Mphysique_adulte_auteur_normlisation",
+   "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...1",
+   "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...2"
+  )  # 49,-,- = 42-44
+#MPS$Adult1_Interpretations <- rows(as.matrix(MPS[,vec],na.rm=T))
+
+descriptives(MPS, "Adult1_Interpretations",freq=FALSE)
+MPS$Adult1_Interpretations<-as.factor(MPS$Adult1_Interpretations)
+descriptives(MPS, "Adult1_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+#trier(MPS, vec)
+```
+
+(contrôle+ 1*5 + 2*9 + 3*19 = 80, OK)
+
+```{r}
+vec <- c(   # 50-59 = 54-54
+  "Mphysique_adute_domotivation",
+  "Mphysique_adulte_performance",
+  "Mphysique_adulte_confiance","Mphysique_adulte_imagecorps","Mphysique_adulte_peur",
+  "Mphysique_adulte_colere","Mphysique_adulte_triste","Mphysique_adulte_stress",
+  "Mphysique_adulte_responsabilite","Mphysique_adulte_humiliation"
+     )
+#MPS$Adult1_Consequences <- rowMaxs(as.matrix(MPS[,vec],na.rm=T))
+
+descriptives(MPS, "Adult1_Consequences",freq=FALSE)
+MPS$Adult1_Consequences<-as.factor(MPS$Adult1_Consequences)
+descriptives(MPS, "Adult1_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+#trier(MPS, vec)
+```
+
+
+## Parents: 1 Catégorie
+
+```{r}
+#MPS$ParentCat1_Interpretations <- MPS[,]  
+vec <- c("Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...3",  # -,-,- = 58-60
+         "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...4",
+         "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...5")
+
+#MPS$Parents1_Interpretations <- rowMaxs(as.matrix(MPS[,vec],na.rm=T))
+descriptives(MPS, "Parents1_Interpretations",freq=FALSE)
+MPS$Parents1_Interpretations<-as.factor(MPS$Parents1_Interpretations)
+descriptives(MPS, "Parents1_Interpretations",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+#trier(MPS, vec)
+```
+
+#---
+#En fait, toutes les valeurs sont NA! par la maximation en négligeant les NA, toutes les valeurs deviennent 0. -??
+#---
+
+```{r}
+vec <- c("Mphysique_parent_consideration","Mphysique_parent_suite_a",
+         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..1",
+         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..2",
+         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..3",
+         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..4",
+         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..5",
+         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..6",
+         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..7",
+         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..8")
+# 63,64,-,...- = 61-67
+
+#MPS$Parents1_Consequences <- rowMaxs(as.matrix(MPS[,vec],na.rm=T))
+
+descriptives(MPS, "Parents1_Consequences",freq=FALSE)
+MPS$Parents1_Consequences<-as.factor(MPS$Parents1_Consequences)
+descriptives(MPS, "Parents1_Consequences",freq=TRUE,
+             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+             )
+#trier(MPS, vec)
+```
+
+---------------------------------------------------------------------------------------------------------------------------------
 
 # SEX
 
@@ -671,9 +703,9 @@ SEX <- filter(TOUT, SEX==1)
 ```{r}
 vec <- c(  # 258-260 = 296-298
   "msex_paire_normalite","Msex_paire_necesstite","msex_paire_partie_compet")
-SEX$PaireCat1_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
-descriptives(SEX, "PaireCat1_Interpretations",freq=FALSE)
+#SEX$PaireCat1_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
 
+descriptives(SEX, "PaireCat1_Interpretations",freq=FALSE)
 SEX$PaireCat1_Interpretations<-as.factor(SEX$PaireCat1_Interpretations)
 descriptives(SEX, "PaireCat1_Interpretations",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -688,8 +720,8 @@ vec <- c(  # 261-270 = 299-308
   "msex_paire_triste","msex_paire_stress","Msex_paire_ta_faute",
   "Msex_paire_humiliation"
   )
-SEX$PaireCat1_Consequences <- rowMaxs(as.matrix(SEX[,vec],
-                                      na.rm=T )
+#SEX$PaireCat1_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
+
 descriptives(SEX, "PaireCat1_Consequences",freq=FALSE)
 SEX$PaireCat1_Consequences<-as.factor(SEX$PaireCat1_Consequences)
 descriptives(SEX, "PaireCat1_Consequences",freq=TRUE,
@@ -705,9 +737,9 @@ descriptives(SEX, "PaireCat1_Consequences",freq=TRUE,
 VEC <- c(  # 272-274 = 310-312
   "msex_paire_consideration_normale","msex_paire_necessaire_perf","Msex_paire_fait_partie_compet"
 )
-SEX$PaireCat2_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
-descriptives(SEX, "PaireCat2_Interpretations",freq=FALSE)
+#SEX$PaireCat2_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
 
+descriptives(SEX, "PaireCat2_Interpretations",freq=FALSE)
 SEX$PaireCat2_Interpretations<-as.factor(SEX$PaireCat2_Interpretations)
 descriptives(SEX, "PaireCat2_Interpretations",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -722,7 +754,8 @@ vec <- c(  # 275-284 = 313-322
   "msex_paire_triste_2","msex_paire_stress_2","msex_paire_ta_faute",
   "msex_paire_humiliation"
   )
-SEX$PaireCat2_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
+#SEX$PaireCat2_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
+
 descriptives(SEX, "PaireCat2_Consequences",freq=FALSE)
 SEX$PaireCat2_Consequences<-as.factor(SEX$PaireCat2_Consequences)
 descriptives(SEX, "PaireCat2_Consequences",freq=TRUE,
@@ -738,7 +771,7 @@ descriptives(SEX, "PaireCat2_Consequences",freq=TRUE,
 vec <- c(  # 286-288 = 324-326
   "msex_paire_normalite_2","msex_paire_consideration_necessaire_perf","msex_paire_consideration_partie_perf"
 )
-SEX$PaireCat3_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
+#SEX$PaireCat3_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
 
 descriptives(SEX, "PaireCat3_Interpretations",freq=FALSE)
 SEX$PaireCat3_Interpretations<-as.factor(SEX$PaireCat3_Interpretations)
@@ -755,9 +788,9 @@ vec <- c(  # 289-298 = 327-336
   "msex:_paire_triste","msex_paire_stress_3","msex_paire_ta_faute_3",
   "msex_paire_humiliation_2"
   )
-SEX$PaireCat3_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
-descriptives(SEX, "PaireCat3_Consequences",freq=FALSE)
+#SEX$PaireCat3_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
 
+descriptives(SEX, "PaireCat3_Consequences",freq=FALSE)
 SEX$PaireCat3_Consequences<-as.factor(SEX$PaireCat3_Consequences)
 descriptives(SEX, "PaireCat3_Consequences",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -772,10 +805,9 @@ descriptives(SEX, "PaireCat3_Consequences",freq=TRUE,
 vec <- c(  # 300-302 = 338-340
   "Msex_paire_normalite","msex_paire_neccesite_perf","Msex_paire_partie_entrainement"
 )
-SEX$PaireCat4_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
+#SEX$PaireCat4_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
 
 descriptives(SEX, "PaireCat4_Interpretations",freq=FALSE)
-
 SEX$PaireCat4_Interpretations<-as.factor(SEX$PaireCat4_Interpretations)
 descriptives(SEX, "PaireCat4_Interpretations",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -790,9 +822,9 @@ vec <- c(  # 303-311,- = 341-350
   "msex_paire_triste_3","msex_paire_stress_4","msex_paire_ta_faute_4",
   "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..1"
   )
-SEX$PaireCat4_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
-descriptives(SEX, "PaireCat4_Consequences",freq=FALSE)
+#SEX$PaireCat4_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
 
+descriptives(SEX, "PaireCat4_Consequences",freq=FALSE)
 SEX$PaireCat4_Consequences<-as.factor(SEX$PaireCat4_Consequences)
 descriptives(SEX, "PaireCat4_Consequences",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -807,7 +839,7 @@ descriptives(SEX, "PaireCat4_Consequences",freq=TRUE,
 vec <- c(  # 314-316 = 353-355
   "Msex_paire_normalité","msex_paire_necessaire_perf_2","Msex_paire_faisant_partie_entrainement"
 )
-SEX$PaireCat5_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
+#SEX$PaireCat5_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
 
 descriptives(SEX, "PaireCat5_Interpretations",freq=FALSE)
 SEX$PaireCat5_Interpretations<-as.factor(SEX$PaireCat5_Interpretations)
@@ -830,9 +862,9 @@ vec <- c(  # ..317..322.. = 356-365
   "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.1",
   "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..2"
   )
-SEX$PaireCat5_Consequences <- rowMaxs(as.matrix(SEX[,vec] ,na.rm=T)
-descriptives(SEX, "PaireCat5_Consequences",freq=FALSE)
+#SEX$PaireCat5_Consequences <- rowMaxs(as.matrix(SEX[,vec] ,na.rm=T)
 
+descriptives(SEX, "PaireCat5_Consequences",freq=FALSE)
 SEX$PaireCat5_Consequences<-as.factor(SEX$PaireCat5_Consequences)
 descriptives(SEX, "PaireCat5_Consequences",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -846,9 +878,9 @@ descriptives(SEX, "PaireCat5_Consequences",freq=TRUE,
 vec <- c(  # 324-326 = 367-369
   "msex_paire_normalite_3","msex_paire_necessaire_perf_3","msex_paire_faisant_partie"
 )
-SEX$PaireCat6_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
-descriptives(SEX, "PaireCat6_Interpretations",freq=FALSE)
+#SEX$PaireCat6_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
 
+descriptives(SEX, "PaireCat6_Interpretations",freq=FALSE)
 SEX$PaireCat6_Interpretations<-as.factor(SEX$PaireCat6_Interpretations)
 descriptives(SEX, "PaireCat6_Interpretations",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -869,9 +901,9 @@ vec <- c(  # ..327..331.. = 370-379
   "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.2",
   "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..3"
   )
-SEX$PaireCat6_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
+#SEX$PaireCat6_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
+
 descriptives(SEX, "PaireCat6_Consequences",freq=FALSE)
-             
 SEX$PaireCat6_Consequences<-as.factor(SEX$PaireCat6_Consequences)
 descriptives(SEX, "PaireCat6_Consequences",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -888,7 +920,7 @@ vec <- c(  # 333,334,- = 381-383
   "msex_paire_necessaire_perf_4",
   "Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..1"
 )
-SEX$PaireCat7_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
+#SEX$PaireCat7_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
 
 descriptives(SEX, "PaireCat7_Interpretations",freq=FALSE)
 SEX$PaireCat7_Interpretations<-as.factor(SEX$PaireCat7_Interpretations)
@@ -911,9 +943,9 @@ vec <- c(  # ..335..339.. = 384-393
     "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.3",
     "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..4"
   )
-SEX$PaireCat7_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
-descriptives(SEX, "PaireCat7_Consequences",freq=FALSE)
+#SEX$PaireCat7_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
 
+descriptives(SEX, "PaireCat7_Consequences",freq=FALSE)
 SEX$PaireCat7_Consequences<-as.factor(SEX$PaireCat7_Consequences)
 descriptives(SEX, "PaireCat7_Consequences",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -930,10 +962,9 @@ descriptives(SEX, "PaireCat7_Consequences",freq=TRUE,
 vec <- c(  # 349-351 = 403-405
   "Msex_adulte_normalite","msex_adulte_necessaire_perf","Msex_adulte_fsisant_partie"
 )
-SEX$AdultCat1_Interpretations <- as.numeric( rowMaxs(as.matrix(SEX[,vec],na.rm=T) )
+#SEX$AdultCat1_Interpretations <- as.numeric( rowMaxs(as.matrix(SEX[,vec],na.rm=T) )
 
 descriptives(SEX, "PaireCat1_Interpretations",freq=FALSE)
-
 SEX$AdultCat1_Interpretations<-as.factor(SEX$AdultCat1_Interpretations)
 descriptives(SEX, "PaireCat1_Interpretations",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -948,9 +979,9 @@ vec <- c(  # 352-361 = 406-415
   "msex_adulte_triste","msex_adulte_stress","msex_adulte_ta_faute",
   "msex_adulte_humiliation"
   )
-SEX$AdultCat1_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
-descriptives(SEX, "PaireCat1_Consequences",freq=FALSE)
+#SEX$AdultCat1_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
 
+descriptives(SEX, "PaireCat1_Consequences",freq=FALSE)
 SEX$AdultCat1_Consequences<-as.factor(SEX$AdultCat1_Consequences)
 descriptives(SEX, "PaireCat1_Consequences",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -967,9 +998,9 @@ vec <- c(  # 363,364,- = 424-426
   "msex_adulte_necessaire_perf_5",
   "Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..2"
 )
-SEX$AdultCat2_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
-descriptives(SEX, "PaireCat2_Interpretations",freq=FALSE)
+#SEX$AdultCat2_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
 
+descriptives(SEX, "PaireCat2_Interpretations",freq=FALSE)
 SEX$AdultCat2_Interpretations<-as.factor(SEX$AdultCat2_Interpretations)
 descriptives(SEX, "PaireCat2_Interpretations",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -990,9 +1021,9 @@ vec <- c(  # ..365..369.. = 427-436
   "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.4",
   "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..5"
   )
-SEX$AdultCat2_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
-descriptives(SEX, "PaireCat2_Consequences",freq=FALSE)
+#SEX$AdultCat2_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
 
+descriptives(SEX, "PaireCat2_Consequences",freq=FALSE)
 SEX$AdultCat2_Consequences<-as.factor(SEX$AdultCat2_Consequences)
 descriptives(SEX, "PaireCat2_Consequences",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -1008,9 +1039,9 @@ vec <- c(  # 371-372, = 445-447
   "Msex_adulte_normalité","msex_adulte_necessaire_perf_3",
   "Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..3"
 )
-SEX$AdultCat3_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
-descriptives(SEX, "AdultCat3_Interpretations",freq=FALSE)
+#SEX$AdultCat3_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
 
+descriptives(SEX, "AdultCat3_Interpretations",freq=FALSE)
 SEX$AdultCat1_Interpretations<-as.factor(SEX$AdultCat1_Interpretations)
 descriptives(SEX, "AdultCat3_Interpretations",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -1032,9 +1063,9 @@ vec <- c(  # ..373..377.. = 447-457
   "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.5",
   "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..6"
 )
-SEX$AdultCat3_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
-descriptives(SEX, "PaireCat3_Consequences",freq=FALSE)
+#SEX$AdultCat3_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
 
+descriptives(SEX, "PaireCat3_Consequences",freq=FALSE)
 SEX$AdultCat3_Consequences<-as.factor(SEX$AdultCat3_Consequences)
 descriptives(SEX, "PaireCat3_Consequences",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -1049,10 +1080,10 @@ descriptives(SEX, "PaireCat3_Consequences",freq=TRUE,
 vec <- c(  # 379-380 = 466-468
   "msex_adulte_normalite_2","msex_adulte_necessaire_perf_7","Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..4"
 )
-SEX$AdultCat4_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
+#SEX$AdultCat4_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
 #SEX$AdultCat4_Interpretations<-as.numeric(SEX$AdultCat4_Interpretations)
-descriptives(SEX, "AdultCat4_Interpretations",freq=FALSE)
 
+descriptives(SEX, "AdultCat4_Interpretations",freq=FALSE)
 SEX$AdultCat4_Interpretations<-as.factor(SEX$AdultCat4_Interpretations)
 descriptives(SEX, "AdultCat4_Interpretations",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -1073,9 +1104,9 @@ vec <- c(  # ..381..385.. = 469-478
   "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.6",
   "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..7"
   )
-SEX$AdultCat4_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
-descriptives(SEX, "AdultCat4_Consequences",freq=FALSE)
+#SEX$AdultCat4_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
 
+descriptives(SEX, "AdultCat4_Consequences",freq=FALSE)
 SEX$AdultCat4_Consequences<-as.factor(SEX$AdultCat4_Consequences)
 descriptives(SEX, "AdultCat4_Consequences",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -1090,9 +1121,9 @@ descriptives(SEX, "AdultCat4_Consequences",freq=TRUE,
 vec <- c(  # 396-398 = 489-491
   "Msex_adulte_normalite_2","msex_adulte_necessaire_perf_5 (2)","msex_adulte_faisant_partie"  
 )
-SEX$AdultCat5_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
-descriptives(SEX, "AdultCat5_Interpretations",freq=FALSE)
+#SEX$AdultCat5_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T)
 
+descriptives(SEX, "AdultCat5_Interpretations",freq=FALSE)
 SEX$AdultCat5_Interpretations<-as.factor(SEX$AdultCat5_Interpretations)
 descriptives(SEX, "AdultCat5_Interpretations",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -1107,9 +1138,9 @@ vec <- c(  # 399-408 = 492-501
   "msex_adulte_triste_4","msex_adulte_stress_5","msex_adulte_ta_faute_2",
   "Msex_adulte_humiliation"
   )
-SEX$AdultCat5_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
-descriptives(SEX, "AdultCat5_Consequences",freq=FALSE)
+#SEX$AdultCat5_Consequences <- rowMaxs(as.matrix(SEX[,vec],na.rm=T )
 
+descriptives(SEX, "AdultCat5_Consequences",freq=FALSE)
 SEX$AdultCat5_Consequences<-as.factor(SEX$AdultCat5_Consequences)
 descriptives(SEX, "AdultCat5_Consequences",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
@@ -1123,11 +1154,9 @@ descriptives(SEX, "AdultCat5_Consequences",freq=TRUE,
 ```{r}
 vec <- c(                                                             # 410,411,- = 510-512
   "msex_adulte_normalite_7","msex_adulte_necessaire_perf_8","Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..5")
-
-SEX$AdultCat6_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T))
+#SEX$AdultCat6_Interpretations <- rowMaxs(as.matrix(SEX[,vec],na.rm=T))
 
 descriptives(SEX, "AdultCat6_Interpretations",freq=FALSE)
-
 SEX$AdultCat6_Interpretations<-as.factor(SEX$AdultCat6_Interpretations)
 descriptives(SEX, "AdultCat6_Interpretations",freq=TRUE,
              n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
