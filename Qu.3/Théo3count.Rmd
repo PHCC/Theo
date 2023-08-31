@@ -1,7 +1,7 @@
 ---
 title: "Théo3count.Rmd Question 3 Count, pas Sum"
 author: "Christoph"
-date: "2023-08-30"
+date: "2023-08-30,31"
 output:
   pdf_document:
     latex_engine: xelatex
@@ -117,27 +117,55 @@ PSY$Mpsy_paire_necessite
 PSY$Mpsy_paire_partie_entrainement
 ```
 
+Appel Théo 31.8.: "Pas du tout est toujours le plus petit chiffre. C'est 0 normalement, mais des erreurs étaient faites - alors ici c'est le 1"
 
 ```{r}
-vec <- c("Mpsy_paire_normalisation","Mpsy_paire_necessite","Mpsy_paire_partie_entrainement") # 66-69 = 72-74
-#PSY$PairCat1_Interpretations <- rowMaxs(as.matrix(PSY[,vec]),na.rm=T)
-PSY$PairCat1_Interpretations <- PSY[,vec]
+descriptives(PSY, c("Mpsy_paire_normalisation","Mpsy_paire_necessite","Mpsy_paire_partie_entrainement"),
+             mean=F,median=F,sd=F,
+             freq=TRUE)
 
-descriptives(PSY, "PairCat1_Interpretations",freq=TRUE)
-#trier(PSY,vec)
+PSY$Mpsy_paire_normalisationFT       <- (PSY$Mpsy_paire_normalisation       > 1)
+PSY$Mpsy_paire_necessiteFT           <- (PSY$Mpsy_paire_necessite           > 1)
+PSY$Mpsy_paire_partie_entrainementFT <- (PSY$Mpsy_paire_partie_entrainement > 1)
+
+descriptives(PSY, c("Mpsy_paire_normalisationFT", "Mpsy_paire_necessiteFT","Mpsy_paire_partie_entrainementFT"),
+             mean=F,median=F,sd=F,min=F,max=F,
+             freq=TRUE)
 ```
+
+```{r}
+# FUNCTION - \\ encore: PSY->variable !!
+
+Qu3nouv <- function(df, vec){
+  vecFT <- NULL
+  for (i in 1:length(vec)) {
+    vecFT[i] <- paste(vec[i],"FT",sep="")   # column names "Mpsy_paire_normalisationFT" etc.:
+                                          # PSY["Mpsy_paire_normalisation"]       > 1 etc.
+    df[vecFT[i]] <- (df[vec[i]] > 1)      # "pas du tout" ou "si" ?
+  }
+
+  descriptives(df, eval(vecFT),
+               mean=F,median=F,sd=F,min=F,max=F,
+               freq=TRUE)
+}
+
+Qu3nouv(PSY, c("Mpsy_paire_normalisation","Mpsy_paire_necessite","Mpsy_paire_partie_entrainement"))
+```
+
+Ta discussion mais avec les bons chiffres:
+
+Parmi les athlètes ayant subi une maltraitance psychologique par d'autres athlètes, la catégorie  "Insuffisance de soutien ou d'affection à l'égard d'un athlète" (catégorie 1) démontre que 73% ont considéré cela comme faisant partie, 58% ont considéré ça comme normal et 85% ont considéré ça comme nécessaire à la performance. 
 
 ```{r}
 vec <- c("Mpsy_paire_démotivation","Mpsy_paire_moins_performe","Mpsy_paire_perdu_confiance",  # 69-78 = 75-84
     "Mpsy_paire_image_corps","Mpsy_paire_peur","Mpsy_paire_colere",
     "Mpsy_paire_triste","Mpsy_paire_stress","MPsy_paire_ta_faute",
     "Mpsy_paire_humiliation" )
-#PSY$PairCat1_Consequences <- rowMaxs(as.matrix(PSY[,vec],na.rm=T ))
 
-descriptives(PSY, "PairCat1_Consequences",freq=FALSE)
+#descriptives(PSY, "PairCat1_Consequences",freq=FALSE)
 PSY$PairCat1_Consequences<-as.factor(PSY$PairCat1_Consequences)
-descriptives(PSY, "PairCat1_Consequences",freq=TRUE,
-             n=F,missing=F,mean=F,median=F,sd=F,min=F,max=F
+descriptives(PSY, vec,freq=TRUE,
+             mean=F,median=F,sd=F,min=F,max=F
              )
 #trier(PSY,vec)
 ```
