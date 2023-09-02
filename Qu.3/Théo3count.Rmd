@@ -1,7 +1,7 @@
 ---
 title: "Théo3count.Rmd Question 3 Count, pas Sum"
 author: "Christoph"
-date: "2023-08-30,31"
+date: "2023-08-30..09-02"
 output:
   pdf_document:
     latex_engine: xelatex
@@ -15,14 +15,12 @@ output:
 geometry: margin=0.5cm
 ---
 
-
 # Libraries
 
 ```{r, comment=FALSE, warning=FALSE, message=FALSE}
 library(xlsx)                                         # Fichiers Excel
 library(jmv)                                          # Analyses Jamovi
-library(dplyr)                                        # filter etc.
-#library(matrixStats)                                 # rowMaxs - que pour matrix, pas dataframe
+library(dplyr)                                        # if_else etc.
 ```
 
 
@@ -30,7 +28,7 @@ library(dplyr)                                        # filter etc.
 
 ## Lire 
 
-```{r}
+```{r, warning=FALSE}
 setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
 
 #TOUT <- read.xlsx("QEMS_all-corr.xlsx", sheetName ="sheet1")  # java.lang.OutOfMemoryError: GC overhead limit exceeded
@@ -72,7 +70,7 @@ for (i in 1:length(TOUT)) {
 (sur écran mais pas dans le PDF ou word)
 
 ```{r}
-View(TOUT)
+#View(TOUT)
 colnames(TOUT)   # Noms des Variables
 ```
 
@@ -111,17 +109,19 @@ PSY <- filter(TOUT, PSY==1)
 
 #### Catégorie 1
 
-```{r}
+```
 PSY$Mpsy_paire_normalisation
 PSY$Mpsy_paire_necessite
 PSY$Mpsy_paire_partie_entrainement
 ```
 
-Appel Théo 31.8.: "Pas du tout est toujours le plus petit chiffre. C'est 0 normalement, mais des erreurs étaient faites - alors ici c'est le 1"
+Appel Théo 31.8.: 
+
+- "*Pas du tout* est toujours encodé dans le plus petit chiffre. C'est 0 normalement, mais des erreurs étaient faites - alors ici c'est le 1". 
+- c'est aussi 1 dans tous les autres cas en bas, je teste
+
 
 ```{r}
-# FUNCTION - \\ encore: PSY->variable !!
-
 Qu3nouv <- function(df, vec){
   print(descriptives(df, eval(vec),            # N, NA, Min, Max pour contrôle
                mean=F,median=F,sd=F,
@@ -147,6 +147,7 @@ Ta discussion mais avec les bons chiffres:
 
 Parmi les athlètes ayant subi une maltraitance psychologique par d'autres athlètes, la catégorie  "Insuffisance de soutien ou d'affection à l'égard d'un athlète" (catégorie 1) démontre que 73% ont considéré cela comme faisant partie, 58% ont considéré ça comme normal et 85% ont considéré ça comme nécessaire à la performance. 
 
+
 ```{r}
 vec <- c("Mpsy_paire_démotivation","Mpsy_paire_moins_performe","Mpsy_paire_perdu_confiance",  # 69-78 = 75-84
     "Mpsy_paire_image_corps","Mpsy_paire_peur","Mpsy_paire_colere",
@@ -155,6 +156,13 @@ vec <- c("Mpsy_paire_démotivation","Mpsy_paire_moins_performe","Mpsy_paire_perd
 
 Qu3nouv(PSY, vec)
 ```
+
+Ta discussion adaptée aux bons chiffres:
+
+Parmi les athlètes ayant subi une maltraitance psychologique par d'autres athlètes, la catégorie  "Insuffisance de soutien ou d'affection à l'égard d'un athlète" (catégorie 1) démontre que "peur" et  "image corps" sont les conséquence les plus expérimentées à 
+95.5%
+et 86.3% (mais il y des autres à 86.0%, difficile à differencier si bien)
+et que triste est la moins expérimentée (73.5%)
 
 
 #### Catégorie 2
@@ -166,6 +174,7 @@ vec <- c("Mpsy_paire_consideration",  # 84-86 = 90-92
 
 Qu3nouv(PSY, vec)
 ```
+
 
 ```{r}
 vec <- c("Mpsy_paire_demotive","mpsy_paire_moins_perf","Mpsy_paire_perte_confiance",  # 87-96? = 93-102
@@ -534,6 +543,11 @@ vec <- c(  # 258-260 = 296-298
 Qu3nouv(SEX, vec)
 ```
 
+Ta discussion mais avec les bons chiffres:
+
+Parmi les athlètes ayant subi une maltraitance sexuelle par un pair, la catégorie "Harcèlement verbal d'un athlète" (catégorie 1),  démontre que 92% ont considéré cela comme faisant partie, 94% ont considéré ça comme normal et 92% ont considéré ça comme nécessaire à la performance.
+
+
 ```{r}
 vec <- c(  # 261-270 = 299-308
   "Msex_paire_demotive","Msex_paire_moins_perf","Msex_paire_perdu_confiance",
@@ -584,6 +598,9 @@ vec <- c(  # 289-298 = 327-336
 Qu3nouv(SEX, vec)
 ```
 
+Un exemple pour des chiffres peu elevés:
+
+Un participant a experienecé cela comme humiliant, un autre non (je ne donnerais pas de pourcentages pour des Counts plus petits que 5, ils ne seront pas du tout exacts). Il n'y a pas d'information pour les autres participants.
 
 #### Catégorie 4
 
