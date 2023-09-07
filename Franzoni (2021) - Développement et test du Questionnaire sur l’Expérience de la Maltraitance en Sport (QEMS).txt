@@ -1,0 +1,5626 @@
+Institut de psychologie
+
+Session d’automne 2021-2022
+
+Développement et test du
+Questionnaire sur l’Expérience
+de la Maltraitance en Sport
+(QEMS)
+Mémoire de master
+Présenté par Amandine Franzoni
+
+Directeur : Denis Hauw
+Expert : Grégoire Zimmermann
+
+1
+
+Résumé
+L’objectif du présent mémoire était de développer et tester un questionnaire sur l’expérience de
+la maltraitance envers les athlètes. Plus spécifiquement, ce questionnaire visait à (a) obtenir des
+données quant à la fréquence des quatre formes de maltraitance (i.e., maltraitance physique,
+psychologique, sexuelle, négligence), (b) caractériser comment les athlètes vivaient cette
+maltraitance et l’interprétaient, et (c) identifier les auteurs de maltraitance dans le contexte
+sportif. Un échantillon de 165 athlètes suisse-romands âgés entre 16 et 20 ans a été recruté pour
+répondre au questionnaire en ligne. Le Questionnaire sur l’Expérience de la Maltraitance en
+Sport (QEMS) était constitué de trois sous-échelles : une sous-échelle pairs-athlète, une souséchelle adulte de l’environnement sportif-athlète et une sous-échelle parent-athlète. Parmi les
+53 athlètes ayant complétés le questionnaire, 87% ont déclaré avoir subi de la maltraitance
+psychologique, 53% de la maltraitance physique, 32% de la négligence et 26% de la
+maltraitance sexuelle. Une différence significative du genre et du type de sport pour la
+maltraitance physique a été observée. De plus, les résultats suggèrent que les athlètes
+normalisent certaines situations de maltraitance (e.g., la maltraitance physique, se faire crier
+dessus par un parent), la considèrent comme nécessaire à la performance et comme faisant
+partie de l’entrainement ou de la compétition. Des conséquences spécifiques ont été observées
+selon la forme de maltraitance et l’auteur de la maltraitance (e.g., un abus verbal ou une
+dépréciation de la part d’adulte du réseau sportif engendre de la peur, du stress, une image
+négative de son corps, de l’humiliation et une démotivation à continuer son sport, alors que de
+la part d’un parent cela engendre plutôt une image négative du corps). À notre connaissance, le
+QEMS est le seul outil permettant de mesurer non seulement la fréquence des quatre formes de
+maltraitance en sport, mais aussi l’expérience que les athlètes en font (i.e., interprétations et
+conséquences). De plus, le QEMS permet d’identifier non seulement les auteurs de
+maltraitance, mais aussi l’impact spécifique de leurs comportements maltraitants sur les
+athlètes. Finalement, les résultats de ce mémoire révèlent que les différents acteurs du contexte
+sportif gagneraient à porter un regard réflexif sur les comportements qu’ils subissent ou qu’ils
+font subir afin d’éviter la perpétuation de comportements maltraitants pouvant être considérés
+comme normaux et être parfois encouragés par la culture sportive.
+Mots clés : maltraitance en sport, questionnaire, athlètes, expérience, normalisation,
+psychologie du sport
+
+2
+
+Abstract
+The purpose of this master’s thesis was to develop and test a questionnaire about the experience
+of sport-related maltreatment. Specifically, the questionnaire aimed to (a) obtain data about the
+frequency of physical, psychological, and sexual maltreatment and neglect experienced by
+athletes, (b) characterize how athletes experienced and interpreted these experiences of
+maltreatment and (c) identify the perpetrators of maltreatment in the sport context. A sample of
+165 French-Speaking Swiss athletes between 16 and 20 years old was recruited to complete the
+online questionnaire. The Sport Maltreatment Experience Questionnaire (SMEQ) consisted of
+three subscales: a peer-athlete subscale, an adult sport environment-athlete subscale, and a
+parent-athlete subscale. Among the 53 athletes who completed the questionnaire, 87% reported
+psychological maltreatment, 53% physical maltreatment, 32% neglect, and 26% sexual
+maltreatment. A significant difference in gender and sport type for physical maltreatment was
+observed. In addition, the results suggest that athletes normalize certain situations of
+maltreatment (e.g., physical maltreatment, being yelled at by a parent), consider it useful to
+perform and think it is part of training or competition. Specific consequences were observed
+depending on the form of maltreatment and the perpetrator (e.g., verbal abuse or belittling by
+an adult in the sport context leads to fear, stress, negative body image, humiliation, and
+demotivation to continue his sport, whereas by a parent it leads to negative body image). To
+our knowledge, the SMEQ is the only one that measures not only the frequency of sport-related
+maltreatment, but also athletes' experiences of them (i.e., interpretations and consequences).
+Furthermore, the SMEQ allowed us to identify not only the perpetrators of maltreatment, but
+also the specific impact of their maltreatment behaviors on athletes. Finally, the results of this
+master’s thesis reveal that the various actors in the sport context would benefit from taking a
+reflective look at the behaviors they undergo or cause to be undergone in order to avoid the
+perpetuation of maltreatment behaviors that may considered normal and sometimes encouraged
+by the sport culture.
+Key words: sport maltreatment, questionnaire, athletes, experience, normalization, sport
+psychology
+
+3
+
+Remerciements
+Je tiens à remercier chaleureusement plusieurs personnes pour l’aide qu’elles m’ont apportée
+durant ce mémoire et le temps qu’elles m’ont accordé.
+Tout d’abord, Monsieur Denis Hauw, mon directeur de mémoire, qui par ses conseils et son
+expertise en psychologie du sport a su m’apporter de précieux conseils tout au long du processus
+de recherche. Je tiens de tout cœur à remercier Madame Elise Marsollier pour sa disponibilité,
+ses encouragements, son suivi et son investissement dans ce travail. Je remercie également
+Madame Fabienne Crettaz von Rotten pour son aide statistique et Monsieur Grégoire
+Zimmermann d’avoir accepté d’être expert pour la défense de ce mémoire.
+Merci à tous les athlètes qui ont pris le temps de participer à mon questionnaire, aux participants
+du focus group pour leur intérêt, et aux experts pour l’évaluation du questionnaire. Merci à tous
+les entraineurs et présidents de club qui ont manifesté de l’intérêt pour mon travail, en
+particulier Damien Bidlingmeyer, Steve Seppey, Stéphanie Pellet, Jean-Marc Gerber et Julien
+Crisinel.
+J’aimerais adresser des remerciements spéciaux à Nicolas qui a su m’épauler durant toute la
+période de rédaction et m’aider pour le recrutement de footballeurs, ainsi qu’à Clémentine et
+Sandro pour leurs encouragements et d’avoir rendu cette collaboration aussi fructueuse.
+Finalement, j’aimerais remercier Bernard Amoureux pour la relecture de mon travail et ses
+remarques pertinentes, Sonia, Sofia, Chloé, Marylou, Mélanie, Laura et mes parents pour leur
+soutien et leur investissement dans le recrutement de participants.
+
+4
+
+Table des matières
+1
+
+Introduction ....................................................................................................................... 7
+
+2
+
+Méthode ........................................................................................................................... 19
+2.1
+
+Construction du Questionnaire sur l’Expérience de la Maltraitance en Sport
+
+(QEMS) ............................................................................................................................... 19
+
+3
+
+2.1.1
+
+Choix des définitions ............................................................................................ 19
+
+2.1.2
+
+Choix des catégories de comportements .............................................................. 21
+
+2.1.3
+
+Choix des items .................................................................................................... 22
+
+2.1.4
+
+Choix du format de mesure .................................................................................. 23
+
+2.1.5
+
+Évaluation des items par un groupe d’experts ..................................................... 24
+
+2.1.6
+
+Évaluation des items par un groupe d’athlètes ..................................................... 25
+
+2.1.7
+
+Questionnaire sur l’Expérience de la Maltraitance en Sport (QEMS) ................. 26
+
+2.2
+
+Format en ligne ....................................................................................................... 27
+
+2.3
+
+Recrutement des participants ............................................................................... 28
+
+2.4
+
+Enjeux éthiques de la recherche ........................................................................... 29
+
+2.5
+
+Analyse statistique .................................................................................................. 29
+
+Résultats ........................................................................................................................... 32
+3.1
+
+Caractéristiques sociodémographiques et sportives de l’échantillon ................ 32
+
+3.2
+
+Fréquence de la maltraitance rapportée dans l’échantillon ............................... 35
+
+3.2.1
+
+Fréquence des formes de maltraitance rapportées pour chaque catégorie de
+
+comportements ................................................................................................................. 35
+3.3
+
+Fréquence de la maltraitance rapportée en fonction des caractéristiques
+
+sociodémographiques et sportives..................................................................................... 37
+3.4
+
+Expérience de la maltraitance en sport ................................................................ 38
+
+3.4.1
+
+Interprétations et conséquences de la maltraitance physique ............................... 38
+
+3.4.2
+
+Interprétations et conséquences de la maltraitance psychologique ...................... 40
+
+3.4.3
+
+Interprétations et conséquences de la maltraitance sexuelle ................................ 44
+
+3.4.4
+
+Interprétations et conséquences de la négligence ................................................. 46
+
+3.5
+
+Auteur de la maltraitance en sport ....................................................................... 48
+5
+
+4
+
+Discussion ........................................................................................................................ 49
+4.1
+
+Différence de fréquence en fonction de la forme de maltraitance ..................... 49
+
+4.2
+
+Différence de fréquence de la maltraitance en fonction de la catégorie de
+
+comportements ................................................................................................................... 50
+4.3
+
+Différence de fréquence en fonction du genre, type de sport, et niveau sportif 51
+
+4.4
+
+Interprétations de la maltraitance en sport ......................................................... 53
+
+4.5
+
+Conséquences de la maltraitance en sport ........................................................... 55
+
+4.6
+
+Profil des auteurs de la maltraitance en sport ..................................................... 57
+
+4.7
+
+Contributions et limites ......................................................................................... 58
+
+5
+
+Conclusion ....................................................................................................................... 61
+
+6
+
+Références ........................................................................................................................ 63
+
+7
+
+Annexes ............................................................................................................................ 69
+
+6
+
+1 Introduction
+Ces dernières décennies, plusieurs cas d’abus sexuels dans le monde du
+sport ont fait la une des médias. Par exemple Larry Nassar, ancien médecin de
+l’équipe américaine de gymnastique artistique, Bertrand Charest, ancien
+entraineur de l’équipe canadienne junior féminine de ski alpin, ou encore
+Graham James, ancien entraineur de l’équipe canadienne junior de hockey sur
+glace, ont tous trois été condamnés pour des abus sexuels sur les jeunes athlètes
+dont ils avaient la charge. Bien que la recherche scientifique se soit passablement
+centrée ces dernières années sur les abus sexuels dans le contexte sportif
+(Vertommen et al., 2017), des études plus récentes ont mis en évidence d’autres
+formes de maltraitance (e.g., physique, psychologique, négligence) susceptibles
+d’être vécues par les athlètes. Les données de ces recherches récentes sont
+alarmantes puisqu’elles indiquent qu’un grand nombre d’athlètes subissent des
+maltraitances psychologique, physique et sexuelle, et de la négligence. En
+Suisse, le scandale survenu en novembre 2020 concernant les méthodes
+d’entrainements utilisées par certains entraineurs de Macolin auprès des
+gymnastes de l’équipe nationale a révélé que le sport suisse n’était pas exempt
+de cas de maltraitance physique et psychologique.
+Aujourd’hui, la nouvelle campagne « Are you OK ? » de Swiss Olympic
+peut nous laisser penser que les responsables sportifs prennent conscience de
+l’urgence de la situation. En invitant les athlètes à parler des situations qu’ils leur
+semblent anormales ou inacceptables et à se faire aider, elle tente de briser la loi
+de l’omerta qui règne dans le domaine. Les slogans tels que : « même si je
+participe à tous les entrainements, je ne fais pas partie de l’équipe », « chaque
+fois que je grignote, je pense à mon entraineur qui dit que je suis trop grosse »,
+« mes bleus ne viennent pas que de mes chutes », « ce n’était pas qu’une simple
+accolade. Et mon entraineur le sait » et « je dois continuer à m’entrainer malgré
+de fortes douleurs. La pression est énorme » ont pour but de délimiter ce qu’il
+faut entendre concrètement par situations de maltraitance physique,
+psychologique, sexuelle et de négligence. Si la prévention marque un grand pas
+en avant avec cette campagne, il n’en reste pas moins qu’on ne sait vraiment si
+ces situations seront véritablement reconnues comme telles par les athlètes.
+7
+
+Ainsi, peu de recherches ont eu pour objectif d’examiner la manière dont les
+athlètes expérimentent ces différentes maltraitances, et les façons dont les
+athlètes acceptent ou non, banalisent ou supportent ces dernières, restent ainsi
+mal connues. Savoir non seulement comment les athlètes ressentent ces diverses
+formes de maltraitance, mais aussi quels impacts elles peuvent avoir sur leur
+santé physique et mentale, et sur leur performance, constituent alors un enjeu
+majeur de recherche pour mieux lutter contre cette problématique. C’est le but
+de ce travail de master de contribuer à une meilleure compréhension de ces
+expériences de maltraitance dans le monde du sport.
+
+Si le concept de maltraitance apparait comme relativement général dans le
+domaine, il existe aujourd’hui de nombreuses variations conceptuelles et
+sémantiques rendant compte de la complexité du phénomène. En effet, certains
+auteurs utilisent le terme d’abus (e.g., « psychological abuse »), d’autres de
+maltraitance (e.g., « physical maltreatment »), de violence (e.g., « physical
+violence ») ou encore de mauvais traitement (e.g., « mauvais traitement
+affectif ») (annexe 1). Par exemple, la violence interpersonnelle est utilisée dans
+le contexte sportif pour décrire une violence contre les athlètes pouvant être
+perpétrée par une personne en position d’autorité, par des pairs athlètes ou par
+des spectateurs (Parent & Fortier, 2018). Les différentes études dans ce domaine
+différencient la violence physique (e.g., Alexander et al., 2011; Parent & Fortier,
+2018), la violence psychologique (e.g., Fortier et al., 2020; Stirling & Kerr,
+2008a), la violence sexuelle (e.g., Parent & Fortier, 2018) et la négligence (e.g.,
+Fortier et al., 2020; Parent & Fortier, 2017). Selon Crooks et Wolfe (2007, cité
+dans Stirling, 2009) la maltraitance est un acte volontaire qui engendre ou peut
+engendrer des blessures physiques ou psychologiques. De plus, Stirling (2009)
+distingue deux sortes de maltraitance dans le contexte sportif ; la maltraitance
+relationnelle et la maltraitance non relationnelle. C’est plus particulièrement la
+première qui nous intéresse dans ce présent mémoire, et celle-ci se divise en 4
+formes : l’abus physique (« physical abuse »), l’abus émotionnel (« emotional
+abuse »), l’abus sexuel (« sexual abuse ») et la négligence (« neglect »).
+Toutefois, le terme d’abus ne peut s’employer à toutes les situations de
+maltraitance car il est défini par Kerr (2010) comme un trouble relationnel
+8
+
+existant dans une relation où l’auteur se trouve dans une position d’autorité par
+rapport à la victime. C’est-à-dire qu’il est correct de parler d’abus physique
+lorsqu’un adulte maltraite physiquement un athlète puisqu’il se trouve dans une
+position d’autorité vis-à-vis de ce dernier, mais dans le cadre d’une relation
+symétrique entre deux coéquipiers par exemple, il n’est pas correct d’utiliser ce
+terme. De plus, selon Brackenridge (2010), le terme de violence s’utilise plutôt
+pour des conflits entre adversaires. Ainsi, le concept de maltraitance envers les
+athlètes semble plus adapté que celui de violence interpersonnelle ou d’abus pour
+ce présent mémoire car il s’agira d’étudier les situations de maltraitance dans le
+cadre d’une relation symétrique (entre pairs) et d’une relation asymétrique (entre
+un adulte et un athlète). Finalement, il a été décidé d’utiliser le terme de
+maltraitance psychologique au lieu de maltraitance émotionnelle car il met en
+évidence le fait que la psyché ne se limite pas aux émotions (Mountjoy et al.,
+2016). Celle-ci est constituée de connaissances, de valeurs et de croyances sur
+soi-même et sur le monde (Mountjoy et al., 2016). Autrement dit, parler de
+maltraitance émotionnelle serait trop restrictif. En résumé, les définitions
+utilisées par les chercheurs sont multiples et influencent non seulement les items
+constituant les outils utilisés par les chercheurs mais aussi les données obtenues.
+Dans le cadre de ce mémoire, quatre types de maltraitance seront étudiées,
+à savoir la maltraitance physique, la maltraitance psychologique, la maltraitance
+sexuelle et la négligence. Premièrement, parmi les définitions existantes de la
+maltraitance physique, on peut relever deux grandes conceptions qui
+s’opposent ; les auteurs mettant l’accent sur les dommages physiques réels ou
+potentiels implicites pour l’athlète (e.g., Stirling, 2009; Trocmé et al., 2010) et
+les autres mettant l’accent sur la nature purement physique de l’agression (e.g.,
+Fortier et al., 2020; Parent et al., 2019). En d’autres termes, Fortier et collègues
+(2020) définissent la maltraitance physique sans tenir compte des conséquences
+de ces actes. Ainsi, les comportements inclus dans cette forme de maltraitance
+sont par exemple : secouer ou pousser l’athlète, le frapper avec un objet dur ou
+lui donner un coup de pied (Fortier et al., 2020). Alors que Stirling (2009) inclut
+des comportements tels que le fait d’interdire à un athlète d’utiliser les toilettes
+pendant une séance d’entraînement. Pour Fortier et collègues (2020), l’une des
+raisons d’adopter une définition s’axant uniquement sur la nature physique de
+9
+
+l’agression envers l’athlète est d’éviter le risque de confusion entre la
+maltraitance physique et psychologique car il est difficile de déterminer si les
+conséquences d’un geste sont de l’ordre du physique ou du psychologique.
+Deuxièmement, la maltraitance psychologique peut être considérée
+comme le fait de se comporter de manière à présenter un risque élevé de nuire
+au bien-être mental de l’enfant, à sa sécurité et à son développement (Fortier et
+al., 2020). Des actes tels que menacer l’athlète, le terroriser, l’isoler, le forcer à
+effectuer un entrainement malgré une fatigue importante ou une blessure, ou
+encore le forcer à user de substances dopantes sont des exemples de cette
+maltraitance (Fortier et al., 2020). Gervis et Dunn (2004) ont repris la définition
+de Doyle (1997) pour l’appliquer au domaine sportif en substituant le terme
+« figure parentale » par « entraineur ». Selon Doyle (1997), la maltraitance
+psychologique envers les enfants consiste en des actes d’omission et de
+commission psychologiquement préjudiciables qui sont commis par des figures
+parentales se trouvant dans une position de pouvoir qui rend l’enfant vulnérable.
+Troisièmement, selon Fortier et collaborateurs (2020), dès lors qu’un
+enfant est impliqué dans des activités de type sexuelle, cela constitue une
+maltraitance sexuelle. Ils recensent des comportements tels qu’avoir ou tenter
+d’avoir des relations sexuelles avec l’athlète, le caresser, le toucher ou encore le
+harceler sexuellement de manière verbale. Basile (2014) définit la maltraitance
+sexuelle comme un acte sexuel qui est commis ou tenté par une autre personne
+sans le consentement librement donné de la victime ou contre une personne qui
+n’est pas en mesure de consentir ou de refuser. Cette définition sera reprise par
+Parent et Fortier (2019) pour la construction du Violence Toward Athletes
+Questionnaire (VTAQ). La notion de consentement est centrale dans cette
+conception de la maltraitance sexuelle. Mountjoy et collègues (2016)
+différencient l’abus sexuel du harcèlement sexuel. En effet, l’abus sexuel
+comprend tous les comportements à caractère sexuel (avec ou sans contact)
+n’ayant pas été consenti alors que le harcèlement sexuel se caractérise plutôt par
+des comportements à caractère sexuel non désirés et malvenus. Cette distinction
+se retrouve également chez Alexander et collègues (2011). Ils vont cependant
+reprendre l’idée de continuum de Brackenrige (2001) pour imager ces deux
+10
+
+formes de maltraitances sexuelles : d’un côté du continuum il y aurait le
+harcèlement sexuel, et de l’autre, les comportements sexualisés et abus sexuels.
+Entre deux se trouve une « zone grise », où se trouverait des comportements tels
+que se faire toucher pendant les cours d’une manière qui met mal à l’aise.
+Enfin, selon l’Organisation Mondiale de la Santé (OMS, 1999) « la
+négligence est le fait de ne pas assurer le développement de l’enfant dans tous
+les domaines – éducation, développement affectif, nutrition, abri et conditions
+de vie sûres – dans le contexte des ressources dont la famille ou les personnes
+qui s’occupent de l’enfant peuvent raisonnablement disposer […]. Il s’agit aussi
+du fait de ne pas assurer à l’enfant l’encadrement nécessaire et la protection
+contre les préjudices dans la mesure du possible » (p.15). À notre connaissance,
+il n’existe actuellement aucune définition de la négligence en contexte sportif,
+les auteurs utilisent très souvent des définitions générales de la négligence
+comme celle de l’OMS.
+
+Bien que la plupart des auteurs s’entendent sur les différentes formes de
+maltraitance
+
+(i.e.,
+
+maltraitance
+
+physique,
+
+maltraitance
+
+psychologique,
+
+maltraitance sexuelle et négligence), il n’existe actuellement pas de consensus
+dans les définitions (Fortier et al., 2020; Gervis & Dunn, 2004), ce qui engendre
+une limite majeure dans l’obtention d’une mesure précise de la fréquence de la
+maltraitance envers les athlètes dans le contexte sportif. Ainsi, les fréquences
+obtenues dans les différentes études varient grandement et peuvent difficilement
+être comparées (Vertommen et al., 2016). Par exemple, l’étude de Vertommen
+et collaborateurs (2016) réalisée en Flandre et au Pays-Bas a permis de mettre
+en évidence que 38% de l’échantillon avait déclaré avoir subi au moins un
+incident de maltraitance psychologique, 14% au moins un incident de
+maltraitance sexuelle et 11% au moins un incident de maltraitance physique. Au
+Québec, Parent et Vaillancourt-Morel (2020) ont relevé que 79,2% de
+l’échantillon avait déclaré avoir subi au moins un incident de maltraitance
+psychologique, 39,9% au moins un incident de maltraitance physique, 35,7% au
+moins un incident de négligence et 28,2% au moins un incident de maltraitance
+sexuelle. En Suisse romande, Hauw et collègues (2021) ont indiqué que 87,5%
+des répondants avaient déclaré avoir subi de la maltraitance psychologique,
+11
+
+37,5% de la maltraitance physique et 32,8% de la maltraitance sexuelle. Enfin,
+une autre étude Suisse romande menée par Marsollier et collègues (2021) relève
+que 75% des athlètes de l’échantillon ont déclaré avoir subi au moins un incident
+de maltraitance psychologique, 53% de maltraitance physique et 28% de
+maltraitance sexuelle. Ces différentes études nous permettent de constater
+qu’une ou plusieurs formes de maltraitance peuvent être expérimentées par les
+jeunes athlètes.
+
+De plus, des facteurs de risques tels que le type de sport, le genre,
+l’appartenance à une minorité et le niveau sportif ont été mis en évidence par la
+littérature. En effet, la maltraitance psychologique et la maltraitance physique
+sont plus élevées dans les sports d’équipe comparé aux sports individuels (Hauw
+et al., 2021; Marsollier et al., 2021). Concernant le genre, les filles semblent plus
+souvent victimes de maltraitance psychologique (Hauw et al., 2021; Marsollier
+et al., 2021) et sexuelle (Hauw et al., 2021), alors que les garçons sont plus sujets
+à la maltraitance physique (Hauw et al., 2021; Marsollier et al., 2021). La
+maltraitance physique et la maltraitance sexuelle sont plus élevées chez les
+minorités ethniques et sexuelles, ainsi que chez les athlètes handicapés
+(Vertommen et al., 2016). Quant au niveau sportif, les fréquences augmentent
+pour les trois types de maltraitance lorsque les athlètes pratiquent au niveau
+international (Vertommen et al., 2016). En d’autres termes, les athlètes semblent
+être de plus en plus vulnérables et susceptibles de subir de la maltraitance à
+mesure qu’ils atteignent le niveau élite. Atteindre le niveau de performance le
+plus élevé ne constitue pas uniquement un facteur de risque de maltraitance, mais
+également un facteur de risque pour la santé. En effet, la spécialisation précoce
+peut avoir des effets néfastes sur le plan de la santé physique et psychologique
+(Jidovsteff, 2016; LaPrade et al., 2016). En ce sens, le Comité International
+Olympique (CIO) a recensé certains impacts à long terme sur la santé tel que le
+manque de sommeil, l’augmentation des taux de blessures, le surentrainement,
+l’épuisement et les troubles du comportement alimentaire (LaPrade et al., 2016).
+La pression, le manque d’amusement et le manque de temps pour d’autres
+activités, engendrés par les sports à spécialisation précoce, peuvent même
+conduire le jeune athlète à développer un dégoût pour son sport et à l’abandonner
+12
+
+précocement (Jidovsteff, 2016). Dans une étude menée par Jayanthi et collègues
+(2015), les athlètes hautement spécialisés étaient ceux qui présentaient le plus
+grand risque de blessure et de blessure grave comparés aux autres athlètes
+modérément et faiblement spécialisés.
+
+En parallèle, plusieurs études ont révélé le profil des auteurs de
+maltraitance envers les athlètes dans le contexte sportif en fonction de la forme
+de maltraitance, du genre, du type de sport pratiqué et du niveau de compétition.
+Par exemple, Vertommen et collaborateurs (2017) indiquent que les auteurs les
+plus fréquemment signalés sont les pairs athlètes masculins, mis à part pour la
+maltraitance sexuelle où ce sont les « autres personnes connues » tels que le
+personnel médical ou les arbitres. Dans l’étude d’Alexander et collègues (2011),
+les coéquipiers étaient les auteurs de maltraitance psychologique les plus
+signalés. La proportion d’entraineurs auteurs de maltraitance augmentent avec
+le niveau de la compétition pour la maltraitance physique (Alexander et al.,
+2011; Hauw et al., 2021) et la maltraitance psychologique (Stirling & Kerr,
+2008a). La même tendance existe pour le harcèlement sexuel ; l’implication des
+pairs athlètes diminue à mesure que les athlètes progressent en termes de niveau
+de compétition, alors que l’implication des entraineurs augmente (Alexander et
+al., 2011). Cette implication plus élevée d’entraineurs auteurs de maltraitance à
+l’égard des athlètes d’élite pourrait s’expliquer par les caractéristiques-mêmes
+de ce niveau sportif. En effet, l’athlète d’élite va passer plus en plus de temps à
+s’entrainer, va voyager pour ses différentes compétitions, et par conséquent sera
+davantage avec son entraineur (Gervis & Dunn, 2004). Aux yeux de l’athlète, ce
+dernier deviendra une figure très importante, et pourrait même être perçu comme
+plus important que ses parents (Macauley, 1997). De ce fait, l’entraineur va
+exercer une influence remarquable sur l’athlète, ce qui le place dans une position
+de vulnérabilité (Gervis & Dunn, 2004).
+
+Les différents chercheurs qui se sont penchés sur les conséquences de la
+maltraitance envers les athlètes ont permis de mettre en lumière un certain
+nombre d’effets néfastes. En 2018, Vertommen et collaborateurs ont conclus que
+les enfants ayant subi de la maltraitance dans le sport présentent une grande
+13
+
+détresse psychologique et une faible qualité de vie à l’âge adulte. Une étude
+menée par Fasting et collègues (2002) auprès d’athlètes féminines révèle que le
+fait d’avoir été victime de harcèlement sexuel a affecté leur estime d’elle-même
+et leur image corporelle. De plus, cette expérience négative a engendré chez
+certaines un arrêt du sport alors qu’elles étaient sportives d’élite (Fasting et al.,
+2002). Gervis et Dunn (2004) ont remarqué que les comportements d’abus
+émotionnels de la part des entraineurs envers les enfants athlètes d’élite est une
+menace pour le bien-être psychologique et que ces conséquences s’installent sur
+le long terme. En effet, certains participants de leur étude ont indiqué que le fait
+de se faire crier dessus par leur entraineur leur faisait ressentir de la peur. Ce
+climat de peur instauré par l’entraineur engendrait une moins bonne performance
+sportive. Gervis et Dunn (2004) ont ainsi pu recenser plusieurs sentiments
+rapportés par les athlètes en lien avec un comportement abusif de leur
+entraineur ; se sentir stupide, sans valeur, en colère, déprimé, humilié, blessé et
+bouleversé, manquer de confiance en soi et avoir peur. L’étude menée par
+Striling et Kerr (2008a) a également permis de mettre en lumière les réponses
+des athlètes aux divers comportements d’abus émotionnels de la part de leur
+entraineur. Premièrement, le refus d’attention et de soutien de la part de
+l’entraineur semble être le comportement le plus impactant. En effet, les
+participants qui se faisaient ignorés par leur entraineur ont ressenti une extrême
+contrariété et culpabilité de ne pas lui avoir plu. De plus, le fait de se faire ignorer
+pouvait même amener les athlètes à se sentir pas assez bien pour mériter
+l’attention de l’entraineur. Deuxièmement, les comportements verbaux d’abus
+émotionnels comme les commentaires dégradants ou dévalorisants de la part de
+l’entraineur semblent déranger les participants, les faisant se sentir insignifiant
+et inférieur. Toutefois, contrairement aux résultats de Gervis et Dunn (2004), le
+fait de se faire crier dessus n’était pas aussi impactant pour les athlètes que de se
+faire ignorer car ils percevaient ce comportement comme une preuve que
+l’entraineur tenait à eux. Finalement, les manifestations physiques d’abus
+émotionnels semblent affecter les athlètes uniquement s’ils sont frappés par un
+objet lancé sur eux, les faisant ressentir de la peur.
+
+14
+
+Bien que des chercheurs s’intéressent aux conséquences de la maltraitance
+sur les athlètes, peu d’études ont porté sur ce que ces derniers expérimentent en
+les subissant. Parmi les rares études ayant examiné les expériences des athlètes
+ayant vécu de la maltraitance, Striling et Kerr (2008b) ont recensé la manière
+dont les expériences d’abus émotionnels évoluaient à travers trois phases ; le
+début, le milieu et la fin de la carrière sportive de l’athlète. Les résultats de cette
+étude révèlent que les athlètes subissaient des abus émotionnels et les
+normalisaient dès le début de la carrière. Les nageuses de leur étude ont accepté
+ces comportements comme faisant partie de l’entrainement et comme nécessaire
+à la performance sportive d’élite. À l’instar du début de carrière, les
+comportements d’abus émotionnels de l’entraineur sont acceptés et perçus
+comme faisant partie du processus de formation. Cependant, les effets de ces
+abus semblent dépendre des performances de l’athlète. Lorsque les sportives
+nageaient bien et percevaient leur performance comme positive, les
+commentaires concernant leur poids ou les cris de l’entraineur ne les affectaient
+pas négativement, voire étaient considérés comme une preuve que l’entraineur
+se souciait d’elles. Mais, du moment où les performances avaient tendance à
+plafonner ou se décliner, les abus émotionnels étaient néfastes et perturbaient les
+nageuses. La majorité des nageuses de l’étude se sont rebellées en fin de carrière,
+les faisant passer d’une acceptation à la contestation des comportements
+émotionnellement abusifs. En outre, la manière dont les athlètes expérimentent
+et interprètent les comportements abusifs semblent évoluer au fil de la carrière
+sportive et dépendre de la perception de leur performance. Une autre étude
+menée par Pinheiro et collaborateurs (2012) recensent également que certains
+comportements considérés comme maltraitants tels que s’entrainer ou concourir
+en cas de douleur ou de blessure sont normalisés par les gymnastes. Dès qu’elles
+commencent à s’entrainer, elles s’inscrivent dans une culture sportive qui
+normalise le risque, la douleur, les blessures et les abus. De ce fait, cette
+normalisation de la maltraitance envers les athlètes dans le contexte sportif
+semble être rependue.
+
+En somme, les différentes études mentionnées dans ce travail ont contribué
+aux développements des connaissances relatives à la maltraitance dans le sport
+15
+
+(e.g., fréquence, facteur de risque, conséquences). Afin de comprendre la
+manière dont les chercheurs ont étudié ce phénomène et les potentiels limites de
+leurs travaux, il convient de distinguer les recherches de type qualitatives et
+quantitatives. D’un côté, les études de types qualitatives (e.g., Fasting et al.,
+2002; Gervis & Dunn, 2004; Pinheiro et al., 2012; Stirling & Kerr, 2008a,
+2008b) ont utilisé des entretiens semi-structurés. À part chez Fasting et collègues
+(2002), tous les participants des autres études étaient des athlètes d’élite retraités.
+Ce faisant, les participants devaient se remémorer des souvenirs survenus durant
+leur carrière afin de parler de leur expérience en tant qu’athlète d’élite.
+L’entretien semi-structuré est un outil reconnu pour récolter le discours des
+participants tout en leur laissant une certaine liberté dans la production de leur
+récit. Toutefois, cet outil comporte certaines limites. En effet, l’interviewer peut
+influencer les dires de l’interviewé avec des relances et l’orienter en fonction de
+sa thématique et question de recherche. C’est également un outil couteux en
+temps, limitant l’échantillon à un nombre restreint de participant. Pour finir,
+aborder des thématiques sensibles tels que les maltraitances, peut s’avérer
+difficile, autant pour l’interviewer que l’interviewé. De l’autre côté, les études
+quantitatives (e.g., Hauw et al., 2021; Marsollier et al., 2021; Parent et al., 2019;
+Parent & Vaillancourt-Morel, 2020; Vertommen et al., 2016, 2017, 2018)
+prennent appuis sur des questionnaires mis au point afin d’évaluer la fréquence
+d’expérimentation des différentes formes de maltraitance en fonction d’un
+certain nombre de variables (e.g., genre, type de sport, appartenance ethnique et
+sexuelle). Premièrement, l’IViS (Interpersonal Violence in Sport) développé par
+Vertommen et collaborateurs (2016) est un questionnaire rétrospectif en ligne
+comprenant 14 items sur la maltraitance psychologique, 10 items sur la
+maltraitance physique et 17 items sur la maltraitance sexuelle. La négligence est
+dans ce questionnaire une composante de la maltraitance psychologique. Hauw
+et collègues (2021) ont traduit l’IViS de l’anglais au français afin de
+l’administrer à une population d’adultes francophones âgés de 18 à 65 ans.
+Deuxièmement, le VTAQ (Violence Toward Athletes Questionnaire) développé
+par Parent et collègues (2019) est un questionnaire en ligne visant à évaluer la
+fréquence des violences interpersonnelles en fonction de l’auteur de ces
+violences. Pour ce faire, le VTAQ est composé en trois sous-échelles : le VTAQA qui est la sous-échelle des autres athlètes, le VTAQ-C qui est la sous-échelle
+16
+
+des entraineurs, et le VTAQ-P qui est la sous-échelle des parents. La souséchelle athlète, c’est-à-dire les coéquipiers et adversaires, comprend neuf items ;
+quatre items de maltraitance psychologique, deux items de maltraitance
+physique et trois items de maltraitance sexuelle. La sous-échelle entraineur
+comprend 36 items ; 16 items de maltraitance psychologique et de négligence,
+neuf items de maltraitance physique et 11 items de maltraitance sexuelle. Pour
+finir, la sous-échelle parent comprend 25 items ; 17 items de maltraitance
+psychologique et de négligence, et huit items de maltraitance physique. Les
+questionnaires permettant de mesurer la maltraitance en contexte sportif
+présentent plusieurs limites. Premièrement, le recours à un design rétrospectif en
+questionnant les adultes sur leurs expériences de maltraitance en sport durant
+leur jeunesse peut engendrer une sous-estimation de la fréquence. En effet, selon
+Vertommen et collègues (2016) un taux important de faux négatifs et d’erreurs
+de mesure serait possible dans leur propre questionnaire (IViS). Deuxièmement,
+le manque de consensus dans les définitions est un frein important à l’obtention
+de mesures comparables entre les études. Par exemple, la maltraitance physique
+pour Vertommen et collègues (IViS, 2016) contient des manifestations
+d’agressions qui ne sont pas de nature purement physique comme le fait d’être
+forcé à s’entrainer malgré une blessure, alors que dans le VTAQ (Parent et al.,
+2019) cette manifestation a été classée dans la maltraitance psychologique.
+Troisièmement, les questionnaires actuels n’incluent pas toujours toutes les
+formes de maltraitance envers les athlètes. En effet, la négligence n’a pas été
+prise en considération dans l’élaboration de l’IViS (Vertommen et al., 2016)
+alors qu’elle l’a été dans le VTAQ (Parent et al., 2019). Pour finir, les
+questionnaires n’intègrent pas systématiquement le type d’auteur de
+maltraitance. Par exemple, l’IViS (Vertommen et al., 2016) ne différencie pas si
+la manifestation de maltraitance a été perpétrée par les pairs, l’entraineur, etc. Le
+VTAQ (Parent et al., 2019) va venir combler cette lacune. Toutefois, il manque
+une exhaustivité dans ce questionnaire puisque seuls les entraineurs, les parents
+et les pairs sont inclus comme potentiels auteurs de maltraitance, alors que les
+autres acteurs de l’environnement sportif de l’athlète sont exclus (e.g., personnel
+médical, psychologue du sport, agent, etc.). Bien que les différentes recherches
+mènent à penser que ce sont les entraineurs et les pairs qui sont le plus souvent
+auteurs de maltraitance dans le contexte sportif, il est important de notifier qu’il
+17
+
+existe actuellement peu d’informations sur les comportements maltraitants de la
+part des parents ou d’autres personnes impliquées dans le cadre sportif (Parent
+et Fortier, 2017). Dans ce sens, le scandale autour de Larry Nassar nous indique
+que le personnel médical peut également abuser de sa relation de pouvoir pour
+maltraiter les athlètes (Mountjoy, 2019). C’est pourquoi, il est nécessaire
+d’inclure toutes les personnes impliquées dans le réseau sportif de l’athlète (e.g.,
+personnel médical, parents) dans les recherches sur la maltraitance en sport.
+
+Ainsi, l’objectif du présent mémoire est de développer et tester un nouveau
+questionnaire portant sur la maltraitance envers les athlètes et l’expérience qu’ils
+en font. Plus spécifiquement, notre questionnaire visera à (a) obtenir des données
+quant à la fréquence des quatre formes de maltraitance (i.e., maltraitance
+physique, sexuelle, psychologique et la négligence), (b) caractériser comment
+les participants vivent cette maltraitance et l’interprètent, et (c) identifier les
+auteurs de maltraitance dans le contexte sportif. De plus, afin de pallier les
+limites des questionnaires actuels, il s’agira d’inclure l’ensemble des auteurs de
+maltraitance envers les jeunes athlètes. Compte tenu de la littérature évoquée
+précédemment, nous chercherons avec ce questionnaire à tester quatre
+hypothèses :
+Hypothèse 1 : la maltraitance psychologique est la forme de maltraitance
+la plus expérimentée par les athlètes francophones suisses,
+Hypothèse 2 : les fréquences des quatre formes de maltraitance varient en
+fonction du genre, du type de sport et du niveau sportif,
+Hypothèse 3 : certaines formes de maltraitance sont normalisées par les
+athlètes,
+Hypothèse 4 : les conséquences diffèrent selon la forme subie de
+maltraitance.
+
+18
+
+2 Méthode
+2.1 Construction du Questionnaire sur l’Expérience de la
+Maltraitance en Sport (QEMS)
+2.1.1
+
+Choix des définitions
+DeVellis (2003) suggère que la première étape de construction d’un
+
+questionnaire est de déterminer clairement ce que l’on souhaite mesurer. Ainsi,
+il s’agit de définir ce qu’est la maltraitance physique, la maltraitance
+psychologique, la maltraitance sexuelle et la négligence. Pour ce faire, les
+différentes définitions existantes en contexte sportif et hors contexte sportif ont
+été recensées (annexe 1). Ce travail a permis de relever les lacunes présentes
+dans ces définitions, et c’est pourquoi des nouvelles ont été élaborées (annexe
+2).
+Pour la maltraitance physique, la conceptualisation de Fortier et
+collaborateurs (2020) a été adoptée, tout en ajoutant la notion d’intentionnalité
+de l’acte. Concernant la maltraitance psychologique, la définition de Stirling et
+Kerr (2008a) a été simplifiée et reformulée. Puis, la conceptualisation de Basile
+et collègues (2014) de la maltraitance sexuelle a été reprise en remplaçant le
+terme de violence par celui de maltraitance. Quant à la négligence, la définition
+se base sur celle proposée par l’OMS (1999) en l’adaptant au contexte sportif.
+Pour ce présent mémoire, les définitions suivantes ont alors été proposées :
+Maltraitance
+
+Définitions utilisées pour le QEMS
+
+Maltraitance
+physique
+
+La maltraitance physique dans le contexte sportif a lieu
+lorsqu’une personne (exemples : le parent, l’entraineur, un
+coéquipier, un adversaire) s’en prend intentionnellement et
+physiquement à un athlète, par le biais d’un contact.
+
+Maltraitance
+La maltraitance psychologique dans le contexte sportif a lieu
+psychologique lorsqu’une personne (exemples : le parent, l’entraineur, un
+
+19
+
+coéquipier, un adversaire) s’en prend intentionnellement à un
+athlète sans qu’il y ait de contact physique.
+Maltraitance
+sexuelle
+
+La maltraitance sexuelle dans le contexte sportif est définie
+comme un comportement d’ordre sexuel qui est commis ou
+tenté par une autre personne (exemples : l’entraineur, le
+médecin du sport, un coéquipier) sans avoir reçu le
+consentement de l’athlète ou contre un athlète qui n’est pas
+en mesure de consentir ou refuser.
+
+Négligence
+
+La négligence dans le contexte sportif a lieu lorsqu’un adulte
+(exemples : l’entraineur, le parent, le médecin du sport) qui
+s’occupe de l’athlète n’assure pas son développement dans
+tous les domaines – éducation, développement affectif,
+nutrition – alors qu’il dispose raisonnablement de ressources
+nécessaires. Il s’agit aussi du fait de ne pas assurer à l’athlète
+l’encadrement nécessaire et la protection contre les
+préjudices dans la mesure du possible.
+
+Pour finir, étant donné que certains items de la partie démographique du
+questionnaire porteront sur la spécialisation précoce, il a fallu définir clairement
+ce qu’est ce type de pratique sportive. Selon la déclaration de consensus
+effectuée par l’American Orthopedic Society for Sports Medicine, trois critères
+de spécialisation précoce peuvent être mis en évidence ; (1) la participation à un
+entrainement intensif et/ou à des compétitions dans des sports organisés plus de
+8 mois par an, (2) la participation à un seul sport à l’exclusion des autres sports,
+et (3) la participation d’enfants pré pubères (environ 12 ans) (LaPrade et al.,
+2016). Toutefois, s’il n’y a pas de consensus dans la définition d’un sport à
+spécialisation précoce (Jayanthi et al., 2015), il est possible de distinguer trois
+degrés de spécialisation précoce, à savoir : faible (« low »), modéré
+(« moderate ») et élevé (« high ») en se basant sur la réponse à trois questions :
+(1) « as-tu choisi un sport principal ? », (2) « as-tu abandonné d’autres sports
+pour te concentrer sur un sport principal ? », et (3) « est-ce que tu t’entraines
+plus de 8 mois par an ? ». Chaque réponse affirmative rapporte 1 point. Le total
+étant sur trois, une somme de zéro ou un correspond à un degré de spécialisation
+faible, une somme de deux correspond à un degré de spécialisation modéré et
+une somme de trois est considéré comme un degré de spécialisation élevé
+(Jayanthi et al., 2015). Ainsi, nous avons décidé de nous baser sur la conception
+20
+
+de LaPrade et collègues (2016) pour définir si l’athlète rentre dans les critères de
+spécialisation précoce. Puis, en suivant la démarche de Jayanthi et collègues
+(2015), il sera possible de les catégoriser selon le degré de spécialisation.
+2.1.2
+
+Choix des catégories de comportements
+Une fois la clarification des définitions effectuées, il a fallu choisir les
+
+catégories de comportements afin de classer les items par thématique. Pour la
+maltraitance physique et psychologique, les catégories proposées par Fortier et
+collaborateurs (2020) ont été reprises et reformulées pour qu’elles soient
+adaptées aux athlètes (exemple : utilisation du terme « athlète » au lieu
+« d’enfant athlète »). Cela nous donne donc deux catégories pour la maltraitance
+physique : (1) par l’utilisation de son corps, et (2) par l’utilisation d’un objet.
+Ainsi que quatre catégories pour la maltraitance psychologique : (1) terroriser
+ou menacer de violence un athlète, (2) abus verbal et dépréciation d’un athlète,
+(3) insuffisance de soutien ou d’affection à l’égard d’un athlète, et (4)
+comportements qui favorisent la corruption, l’exploitation et l’adoption de
+comportements destructeurs, antisociaux ou malsains d’un athlète.
+A l’instar de la maltraitance physique et psychologique, les catégories de
+Fortier et collaborateurs (2020) ont été révisées pour la maltraitance sexuelle, et
+deux catégories proposées par Basile et collègues (2014) ont été ajoutées. La
+maltraitance sexuelle compte dès lors neuf catégories : (1) relation sexuelle avec
+un athlète impliquant une pénétration, (2) tentative de relation sexuelle avec
+pénétration, (3) caresser ou toucher sexuellement le corps d’un athlète, (4)
+exhibitionnisme impliquant un athlète, (5) exploitation d’un athlète (incitation à
+la prostitution ou à la production de matériel pornographique), (6) harcèlement
+sexuel verbal d’un athlète, (7) voyeurisme dans le contexte sportif impliquant un
+athlète, (8) expérience non-désirée sans contact, et (9) forcer un enfant à nous
+attoucher. Pour finir, la maltraitance physique regroupe trois catégories issues
+de Fortier et collaborateurs (2020) : (1) la négligence physique, (2) la négligence
+émotionnelle, et (3) la négligence éducationnelle.
+
+21
+
+2.1.3
+
+Choix des items
+La seconde étape de construction d’un questionnaire selon DeVellis (2003)
+
+consiste à générer un pool d’items. Pour ce faire, nous avons répertoriés
+l’ensemble des items du VTAQ (Parent et al., 2019), de l’IViS version anglaise
+(Vertommen et al., 2016) et française (Hauw et al., 2021) ainsi que le
+Questionnaire on Child Sexual Abuse d’Halpérin (1996), en les classant dans les
+catégories construites à l’étape précédente (annexe 3 et 4). Le travail de sélection
+des items s’est fait en plusieurs étapes.
+Tout d’abord, un premier choix a été effectué en retenant uniquement les
+items nous paraissant les plus clairs, concis, exhaustifs et pertinents. Puis,
+chaque item était repris afin d’émettre un avis dessus (annexe 5). Par exemple
+l’item C1 du VTAQ (Parent et al., 2019) « dans le contexte sportif, un(e)
+entraineur(e) t’a déjà secoué, poussé, agrippé (attrapé) ou projeté » a été retenu
+dans la première étape. À la seconde, les termes « attrapé » et « projeté » ont été
+supprimés pour simplifier au maximum la phrase. Alors que l’item 16 de l’IViS
+version française (Hauw et al., 2021) « on vous a secoué physiquement » n’a pas
+été maintenu car ce terme nous paraissait moins clair (annexe 6). Concernant la
+maltraitance sexuelle, la nuance existante dans le VTAQ (Parent et al., 2019)
+entre les items de la sous-échelle pairs-athlète et la sous-échelle adulte du réseau
+sportif-athlète a été retenue. En effet, nous adhérons à la vision selon laquelle la
+relation entre un adulte du réseau sportif et un athlète est nécessairement une
+relation asymétrique. Par conséquent, une relation sexuelle entre un adulte
+impliqué dans la carrière sportive de l’athlète et l’athlète, même consentie par ce
+dernier, est considérée comme abusive (Brake & Burton Nelson, 2012, cité dans
+Johansson, 2013). C’est pourquoi, la notion de consentement a été gardée
+uniquement pour les items de la sous-échelle pairs-athlète.
+Une fois la génération d’un premier pool d’items, l’ordre des questions a
+dû être pensé. Selon Dillman et collègues (2014), les items sensibles doivent être
+placés à la fin du questionnaire. Pour ce faire, les items de chaque forme de
+maltraitance ont été classés du moins sensible au plus sensible par trois
+personnes différentes. Puis, le même processus a été mis en place pour classer
+les différentes formes de maltraitance du moins sensible au plus sensible.
+22
+
+Comme vu auparavant, aucun questionnaire existant sur la maltraitance en
+sport ne mesure la manière dont les athlètes vivent et interprètent la maltraitance.
+De ce fait, aucun item n’existant déjà, il a fallu en créer. Pour ce faire, nous avons
+listé l’ensemble des conséquences et des interprétations des différentes formes
+de maltraitance que la littérature scientifique recense. Deux questions ont été
+créées, l’une s’intéressant aux conséquences de la maltraitance et l’autre
+s’intéressant à son interprétation. En nous basant sur les travaux de Fasting et
+collègues (2002), Gervis et Dunn (2004) et de Stirling et Kerr (2008a, 2008b),
+nous avons pu regrouper les conséquences par thématique et générer une liste
+d’items en gardant les plus pertinents. Par exemple, se sentir « sans valeur », «
+stupide », « insignifiant », « inférieur » et « comme une merde », ont été
+considérés comme faisant partie de la thématique « manque de confiance en soi
+et ses capacités », et a donné l’item « tu as perdu confiance en toi et tes
+capacités ». Pour donner un autre exemple, la conséquence d’arrêt du sport n’a
+pas été retenue car nous allons nous intéresser à un échantillon d’athlètes actifs
+et non à la retraite. Quant à la question sur l’interprétation, ce sont les travaux de
+Stirling et Kerr (2008b) et de Pinheiro et collègues (2012) qui nous ont permis
+de relevé trois interprétations possibles : (1) la normalisation de la maltraitance,
+(2) la nécessité de cette maltraitance pour performer, et (3) la maltraitance
+comme faisant partie de l’entrainement ou de la compétition. Pour finir, nous
+nous sommes inspirés du questionnaire d’Halpérin (1996) pour la formulation
+des questions d’expérience. Il utilise la formulation « at the time it happened,
+did you feel…» pour comprendre la manière dont les différentes situations de
+maltraitance sexuelle ont impacté le répondant. Ainsi, nous avons décidé de
+formuler la question de la sorte : « tu as considéré cela comme … » pour la
+question d’interprétation, et « suite à cela, est-ce que tu as … » pour la question
+sur les conséquences.
+2.1.4
+
+Choix du format de mesure
+La troisième étape, selon DeVellis (2003), consiste à déterminer le format
+
+de mesure, c’est-à-dire choisir les échelles de réponses des différents items. Tout
+d’abord, l’échelle de fréquence utilisée est une échelle en quatre points reprise
+du VTAQ
+
+(Parent et al., 2019) : jamais,
+23
+
+1 fois, quelques
+
+fois,
+
+souvent/régulièrement, avec ajout de l’option « pas de réponse ». Ces auteurs
+avaient choisi cette échelle sur la base de recommandations des experts durant
+l’étape de développement du questionnaire.
+L’échelle utilisée pour la question d’interprétation est une échelle en trois
+points : pas du tout, moyennement, tout à fait, avec l’option « ne sait pas », et
+celle pour la question de conséquences est en trois points : pas du tout,
+moyennement, tout à fait. Étant donné que le QEMS pourrait être administré
+dans une future étude à un échantillon d’enfants athlètes, le but était de rendre
+les échelles les plus simples possible.
+Enfin, pour la question sur les auteurs de maltraitance, un listing visant à
+être le plus exhaustif possible dans l’inclusion des personnes qu’un athlète
+rencontre dans le contexte de sa pratique sportive a été établi. La question était
+donc à choix multiple et proposait sept possibilités de réponses ; (1) l’entraineur,
+(2) l’entraineur assistant, (3) le préparateur physique de l’équipe, (4) l’équipe
+médical (exemples : physiothérapeute, ostéopathe, médecin), (5) le psychologue
+du sport ou le préparateur mental de l’équipe, (6) l’arbitre, et (7) autre.
+2.1.5
+
+Évaluation des items par un groupe d’experts
+Selon la méthodologie de DeVellis (2003), une fois la structure établie, les
+
+items doivent être soumis à un groupe d’expert afin de maximiser la validité de
+contenu. Ce groupe d’experts était constitué de cinq personnes issues de divers
+horizons, mais ayant des connaissances dans le domaine du sport ou de la
+maltraitance ; chercheurs en psychologie du sport, spécialiste de la violence,
+chercheur spécialiste en statistiques, et médecins du sport.
+Ils devaient évaluer chaque item (annexe 7) selon la pertinence (1 = non
+pertinent à 4 = très pertinent), la clarté (1 = pas clair à 4 = parfaitement clair) et
+la brièveté (1 = pas concis à 4 = parfaitement concis). Avant cette évaluation, la
+maltraitance physique comptait 12 items (quatre pour la sous-échelle pairsathlète, quatre pour la sous-échelle adulte du réseau sportif-athlète, et quatre pour
+la sous-échelle parent-athlète), 48 items pour la maltraitance psychologique (16
+pour la sous-échelle pairs-athlète, 16 pour la sous-échelle adulte du réseau
+sportif-athlète, et 16 pour la sous-échelle parent-athlète), 26 items pour la
+24
+
+maltraitance sexuelle (13 pour la sous-échelle pairs-athlète et 13 pour la souséchelle adulte du réseau sportif-athlète) et 12 items pour la négligence (six items
+pour la sous-échelle adulte du réseau sportif-athlète et six pour la sous-échelle
+parent-athlète). Une fois les évaluations réunies, un calcul de la moyenne et de
+l’écart type pour chaque critère (pertinence, clarté et brièveté) a été élaboré.
+Seuls les items ayant une moyenne supérieure ou égale à 3 et un écart-type
+suffisamment faible ont été maintenu. Ce faisant, les items problématiques selon
+les experts ont été écartés (annexe 8). De plus, les commentaires de chaque
+expert ont été minutieusement examinés et pris en considération. Par exemple,
+l’item « t’a déjà fait des avances sexuelles » a obtenu une bonne moyenne dans
+chaque critère mais a tout de même été reformulé car l’un des experts a proposé
+en commentaire de plutôt utiliser le terme de « propositions incitant à des
+relations sexuelles ».
+À la suite de cette évaluation, la maltraitance physique comptait neuf items
+(trois pour la sous-échelle pairs-athlète, trois pour la sous-échelle adulte du
+réseau sportif-athlète, et trois pour la sous-échelle parent-athlète), la maltraitance
+psychologique comprenait 39 items (dix pour la sous-échelle pairs-athlète, 15
+pour la sous-échelle adulte du réseau sportif-athlète, et 14 pour la sous-échelle
+parent-athlète), la maltraitance sexuelle recensait 20 items (neuf pour la souséchelle pairs-athlète et 11 pour la sous-échelle adulte du réseau sportif-athlète),
+et la négligence comptait dix items (cinq items pour la sous-échelle adulte du
+réseau sportif-athlète et cinq pour la sous-échelle parent-athlète).
+2.1.6
+
+Évaluation des items par un groupe d’athlètes
+Toujours dans l’optique de maximiser la validité de contenu, les items
+
+retenus ont été présentés lors d’un focus group avec des athlètes, afin de voir
+comment ils les interprétaient et y réagissaient. Le focus group s’est déroulé sur
+l’application de vidéoconférence ZOOM avec trois athlètes, dont une femme de
+18 ans pratiquant du VTT, un homme de 18 ans pratiquant du VTT et un homme
+de 20 ans pratiquant de l’escrime. Les réponses des athlètes ont été utilisées pour
+adapter les items afin d’améliorer la compréhension et la formulation (annexe
+11 et 12). Par exemple, l’item « t’a déjà crié dessus » peut, selon eux, être
+interprété de manière positive. Une alternative leur a été proposée, à savoir « t’a
+25
+
+déjà crié dessus de manière négative », et a été approuvée par l’ensemble des
+participants.
+2.1.7
+
+Questionnaire sur l’Expérience de la Maltraitance en Sport (QEMS)
+Les items étant définitivement choisis et modifiés, nous avons repensé nos
+
+catégories de comportements pour ne garder que ceux où des items existaient.
+Ainsi, la maltraitance physique ne compte plus qu’une seule catégorie dans les
+trois sous-échelles, la maltraitance psychologique comprend quatre catégories :
+(1) insuffisance de soutien ou d’affection à l’égard d’un athlète, (2) abus verbal
+et dépréciation d’un athlète, (3) terroriser ou menacer de violence un athlète, et
+(4) comportements qui favorisent la corruption, l’exploitation et l’adoption de
+comportements destructeurs, antisociaux ou malsains d’un athlète. La
+maltraitance sexuelle compte sept catégories : (1) harcèlement verbal d’un
+athlète, (2) exhibitionnisme impliquant un athlète, (3) exploitation d’un athlète
+(incitation à la prostitution ou à la production de matériel pornographique), (4)
+forcer un athlète à nous attoucher, (5) Caresser ou toucher sexuellement le corps
+d’un athlète, (6) tentative de relation sexuelle avec ou sans pénétration, et (7)
+relation sexuelle avec ou sans pénétration. Et pour finir, la négligence recense
+trois catégories : (1) la négligence physique, (2) la négligence éducationnelle, et
+(3) la négligence émotionnelle. L’ensemble des catégories constituant chaque
+forme de maltraitance est représenté dans la figure 1.
+
+Figure 1 – Représentation visuelle des catégories constituant les quatre formes
+de maltraitance en sport au sein du QEMS
+La version finale (annexe 13) du QEMS comportait trois sections : le
+consentement, la partie démographique et la partie maltraitance. Ce
+26
+
+questionnaire comprenait au total huit questions sociodémographiques (âge,
+canton, genre, sport pratiqué, niveau de pratique, et trois questions concernant
+les critères de sports à spécialisation précoce), neuf items de maltraitance
+physique (trois pour la sous-échelle pairs-athlète, trois pour la sous-échelle
+adulte du réseau sportif-athlète, et trois pour la sous-échelle parent-athlète), 39
+items de maltraitance psychologique (dix pour la sous-échelle pairs-athlète, 15
+pour la sous-échelle adulte du réseau sportif-athlète, et 14 pour la sous-échelle
+parent-athlète), 19 items pour la maltraitance sexuelle (neuf pour la sous-échelle
+pairs-athlète et dix pour la sous-échelle adulte du réseau sportif-athlète) et dix
+items pour la négligence (cinq items pour la sous-échelle adulte du réseau
+sportif-athlète et cinq pour la sous-échelle parent-athlète). Pour tous les items
+des diverses formes de maltraitance où le répondant indique une réponse d’au
+moins « 1 fois », deux questions d’expérience s’ajoutent : une question
+comprenant trois items d’interprétation et une autre comprenant dix items de
+conséquences. De plus, s’ajoute à la sous-échelle adulte du réseau sportif-athlète
+une question supplémentaire sur l’auteur du comportement en question. Les
+deux questions d’expérience et la question sur les auteurs ont été construites en
+fonction des catégories de comportements. C’est-à-dire que du moment où le
+répondant indique avoir subi au moins une fois l’un des items de la catégorie, les
+questions d’expériences et des auteurs étaient posées pour l’ensemble de la
+catégorie.
+
+2.2 Format en ligne
+Le QEMS a été administré en ligne, sur le logiciel LimeSurvey, pour deux
+raisons. Premièrement, notre intérêt se portait sur des athlètes âgés entre 16 et
+20 ans. Cette tranche d’âge utilise internet et les réseaux sociaux de manière
+quotidienne pour la plupart. Ainsi, nous avons pensé qu’il serait plus facile
+d’atteindre cette population grâce à un format en ligne, d’autant plus en période
+de crise sanitaire. Deuxièmement, les questionnaires en ligne sont moins
+intrusifs, puisqu’ils permettent aux répondants de rapporter plus facilement des
+comportements socialement indésirables ou inhabituels (Frippiat & Marquis,
+2010). Étant donné la thématique sensible du QEMS, les répondants pourraient
+
+27
+
+se sentir plus à l’aise de remplir un questionnaire en ligne, à l’abri des regards et
+du jugement d’autrui.
+
+2.3 Recrutement des participants
+Le QEMS a été testé auprès d’une population d’athlètes adolescents et de
+jeunes adultes de 16 à 20 ans, pratiquant un sport à spécialisation précoce (i.e.,
+agrès individuels, agrès de société, gymnastique artistique, patinage artistique,
+football et hockey sur glace). Nous nous intéressons précisément à cette
+population car ces athlètes s’impliquent généralement très tôt dans une pratique
+intensive de leur sport, ce qui peut par exemple générer une relation de
+dépendance de l’athlète à l’égard de son entraineur ou d’importants sacrifices de
+la part des parents pour permettre à leur enfant de pratiquer leur sport (Smits et
+al., 2017). Compte tenu de cette expérience, ils constituaient donc des athlètes
+qui pouvaient potentiellement être engagés dans les problématiques
+d’acceptation, de rejets ou de banalisation de ces maltraitances.
+Les participants ont été recrutés par le biais de plusieurs stratégies, telles
+que la publication d’un flyer sur les réseaux sociaux (annexe 15) et les différents
+groupes/pages d’équipe, la distribution du lien et de la notice d’information aux
+fédérations, clubs et entraineurs, et la sollicitation de notre réseau privé
+d’entraineurs et d’athlètes. Il a également été demandé aux répondants de
+promouvoir le lien du questionnaire auprès de leurs coéquipiers et amis pour
+instaurer un échantillonnage de type boule de neige. La collecte de données a
+débuté en septembre 2021 et sa collecte s’est terminée le 15 octobre 2021.
+Avant leur participation au questionnaire, les participants ont reçu une
+notice d’information par mail (annexe 14) précisant les objectifs de la recherche,
+le nom des personnes menant l’étude, les critères d’inclusions, la méthode
+utilisée, la durée du questionnaire, les bénéfices et risques potentiels liés à leur
+participation, l’anonymat et la confidentialité des données, et ce que signifie leur
+consentement.
+
+28
+
+2.4 Enjeux éthiques de la recherche
+Cette étude a été visée par la commission d’éthique de la CER-UNIL
+(E_SSP_042021_00006) et validée le 05.07.2021 (annexe 16).
+Compte tenu qu’il était possible que les répondants puissent ressentir un
+malaise dû au sujet délicat que sont les maltraitances, ou leur faire revivre des
+souvenirs douloureux, une liste de numéro de téléphone, pour obtenir une aide
+psychologique en cas de besoin, a été présentée dans le formulaire d’information.
+Le consentement libre et éclairé du répondant était demandé en tout premier lieu
+dans le questionnaire et si celui-ci était accepté, cela signifiait que le répondant
+certifiait avoir reçu les informations à propos de l’étude, ses objectifs, son
+déroulement ainsi que ses avantages et inconvénients possibles, avoir compris
+qu’il était libre de mettre fin à tout moment à sa participation et que toutes ses
+réponses resteraient anonymes. Puisque l’échantillonnage comportait de jeunes
+athlètes âgés de 16 à 20 ans, la signature du représentant légal n’a pas dû être
+demandée.
+Il est important de souligner que la participation restant anonyme,
+l’obligation éthique ou morale de devoir dénoncer une situation de maltraitance
+n’était pas engagée. Toutefois, si un participant souhaitait nous contacter, suite
+à sa participation à l’enquête, nous avions prévu de saisir l’Observatoire de la
+Maltraitance envers les enfants et de renvoyer le participant vers ce même
+observatoire.
+
+2.5 Analyse statistique
+Les données du questionnaire ont été importées sur Jamovi version
+1.6.23.0 et l’ensemble des analyses statistiques ont été réalisées à l’aide de ce
+logiciel. Premièrement, des statistiques descriptives ont été calculées afin de
+décrire l’échantillon en fonction des données sociodémographiques et des
+variables sportives (i.e., sport pratiqué, niveau sportif, degré de spécialisation
+précoce). Le degré de spécialisation précoce a été élaboré grâce à un recodage
+des réponses aux trois items (non = 0 et oui =1) puis à leur somme, donnant ainsi
+
+29
+
+une nouvelle variable avec trois modalités : (1) faible (somme de 0 ou 1), (2)
+modéré (somme de 2), et (3) élevé (somme de 3).
+Afin d’estimer la fréquence de maltraitance en sport dans l’échantillon
+d’athlète de 16-20 ans, le pourcentage a été estimé avec un intervalle de
+confiance (IC) de 99% et un test d’ajustement du
+
+2.
+
+Pour chaque type de
+
+maltraitance, une variable dichotomique oui/non a été créé. Par exemple, pour la
+maltraitance psychologique, des variables ont été créés pour chaque catégorie de
+comportements
+
+à
+
+l’aide
+
+d’une
+
+formule
+
+conditionnelle
+
+(e.g.,
+
+IF‘Malpsy2Athlete[SQ01]’==‘Jamais’ and ‘Malpsy2Athlete[SQ02]’==‘Jamais’
+and
+
+‘Malpsy2Athlete[SQ03]’==‘Jamais’
+
+‘Malpsy2Athlete[SQ04]’==‘Jamais’
+
+and
+and
+
+‘Malpsy2Athlete[SQ05]’==‘Jamais’,‘non’,‘oui’). Ainsi, si un répondant avait
+répondu au moins oui à l’un des items de la catégorie, la codification finale était
+« oui ». Puis, le pourcentage d’athlète ayant subi de la « maltraitance
+psychologique » a pu être calculé à partir des variables dichotomiques de chaque
+catégorie. Tous les « pas de réponse » ont été inscrits comme valeur manquante
+dans le logiciel statistique.
+L’un des objectifs de ce mémoire était de rendre compte du vécu des
+athlètes subissant ou ayant subi de la maltraitance en sport, à la fois en
+questionnant leur interprétation et les conséquences de ces différentes situations.
+Pour ce faire, les fréquences de chaque sous-items ont été calculées et exprimées
+en termes de oui/non, où les réponses « moyennement » et « fortement » ont été
+cotées comme oui pour les conséquences et où les réponses « moyennement » et
+« tout à fait » ont été cotées comme oui pour l’interprétation.
+Pour finir, les liens entre les différents sous-groupes (i.e., genre, niveau
+sportif et type de sport) et l’occurrence ou l’absence de maltraitance physique,
+psychologique, sexuelle et de négligence ont été testés avec un test
+d’indépendance du
+
+2.
+
+Pour le type de sport, une classification des différents
+
+sports pratiqués par les répondants a été utilisée : (1) sport individuel (i.e., agrès
+individuel, gymnastique artistique, patinage artistique, judo, natation et
+triathlon) et (2) sport d’équipe (i.e., agrès de société, hockey sur glace et
+football). Étant donné que la question sur le sport pratiqué était une question
+30
+
+ouverte, seul le premier sport mentionné a été gardé (e.g., « agrès mais je fais
+aussi du foot » a été catégorisé dans « agrès individuel ») et l’indication « agrès »
+a été classé comme « agrès individuel ».
+
+31
+
+3 Résultats
+Au total, 165 participants ont commencé à répondre au questionnaire, mais
+112 ne l’ont pas complété en entier. Parmi ces 112 personnes, 55 n’ont pas
+commencé la partie sociodémographique, cinq se sont arrêtés après la partie
+sociodémographique et n’ont pas commencé la section relative à la maltraitance
+en sport, et sept personnes n’ont pas complété les neuf items de maltraitance
+physique. Ces 67 personnes ont été exclues des analyses. Parmi ceux ayant
+commencé la partie concernant la maltraitance en sport, tous ont répondu aux
+questions sur la maltraitance physique (n=98), 58 répondants (59%) ont rempli
+les items de maltraitance psychologique, 55 la maltraitance sexuelle (56%) et 53
+la négligence (54%). En somme, nous constatons que le nombre de répondants
+diminuait considérablement au fil du questionnaire. En raison du format en ligne
+et de l’anonymat des participants, il n’a pas été possible de comprendre si cette
+diminution était due à une fatigue engendrée par la durée du questionnaire, à un
+malaise causé par la thématique sensible ou un désintérêt pour l’étude. Toutefois,
+nous avons pu avoir un retour d’un certain nombre d’entraineurs ou présidents
+de club contactés pour le recrutement concernant le fait qu’ils cliquaient sur le
+lien et commençaient à lire les premières questions avant d’envoyer ou non le
+questionnaire à leurs athlètes. Donc, les 55 personnes qui n'ont pas commencé le
+questionnaire ne sont pas forcément des athlètes désintéressés par la thématique
+du mémoire.
+
+3.1 Caractéristiques
+
+sociodémographiques
+
+et
+
+sportives
+
+de
+
+l’échantillon
+Les caractéristiques sociodémographiques des répondants de l’échantillon
+final (n=53) sont résumées dans le tableau 1. Les répondants avaient entre 16 et
+20 ans (M: 17.717, ET: 1.433) avec 55% de filles et 45% de garçons. Les sports
+les plus pratiqués dans cet échantillon sont les agrès individuels (40%) et le
+football (32%). Le football, le hockey sur glace et les agrès de société ont été
+classés comme un sport d’équipe (43%) alors que la gymnastique artistique, les
+agrès individuels, le patinage artistique et les autres sports (i.e., judo, natation et
+triathlon) ont été considérés comme un sport individuel (57%). Les athlètes de
+32
+
+l’échantillon pratiquaient leur sport ou concouraient en majorité au niveau
+régional (53%) avec un degré de spécialisation précoce considéré comme
+modéré (45%).
+
+33
+
+Tableau 1
+Caractéristiques sociodémographiques de l’échantillon
+Total de l’échantillon
+N(%)=53(100.0)
+Genre
+Fille
+Garçon
+
+2
+
+(p)
+0.472
+(.492)
+
+29(54.7)
+24(45.3)
+
+Âge
+
+2.755
+(.600)
+16 ans
+17 ans
+18 ans
+19 ans
+20 ans
+
+15(28.3)
+10(18.9)
+11(20.8)
+9(17.0)
+8(15.1)
+
+Lieu
+d’habitation
+
+165.019
+(<.001)
+Berne
+Fribourg
+Jura
+Neuchâtel
+Vaud
+
+2(3.8)
+1(1.9)
+1(1.9)
+1(1.9)
+48(90.6)
+
+Sport
+
+49.623
+(<.001)
+Agrès individuels
+Agrès de société
+Gymnastique artistique
+Hockey sur glace
+Patinage artistique
+Football
+Autre a
+
+21(39.6)
+3(5.7)
+3(5.7)
+3(5.7)
+2(3.8)
+17(32.1)
+4(7.5)
+
+Niveau sportif
+
+43.698
+(<.001)
+Régional
+Inter-régional
+National
+International
+Autre
+
+28(52.8)
+5(9.4)
+14(26.4)
+4(7.5)
+2(3.8)
+
+Degré de
+spécialisation
+précoce
+
+3.434
+(.180)
+
+Faible
+14(26.4)
+Modéré
+24(45.3)
+Élevé
+15(28.3)
+a
+La catégorie « autre » a été créé pour les analyses et comprend les sports
+suivants : judo (n=1), natation (n=2) et triathlon (n=1).
+34
+
+3.2 Fréquence de la maltraitance rapportée dans l’échantillon
+Le tableau 2 représente la fréquence rapportée des quatre formes de
+maltraitance en sport dans l’échantillon global. Au total, 86.8% des répondants
+ont déclaré avoir été confronté à au moins une situation de maltraitance
+psychologique (n=46, IC 99% 0.707-0.960), 52.8% à au moins une situation de
+maltraitance physique (n=28, IC 99% 0.347-0.705), 32.1% de négligence (n=17,
+IC 99% 0.169-0.506) et 26.4% de maltraitance sexuelle (n=14, IC 99% 0.1260.446).
+Tableau 2
+Fréquence rapportée des quatre formes de maltraitance en sport dans
+l’échantillon total (N=53)
+N
+Maltraitance physique
+28
+Maltraitance psychologique 46
+Maltraitance sexuelle
+14
+Négligence
+17
+3.2.1
+
+%
+52.8
+86.8
+26.4
+32.1
+
+IC(99%)
+0.347-0.705
+0.707-0.960
+0.126-0.446
+0.169-0.506
+
+2(p)
+
+0.170(.680)
+28.698(<.001)
+11.792(<.001)
+6.811(.009)
+
+Fréquence des formes de maltraitance rapportées pour chaque catégorie
+de comportements
+Les tableaux 3, 4 et 5 indiquent la fréquence des catégories de
+
+comportements pour chaque forme de maltraitance en prenant l’échantillon
+ayant complété en entier les items de la maltraitance correspondante (i.e., n=58
+pour la maltraitance psychologique, n=55 pour la maltraitance sexuelle et n=53
+pour la négligence), et ayant subi au moins une fois l’un des comportements.
+Parmi les athlètes ayant subi au moins une situation de maltraitance
+psychologique, la forme la plus expérimentée est l’abus verbal et la dépréciation
+(93.8% dans la sous-échelle pairs-athlète, 88.4% dans la sous-échelle adulte du
+réseau sportif-athlète et 88% dans la sous-échelle parent-athlète, voir tableau 3).
+La deuxième catégorie de maltraitance psychologique la plus rapportée par les
+répondants dans la sous-échelle pairs-athlète est l’insuffisance de soutien ou
+d’affection (54.2%), alors que dans les sous-échelles adulte du réseau sportifathlète et parent-athlète ce sont les comportements favorisants la corruption,
+35
+
+l’exploitation et l’adoption de comportement destructeurs, antisociaux ou
+malsains d’un athlète (65.1% ; 36%).
+Concernant la maltraitance sexuelle infligée par les pairs (voir tableau 4),
+le harcèlement verbal est la forme la plus expérimentée (80%) suivie par
+l’exploitation (30%), la tentative de relation sexuelle avec ou sans pénétration
+(20%) et le fait de se faire caresser ou toucher sexuellement le corps (20%). Alors
+que pour la sous-échelle adulte du réseau sportif-athlète, seul deux catégories de
+comportements ont été rapportées par les athlètes, à savoir le harcèlement verbal
+(60%) et se faire caresser ou toucher sexuellement le corps (60%).
+Parmi les athlètes ayant été confronté à l’une des situations de négligence
+au cours de leur carrière sportive, la négligence physique est la forme rapportée
+par tous les jeunes dans les sous-échelles adulte du réseau sportif-athlète et
+parent-athlète (100%, voir tableau 5).
+Tableau 3
+Fréquence rapportée des quatre catégories de comportements de maltraitance
+psychologique selon la sous-échelle
+Échelle
+
+pairs-athlète
+
+adulte du réseau
+parent-athlète
+sportif-athlète
+N(%)= 48(100.0)
+N(%)=43(100.0)
+N(%)=25(100.0)
+Catégorie 1
+26(54.2)
+14(32.6)
+1(4.0)
+Catégorie 2
+45(93.8)
+38(88.4)
+22(88.0)
+Catégorie 3
+9(18.8)
+9(20.9)
+1(4.0)
+Catégorie 4
+12(25.0)
+28(65.1)
+9(36.0)
+Note : catégorie 1 = insuffisance de soutien ou d’affection à l’égard d’un athlète,
+catégorie 2 = abus verbal et dépréciation d’un athlète, catégorie 3 = terroriser
+ou menacer de violence un athlète, et catégorie 4 = comportements qui
+favorisent la corruption, l’exploitation et l’adoption de comportements
+destructeurs, antisociaux ou malsains d’un athlète.
+
+36
+
+Tableau 4
+Fréquence rapportée des sept catégories de comportements de maltraitance
+sexuelle selon la sous-échelle
+Échelle
+
+pairs-athlète
+adulte du réseau sportif-athlète
+N(%)=10(100.0)
+N(%)=5(100.0)
+Catégorie 1
+8(80.0)
+3(60.0)
+Catégorie 2
+1(10.0)
+0(0.0)
+Catégorie 3
+3(30.0)
+0(0.0)
+Catégorie 4
+1(10.0)
+0(0.0)
+Catégorie 5
+2(20.0)
+3(60.0)
+Catégorie 6
+2(20.0)
+0(0.0)
+Catégorie 7
+1(10.0)
+0(0.0)
+Note : catégorie 1 = harcèlement verbal d’un athlète, catégorie 2 =
+exhibitionnisme impliquant un athlète, catégorie 3 = exploitation d’un athlète
+(incitation à la prostitution ou à la production de matériel pornographique),
+catégorie 4 = forcer un athlète à nous attoucher, catégorie 5 = caresser ou
+toucher sexuellement le corps d’un athlète, catégorie 6 = tentative de relation
+sexuelle avec ou sans pénétration, et catégorie 7 = relation sexuelle avec ou
+sans pénétration.
+Tableau 5
+Fréquence rapportée des trois catégories de comportements de négligence selon
+la sous-échelle
+Échelle
+
+adulte du réseau sportif-athlète
+N(%)=15(100.0)
+Négligence éducationnelle
+0(0.0)
+Négligence émotionnelle
+0(0.0)
+Négligence physique
+15(100.0)
+
+parent-athlète
+N(%)=8(100.0)
+1(12.5)
+0(0.0)
+8(100.0)
+
+3.3 Fréquence de la maltraitance rapportée en fonction des
+caractéristiques sociodémographiques et sportives
+La fréquence des maltraitances physique, psychologique et sexuelle en
+sport est présentée dans le tableau 6 en fonction des caractéristiques
+sociodémographiques et sportives. Les résultats révèlent que les athlètes
+masculins sont plus susceptibles de subir de la maltraitance physique comparé
+aux athlètes féminines (39.6% contre 13.2%, p<.001). Toutefois, il n’y a pas de
+différence significative de fréquence liée au genre pour la maltraitance
+psychologique et la maltraitance sexuelle.
+37
+
+Concernant le type de sport, seul une différence significative est observée
+pour la maltraitance physique, indiquant que les athlètes qui pratiquent un sport
+d’équipe sont plus susceptibles d’en expérimenter comparé à ceux pratiquant un
+sport individuel (p<.001).
+Aucune différence significative n’a été observée pour le niveau sportif.
+Tableau 6 :
+Fréquence reportée des quatre formes de maltraitance par sous-groupe
+
+Genre
+Fille
+Garçon
+
+Maltraitance
+physique
+2
+N=53
+N (%)
+(p)
+21.157
+(<.001)
+7(13.2)
+21(39.6)
+
+Type de sport
+Individuel
+Équipe
+
+18.990
+(<.001)
+
+2.782
+(.095)
+
+8(15.1)
+20(37.7)
+
+Niveau sportif
+Régional
+Inter-régional
+National
+International
+Autre
+
+Maltraitance
+Maltraitance
+psychologique
+sexuelle
+2
+2
+N=53
+N=53
+N (%)
+(p)
+N (%)
+(p)
+0.909
+2.144
+(.340)
+(.143)
+24(45.3)
+10(18.9)
+22(41.5)
+4(7.5)
+
+24(45.3)
+22(41.5)
+8.773
+(.067)
+
+0.457
+(.499)
+9(17.0)
+5(9.4)
+
+4.896
+(.298)
+
+15(28.3)
+3(5.7)
+4(7.5)
+4(7.5)
+2(3.8)
+
+22(41.5)
+4(7.5)
+14(26.4)
+4(7.5)
+2(3.8)
+
+2.729
+(.604)
+6(11.4)
+2(3.8)
+3(5.7)
+2(3.8)
+1(1.9)
+
+3.4 Expérience de la maltraitance en sport
+3.4.1
+
+Interprétations et conséquences de la maltraitance physique
+Les répondants ayant expérimenté au moins une fois l’une des situations
+
+de maltraitance physique considèrent ces dernières comme étant majoritairement
+normales, et cela dans toutes les sous-échelles (61.1% pairs-athlète, 69.2%
+adulte du réseau sportif-athlète, 83.3% parent-athlète, voir tableau 7). La
+maltraitance physique est perçue par la majorité des athlètes comme nécessaire
+à la performance lorsqu’elle perpétrée par les adultes du réseau sportif (61.5%)
+38
+
+et les parents (50%), et comme faisant partie de l’entrainement ou la compétition
+lorsqu’elle est infligée par les pairs (58.3%), les adultes du réseau sportif (69.2%)
+et les parents (50%).
+Les jeunes athlètes ayant subi de la maltraitance physique de la part des
+pairs indiquent avoir surtout eu peur (86.1%, voir tableau 8), perdu confiance en
+eux et leur capacité (30.6%), été démotivé à continuer leur sport (27.8%) et été
+en colère (25%). Subir de la maltraitance physique par les adultes de leur réseau
+sportif engendre surtout une moins bonne performance et suscite chez les
+athlètes de la peur (46.2% ; 46.2%), une perte de confiance en eux et leurs
+capacités (38.5%), du stress, de la tristesse, de la colère et une démotivation à
+continuer leur sport (pour tous 30.8%). Les deux conséquences les plus
+rapportées par les athlètes lorsque les auteurs sont les parents sont la perte de
+confiance en soi et ses capacités et la moins bonne performance (50% pour les
+deux).
+Tableau 7
+Fréquence des différentes interprétations de maltraitance physique en prenant
+l’échantillon ayant répondu aux neufs items (n=98)
+Échelle
+
+pairs-athlète
+
+adulte du réseau
+parent-athlète
+sportif-athlète
+Non
+Oui
+Non
+Oui
+N(%)=13(100.0)
+N(%)=6(100.0)
+3(23.1) 9(69.2) 1(16.7) 5(83.3)
+5(38.5) 8(61.5) 2(33.3) 3(50.0)
+
+Non
+Oui
+N(%)=36(100.0)
+12(33.3) 22(61.1)
+19(52.8) 16(44.4)
+
+Normal
+Nécessaire à
+la performance
+Faisant partie de 15(41.7) 21(58.3) 4(30.8) 9(69.2)
+l’entrainement
+ou la compétition
+Note : non = pas du tout, oui = moyennement et tout à fait
+
+3(50.0)
+
+3(50.0)
+
+La fréquence cumulée peut ne pas atteindre 100 en raison de la modalité « ne
+sait pas »
+
+39
+
+Tableau 8
+Fréquence des différentes conséquences de maltraitance physique en prenant
+l’échantillon ayant répondu aux neufs items (n=98)
+Échelle
+
+pairs-athlète
+Oui
+N(%)=36(100.0)
+2(5.6)
+3(8.3)
+2(5.6)
+3(8.3)
+9(25.0)
+31(86.1)
+8(8.3)
+
+Humiliation
+Culpabilité
+Stress
+Tristesse
+Colère
+Peur
+Image négative
+du corps
+Perte de confiance
+11(30.6)
+en soi et ses capacités
+Moins bonne
+8(8.3)
+performance
+Démotivation
+10(27.8)
+Note : oui = moyennement et fortement
+3.4.2
+
+adulte du réseau
+sportif-athlète
+Oui
+N(%)=13(100.0)
+3(23.1)
+3(23.1)
+4(30.8)
+4(30.8)
+4(30.8)
+6(46.2)
+3(23.1)
+
+parent-athlète
+Oui
+N(%)=6(100.0)
+2(33.3)
+2(33.3)
+2(33.3)
+2(33.3)
+2(33.3)
+2(33.3)
+2(33.3)
+
+5(38.5)
+
+3(50.0)
+
+6(46.2)
+
+3(50.0)
+
+4(30.8)
+
+2(33.3)
+
+Interprétations et conséquences de la maltraitance psychologique
+Parmi les différentes catégories de maltraitance psychologique infligées
+
+par les pairs, l’insuffisance de soutien ou d’affection ainsi que les
+comportements favorisants la corruption, l’exploitation et l’adoption de
+comportements destructeurs, antisociaux ou malsains sont majoritairement
+perçus comme normaux (61,5% ; 66.7%, voir tableau 9) et faisant partie de
+l’entrainement ou la compétition (50% ; 83.3%). Lorsque les auteurs de
+maltraitance psychologique sont les adultes du réseau sportif, les athlètes
+considèrent les comportements favorisants la corruption, l’exploitation et
+l’adoption de comportements destructeurs, antisociaux ou malsains comme
+normaux (75%), nécessaires à la performance (75%) et faisant partie de
+l’entrainement ou la compétition (67.9%). Le fait de se faire terroriser ou
+menacer de violence par ces auteurs est considéré comme normal par la majorité
+des répondants (55.6%). Concernant la maltraitance psychologique perpétrée par
+les parents, l’abus verbal et la dépréciation ainsi que les comportements
+favorisant la corruption, l’exploitation et l’adoption de comportements
+40
+
+destructeurs, antisociaux ou malsains sont considérés comme normaux (72.7% ;
+77.8%), nécessaires à la performance (59.1% ; 77.8%) et comme faisant partie
+de l’entrainement ou de la compétition (54.5% ; 77.8%).
+Le tableau 10 montre que se faire ignorer volontairement par les pairs ou
+que ceux-ci soient indifférents à leur égard suscite en particulier chez l’athlète
+de la peur (61.5%) et engendre une moins bonne performance (50%), alors que
+si ce sont les adultes de l’environnement sportif qui ont ces comportements, les
+athlètes rapportent se sentir humilié (57.1%), coupable (57.1%), stressé (78.6%),
+apeuré (71.4%) et engendre une image négative vis-à-vis de leur corps (57.1%),
+une perte de confiance en eux et leurs capacités (57.1%), une moine bonne
+performance (57.1%) et une démotivation à continuer leur sport (57.1%). Les
+athlètes ayant expérimentés au moins une fois de l’abus verbal et de la
+dépréciation (e.g., se faire critiquer, ridiculiser) de la part des pairs ou des adultes
+de son environnement sportif ressentent en majorité du stress (55.6% ; 60.5%)
+et de la peur (55.6% ; 68.4%), et cela impacte négativement l’image qu’ils ont
+de leur corps (55.6% ; 60.5%). Lorsqu’un athlète se fait terroriser ou menacer de
+violence par ses pairs, c’est surtout la peur qui ressort comme conséquence
+(88.9%), alors que quand ce sont les adultes de l’environnement sportif, ce sont
+surtout l’humiliation (66.7%), le stress (66.7%), l’image négative du corps
+(66.7%) et la moins bonne performance (66.7%) qui sont expérimentés.
+
+41
+
+Tableau 9
+Fréquence des différentes interprétations de maltraitance psychologique en
+fonction de la catégorie de comportements et en prenant l’échantillon ayant
+répondu aux 39 items (n=58)
+Échelle
+
+pairs-athlète
+
+adulte du réseau
+parent-athlète
+sportif-athlète
+Non
+Oui
+Non
+Oui
+N(%)=14(100.0)
+N(%)=1(100.0)
+7(50.0) 5(35.7) 1(100.0)
+0(0.0)
+13(92.9) 1(7.1) 1(100.0)
+0(0.0)
+
+Non
+Oui
+N(%)=26(100.0)
+7(26.9) 16(61.5)
+18(69.2) 8(30.8)
+
+Catégorie 1
+Normal
+Nécessaire à
+la performance
+Faisant partie de 12(46.2) 13(50.0)
+l’entrainement ou
+la compétition
+
+10(71.4) 3(21.4) 1(100.0)
+
+Catégorie 2
+N(%)=45(100.0)
+Normal
+20(44.4) 21(46.7)
+Nécessaire à
+28(62.2) 15(33.3)
+la performance
+Faisant partie de 25(55.6) 19(42.2)
+l’entrainement ou
+la compétition
+
+0(0.0)
+
+N(%)=38(100.0) N(%)=22(100.0)
+17(44.7) 17(44.7) 5(22.7) 16(72.7)
+21(55.3) 15(39.5) 9(40.9) 13(59.1)
+
+Catégorie 3
+N(%)=9(100.0)
+Normal
+6(66.7) 3(33.3)
+Nécessaire à
+8(88.9) 1(11.1)
+la performance
+Faisant partie de
+7(77.8) 2(22.2)
+l’entrainement ou
+la compétition
+
+17(44.7) 19(50.0)
+
+7(31.8) 12(54.5)
+
+N(%)=9(100.0)
+4(44.4) 5(55.6)
+5(55.6) 4(44.4)
+
+N(%)=1(100.0)
+0(0.0) 1(100.0)
+0(0.0) 1(100.0)
+
+5(55.6) 4(44.4)
+
+0(0.0) 1(100.0)
+
+Catégorie 4
+N(%)=12(100.0)
+N(%)=28(100.0)
+N(%)=9(100.0)
+Normal
+4(33.3) 8(66.7)
+6(21.4) 21(75.0) 1(11.1) 7(77.8)
+Nécessaire à
+7(58.3) 5(41.7)
+5(17.9) 21(75.0) 2(22.2) 7(77.8)
+la performance
+Faisant partie de
+2(16.7) 10(83.3)
+7(25.0) 19(67.9) 1(11.1) 7(77.8)
+l’entrainement ou
+la compétition
+Note : non = pas du tout, oui = moyennement et tout à fait, catégorie 1 =
+insuffisance de soutien ou d’affection à l’égard d’un athlète, catégorie 2 = abus
+verbal et dépréciation d’un athlète, catégorie 3 = terroriser ou menacer de
+violence un athlète, et catégorie 4 = comportements qui favorisent la corruption,
+l’exploitation et l’adoption de comportements destructeurs, antisociaux ou
+malsains d’un athlète.
+La fréquence cumulée peut ne pas atteindre 100 en raison de la modalité « ne
+sait pas » non représentée sur ce tableau
+42
+
+Tableau 10
+Fréquence des différentes conséquences de maltraitance psychologique en
+fonction de la catégorie de comportements et en prenant l’échantillon ayant
+répondu aux 39 items (n=58)
+Échelle
+Catégorie 1
+Humiliation
+Culpabilité
+Stress
+Tristesse
+Colère
+Peur
+Image négative
+du corps
+Perte de confiance
+en soi et ses capacités
+Moins bonne
+performance
+Démotivation
+
+pairs-athlète
+Oui
+N(%)=26(100.0)
+6(23.1)
+10(38.5)
+12(46.15)
+8(30.8)
+4(15.4)
+16(61.5)
+11(42.3)
+
+adulte du réseau
+sportif-athlète
+Oui
+N(%)=14(100.0)
+8(57.1)
+8(57.1)
+11(78.6)
+5(35.7)
+4(28.6)
+10(71.4)
+8(57.1)
+
+parent-athlète
+
+9(34.6)
+
+8(57.1)
+
+0(0.0)
+
+13(50.0)
+
+8(57.1)
+
+0(0.0)
+
+10(38.5)
+
+8(57.1)
+
+0(0.0)
+
+Oui
+N(%)=1(100.0)
+0(0.0)
+0(0.0)
+0(0.0)
+0(0.0)
+0(0.0)
+0(0.0)
+0(0.0)
+
+Catégorie 2
+N(%)=45(100.0)
+Humiliation
+15(33.3)
+Culpabilité
+11(24.4)
+Stress
+25(55.6)
+Tristesse
+18(40.0)
+Colère
+8(17.8)
+Peur
+25(55.6)
+Image négative
+25(55.6)
+du corps
+Perte de confiance
+19(42.2)
+en soi et ses capacités
+Moins bonne
+21(46.7)
+performance
+Démotivation
+20(44.4)
+
+N(%)=38(100.0) N(%)=22(100.0)
+22(57.9)
+4(18.2)
+18(47.4)
+3(13.6)
+23(60.5)
+7(31.8)
+18(47.4)
+6(27.3)
+9(23.7)
+0(0.0)
+26(68.4)
+7(31.8)
+23(60.5)
+10(45.5)
+
+Catégorie 3
+Humiliation
+Culpabilité
+Stress
+Tristesse
+Colère
+Peur
+Image négative
+du corps
+Perte de confiance
+en soi et ses capacités
+
+N(%)=9(100.0)
+2(22.2)
+4(44.4)
+3(33.3)
+3(33.3)
+5(55.6)
+8(88.9)
+5(55.6)
+
+N(%)=9(100.0)
+6(66.7)
+4(44.4)
+6(66.7)
+3(33.3)
+3(33.3)
+5(55.6)
+6(66.7)
+
+5(55.6)
+
+5(55.6)
+43
+
+16(42.1)
+
+5(22.7)
+
+18(47.4)
+
+6(27.3)
+
+21(55.3)
+
+4(18.2)
+N(%)=1(100.0)
+0(0.0)
+0(0.0)
+0(0.0)
+0(0.0)
+0(0.0)
+0(0.0)
+0(0.0)
+0(0.0)
+
+Moins bonne
+performance
+Démotivation
+
+4(44.4)
+
+6(66.7)
+
+0(0.0)
+
+4(44.4)
+
+4(44.4)
+
+0(0.0)
+
+Catégorie 4
+N(%)=12(100.0)
+N(%)=28(100.0) N(%)=9(100.0)
+Humiliation
+3(25.0)
+11(39.3)
+0(0.0)
+Culpabilité
+3(25.0)
+11(39.3)
+0(0.0)
+Stress
+1(8.3)
+9(32.1)
+1(11.1)
+Tristesse
+1(8.3)
+8(28.6)
+2(22.2)
+Colère
+1(8.3)
+6(21.4)
+0(0.0)
+Peur
+4(33.3)
+11(39.3)
+1(11.1)
+Image négative
+4(33.3)
+9(35.7)
+2(22.2)
+du corps
+Perte de confiance
+1(8.3)
+9(32.1)
+0(0.0)
+en soi et ses capacités
+Moins bonne
+3(25.0)
+8(28.6)
+2(22.2)
+performance
+Démotivation
+0(0.0)
+3(10.7)
+0(0.0)
+Note : oui = moyennement et fortement, catégorie 1 = insuffisance de soutien ou
+d’affection à l’égard d’un athlète, catégorie 2 = abus verbal et dépréciation d’un
+athlète, catégorie 3 = terroriser ou menacer de violence un athlète, et catégorie
+4 = comportements qui favorisent la corruption, l’exploitation et l’adoption de
+comportements destructeurs, antisociaux ou malsains d’un athlète.
+3.4.3
+
+Interprétations et conséquences de la maltraitance sexuelle
+Les résultats du tableau 11 indiquent que se faire harceler verbalement par
+
+les pairs ou les adultes du réseau sportif est considéré comme non normal (75% ;
+100%), non nécessaire à la performance (87.5% ; 100%) et ne faisant pas partie
+de l’entrainement ou la compétition (100% ; 100%). Dans le même sens, se faire
+caresser ou toucher sexuellement son corps par les pairs ou les adultes du réseau
+sportif n’est pas interprété par les athlètes comme normal (100% ; 66.7%),
+nécessaire à la performance (100% ; 100%) ou faisant partie de l’entrainement
+ou la compétition (100% ; 66.7%).
+Les conséquences du harcèlement sexuel verbal perpétré par les pairs sont
+surtout la peur, la perte de confiance en soi et ses capacités et la démotivation à
+continuer son sport (50% pour les trois, voir tableau 12), et par les adultes du
+réseau sportif c’est surtout la peur (66.7%).
+
+44
+
+Tableau 11
+Synthèse des fréquences des différentes interprétations de maltraitance sexuelle
+en fonction de la catégorie de comportements et en prenant l’échantillon ayant
+répondu aux 19 items (n=55)
+Échelle
+sportif-athlète
+Catégorie 1
+Normal
+Nécessaire à
+la performance
+Faisant partie de
+l’entrainement ou
+la compétition
+
+pairs-athlète
+Non
+Oui
+N(%)=8(100.0)
+6(75.0)
+2(25.0)
+7(87.5)
+1(12.5)
+8(100.0)
+
+0(0.0)
+
+adulte
+
+du
+
+réseau
+
+Non
+Oui
+N(%)=3(100.0)
+3(100.0)
+0(0.0)
+3(100.0)
+0(0.0)
+3(100.0)
+
+0(0.0)
+
+Catégorie 5
+N(%)=2(100.0)
+N(%)=3(100.0)
+Normal
+2(100.0)
+0(0.0)
+2(66.7)
+1(33.3)
+Nécessaire à
+2(100.0)
+0(0.0)
+3(100.0)
+0(0.0)
+la performance
+Faisant partie de
+2(100.0)
+0(0.0)
+2(66.7)
+1(33.3)
+l’entrainement ou
+la compétition
+Note : non = pas du tout, oui = moyennement et tout à fait, catégorie 1 =
+harcèlement verbal d’un athlète, et catégorie 5 = caresser ou toucher
+sexuellement le corps d’un athlète, catégorie
+La fréquence cumulée peut ne pas atteindre 100 en raison de la modalité « ne
+sait pas » non représentée sur ce tableau
+
+45
+
+Tableau 12
+Synthèse des fréquences des différentes conséquences de maltraitance sexuelle
+en fonction de la catégorie de comportements et en prenant l’échantillon ayant
+répondu aux 19 items (n=55)
+Échelle
+
+pairs-athlète
+Oui
+N(%)=8(100.0)
+1(12.5)
+1(12.5)
+2(25.0)
+2(25.0)
+3(37.5)
+4(50.0)
+3(37.5)
+
+adulte du réseau sportif-athlète
+Oui
+N(%)=3(100.0)
+1(33.3)
+1(33.3)
+0(0.0)
+0(0.0)
+0(0.0)
+2(66.7)
+0(0.0)
+
+Catégorie 1
+Humiliation
+Culpabilité
+Stress
+Tristesse
+Colère
+Peur
+Image négative
+du corps
+Perte de confiance
+4(50.0)
+1(33.3)
+en soi et ses capacités
+Moins bonne
+1(12.5)
+1(33.3)
+performance
+Démotivation
+4(50.0)
+1(33.3)
+Note : oui = moyennement et fortement, catégorie 1 = harcèlement verbal d’un
+athlète, et catégorie 5 = caresser ou toucher sexuellement le corps d’un athlète,
+catégorie
+3.4.4
+
+Interprétations et conséquences de la négligence
+Le tableau 13 montre que la négligence physique est considérée en
+
+majorité par les athlètes comme normale (66.7% dans la sous-échelle adulte du
+réseau sportif-athlète et 62.5% parent-athlète), nécessaire à la performance
+(53.3% dans adulte du réseau sportif-athlète) et faisant partie de l’entrainement
+ou la compétition (60% dans adulte du réseau sportif-athlète et 75% parentathlète).
+Quant aux conséquences de la négligence physique par les adultes du
+réseau-sportif, seule la culpabilité a été fréquemment citée (46.7%, voir tableau
+14).
+
+46
+
+Tableau 13
+Synthèse des fréquences des différentes interprétations de négligence en fonction
+de la catégorie de comportements et en prenant l’échantillon ayant répondu aux
+dix items (n=53)
+Échelle
+
+adulte du réseau sportif-athlète
+parent-athlète
+Non
+Oui
+Non
+Oui
+Négligence physique
+N(%)=15(100.0)
+N(%)=8(100.0)
+Normal
+4(26.7)
+10(66.7)
+1(12.5)
+5(62.5)
+Nécessaire à
+5(33.3)
+8(53.3)
+4(50.0)
+2(25.0)
+la performance
+Faisant partie de
+3(20.0)
+9(60.0)
+1(12.5)
+6(75.0)
+l’entrainement ou
+la compétition
+Note : non = pas du tout, oui = moyennement et tout à fait
+La fréquence cumulée peut ne pas atteindre 100 en raison de la modalité « ne
+sait pas » non représentée sur ce tableau
+Tableau 14
+Synthèse des fréquences des différentes conséquences de négligence en fonction
+de la catégorie de comportements et en prenant l’échantillon ayant répondu aux
+dix items (n=53)
+Échelle
+
+adulte du réseau sportif-athlète
+Oui
+Négligence physique
+N(%)=15(100.0)
+Humiliation
+1(6.7)
+Culpabilité
+7(46.7)
+Stress
+2(13.3)
+Tristesse
+1(6.7)
+Colère
+2(13.3)
+Peur
+2(13.3)
+Image négative
+3(20.0)
+du corps
+Perte de confiance
+5(33.3)
+en soi et ses capacités
+Moins bonne
+3(20.0)
+performance
+Démotivation
+1(6.7)
+Note : oui = moyennement et fortement
+
+47
+
+parent-athlète
+Oui
+N(%)=8(100.0)
+0(0.0)
+2(25.0)
+0(0.0)
+0(0.0)
+0(0.0)
+0(0.0)
+0(0.0)
+2(25.0)
+2(25.0)
+1(12.5)
+
+3.5 Auteur de la maltraitance en sport
+Le profil des auteurs des quatre formes de maltraitance est recensé dans le
+tableau 15 et se base sur les échantillons complétés des maltraitances (i.e., n=58
+pour la maltraitance psychologique, n=98 pour la maltraitance physique, n=55
+pour la maltraitance sexuelle et n=53 pour la négligence).
+Les résultats indiquent que pour la maltraitance psychologique, ce sont
+surtout les pairs (94.1%), l’entraineur (72.5%) et les parents (49%) qui sont les
+plus fréquemment mentionnés par les athlètes. Concernant la maltraitance
+physique et la maltraitance sexuelle, les auteurs les plus fréquents sont les pairs
+(83.7% et 71.4%), alors que pour la négligence c’est l’entraineur (88.2%), puis
+les parents (52.9%) et enfin l’entraineur assistant (41.2%).
+Tableau 15
+Profil des auteurs des quatre formes de maltraitance
+Profil des auteurs
+
+Maltraitance Maltraitance Maltraitance Négligence
+psychologique
+physique
+sexuelle
+(N=51)
+(N=43)
+(N=14)
+(N=17)
+N(%)
+N(%)
+N(%
+N(%)
+Pairs athlètes
+48(94.1)
+36(83.7)
+10(71.4)
+-a
+Parents
+25(49.0)
+13(30.2)
+-a
+9(52.9)
+Entraineur
+37(72.5)
+8(18.6)
+3(21.4)
+15(88.2)
+Entraineur assistant
+9(17.6)
+2(4.6)
+1(7.1)
+7(41.2)
+Préparateur physique
+8(15.7)
+0(0.0)
+1(7.1)
+2(11.8)
+Équipe médicale
+2(3.9)
+0(0.0)
+1(7.1)
+0(0.0)
+Psychologue du sport
+2(3.9)
+0(0.0)
+0(0.0)
+0(0.0)
+ou préparateur mental
+Arbitre
+5(9.8)
+0(0.0)
+0(0.0)
+0(0.0)
+Autre
+8(15.7)
+4(9.3)
+1(7.1)
+3(17.6)
+Note : la somme des pourcentages pourrait être plus élevée que 100% car un
+répondant pourrait avoir subi de la maltraitance par plusieurs auteurs.
+a n’a pas été étudié dans le questionnaire
+
+48
+
+4 Discussion
+Les objectifs de ce mémoire étaient de (a) développer et tester un
+questionnaire sur l’expérience de la maltraitance en sport, (b) obtenir des
+données quant à la fréquence des quatre formes de maltraitance, (c) caractériser
+comment les participants vivaient cette maltraitance et l’interprétaient, et (d)
+identifier les auteurs de maltraitance dans le contexte sportif. Puis, quatre
+hypothèses avaient été émises, à savoir (1) la maltraitance psychologique est la
+forme de maltraitance la plus expérimentée par les athlètes francophones suisses,
+(2) les fréquences des quatre formes de maltraitances varient en fonction du
+genre, du type de sport et du niveau sportif, (3) certaines formes de maltraitance
+sont normalisées par les athlètes, et (4) les conséquences diffèrent selon la forme
+subie de maltraitance. Dès lors, l’objet de cette discussion sera de confronter les
+différents résultats de ce mémoire à d’autres études, tout en apportant des
+explications possibles de ces résultats grâce à la littérature.
+
+4.1 Différence de fréquence en fonction de la forme de maltraitance
+Les résultats de cette présente étude mettent en évidence que le sport suisse
+n’est pas exempt de maltraitance. On constate une fréquence de 87% pour la
+maltraitance psychologique, 53% pour la maltraitance physique, 32% pour la
+négligence et 26% pour la maltraitance sexuelle dans un échantillon d’athlète
+suisse-romands âgés entre 16 et 20 ans. Conformément à la littérature existante
+(Alexander et al. 2011; Hauw et al., 2021; Marsollier et al., 2021; Parent &
+Vaillancourt-Morel, 2020; Vertommen et al., 2016), les résultats de cette étude
+révèle que la forme de maltraitance la plus expérimentée par les jeunes athlètes
+est la maltraitance psychologique, venant ainsi confirmer la première hypothèse
+de ce travail.
+La fréquence de la maltraitance psychologique relevée dans ce travail est
+similaire à l’étude Suisse de Hauw et collègues (2021), et plus élevée que celles
+de Parent et Vaillancourt-Morel (2020) et de Marsollier et collègues (2021).
+Concernant la maltraitance physique, la fréquence trouvée dans cette étude est
+plus élevée comparée aux autres recherches effectuées en contexte sportif (Hauw
+et al., 2021; Parent & Vaillancourt-Morel, 2020; Vertommen et al., 2016) mais
+49
+
+identique à celle relevée par Marsollier et collègues (2021). Quant à la
+maltraitance sexuelle, la fréquence obtenue dans ce présent mémoire est très
+proche des études de Parent et Vaillancourt-Morel (2020) et de Marsollier et
+collègues (2021) (26% face à 28% dans les deux études). De même, la fréquence
+obtenue pour la négligence est très proche de celle relevée par Parent et
+Vaillancourt-Morel (2020) (32% face à 36%).
+Toutefois, les comparaisons des fréquences de ces différentes études sont
+périlleuses
+
+pour
+
+diverses
+
+raisons.
+
+Premièrement,
+
+comme
+
+mentionné
+
+précédemment, le fait d’utiliser une conceptualisation différente des
+maltraitances rend difficile la comparaison. Le QEMS élaboré dans ce travail se
+base sur des définitions relativement proches de celles utilisées pour la
+construction du VTAQ (Parent et al., 2019), ce qui peut expliquer la similitude
+des fréquences observée entre cette étude et celle de Parent et VaillancourtMorel (2020) et la grande différence avec celle de Vertommen et collègues
+(2016). Deuxièmement, l’utilisation de questionnaires divers contribue à rendre
+les comparaisons fastidieuses. En particulier la manière dont sont construit les
+échelles de fréquence et comment les taux sont calculés. Dans cette étude, une
+échelle en quatre points a été utilisée (jamais, 1 fois, quelques fois,
+souvent/régulièrement) mais du moment où les athlètes avaient vécu au moins 1
+fois l’une des situations, ils étaient considérés comme victime de maltraitance.
+Troisièmement, les études n’évaluent pas les mêmes catégories au sein d’une
+même forme de maltraitance. Ainsi, être victime de maltraitance psychologique
+dans une étude ne signifie pas forcément être victime des mêmes comportements
+maltraitants dans une autre. Ce troisième point permet également de comprendre
+la similarité avec les résultats de l’étude de Parent et Vaillancourt-Morel (2020)
+car le QEMS s’est beaucoup inspiré des items du VTAQ.
+
+4.2 Différence de fréquence de la maltraitance en fonction de la
+catégorie de comportements
+En exprimant la fréquence en fonction des catégories de comportements,
+nous pouvons mettre en évidence les situations de maltraitance les plus
+fréquemment expérimentées par les athlètes. Tout d’abord, nos résultats
+50
+
+confirment ceux d’Alexander et collègues (2011) en montrant que les formes de
+maltraitance psychologique les plus rapportées par les athlètes sont l’abus verbal
+et la dépréciation d’un athlète. Puis, cette étude indique que dans le cadre de la
+relation symétrique athlète-athlète, le second comportement le plus rapporté est
+le fait de se faire ignorer volontairement, alors que dans la relation adulte du
+réseau sportif-athlète et parent-athlète, ce sont les comportements favorisants la
+corruption, l’exploitation et l’adoption de comportements destructeurs,
+antisociaux ou malsains.
+Concernant la maltraitance sexuelle, les résultats suggèrent que les athlètes
+subissent de la part de leurs coéquipiers et adversaires, en grande majorité du
+harcèlement sexuel verbal, et se font également photographier ou filmer lors de
+moment intime (e.g., lorsqu’ils se changent dans les vestiaires). Enfin, deux
+comportements émis par les adultes du réseau sportif ont été relevés par plus de
+la moitié des victimes, à savoir le harcèlement verbal et le fait de se faire caresser
+ou toucher sexuellement le corps. Ainsi, ces différents résultats révèlent que les
+auteurs ne font pas subir à l’athlète les mêmes types de comportements.
+
+4.3 Différence de fréquence en fonction du genre, type de sport, et
+niveau sportif
+Les résultats de cette étude indiquent une différence de genre significative
+pour la maltraitance physique, confirmant ainsi une partie de la deuxième
+hypothèse de ce travail (i.e., les fréquences des quatre formes de maltraitance
+varient en fonction du genre). Dans la présente étude, les athlètes masculins ont
+rapporté avoir vécu plus d’incidents de maltraitance physique comparés aux
+athlètes féminines, corroborant ainsi les résultats d’Hauw et ses collaborateurs
+(2021) ainsi que ceux de Parent et Fortier (2018). De ce fait, le genre pourrait
+être considéré comme un facteur de risque d’expérimenter de la maltraitance
+physique. Toutefois, contrairement à l’étude d’Hauw et collègues (2021) et celle
+de Parent et Fortier (2018), aucune différence significative liée au genre n’a été
+relevée pour la maltraitance sexuelle. Il est possible d’expliquer ses résultats par
+une réticence de la part des athlètes masculins à reporter leurs expériences de
+maltraitance sexuelle (Alaggia & Millington, 2008, cité dans Parent et al., 2016).
+51
+
+Ainsi, une sous-estimation de la maltraitance sexuelle chez les athlètes
+masculins est à envisager. Quant à la maltraitance psychologique, certaines
+études avaient observé une différence de genre significative (e.g., Hauw et al.,
+2021; Parent & Vaillancourt-Morel, 2020) et d’autres non (e.g., Alexander et al.,
+2011; Vertommen et al., 2016). Nos résultats ne révèlent pas de différence
+significative liée au genre pour cette maltraitance, ce qui pourrait indiquer
+qu’autant les filles que les garçons sont susceptibles de vivre de la maltraitance
+psychologique dans les sports étudiés dans cette étude.
+À l’instar de l’étude de Hauw et collègues (2021), une différence
+significative a été trouvée entre les types de sport pour la maltraitance physique.
+En effet, la maltraitance physique serait plus susceptible d’être vécues dans les
+sports d’équipe comparé aux sports individuels. Contrairement à l’étude de
+Hauw et collègues (2021), aucune différence significative lié au type de sport
+n’a été relevée pour la maltraitance psychologique. Le fait que nos résultats ne
+révèlent pas de différence entre les sports d’équipe et les sports individuels de
+notre échantillon pour la maltraitance psychologique et la maltraitance physique
+pourrait indiquer que ces dernières sont autant susceptibles d’être vécues dans
+ces différents types de sport. Ainsi, la deuxième hypothèse de ce travail
+concernant le type de sport est confirmée pour la maltraitance physique, mais
+réfutée pour la maltraitance psychologique.
+Concernant le niveau sportif, la deuxième hypothèse de ce mémoire
+stipulait le fait que les fréquences des maltraitances variaient selon le niveau
+sportif. Plus spécifiquement, la littérature (Stirling & Kerr, 2008a; Vertommen
+et al., 2016) indiquait que les maltraitances physique, sexuelle et psychologique
+étaient de plus en plus vécues par les athlètes au fil qu’ils gravissent les échelons
+sportifs. Nos résultats viennent réfuter cette partie de l’hypothèse puisqu’aucune
+différence significative n’a été observée dans les trois formes de maltraitance.
+Étant donné que certains niveaux sportifs ont été faiblement représentés dans
+l’échantillon (e.g., n=4 pour international), cela pourrait amener une sousreprésentation de ceux-ci. Toutefois, sur quatre athlètes de niveau international,
+tous ont rapportés au moins un incident de maltraitance physique et de
+maltraitance psychologique, et la moitié de maltraitance sexuelle. Une future
+52
+
+recherche comprenant davantage d’athlètes au niveau international dans
+l’échantillon pourrait permettre d’investiguer plus en profondeur cette question
+de niveau sportif.
+
+4.4 Interprétations de la maltraitance en sport
+Tout d’abord, les résultats indiquent que la normalisation dépend de la
+forme de maltraitance et des auteurs de celle-ci. En ce qui concerne la
+maltraitance physique, la normalisation est relevée par la majorité des
+participants, peu importe l’auteur de la maltraitance. Pour ce qui est de la
+maltraitance psychologique, les athlètes normalisent le fait de se faire ignorer
+volontairement par les pairs (catégorie 1) et de se faire critiquer ou crier dessus
+par les parents (catégorie 2). Les comportements favorisant la corruption,
+l’exploitation et l’adoption de comportements destructeurs, antisociaux ou
+malsains sont jugés comme normaux par la majorité des athlètes, qu’ils soient
+perpétrés par les pairs, les adultes du réseaux sportifs ou les parents. Ces résultats
+s’alignent avec les conclusions de Pinheiro et collègues (2012) avançant que
+s’entrainer ou concourir en cas de douleur ou blessure est normalisé par les
+gymnastes. La normalisation de tels comportements pourrait s’expliquer par la
+culture sportive dans laquelle les athlètes s’inscrivent (Kavanagh, 2014; Pinheiro
+et collègues, 2012 ; Smits et al., 2017). Le problème est qu’en se conformant à
+des normes sportives banalisant la douleur et la blessure, les athlètes risquent de
+vivre davantage de maltraitance puisqu’ils l’acceptent et les gardent tabou
+(Demers, 2020). Quant à la négligence physique de la part des adultes de
+l’environnement sportif et des parents, elle est normalisée par les athlètes. Ainsi,
+la troisième hypothèse de ce travail est confirmée puisque certaines formes de
+maltraitance sont normalisées par les athlètes, alors que d’autres non.
+Ensuite, certains comportements sont interprétés par les jeunes athlètes
+comme étant nécessaires à la performance. Une fois de plus, cette interprétation
+diffère selon l’auteur de la maltraitance. La maltraitance physique est perçue par
+la majorité des répondants comme nécessaire à la performance lorsqu’elle est
+perpétrée par les adultes du réseau sportif. Mais lorsqu’il s’agit des pairs ou des
+parents, la nécessité de la maltraitance physique pour performer est moins
+53
+
+unanime. L’abus verbal et la dépréciation d’un athlète sont majoritairement
+perçus comme nécessaires à la performance lorsque ceux-ci proviennent des
+parents. Autrement dit, se faire critiquer par ses parents, entre autres, serait une
+condition à la bonne performance. De plus, qu’un autre athlète, un parent ou un
+adulte du réseau sportif demande à l’athlète d’adopter des comportements
+destructeurs, antisociaux ou malsains (e.g., encourager à limiter ses contacts
+pour qu’il s’investisse davantage dans son sport, demander qu’il s’entraine
+jusqu’à vomissement ou sous blessure, demander qu’il prenne des substances
+dopantes pour améliorer ses performances) est considéré par la majorité comme
+nécessaires à la performance. Quant à la négligence physique, les résultats
+montrent une tendance à la considérer comme nécessaire à la performance dans
+le cadre de la relation adulte du réseau sportif-athlète.
+Enfin, les résultats indiquent que les athlètes tendent à considérer la
+maltraitance physique, la négligence physique ainsi que les comportements
+favorisant la corruption, l’exploitation et l’adoption de comportements
+destructeurs, antisociaux ou malsains comme faisant partie de l’entrainement ou
+de la compétition. Les répondants interprètent davantage l’insuffisance de
+soutien et d’affection à leur égard comme faisant partie de l’entrainement ou la
+compétition quand cela se produit dans une relation symétrique athlète-athlète,
+mais pas quand elle se produit dans une relation asymétrique. L’abus verbal et
+la dépréciation de l’athlète sont perçus par environ la moitié des répondants
+comme faisant partie de l’entrainement ou de la compétition. De même, se faire
+menacer de violence par un adulte de l’environnement sportif est considéré
+comme faisant partie de l’entrainement ou de la compétition par environ la
+moitié des participants.
+Stirling et Kerr (2008b) ont relevé que la maltraitance psychologique était
+considérée comme normale et faisant partie du processus de formation au début
+et en milieu de carrière. Cette présente recherche vient soutenir ces résultats tout
+en amenant une nuance. En effet, les athlètes ne normalisent pas toutes les
+situations de maltraitance psychologique et ne les considèrent pas toutes comme
+faisant partie de leur formation sportive. De plus, ces différentes interprétations
+ne semblent pas concerner uniquement cette forme de maltraitance, mais
+54
+
+également les trois autres types. En revanche, ce qu’on peut observer dans ces
+résultats c’est un potentiel lien entre le fait de normaliser un comportement et le
+considérer comme faisant partie de l’entrainement ou de la compétition. Des
+futures recherches pourraient s’intéresser à ce lien possible et investiguer les
+raisons de ces interprétations.
+
+4.5 Conséquences de la maltraitance en sport
+Les résultats de la présente étude indiquent que la maltraitance physique
+perpétrée par les pairs et par les adultes du réseau sportif engendre surtout de la
+peur, conséquence également trouvée par Gervis et Dunn (2004). De plus,
+environ un tiers des athlètes estiment que subir de la maltraitance physique, que
+ce soit par les pairs ou par les adultes du réseau sportif, engendre une perte de
+confiance en soi et ses capacités, une démotivation à continuer leur sport et de
+la colère. Le stress, la tristesse et la moins bonne performance serait surtout la
+cause d’une maltraitance physique infligée par un adulte du réseau sportif, plus
+que par un pair. L’effectif réduit d’athlètes ayant subi de la maltraitance physique
+de la part de leurs parents ne permet pas de faire des distinctions aussi
+spécifiques que pour les deux autres sous-échelles.
+L’insuffisance de soutien ou d’affection à l’égard d’un athlète semble
+affecter davantage les athlètes lorsque cette forme de maltraitance
+psychologique est perpétrée par les adultes du réseau sportif, plutôt que par les
+pairs. Plus spécifiquement, le fait de se faire ignorer volontairement par un adulte
+du réseau sportif ou que ce dernier se montre indifférent à notre égard engendre
+du stress, de la peur, de la culpabilité, de l’humiliation, une image négative du
+corps, une perte de confiance en soi et ses capacités, une moins bonne
+performance et une démotivation à continuer son sport. Ces résultats s’alignent
+avec ceux de Stirling et Kerr (2008a) puisque le fait de se faire ignorer par leur
+entraineur avait amené les nageuses à se sentir extrêmement contrariées et
+coupables, et leur estime d’elles-mêmes avait été affectée. Lorsque ce sont les
+pairs qui ignorent un autre athlète, les conséquences qui ressortent sont plutôt la
+peur, la moins bonne performance, le stress et l’image négative du corps.
+
+55
+
+L’abus verbal et la dépréciation d’un athlète comprenait des
+comportements tels qu’avoir reçu une critique sur sa performance, son
+investissement dans le sport, son apparence physique ou son poids, avoir été
+ridiculisé, humilié ou insulté, s’être fait crier dessus de manière négative, ou être
+victime d’une propagation de rumeur ou de mensonge à son sujet. Les résultats
+montrent que ces diverses situations produisent des conséquences similaires
+entre les sous-échelles pairs-athlète et adulte du réseau sportif-athlète, à savoir
+de la peur, une image négative de son corps, du stress, une démotivation dans
+son sport, une moins bonne performance, de la tristesse et une perte de confiance
+en soi et ses capacités. La culpabilité serait une conséquence plus spécifique
+lorsque ces comportements se produisent dans la relation adulte du réseau
+sportif-athlète. Les effets de ses situations semblent être moins problématiques
+pour les athlètes lorsque les auteurs sont les parents. Toutefois, l’image du corps
+est aussi impactée quand cela se produit dans la relation parent-athlète. Les
+conséquences observées dans cette catégorie reflètent la littérature. En effet,
+Gervis et Dunn, en 2004, relevaient que les athlètes ressentaient de la peur
+lorsqu’ils se faisaient crier dessus par leur entraineur, ce qui impactait
+négativement leur performance sportive. De plus, Stirling et Kerr (2008a)
+montraient que les athlètes subissant des comportements d’abus verbal et de
+dépréciation de la part de l’entraineur se sentaient insignifiants et inférieurs.
+Les résultats de cette étude relèvent que se faire menacer physiquement
+par un autre athlète n’engendre pas les mêmes conséquences que lorsque l’auteur
+est un adulte du réseau sportif. Être menacé physiquement par un pair engendre
+surtout de la peur, mais aussi de la colère, une image négative de son corps, une
+perte de confiance en soi et ses capacités, de la culpabilité, une moins bonne
+performance et une démotivation à continuer son sport. Tandis que se faire
+menacer par un adulte de son environnement sportif engendre plutôt de
+l’humiliation, du stress, une image négative de son corps et une moins bonne
+performance.
+Quant aux comportements favorisant la corruption, l’exploitation et
+l’adoption de comportements destructeurs, antisociaux ou malsains d’un athlète,
+les conséquences semblent moins unanimes. Cette catégorie comprenait des
+56
+
+comportements tels que demander à l’athlète de menacer un autre athlète, lui
+demander de limiter ses contacts pour s’investir davantage dans son sport, de
+s’entrainer malgré une blessure ou une fatigue importante, de s’entrainer jusqu’à
+vomissement, d’utiliser un produit nuisible à sa santé afin d’améliorer ses
+performances ou encore d’atteindre le poids idéal pour performer dans son sport.
+Ces résultats pourraient être expliqués par le fait que la majorité des athlètes
+ayant subis cette forme de maltraitance psychologique la normalisent et la
+considèrent comme faisant partie de l’entrainement ou la compétition.
+Concernant la maltraitance sexuelle, les résultats indiquent que le
+harcèlement verbal de la part des pairs engendre de la peur, une perte de
+confiance en soi et ses capacités et une démotivation à continuer son sport, tandis
+que le harcèlement verbal par un adulte du réseau sportif semble surtout
+engendrer de la peur. Les athlètes subissant du harcèlement sexuel verbal
+sembleraient plus affectés lorsque celui-ci est infligé par un autre athlète,
+infirmant l’étude de Fasting et collègues (2002). Cependant, ses résultats
+pourraient être différents avec un plus grand échantillon. Ainsi, il serait
+intéressant de tester le QEMS auprès d’un plus grand nombre de participants.
+En résumé, la quatrième et dernière hypothèse de ce travail avançait le fait
+que les conséquences différaient selon la forme subie de maltraitance. Les
+résultats viennent la confirmer, tout en la nuançant. En effet, les conséquences
+diffèrent également en fonction de l’auteur de la maltraitance. Une future
+recherche pourrait examiner si les conséquences diffèrent en fonction de la
+fréquence d’expérimentation (e.g., est-ce que subir une fois de l’abus verbal
+engendre les mêmes conséquences qu’en subir souvent ?).
+
+4.6 Profil des auteurs de la maltraitance en sport
+Les résultats de cette étude confirment les recherches indiquant que les
+pairs sont les auteurs les plus fréquents pour les maltraitances psychologique
+(Alexander et al., 2011; Hauw et al., 2021; Marsollier et al., 2021; Vertommen
+et al., 2017), physique (Marsollier et al., 2021; Vertommen et al., 2017) et
+sexuelle (Hauw et al., 2021; Marsollier et al., 2021). Pour la maltraitance
+psychologique, le deuxième auteur le plus fréquemment cité est l’entraineur,
+57
+
+confirmant ainsi les observations d’Alexander et collègues (2011) et de
+Marsollier et collègues (2021), de même pour la maltraitance sexuelle. Les
+parents viennent également jouer un rôle important dans la maltraitance
+psychologique, étant à l’origine de presque la moitié des comportements
+maltraitants. Pour la maltraitance physique, les parents sont les deuxièmes
+auteurs les plus fréquemment cités par les athlètes, puis l’entraineur.
+L’entraineur, les parents puis l’entraineur assistant sont les plus fréquemment
+auteur de négligence.
+La présente étude contribue à une compréhension plus détaillée des auteurs
+de maltraitance. Les résultats indiquent que l’entraineur assistant est souvent
+impliqué dans ces comportements maltraitants, en particulier la négligence et la
+maltraitance psychologique. Mais également le préparateur physique, qui lui est
+auteur de maltraitance psychologique et de négligence. Quant à l’arbitre, il a été
+exclusivement cité comme auteur de maltraitance psychologique. La catégorie
+« autre » a également été indiquée par les répondants, pour tous les types de
+maltraitance. Parmi les athlètes de l’échantillon ayant subi de la maltraitance en
+sport, des auteurs divers sont impliqués tels que les pairs, les parents, les
+entraineurs, les entraineurs assistants, le préparateur physique, l’équipe
+médicale, le psychologue du sport, l’arbitre, et encore d’autres adultes de
+l’environnement sportif. Malgré un faible pourcentage d’implication de
+certaines figures adultes du réseau sportif de l’athlète (e.g., équipe médicale,
+psychologue du sport), il en ressort qu’ils sont tout de même responsables de
+certains cas d’abus en sport. Notons toutefois que ces personnes sont souvent
+engagées dans l’environnement sportif d’athlète d’élite, et peu souvent auprès
+d’athlète de niveau régional. Or, peu d’athlète de niveau national et international
+ont participé à cette recherche. C’est pourquoi, il est possible que ce taux
+d’implication augmente en prenant un plus grand échantillon d’athlètes d’élite.
+
+4.7 Contributions et limites
+Ce mémoire avait pour but de développer et de tester un questionnaire de
+maltraitance en sport auprès d’un échantillon d’athlètes suisse-romands âgés
+entre 16 et 20 ans. L’outil de récolte de données élaboré pour ce travail est
+58
+
+novateur dans la recherche en psychologie du sport et vient directement pallier
+les limites d’autres questionnaires. En effet, le QEMS n’utilise pas de design
+rétrospectif, évitant ainsi une sous-estimation de la fréquence (Vertommen et al.,
+2016). De plus, un travail conséquent a été fourni sur les définitions des
+différentes formes de maltraitance, visant à obtenir le questionnaire le plus
+spécifique possible. Ensuite, cet outil considère un large panel d’auteurs
+possibles de maltraitance, ce qui n’était pas le cas jusqu’à présent dans les
+recherches sur cette thématique. Enfin, il comprend les quatre formes de
+maltraitance en sport et permet donc d’obtenir des données sur l’ensemble des
+situations de maltraitance.
+Toutefois, cette étude comporte plusieurs limites. Premièrement, un faible
+taux de participation au questionnaire empêche toutes tentatives de
+généralisation des résultats. Cette faible participation peut être engendrée par
+plusieurs facteurs, tels qu’une technique de recrutement peu adéquate, une
+récolte de données courte, ou encore une période de recrutement durant les
+vacances d’été. On peut aussi considérer que le nombre de questions constitue
+un obstacle majeur à l’obtention de données complètes. De plus, il se peut que
+certaines personnes n’aient pas répondu au questionnaire car n’ayant pas vécu
+de maltraitance en sport, elles ne se sentaient pas légitimes à y participer. Enfin,
+certains présidents de clubs contactés ont refusé de transmettre le questionnaire
+à leurs athlètes à cause de la thématique sensible qu’est la maltraitance en sport.
+Des futures recherches sur le QEMS devraient utiliser un échantillon plus large
+d’athlètes de tous niveaux. Pour ce faire, il serait pertinent d’ouvrir le
+questionnaire à tous les sports et de déployer des moyens plus conséquents dans
+la phase de recrutement (e.g., aller présenter les buts de l’étude directement
+auprès des athlètes lors d’un entrainement, contacter les différentes
+infrastructures de sports-études). En ayant un échantillon plus large, il serait
+alors possible de vérifier la validité du QEMS.
+La deuxième limite de cette étude est directement causée par les
+restrictions instaurées par la commission d’éthique de l’Université de Lausanne.
+En effet, il était prévu que le questionnaire soit administré à un échantillon
+d’athlètes de 12-18 ans. La commission ayant refusé ce projet à cause de la
+59
+
+nécessité de demander le consentement aux parents, il a fallu adapter
+l’échantillon à des athlètes âgés entre 16 et 20 ans. Cependant, ces âges ne sont
+pas optimaux pour les sports choisis. Par exemple, l’âge de la retraite sportive
+pour une gymnaste en artistique en Suisse se situe autour de 16 ans. De ce fait,
+peu de gymnastes entraient dans le critère d’âge.
+
+60
+
+5 Conclusion
+Une normalisation de certains comportements maltraitants a été mise en
+évidence par les résultats de cette étude. La recherche de Striling (2011) avait
+montré que le phénomène de normalisation de la maltraitance était également
+présent chez les parents et les entraineurs. Selon Kavanagh (2014), les parents,
+les entraineurs et les pairs constituent des agents de socialisation, et jouent un
+rôle sur le degré de conformité de l’athlète aux normes sportives. Ainsi, le jeune
+athlète va apprendre, en voyant que ses parents, son entraineur ou d’autres
+athlètes acceptent ces normes sportives, que certains comportements maltraitants
+sont tolérables et constituent la culture de son sport. Dans ce sens, les nageuses
+de l’étude de Stirling et Kerr (2008b) expliquent qu’en étant très jeune, elles
+voyaient l’entraineur de l’équipe d’élite « engueuler » et « punir » ses athlètes
+(p.97). En remarquant que ces dernières acceptaient ces comportements, elles
+savaient qu’une fois arrivées au niveau élite, c’est ce qu’il leur arriverait. Ainsi,
+elles ont appris que la maltraitance psychologique était normale et faisait partie
+de l’entrainement. Selon Smits et collègues (2017), plus les athlètes commencent
+tôt leur sport, plus ils vont intérioriser les normes sportives et moins ils vont les
+remettre en question. D’ailleurs, une nageuse de l’étude de Stirling et Kerr
+(2008b) expliquait que le fait de commencer très jeune l’avait naturellement
+amenée à adhérer à ce que l’entraineur lui disait, car il était perçu comme la
+figure d’autorité. Ainsi, en plus d’être des agents de socialisation, certains
+adultes comme l’entraineur sont des figures d’autorité et exercent un rôle
+d’autant plus important dans l’intériorisation de ces normes. Ces différentes
+études nous conduisent à porter un regard réflexif quant à la culture du sport.
+Bien qu’il ne s’agît pas, dans ce mémoire, de déconstruire les normes éthiques
+du sport, il invite néanmoins les athlètes, parents d’athlète, entraineurs, et toutes
+autres personnes de l’environnement sportif d’un jeune à se questionner sur les
+comportements considérés comme normaux, nécessaires à la performance et
+faisant partie de l’entrainement ou de la compétition. D’ailleurs, Stirling (2011)
+a avancé le fait qu’avoir soi-même subi de la maltraitance psychologique étant
+athlète pouvait conduire l’entraineur à intérioriser ce type de comportements
+comme constituant d’une manière d’entrainer. De ce fait, il est important pour
+un parent ou un entraineur de porter un regard distant sur son propre vécu
+61
+
+d’athlète, en tâchant de ne pas reproduire les comportements maltraitants
+intériorisés lors de leur carrière sportive. En faisant cela, on identifie les
+comportements à ne pas reproduire, et on brise cette retransmission à la
+génération future, et protège les athlètes des diverses conséquences nocives. De
+plus, en mettant en place des campagnes de prévention tels que « Are you OK ? »
+de Swiss Olympic, l’opportunité est donnée aux jeunes athlètes de prendre
+conscience de situations de maltraitance auxquelles ils font face, et d’en parler.
+Enfin, selon Stirling (2011), le monde sportif est dicté par des valeurs de
+performance où le bien-être des athlètes vient en second plan, facilitant
+l’acceptation de la maltraitance. De ce fait, ce mémoire propose aux athlètes et
+tout autre acteur de l’environnement sportif à se questionner sur les
+comportements qu’ils subissent ou qu’ils font subir, souvent dans le but de
+performer (Stirling, 2011), au détriment du bien-être psychique et physique des
+athlètes.
+
+62
+
+6 Références
+Alexander, K., Stafford, A., & Lewis, R. (2011). The experiences of children participating in
+organised sport in the UK.
+https://www.pure.ed.ac.uk/ws/portalfiles/portal/7971883/experiences_children_sport_
+main_report_wdf85014.pdf
+Basile, K., Smith, S. G., Breiding, M. J., Black, M. C., Mahendra, R. (2014). Sexual violence
+surveillance: uniform definitions and recommended data elements, Version 2.0.
+National Center for Injury Prevention and Control, Centers for Disease Control and
+Prevention.
+Brackenridge, C. (2001). Spoilsports: understanding and preventing sexual exploitation in
+sport. Routledge.
+Brackenridge, C. (2010). Violence and abuse prevention in sport. In Kaufman, K. L. (Ed.),
+The prevention of sexual violence: A Practitioner's Sourcebook (pp. 401‑413). NEARI
+Press.
+Demers, É. (2020). La violence sexuelle vécue par les jeunes athlètes en contexte sportif :
+Liens avec la conformité à l’éthique du sport [Mémoire de master, Université de
+Laval]. https://corpus.ulaval.ca/jspui/bitstream/20.500.11794/66714/1/36407.pdf
+DeVellis, R. F. (2003). Scale development: theory and applications (3e éd.). Sage.
+Dillman, D. A., Smyth, J. D., & Christian, L. M. (2014). Internet, phone, mail, and mixedmode surveys (5e éd.). Wiley.
+Doyle, C. (1997). Emotional abuse of children : Issues for intervention. Child Abuse Review,
+6(5), 330‑342. https://doi.org/10.1002/(SICI)1099-0852(199712)6:5<330::AIDCAR355>3.0.CO;2-C
+
+63
+
+Fasting, K., Brackenridge, C., & Walseth, K. (2002). Consequences of sexual harassment in
+sport for female athletes. Journal of Sexual Aggression, 8(2), 37‑48.
+https://doi.org/10.1080/13552600208413338
+Fortier, K., Parent, S., & Lessard, G. (2020). Child maltreatment in sport : Smashing the wall
+of silence: a narrative review of physical, sexual, psychological abuses and neglect.
+British Journal of Sports Medicine, 54(1), 4‑7. https://doi.org/10.1136/bjsports-2018100224
+Frippiat, D. & Marquis, N. (2010). Les enquêtes par Internet en sciences sociales: un état des
+lieux. Population, 2(2), 309-338. https://doi.org/10.3917/popu.1002.0309
+Gervis, M., & Dunn, N. (2004). The emotional abuse of elite child athletes by their coaches.
+Child Abuse Review, 13(3), 215‑223. https://doi.org/10.1002/car.843
+Halpérin, D. (1996). Questionnaire on child sexual abuse.
+https://www.academia.edu/18746534/Questionnaire_child_sexual_abuse_Halperin_W
+HO_2008
+Hauw, D., Marsollier, E., & Crettaz von Roten, F. (2021). Interpersonal violence against
+athletes during their childhood in French-speaking Switzerland. Prépublication.
+Jayanthi, N. A., LaBella, C. R., Fischer, D., Pasulka, J., & Dugas, L. R. (2015). SportsSpecialized Intensive Training and the Risk of Injury in Young Athletes : A Clinical
+Case-Control Study. The American Journal of Sports Medicine, 43(4), 794‑801.
+https://doi.org/10.1177/0363546514567298
+Jidovtseff, B. (2016). Spécialisation sportive précoce: quels risques sur le développement et
+sur la santé? Orho-Rhumato, 14(2), 21-25.
+https://orbi.uliege.be/bitstream/2268/205067/1/Jidovtseff%20Spécialisation%20précoc
+e%20OrthoRhumato2016.pdf
+
+64
+
+Johansson, S. (2013). Coach–athlete sexual relationships : If no means no does yes mean yes?
+Sport, Education and Society, 18(5), 678‑693.
+https://doi.org/10.1080/13573322.2013.777662
+Kavanagh, E. J. (2014). The Dark Side of Sport : Athlete Narratives of Maltreatment in High
+Performance Environments[Thèse de doctorat]. Université de Bournemouth.
+http://eprints.bournemouth.ac.uk/21488/1/PhD%20EK%20Final%20%282%29.pdf
+Kerr, G. (2010). Physical and emotional abuse of elite child athltes: The case of forced
+physical exertion. In Brackenridge, C. H., & Rhind, D. (Éds.), Elite Child Athlete
+Welfare: International Perspectives (pp. 41-50). Brunel University.
+LaPrade, R. F., Agel, J., Baker, J., Brenner, J. S., Cordasco, F. A., Côté, J., Engebretsen, L.,
+Feeley, B. T., Gould, D., Hainline, B., Hewett, T. E., Jayanthi, N., Kocher, M. S.,
+Myer, G. D., Nissen, C. W., Philippon, M. J., & Provencher, M. T. (2016). AOSSM
+Early Sport Specialization Consensus Statement. Orthopaedic Journal of Sports
+Medicine, 4(4). https://doi.org/10.1177/2325967116644241
+Macauley, D. (1997). Child abuse in sport. British journal of sports medicine, 30, 275‑276.
+https://doi.org/10.1136/bjsm.30.4.275-a
+Marsollier, E., Hauw, D., & Crettaz von Rotten, F. (2021). Understanding the Prevalence
+Rates of Interpersonal Violence Experienced by Young French-Speaking Swiss
+Athletes. Frontiers
+Mountjoy, M., Brackenridge, C., Arrington, M., Blauwet, C., Carska-Sheppard, A., Fasting,
+K., Kirby, S., Leahy, T., Marks, S., Martin, K., Starr, K., Tiivas, A., & Budgett, R.
+(2016). International Olympic Committee consensus statement : Harassment and abuse
+(non-accidental violence) in sport. British Journal of Sports Medicine, 50(17),
+1019‑1029. https://doi.org/10.1136/bjsports-2016-096121
+
+65
+
+Organisation Mondiale de la santé. (1999). Rapport de la Consultation sur la prévention de la
+maltraitance de l'enfant. https://apps.who.int/iris/handle/10665/66790
+Parent, S., & Fortier, K. (2017). Prevalence of interpersonal violence against athletes in the
+sport context. Current Opinion in Psychology, 16, 165‑169.
+https://doi.org/10.1016/j.copsyc.2017.05.012
+Parent, S., & Fortier, K. (2018). Comprehensive Overview of the Problem of Violence
+Against Athletes in Sport. Journal of Sport and Social Issues, 42(4), 227‑246.
+https://doi.org/10.1177/0193723518759448
+Parent, S., Fortier, K., Vaillancourt-Morel, M.-P., Lessard, G., Goulet, C., Demers, G.,
+Paradis, H., & Hartill, M. (2019). Development and initial factor validation of the
+Violence Toward Athletes Questionnaire (VTAQ) in a sample of young athletes.
+Loisir et Société / Society and Leisure, 42(3), 471‑486.
+https://doi.org/10.1080/07053436.2019.1682262
+Parent, S., Lavoie, F., Thibodeau, M.-È., Hébert, M., & Blais, M. (2016). Sexual Violence
+Experienced in the Sport Context by a Representative Sample of Quebec Adolescents.
+Journal of Interpersonal Violence, 31(16), 2666‑2686.
+https://doi.org/10.1177/0886260515580366
+Parent, S., & Vaillancourt-Morel, M.-P. (2020). Magnitude and Risk Factors for Interpersonal
+Violence Experienced by Canadian Teenagers in the Sport Context. Journal of Sport
+and Social Issues, 1-17. https://doi.org/10.1177/0193723520973571
+Pinheiro, M. C., Pimenta, N., Resende, R., & Malcolm, D. (2012). Gymnastics and child
+abuse : An analysis of former international Portuguese female artistic gymnasts. Sport,
+Education and Society, 19(4), 435‑450.
+https://doi.org/10.1080/13573322.2012.679730
+
+66
+
+Smits, F., Jacobs, F., & Knoppers, A. (2017). ‘Everything revolves around gymnastics’ :
+Athletes and parents make sense of elite youth sport. Sport in Society, 20(1), 66‑83.
+https://doi.org/10.1080/17430437.2015.1124564
+Stirling, A. E. (2009). Definition and constituents of maltreatment in sport : Establishing a
+conceptual framework for research practitioners. British Journal of Sports Medicine,
+43(14), 1091‑1099. https://doi.org/10.1136/bjsm.2008.051433
+Stirling, A. E. (2011). Initiating and sustaining emotional abuse in the coach- athlete
+relationship: athletes’, parents’, and coaches’ reflections [Thèse de doctorat].
+Université de Toronto.
+https://tspace.library.utoronto.ca/bitstream/1807/35742/3/Stirling_Ashley_E_201106_
+PhD_thesis.pdf
+Stirling, A. E., & Kerr, G. A. (2008a). Defining and categorizing emotional abuse in sport.
+European Journal of Sport Science, 8(4), 173‑181.
+https://doi.org/10.1080/17461390802086281
+Stirling, A. E., & Kerr, G. A. (2008b). Elite Female Swimmers’ Experiences of Emotional
+Abuse Across Time. Journal of Emotional Abuse, 7(4), 89‑113.
+https://doi.org/10.1300/J135v07n04_05
+Swiss Olympic. (2021). "Are you OK?".
+https://www.swissolympic.ch/fr/federations/prevention/consultation?tabId=80a159826f11-44bf-8cf9-e48b3ec7ed7e
+Trocmé, N., Fallon, B., MacLaurin, B., Sinha, V., Black, T., Fast, E., Felstiner, C., Hélie, S.,
+Turcotte, D., Weightman, P., Douglas, J., & Holroyd, J. (2010). Étude canadienne sur
+l’incidence des signalements de cas de violence et de négligence envers les enfants
+2008 (ECI-2008) : Agence de la santé publique du Canada.
+
+67
+
+https://cwrp.ca/fr/publications/etude-canadienne-sur-lincidence-des-signalements-decas-de-violence-et-de-negligence-1
+Vertommen, T., Kampen, J., Schipper-van Veldhoven, N., Uzieblo, K., & Van Den Eede, F.
+(2018). Severe interpersonal violence against children in sport : Associated mental
+health problems and quality of life in adulthood.
+https://www.sciencedirect.com/science/article/pii/S0145213417304611?via%3Dihub
+Vertommen, T., Kampen, J., Schipper-van Veldhoven, N., Wouters, K., Uzieblo, K., & Van
+Den Eede, F. (2017). Profiling perpetrators of interpersonal violence against children
+in sport based on a victim survey. Child Abuse & Neglect, 63, 172‑182.
+https://doi.org/10.1016/j.chiabu.2016.11.029
+Vertommen, T., Schipper-van Veldhoven, N., Wouters, K., Kampen, J. K., Brackenridge, C.
+H., Rhind, D. J. A., Neels, K., & Van Den Eede, F. (2016). Interpersonal violence
+against children in sport in the Netherlands and Belgium. Child Abuse & Neglect, 51,
+223‑236. https://doi.org/10.1016/j.chiabu.2015.10.006
+
+68
+
+7 Annexes
+Annexe 1 : mindmap des termes
+
+Légende : les rectangles représentent les termes employés dans le milieu sportif et les rectangles avec bords
+arrondis représentent ceux employés hors contexte sportif. Des couleurs différentes ont été données en
+fonction des termes « abus/abuse », « négligence/neglegt », « violence » et « maltreatment ».
+
+Annexe 2 : tableau des définitions
+Définitions de base
+
+Définitions utilisées dans ce mémoire
+
+La maltraitance physique se définit par la nature
+physique de l’agression envers les athlètes, sans
+tenir compte des conséquences de ces actes
+(Fortier et al., 2020).
+
+La maltraitance physique dans le contexte sportif
+a lieu lorsqu’une personne (exemples : le parent,
+l’entraineur, un coéquipier, un adversaire) s’en prend
+intentionnellement et physiquement à un athlète, par
+le biais d’un contact.
+
+L’abus émotionnel est défini comme un modèle
+de comportements délibérés sans contact par une
+personne dans un rôle relationnel critique qui a le
+potentiel d’être nuisible (Stirling et Kerr, 2008a)
+
+La maltraitance psychologique dans le contexte
+sportif a lieu lorsqu’une personne (exemples : le
+parent, l’entraineur, un coéquipier, un adversaire)
+s’en prend intentionnellement à un athlète sans qu’il
+y ait de contact physique.
+
+La violence sexuelle est définie comme un acte La maltraitance sexuelle dans le contexte sportif est
+sexuel qui est commis ou tenté par une autre définie comme un comportement d’ordre sexuel qui
+
+69
+
+personne sans le consentement librement donné
+de la victime ou contre une personne ou contre
+une personne qui n’est pas en mesure de consentir
+ou refuser (Basile et al., 2014)
+
+est commis ou tenté par une autre personne
+(exemples : l’entraineur, le médecin du sport, un
+coéquipier) sans avoir reçu le consentement de
+l’athlète ou contre un athlète qui n’est pas en mesure
+de consentir ou refuser.
+
+« La négligence est le fait de ne pas assurer le
+développement de l’enfant dans tous les
+domaines – éducation, développement affectif,
+nutrition, abri et conditions de vie sûres – dans le
+contexte des ressources dont la famille ou les
+personnes qui s’occupent de l’enfant peuvent
+raisonnablement disposer […]. Il s’agit aussi du
+fait de ne pas assurer à l’enfant l’encadrement
+nécessaire et la protection contre les préjudices
+dans la mesure du possible » (OMS, 1999, p.15)
+
+La négligence dans le contexte sportif a lieu
+lorsqu’un adulte (exemples : l’entraineur, le parent,
+le médecin du sport) qui s’occupe de l’athlète
+n’assure pas son développement dans tous les
+domaines – éducation, développement affectif,
+nutrition – alors qu’il dispose raisonnablement de
+ressources nécessaires. Il s’agit aussi du fait de ne
+pas assurer à l’athlète l’encadrement nécessaire et la
+protection contre les préjudices dans la mesure du
+possible.
+
+Annexe 3 : exemple d’une partie du travail de recensement des items existants
+
+70
+
+Annexe 4 : exemple d’une partie du tableau où les items ont été regroupés selon la catégorie
+de comportements et la sous-échelle
+
+Annexe 5 : exemple d’avis émis sur les items existants
+
+71
+
+Annexe 6 : exemple de reformulation effectuée
+
+Annexe 7 : exemple du document Excel envoyé aux différents juges pour l’évaluation des items
+
+72
+
+Annexe 8 : exemple du travail de synthèse effectué suite à l’évaluation par les juges
+
+73
+
+Annexe 9 : canevas du focus group
+
+74
+
+Annexe 10 : formulaire de consentement du focus group
+
+FORMULAIRE DE CONSENTEMENT - ATHLÈTE
+Titre du projet : Développement et validation d’un questionnaire portant sur les violences interpersonnelles
+spécifique aux adolescents-athlètes suisses romands (16-20 ans)
+
+Nom de la responsable de la recherche :
+Institution / Adresse professionnelle :
+
+Hauw, Denis (PhD, Professeur associé)
+Institut des sciences du sport, Université de Lausanne,
+bâtiment Synathlon, UNIL-Centre, 1015 Lausanne
+
+Nom de l’étudiant-chercheur :
+
+Amandine Franzoni
+
+Nom : ………………………..
+Prénom : …………………………
+Sport pratiqué : ………………………
+Age : …………………………..
+Je certifie :
+• Avoir reçu des informations à propos du groupe de discussion (focus group) ainsi que de son
+déroulement.
+• Avoir compris que ma participation sera rendue anonyme.
+• Avoir compris que certaines questions posées traiteront de divers types d’abus vécus dans le
+contexte sportif.
+Consentement : Je déclare librement de vouloir participer à ce focus group :
+Oui
+
+Non
+
+1
+
+75
+
+Annexe 11 : bilan du focus group
+Maltraitance physique
+1
+
+Dans le contexte sportif, une personne …
+Autres
+A1
+
+A2
+
+A3
+
+commentaires
+
+1a
+
+t’a déjà secoué, poussé ou agrippé
+
+Compréhensible
+
+Compréhensible
+
+Compréhensible
+
+Item ok
+
+1b
+
+t’a déjà frappé (exemples : avec un
+
+C’est
+
+ok
+
+Compréhensible
+
+Item ok
+
+objet, gifle, coup de pied, de tête ou
+
+illustré par les
+
+de poing)
+
+exemples
+
+t’a déjà étouffé ou étranglé
+
+Compréhensible
+
+Compréhensible
+
+Compréhensible
+
+Item ok
+
+1c
+
+bien
+
+Bilan de la maltraitance physique : les participants trouvent que c’est complet. Ils ne voyent rien à ajouter
+à ces items.
+Maltraitance psychologique
+2
+
+Dans le contexte sportif, une personne …
+Autres
+comment
+A1
+
+2a
+
+t’a
+
+déjà
+
+A2
+
+A3
+
+aires
+
+ignoré
+
+La compréhension de la
+
+Trouve que c’est
+
+volontairement ou s'est déjà
+
+question est correcte et
+
+assez clair
+
+montré indifférent à ton
+
+va dans le sens de ce
+
+égard (exemples : refuser de
+
+qu’on voulait dire.
+
+Item ok
+
+te parler ou faire comme si
+tu n'étais pas là)
+2b
+
+a déjà critiqué la façon dont
+
+C’est tout ok
+
+La compréhension
+
+Les
+
+exemples
+
+tu t'investis dans ton sport
+
+de la question est
+
+ciblent bien ce
+
+(exemples : car tu as manqué
+
+correcte et va dans
+
+qu’on
+
+un entrainement ou que tu
+
+le sens de ce qu’on
+
+évaluer
+
+n'as pas participé à une
+
+voulait dire.
+
+Item ok
+
+veut
+
+activité en lien avec le club)
+2c
+2d
+
+a
+
+déjà
+
+critiqué
+
+ta
+
+Comprend que c’est directement une critique négative et on pensé
+
+performance
+
+à négatif uniquement, donc pas besoin de spécifier
+
+a déjà critiqué ton apparence
+
+Trouvent compréhensible et clair, ils comprennent direct ce que
+
+physique ou ton poids
+
+ça veut dire « apparence physique »
+
+76
+
+Item ok
+Item ok
+
+2e
+
+a déjà lancé ou propagé une
+
+Comprend
+
+Comprend
+
+Comprend
+
+Item ok
+
+Comprend bien
+
+Item ok,
+
+mais
+
+mais est-
+
+rumeur/un mensonge à ton
+sujet
+2f
+
+t’a déjà ridiculisé, humilié
+
+Comprend bien
+
+ou insulté
+
+trouvent
+
+qu’une
+
+ce qu’on
+
+humiliation est
+
+met
+
+plus
+
+ridiculisé
+
+violent
+
+qu’une insulte.
+
+, insulté
+ou
+humilié ?
+
+2g
+
+t’a déjà crié dessus
+
+Peut être interprété de
+
+Crier n’est pas le
+
+Les
+
+manière positive.
+
+bon terme pour
+
+participa
+
+lui car il pense
+
+nts
+
+que crier ça peut
+
+pensent
+
+être juste le fait
+
+que
+
+de
+
+engueule
+
+parler fort
+
+pour encourager.
+
+r
+
+Il
+
+être
+
+faudrait
+
+peut
+un
+
+trouver un terme
+
+terme
+
+qui montre que
+
+alternatif
+
+c’est négatif.
+
+pour les
+entraineu
+rs.
+
+J’ai
+
+proposé
+« crier
+négative
+ment » et
+ils
+trouvent
+que c’est
+une
+bonne
+alternativ
+e.
+2h
+
+t’a
+
+déjà
+
+menacé
+
+d’être
+
+Compréhensible
+
+Compréhensible
+
+expulsé / exclu (exemples :
+de l’équipe, du club ou du
+gymnase)
+
+77
+
+Compréhensible
+
+Item ok
+
+2i
+
+t'a
+
+déjà
+
+Compréhensible
+
+Compréhensible
+
+Item ok
+
+Compréhensible
+
+Compréhensible
+
+Compréhensible
+
+Item ok
+
+ou
+
+Comprend bien l’aspect
+
+L’explication
+
+Comprend bien
+
+Item ok
+
+encourager à limiter tes
+
+« forcé/demandé », que
+
+donnée
+
+de
+
+la
+
+contacts (exemples : avec tes
+
+c’est qql qui pousse
+
+signification
+
+de
+
+amis ou ta famille) pour
+
+l’athlète à prendre cette
+
+l’item est correcte
+
+t’investir plus dans ton sport
+
+décision.
+
+et va dans le sens
+
+physiquement
+
+menacé
+mais
+
+sans
+
+t'attaquer réellement
+
+L’explication
+
+donnée
+
+de la signification de
+l’item est correcte et va
+dans le sens de ce qu’on
+voulait dire.
+
+2j
+
+t'a déjà demandé d'humilier,
+de menacer ou de blesser un
+autre athlète
+
+2k
+
+t’a
+
+déjà
+
+demandé
+
+de
+
+ce
+
+qu’on
+
+voulait dire.
+2l
+
+t’a
+
+déjà
+
+demandé
+
+de
+
+Clair
+
+Clair
+
+Clair
+
+Item ok
+
+Clair
+
+Clair
+
+Clair
+
+Item ok
+
+continuer à t’entrainer ou
+participer à une compétition
+alors que tu étais blessé ou
+épuisé
+2m
+
+t’a
+
+déjà
+
+demandé
+
+de
+
+t’entrainer jusqu’à ce que tu
+sois
+
+épuisé
+
+ou que
+
+tu
+
+vomisses
+2n
+
+t’a déjà demandé d’utiliser
+
+Ici, il faudrait réutiliser la même formulation que pour la
+
+Item
+
+un produit pour améliorer
+
+négligence car A3 trouve que on pourrait penser par exemple à la
+
+reformul
+
+tes performances
+
+caféine qui permet d’avoir un boost dans la journée avant le
+
+é ➔ t’a
+
+match et qui n’a rien d’illégale. En rajoutant les exemples et
+
+déjà
+
+l’aspect nocif pour la santé ce serait mieux si ce sont les produits
+
+demandé
+
+dopants qu’on veut mesurer.
+
+d’utilisai
+s
+
+a
+
+un
+
+produit
+nuisible à
+ta
+
+santé
+
+(exemple
+s : EPO
+ou
+stéroïdes
+anabolisa
+nts) pour
+
+78
+
+améliorer
+tes
+performa
+nces
+2o
+
+t’a déjà demandé d’atteindre
+
+Comprend direct, c’est
+
+le
+
+clair
+
+poids
+
+idéal
+
+pour
+
+Comprend bien
+
+Comprend
+
+Item ok
+
+performer dans ton sport
+
+Bilan de la maltraitance psychologique : ils trouvent que tous les items sont pertinents !
+
+Maltraitance sexuelle
+3
+
+Dans le contexte sportif, une personne …
+Autres
+A1
+
+3a
+
+A2
+
+A3
+
+commentaires
+
+t’a déjà fait des remarques
+
+On comprend
+
+sexuelles à propos de ton corps,
+
+bien
+
+Item ok
+
+de ton apparence ou de ta vie
+privée
+3b
+
+t’a déjà envoyé des images ou
+
+N’avait
+
+messages à connotation sexuelle
+
+directement
+
+ou sexuellement explicites
+
+compris
+
+pas
+
+Comprend bien
+
+Item ok
+
+Comprend bien
+
+A
+
+mais pour lui il
+
+préciser
+
+peut y avoir
+
+regrouper
+
+aussi
+
+celle d’avant
+
+la
+
+nuance
+messages
+
+à
+
+connotation
+sexuelle
+
+ou
+
+sexuellement
+explicites mais
+après
+explication
+c’est bon.
+3c
+
+t’a déjà fait des propositions
+
+Comprend bien
+
+sexuelles
+
+des
+
+propositions
+sexuelles
+
+par
+
+message donc
+regroupe l’item
+
+79
+
+voir
+
+pour
+ou
+avec
+
+d’avant.
+
+Il
+
+faudrait
+spécifier que ça
+doit être face à
+face,
+
+des
+
+avances
+sexuelles faites
+de vive voix.
+3d
+
+t’a déjà montré ses parties
+
+Comprend bien l’item grâce au exemple. Pour eux, le
+
+intimes ou a fait des actes de
+
+terme de « sans que tu ne le souhaites » est bien et
+
+nature sexuelle devant toi sans
+
+pense directement à la notion de consentement.
+
+Item ok
+
+que tu ne le souhaites (exemples
+: s’est masturbé ou a eu une
+relation sexuelle devant toi).
+3e
+
+a déjà pris des photos intimes ou
+
+Comprend bien l’item. Le test de la formulation
+
+Voir si on garde
+
+filmer des moments intimes
+
+« contre ton gré » n’est pas concluant car ils disent
+
+« sans que tu ne le
+
+contre ton gré (exemples : te
+
+que c’est plus difficile de comprendre ce terme à 12
+
+souhaites »
+
+ou
+
+photographier alors que tu étais
+
+ans. A2 propose une alternative « sans ton accord »
+
+« sans
+
+ton
+
+en sous vêtement dans les
+
+accord »
+
+vestiaires)
+3f
+
+t’a déjà forcé à le toucher
+
+Clair
+
+Clair
+
+Clair
+
+Item ok
+
+sexuellement (exemples : le
+caresser ou embrasser ses parties
+intimes)
+3g
+
+t’a touché d’une manière qui t’a
+
+Les 3 participants ont pensé à se faire toucher de
+
+A vérifier que ce
+
+mis mal à l’aise
+
+manière pas forcément sexuelle, par exemple se faire
+
+qu’on
+
+toucher l’épaule et ça les a rendu inconfortable.
+
+mesurer c’est le
+
+veut
+
+fait d’être touché
+au sens large ou
+bien
+
+touché
+
+sexuellement
+(cuisse,
+etc..)
+3h
+
+t’a déjà embrassé sur la bouche
+
+Clair
+
+Clair
+
+Clair
+
+Item ok
+
+3i
+
+s’est déjà frotté contre tes parties
+
+Clair
+
+Clair
+
+Clair
+
+Item ok
+
+Clair
+
+Clair
+
+Clair
+
+Item ok
+
+intimes ou les a déjà caressées
+avec ses mains ou sa bouche
+3j
+
+a déjà tenté d’avoir une relation
+sexuelle
+
+(avec
+
+ou
+
+sans
+
+pénétration) avec toi
+
+80
+
+fesses,
+
+3k
+
+t'a déjà forcé à avoir une relation
+
+Clair
+
+Clair
+
+Clair
+
+Item ok
+
+sexuelle avec ou sans pénétration
+avec toi
+
+Bilan maltraitance sexuelle : les participants ne sont pas choqués et ne se sont pas senti mal à l’aise ne
+lisant les items. Ces questions ne les auraient pas repoussés à participer au questionnaire et ils s’attendaient
+à avoir des questions comme ça vu que le sujet est la maltraitance.
+Pour les « parties intimes » ils ont pensé uniquement aux parties génitales donc pénis, fesses, poitrines,
+vagin. Mais pas la cuisse, ou autre. A voir si ce qu’on veut évaluer est donc les parties génitales, ou bien
+les zones du corps « intimes ». Ils disent qu’on pourrait mettre entre () les exemples quand ce mot apparait
+ou bien spécifier dans l’intro,
+
+Négligence
+4
+
+Dans le contexte sportif, une personne …
+Autres
+A1
+
+4a
+
+A2
+
+Clair
+
+A3
+
+commentaires
+
+t’a déjà laissé t’entrainer ou participer à
+
+A bien compris la
+
+Pour lui arrivé à
+
+une compétition alors que tu étais blessé
+
+différence entre la
+
+un certain âge
+
+ou épuisé
+
+négligence et la
+
+c’est plus de du
+
+maltraitance psy
+
+ressort
+
+Item ok
+
+de
+
+l’entraineur
+parce que à 20
+ans l’athlète s’il
+veut s’entrainer
+blessé il va le
+faire
+
+quand
+
+même.
+4b
+
+savait que tu utilisais un produit nuisibles
+
+Clair
+
+Clair
+
+à ta santé (exemples : EPO ou stéroïdes
+
+côté « nuisible
+
+anabolisants)
+
+à ta santé » et
+
+pour
+
+améliorer
+
+tes
+
+performances mais n’est pas intervenu
+4c
+
+Bien aimé le
+
+savait que tu essayais d’atteindre le poids
+
+Item ok
+
+les exemples
+Clair
+
+Clair
+
+idéal en utilisant des méthodes nuisibles
+à ta santé (exemples : jeûne total,
+vomissement ou pilule amaigrissante)
+
+81
+
+Clair
+
+Item ok
+
+pour performer dans ton sport mais n’est
+pas intervenu
+4d
+
+t’a déjà demandé de manquer ou d’arrêter
+
+Clair
+
+Clair
+
+Clair
+
+Item ok
+
+Clair
+
+Clair
+
+Clair
+
+Item ok
+
+l’école ou de mettre tes études en pause
+pour te consacrer à la pratique de ton
+sport
+4e
+
+t’a déjà laissé humilier, menacer ou
+blesser un autre athlète sans intervenir
+
+Bilan négligence : Pensent que tous les items ont leur place.
+
+Expérience
+5
+
+Au moment où cela est arrivé, tu as considéré cela comme … :
+
+5a
+
+normale
+
+5b
+
+nécessaire à la performance
+
+5c
+
+faisant partie de l’entrainement ou de la compétition
+
+Pas du
+
+Moyen-
+
+Tout à
+
+tout
+
+nement
+
+fait
+
+Ne sait pas
+
+Bilan : ils trouvent que c’est bien ! Après que ce n’est pas forcément applicable à tous les items (p.ex le fait
+de se faire snober par son entraineur n’est pas quelque chose de nécessaire à la performance).
+
+6
+
+Au moment où cela est arrivé, est-ce que tu as … :
+Pas du tout
+
+6a
+
+été démotivé à continuer ton sport
+
+6b
+
+moins bien performé
+
+6c
+
+perdu confiance en toi et tes capacités
+
+6d
+
+eu une image négative de ton corps
+
+6e
+
+eu peur
+
+6f
+
+été en colère
+
+6g
+
+été triste
+
+6h
+
+été stressé, anxieux
+
+6i
+
+pensé que c’était de ta faute
+
+6j
+
+ressenti de l’humiliation
+
+82
+
+Moyennement
+
+Fortement
+
+Bilan ; ils trouvent que ce sont tous des items compréhensibles et bien. Par contre, pour le h, ils pensent que
+anxieux peut être difficile à comprendre pour des enfants et que stressé suffit. A1 trouve que c’est exhaustif
+et complet. Pour les échelles, il trouve que c’est facile à se positionner.
+
+BILAN : ils trouvent que c’est intéressant à remplir ! Et ils pensent que ces items peuvent permettre de
+se rendre compte que ce qu’on peut vivre est de la maltraitance et n’est pas normal. Et que ce
+questionnaire concerne tous les athlètes car tout le monde à au moins vécu un truc de cette liste selon
+eux.
+
+83
+
+84
+
+Annexe 12 : exemple du travail de synthèse effectué suite au focus group
+
+Annexe 13 : document Word de la version finale du questionnaire sur l’expérience de la
+maltraitance en sport pour LimeSurvey
+
+TITRE : Questionnaire sur la maltraitance en sport
+Introduction générale :
+Cher.e athlète,
+Nous sommes à la recherche d’athlètes suisses âgés entre 16 et 20 ans pour remplir un
+questionnaire (+/- 30min) portant sur les différentes formes de maltraitance que les athlètes
+peuvent vivre durant leur carrière ainsi que l’expérience qu’ils en font.
+•
+
+Nature du projet et confidentialité : ce projet s’inscrit dans le cadre d’un travail de
+Master en psychologie à l’université de Lausanne sous la responsabilité du Professeur
+Denis Hauw. Les données seront anonymes, conservées de manière sécurisée et traitées
+de façon confidentielle.
+
+•
+
+Participation et bénéfices : ta participation libre et volontaire nous aidera à mieux
+comprendre comment les athlètes expérimentent les violences interpersonnelles subies
+en contexte sportif.
+
+Déroulement de l’étude :
+1. Informations démographiques : dans un premier temps, il sera question de renseigner
+des données démographiques (ex. âge, sport, niveau de compétition) qui resteront
+strictement confidentielles.
+2. Questionnaire sur la maltraitance en sport : dans un deuxième temps, il s’agira de
+répondre à une série de questions portant sur les différentes formes de maltraitance (cà-d, physique, psychologique, sexuelle) pouvant être vécues par les athlètes.
+Des questions ? Nous sommes à ton entière disposition si tu as besoin d’une clarification ou
+d’informations complémentaires. Pour nous contacter, tu peux utiliser les adresses suivantes :
+amandine.franzoni@unil.ch, elise.marsollier@unil.ch, denis.hauw@unil.ch.
+Merci pour ta participation !
+
+85
+
+Consentement
+Je certifie :
+•
+
+Avoir reçu des informations à propos de la présente étude, ses objectifs, son
+déroulement ainsi que les avantages et inconvénients possibles.
+
+•
+
+Avoir compris que je peux décider à tout moment de ne plus participer au projet de
+recherche. Dans ce cas, il suffit d’arrêter le questionnaire.
+
+•
+
+Avoir lu la notice d’information à la page précédente et en accepter le contenu.
+
+•
+
+Avoir compris que toutes les réponses que je vais donner ne permettront pas de
+reconnaître mon identité.
+
+•
+
+Avoir compris que certaines questions posées traiteront de divers types de maltraitances
+vécues dans le contexte sportif.
+
+Je déclare librement de vouloir participer à ce questionnaire : Oui / Non
+
+86
+
+A. Questionnaire socio-démographique
+1.
+
+Indique ton âge
+
+16 ans - 17 ans - 18 ans - 19 ans - 20 ans
+
+2.
+
+Indique le canton dans lequel tu habites
+
+Listes des cantons à dispo
+Une fille - un garçon - les catégories ne me
+
+3.
+
+Indique ton sexe à la naissance
+
+correspondent pas
+
+4.
+
+Indique le sport principal que tu pratiques
+
+Question ouverte
+International,
+
+5.
+
+national,
+
+inter-régional,
+
+Indique ton niveau de pratique ou de compétition régional, autre
+
+As-tu arrêté de pratiquer un ou plusieurs sports pour te concentrer sur
+6.
+
+un sport principal ?
+
+Oui / Non
+
+Participes-tu à des entrainements intensifs et/ou des compétitions plus
+7.
+
+de 8 mois par an ?
+
+Oui/Non
+
+8.
+
+As-tu commencé ton sport avant l'âge de 12 ans ?
+
+Oui/Non
+
+87
+
+B. Maltraitance en sport
+1. Maltraitance physique de la part des pairs
+Intro (inspirée du VTAQ) : Les prochaines questions concernent certains événements de
+maltraitance physique qui ont pu survenir avec un autre athlète ou un groupe d’athlètes
+depuis ton enfance jusqu’à aujourd’hui durant tes entrainements, tes compétitions ou tout
+autre événement en lien avec la pratique de ton sport (ex. réunions, séances vidéo, camps
+d’entrainement, sorties d’équipe).
+Note : on entend par athlète des coéquipier(s), des adversaire(s) ou encore un tout autre athlète
+évoluant dans le contexte sportif,
+« Dans le contexte sportif, un athlète ou un groupe d’athlètes … »
+Catégories – maltraitance Item
+physique
+Maltraitance physique
+
+t’a déjà secoué ou agrippé
+t’a déjà frappé (exemples : avec un objet, gifle, coup de pied, de tête
+ou de poing)
+t’a déjà étouffé ou étranglé
+
+2. Maltraitance physique de la part des adultes de ton réseau sportif
+Intro (inspiré du VTAQ) : Les prochaines questions portent sur des événements de maltraitance
+physique qui ont pu survenir avec les adultes de ton réseau sportif (exemples : entraineur,
+physiothérapeute de l’équipe, médecin de l’équipe, préparateur mental, arbitre) depuis ton
+enfance jusqu’à aujourd’hui durant tes entrainements, tes compétitions ou tout autre
+événement en lien avec ta pratique sportive (ex. déplacements, stage, consultation).
+Note : considère ton parent comme entraineur si ton papa ou ta maman a déjà été ton entraineur.
+« Dans le cadre de ta pratique sportive, un adulte de ton réseau sportif (ex entraineur, médecin
+du sport, physiothérapeute, psychologue du sport, arbitre, etc.) ... »
+Catégories
+
+Item
+
+Maltraitance physique
+
+t’a déjà secoué ou agrippé
+t’a déjà frappé (exemples : avec un objet, gifle, coup de pied, de tête
+ou de poing)
+t’a déjà étouffé ou étranglé
+
+3. Maltraitance physique de la part de tes parents
+88
+
+Intro (VTAQ) : Les prochaines questions portent sur les événements de maltraitance physique
+qui ont pu survenir avec un de tes parents ou un de tes beaux-parents dans le cadre de ta
+pratique sportive depuis ton enfance jusqu’à aujourd’hui.
+« En raison de tes performances sportives ou de tes comportements à l'entrainement ou en
+compétition, un de tes parents ou un de tes beaux-parents … »
+Catégories
+
+Item
+
+Maltraitance physique
+
+t’a déjà secoué ou agrippé
+t’a déjà frappé (exemples : avec un objet, gifle, coup de pied, de tête
+ou de poing)
+t’a déjà étouffé ou étranglé
+
+4. Maltraitance psychologique de la part des pairs
+Les prochaines questions concernent certains événements de maltraitance psychologique qui
+ont pu survenir avec un autre athlète ou un groupe d’athlètes depuis ton enfance jusqu’à
+aujourd’hui durant tes entrainements, tes compétitions ou tout autre événement en lien
+avec la pratique de ton sport (ex. réunions, séances vidéo, camps d’entrainement, sorties
+d’équipe).
+Note : on entend par athlète des coéquipier(s), des adversaire(s) ou encore un tout autre athlète
+évoluant dans le contexte sportif,
+« Dans le contexte sportif, un athlète ou un groupe d’athlètes … »
+Catégories – maltraitance Item
+psychologique
+1. Insuffisance de soutien t'a déjà ignoré volontairement ou s'est déjà montré indifférent à ton
+ou d'affection à l'égard égard (exemples : refuser de te parler ou faire comme si tu n'étais pas
+d'un athlète
+2.
+
+Abus
+
+là)
+verbal
+
+et a déjà critiqué la façon dont tu t'investis dans ton sport (exemples : car
+
+dépréciation d'un athlète
+
+tu as manqué un entrainement ou que tu n'as pas participé à une activité
+en lien avec le club)
+a déjà critiqué ta performance
+a déjà critiqué ton apparence physique ou ton poids
+a déjà lancé ou propagé une rumeur/un mensonge à ton sujet
+t’a déjà ridiculisé, humilié ou insulté
+
+89
+
+3. Terroriser ou menacer t'a déjà menacé d'être exclu (exemples : menacé de ne pas t'inviter aux
+de violence un athlète
+
+fêtes et activités de l'équipe ou du club)
+t'a déjà menacé physiquement mais sans t'attaquer réellement
+
+4.
+
+Comportements
+
+qui t'a déjà encouragé à humilier, menacer ou blesser un autre athlète
+
+favorisent la corruption, t’a déjà demandé ou encourager à limiter tes contacts (exemples : avec
+l'exploitation et l'adoption tes amis ou ta famille) pour t’investir plus dans ton sport
+de
+
+comportements
+
+destructeurs, antisociaux
+ou malsains d'un athlète
+
+5. Maltraitance psychologique de la part des adultes de ton réseau sportif
+Les prochaines questions portent sur des événements de maltraitance psychologique qui ont pu
+survenir avec les adultes de ton réseau sportif (exemples : entraineur, physiothérapeute de
+l’équipe, médecin de l’équipe, préparateur mental, arbitre) depuis ton enfance jusqu’à
+aujourd’hui durant tes entrainements, tes compétitions ou tout autre événement en lien
+avec ta pratique sportive (ex. déplacements, stage, consultation).
+Note : considère ton parent comme entraineur si ton papa ou ta maman a déjà été ton entraineur.
+« Dans le cadre de ta pratique sportive, un adulte de ton réseau sportif (ex. entraineur, médecin
+du sport, physiothérapeute, psychologue du sport, arbitre, etc.) ... »
+Catégories – maltraitance Item
+psychologique
+1. Insuffisance de soutien t'a déjà ignoré volontairement ou s'est déjà montré indifférent à ton
+ou d'affection à l'égard égard (exemples : refuser de te parler ou faire comme si tu n'étais pas
+d'un athlète
+2.
+
+Abus
+
+là)
+verbal
+
+et a déjà critiqué la façon dont tu t'investis dans ton sport (exemples : car
+
+dépréciation d'un athlète
+
+tu as manqué un entrainement ou que tu n'as pas participé à une activité
+en lien avec le club)
+a déjà critiqué ta performance
+a déjà critiqué ton apparence physique ou ton poids
+a déjà lancé ou propagé une rumeur/un mensonge à ton sujet
+t’a déjà ridiculisé, humilié ou insulté
+t'a déjà crié dessus de manière négative
+
+3. Terroriser ou menacer t’a déjà menacé d’être expulsé / exclu (exemples : de l’équipe, du club
+de violence un athlète
+
+ou du gymnase)
+
+90
+
+t'a déjà menacé physiquement mais sans t'attaquer réellement
+4.
+
+Comportements
+
+qui t'a déjà demandé d'humilier, de menacer ou de blesser un autre athlète
+
+favorisent la corruption, t’a déjà demandé ou encourager à limiter tes contacts (exemples : avec
+l'exploitation et l'adoption tes amis ou ta famille) pour t’investir plus dans ton sport
+de
+
+comportements t’a déjà demandé de continuer à t’entrainer ou participer à une
+
+destructeurs, antisociaux compétition alors que tu étais blessé ou épuisé.
+ou malsains d'un athlète
+
+t’a déjà demandé de t’entrainer jusqu’à ce que tu sois épuisé ou que tu
+vomisses
+t’a déjà demandé d’utiliser un produit nuisibles à ta santé (exemples :
+EPO ou stéroïdes anabolisants) pour améliorer tes performances
+t’a déjà demandé d’atteindre le poids idéal pour performer dans ton
+sport
+
+6. Maltraitance psychologique de la part de tes parents
+Les prochaines questions portent sur les événements de maltraitance psychologique qui ont pu
+survenir avec un de tes parents ou un de tes beaux-parents dans le cadre de ta pratique
+sportive depuis ton enfance jusqu’à aujourd’hui.
+« En raison de tes performances sportives ou de tes comportements à l'entrainement ou en
+compétition, un de tes parents ou un de tes beaux-parents … »
+Catégories – maltraitance Item
+psychologique
+1. Insuffisance de soutien t'a déjà ignoré volontairement ou s'est déjà montré indifférent à ton
+ou d'affection à l'égard égard (exemples : refuser de te parler ou faire comme si tu n'étais pas
+d'un athlète
+2.
+
+Abus
+
+là)
+verbal
+
+et a déjà critiqué la façon dont tu t'investis dans ton sport (exemples : car
+
+dépréciation d'un athlète
+
+tu as manqué un entrainement ou que tu n'as pas participé à une activité
+en lien avec le club)
+a déjà critiqué ta performance
+a déjà critiqué ton apparence physique ou ton poids
+a déjà lancé ou propagé une rumeur/un mensonge à ton sujet
+t’a déjà ridiculisé, humilié ou insulté
+t'a déjà crié dessus de manière négative
+
+91
+
+3. Terroriser ou menacer t'a déjà menacé physiquement mais sans t'attaquer réellement
+de violence un athlète
+« Dans le contexte sportif, un de tes parents ou un de tes beaux-parents … »
+Cocher une seule réponse par ligne
+4.
+
+Comportements
+
+qui t'a déjà demandé d'humilier, de menacer ou de blesser un autre athlète
+
+favorisent la corruption, t’a déjà demandé ou encourager à limiter tes contacts (exemples : avec
+l'exploitation et l'adoption tes amis ou ta famille) pour t’investir plus dans ton sport
+de
+
+comportements t’a déjà demandé de continuer à t’entrainer ou participer à une
+
+destructeurs, antisociaux compétition alors que tu étais blessé ou épuisé.
+ou malsains d'un athlète
+
+t’a déjà demandé de t’entrainer jusqu’à ce que tu sois épuisé ou que tu
+vomisses
+t’a déjà demandé d’utiliser un produit nuisibles à ta santé (exemples :
+EPO ou stéroïdes anabolisants) pour améliorer tes performances
+t’a déjà demandé d’atteindre le poids idéal pour performer dans ton
+sport
+
+7. Maltraitance sexuelle de la part des pairs
+Les prochaines questions concernent certains événements de maltraitance sexuelle qui ont pu
+survenir avec un autre athlète ou un groupe d’athlètes depuis ton enfance jusqu’à
+aujourd’hui durant tes entrainements, tes compétitions ou tout autre événement en lien
+avec la pratique de ton sport (ex. réunions, séances vidéo, camps d’entrainement, sorties
+d’équipe).
+Note : on entend par athlète des coéquipier(s), des adversaire(s) ou encore un tout autre athlète
+évoluant dans le contexte sportif,
+« Dans le contexte sportif, un athlète ou un groupe d’athlètes … »
+Catégories – maltraitance Item
+sexuelle
+1.
+
+Harcèlement
+
+d'un athlète
+
+verbal t’a déjà fait des remarques sexuelles à propos de ton corps, de ton
+apparence ou de ta vie privée
+t’a déjà fait des propositions sexuelles que tu as trouvé déplacées
+
+92
+
+2.
+
+Exhibitionnisme t’a déjà montré ses parties intimes ou a fait des actes de nature sexuelle
+
+impliquant un athlète
+
+devant toi sans que tu ne le souhaites (exemples : s’est masturbé ou a
+eu une relation sexuelle devant toi).
+
+3.
+
+Exploitation
+
+d'un a déjà pris des photos intimes ou filmer des moments intimes sans que
+
+athlète (incitation à la tu ne le souhaites (exemples : te photographier alors que tu étais en
+prostitution
+
+ou
+
+à
+
+la
+
+sous vêtement dans les vestiaires)
+
+production de matériel
+pornographique)
+4. Forcer un athlète à nous t’a déjà forcé à le toucher sexuellement (exemples : le caresser ou
+attoucher
+
+embrasser ses parties intimes)
+
+5. Caresser ou toucher t’a déjà embrassé sur la bouche sans que tu ne le souhaites
+sexuellement le corps d'un s’est déjà frotté contre tes parties intimes ou les a déjà caressées avec
+athlète
+
+ses mains ou sa bouche sans que tu ne le souhaites
+
+6. Tentative de relation a déjà tenté d’avoir une relation sexuelle (avec ou sans pénétration)
+sexuelle
+
+avec
+
+ou
+
+sans avec toi sans que tu ne le souhaites
+
+pénétration
+7. Relation sexuelle avec a déjà eu une relation sexuelle avec ou sans pénétration avec toi sans
+ou sans pénétration
+
+que tu ne le souhaites
+
+8. Maltraitance sexuelle de la part des adultes de ton réseau sportif
+Les prochaines questions portent sur des événements de maltraitance psychologique qui ont pu
+survenir avec les adultes de ton réseau sportif (exemples : entraineur, physiothérapeute de
+l’équipe, médecin de l’équipe, préparateur mental, arbitre) depuis ton enfance jusqu’à
+aujourd’hui durant tes entrainements, tes compétitions ou tout autre événement en lien
+avec ta pratique sportive (ex. déplacements, stage, consultation).
+Note : considère ton parent comme entraineur si ton papa ou ta maman a déjà été ton entraineur.
+« Dans le cadre de ta pratique sportive, un adulte de ton réseau sportif (ex. entraineur, médecin
+du sport, physiothérapeute, psychologue du sport, arbitre, etc.) ... »
+Catégories – maltraitance Item
+sexuelle
+1.
+
+Harcèlement
+
+d'un athlète
+
+verbal t’a déjà fait des remarques sexuelles à propos de ton corps, de ton
+apparence ou de ta vie privée
+
+93
+
+t’a déjà envoyé des images ou messages à connotation sexuelle ou
+sexuellement explicites, ou t'a déjà fait des propositions sexuelles
+2.
+
+Exhibitionnisme t’a déjà montré ses parties intimes ou a fait des actes de nature sexuelle
+
+impliquant un athlète
+
+devant toi (exemples : s’est masturbé ou a eu une relation sexuelle
+devant toi).
+
+3.
+
+Exploitation
+
+d'un a déjà pris des photos intimes ou filmer des moments intimes
+
+athlète (incitation à la (exemples : te photographier alors que tu étais en sous vêtement dans
+prostitution
+
+ou
+
+à
+
+la
+
+les vestiaires)
+
+production de matériel
+pornographique)
+4. Forcer un athlète à nous t’a déjà forcé à le toucher sexuellement (exemples : le caresser ou
+attoucher
+
+embrasser ses parties intimes)
+
+5. Caresser ou toucher t’a touché d’une manière qui t’a mis mal à l’aise
+sexuellement le corps d'un t’a déjà embrassé sur la bouche
+athlète
+
+s’est déjà frotté contre tes parties intimes ou les a déjà caressées avec
+ses mains ou sa bouche
+
+6. Tentative de relation a déjà tenté d’avoir une relation sexuelle (avec ou sans pénétration)
+sexuelle
+
+avec
+
+ou
+
+sans avec toi
+
+pénétration
+7. Relation sexuelle avec t'a déjà forcé à avoir une relation sexuelle avec ou sans pénétration
+ou sans pénétration
+
+avec toi
+
+9. Négligence de la part des adultes de ton réseau sportif
+Les prochaines questions portent sur des événements de négligence qui ont pu survenir avec les
+adultes de ton réseau sportif (exemples : entraineur, physiothérapeute de l’équipe, médecin
+de l’équipe, préparateur mental, arbitre) depuis ton enfance jusqu’à aujourd’hui durant tes
+entrainements, tes compétitions ou tout autre événement en lien avec ta pratique sportive
+(ex. déplacements, stage, consultation).
+Note : considère ton parent comme entraineur si ton papa ou ta maman a déjà été ton entraineur.
+« Dans le cadre de ta pratique sportive, un adulte de ton réseau sportif (ex. entraineur, médecin
+du sport, physiothérapeute, psychologue du sport, arbitre, etc.) ... »
+Catégories – négligence
+
+Item
+
+94
+
+Négligence physique
+
+t’a déjà laissé t’entrainer ou participer à une compétition alors que tu
+étais blessé ou épuisé
+savait que tu utilisais un produit nuisibles à ta santé (exemples : EPO
+ou stéroïdes anabolisants) pour améliorer tes performances mais n’est
+pas intervenu
+savait que tu essayais d’atteindre le poids idéal en utilisant des
+méthodes nuisibles à ta santé (exemples : jeûne total, vomissement ou
+pilule amaigrissante) pour performer dans ton sport mais n’est pas
+intervenu
+
+Négligence éducationnelle
+
+t’a déjà demandé de manquer ou d’arrêter l’école ou de mettre tes
+études en pause pour te consacrer à la pratique de ton sport
+
+Négligence émotionnelle
+
+t’a déjà laissé humilier, menacer ou blesser un autre athlète sans
+intervenir
+
+10. Négligence de la part de tes parents
+Les prochaines questions portent sur les événements de négligence qui ont pu survenir avec un
+de tes parents ou un de tes beaux-parents dans le cadre de ta pratique sportive depuis ton
+enfance jusqu’à aujourd’hui.
+« Dans le contexte sportif, un de tes parents ou un de tes beaux-parents … »
+Catégories – négligence
+
+Item
+
+Négligence physique
+
+t’a déjà laissé t’entrainer ou participer à une compétition alors que tu
+étais blessé ou épuisé
+savait que tu utilisais un produit nuisibles à ta santé (exemples : EPO
+ou stéroïdes anabolisants) pour améliorer tes performances mais n’est
+pas intervenu
+savait que tu essayais d’atteindre le poids idéal en utilisant des
+méthodes nuisibles à ta santé (exemples : jeûne total, vomissement ou
+pilule amaigrissante) pour performer dans ton sport mais n’est pas
+intervenu
+
+Négligence éducationnelle
+
+t’a déjà demandé de manquer ou d’arrêter l’école ou de mettre tes
+études en pause pour te consacrer à la pratique de ton sport
+
+Négligence émotionnelle
+
+t’a déjà laissé humilier, menacer ou blesser un autre athlète sans
+intervenir
+
+Items d’expériences :
+95
+
+➔ Pour chaque catégorie où au moins 1 item a été répondu par au moins « 1 fois », alors
+il y aura les 2 questions d’expériences :
+10.
+
+Tu as considéré [introduire le comportement ; exemple = ces menaces] comme :
+Pas du tout, moyennement, tout à fait,
+
+normale
+
+10.a
+
+NSP
+Pas du tout, moyennement, tout à fait,
+
+nécessaire à la performance
+
+10.b
+
+NSP
+
+faisant partie de l'entrainement ou de la Pas du tout, moyennement, tout à fait,
+10.c
+
+compétition
+
+NSP
+
+Suite à [introduire le comportement ; exemple = ces menaces] est-ce que tu as ... :
+
+11.
+
+Cocher une seule réponse par ligne
+
+11.a
+
+été démotivé à continuer ton sport
+
+pas du tout, moyennement, fortement
+
+11.b
+
+moins bien performé
+
+pas du tout, moyennement, fortement
+
+11.c
+
+perdu confiance en toi et tes capacités
+
+pas du tout, moyennement, fortement
+
+11.d
+
+eu une image négative de ton corps
+
+pas du tout, moyennement, fortement
+
+11.e
+
+eu peur
+
+pas du tout, moyennement, fortement
+
+11.f
+
+été en colère
+
+pas du tout, moyennement, fortement
+
+11.g
+
+été triste
+
+pas du tout, moyennement, fortement
+
+11.h
+
+été stressé
+
+pas du tout, moyennement, fortement
+
+11.i
+
+pensé que c'était de ta faute
+
+pas du tout, moyennement, fortement
+
+11.j
+
+ressenti de l'humiliation
+
+pas du tout, moyennement, fortement
+Item auteur :
+
+➔ Dans la sous-échelle adulte du réseau sportif-athlète, pour chaque question où au moins vécu
+1 fois → question auteur :
+L'entraineur - l'entraineur assistant - le préparateur
+La personne (ou les personnes) physique de l'équipe - l'équipe médical (exemples :
+qui [introduire le comportement] physiothérapeute, osthéopathe, médecin) - le psychologue
+1.
+
+était :
+
+du sport ou le préparateur mental de l'équipe - l'arbitre -
+
+Plusieurs réponses possibles
+
+autre
+96
+
+Exemple
+La personne (ou les personnes) qui t’a menacé était :
+
+97
+
+Annexe 14 : Notice d’information pour le participant
+
+98
+
+99
+
+Annexe 15 : flyer pour les athlètes
+
+100
+
+Annexe 16 : attestation de la commission d’éthique
+
+101
+
+102
+
+Annexe 17 : tableau 11 avec l’ensemble des données
+Tableau 11’
+Fréquence des différentes interprétations de maltraitance sexuelle en fonction de la catégorie
+de comportements
+Échelle
+pairs-athlète
+adulte du réseau
+sportif-athlète
+Non
+Oui
+Non
+Oui
+Catégorie 1
+N(%)=8(100.0)
+N(%)=3(100.0)
+Normal
+6(75.0)
+2(25.0)
+3(100.0)
+0(0.0)
+Nécessaire à
+7(87.5)
+1(12.5)
+3(100.0)
+0(0.0)
+la performance
+Faisant partie de
+8(100.0)
+0(0.0)
+3(100.0)
+0(0.0)
+l’entrainement ou
+la compétition
+Catégorie 2
+N(%)=1(100.0)
+Normal
+1(100.0)
+0(0.0)
+Nécessaire à
+1(100.0)
+0(0.0)
+la performance
+Faisant partie de
+1(100.0)
+0(0.0)
+l’entrainement ou
+la compétition
+
+N(%)=0(100.0)
+
+Catégorie 3
+N(%)=3(100.0)
+Normal
+3(100.0)
+0(0.0)
+Nécessaire à
+3(100.0)
+0(0.0)
+la performance
+Faisant partie de
+3(100.0)
+0(0.0)
+l’entrainement ou
+la compétition
+
+N(%)=0(100.0)
+
+Catégorie 4
+N(%)=1(100.0)
+Normal
+1(100.0)
+0(0.0)
+Nécessaire à
+1(100.0)
+0(0.0)
+la performance
+Faisant partie de
+1(100.0)
+0(0.0)
+l’entrainement ou
+la compétition
+
+N(%)=0(100.0)
+
+Catégorie 5
+Normal
+
+N(%)=2(100.0)
+2(100.0)
+0(0.0)
+103
+
+N(%)=3(100.0)
+2(66.7)
+1(33.3)
+
+Nécessaire à
+2(100.0)
+la performance
+Faisant partie de
+2(100.0)
+l’entrainement ou
+la compétition
+
+0(0.0)
+
+3(100.0)
+
+0(0.0)
+
+0(0.0)
+
+2(66.7)
+
+1(33.3)
+
+Catégorie 6
+N(%)=2(100.0)
+Normal
+2(100.0)
+0(0.0)
+Nécessaire à
+2(100.0)
+0(0.0)
+la performance
+Faisant partie de
+2(100.0)
+0(0.0)
+l’entrainement ou
+la compétition
+
+N(%)=0(100.0)
+
+Catégorie 7
+N(%)=1(100.0)
+N(%)=0(100.0)
+Normal
+1(100.0)
+0(0.0)
+Nécessaire à
+1(100.0)
+0(0.0)
+la performance
+Faisant partie de
+1(100.0)
+0(0.0)
+l’entrainement ou
+la compétition
+Note : oui = pas du tout, non = moyennement et tout à fait
+La fréquence cumulée peut ne pas atteindre 100 en raison de la modalité « ne sait pas » non
+représentée sur ce tableau
+
+104
+
+Annexe 18 : tableau 12 avec l’ensemble des données
+Tableau 12’
+Fréquence des différentes conséquences de maltraitance sexuelle
+Échelle
+
+adulte du réseau
+sportif-athlète
+Non
+
+parent-athlète
+Oui
+
+Catégorie 1
+N(%)=8(100.0)
+Humiliation
+7(87.5)
+1(12.5)
+Culpabilité
+7(87.5)
+1(12.5)
+Stress
+6(75.0)
+2(25.0)
+Tristesse
+6(75.0)
+2(25.0)
+Colère
+5(62.5)
+3(37.5)
+Peur
+4(50.0)
+4(50.0)
+Image négative
+5(62.5)
+3(37.5)
+du corps
+Perte de confiance
+4(50.0)
+4(50.0)
+en soi et ses capacités
+Moins bonne
+7(87.5)
+1(12.5)
+performance
+Démotivation
+4(50.0)
+4(50.0)
+Catégorie 2
+Humiliation
+0(0.0)
+Culpabilité
+0(0.0)
+Stress
+0(0.0)
+Tristesse
+0(0.0)
+Colère
+0(0.0)
+Peur
+0(0.0)
+Image négative
+0(0.0)
+du corps
+Perte de confiance
+0(0.0)
+en soi et ses capacités
+Moins bonne
+0(0.0)
+performance
+Démotivation
+0(0.0)
+
+N(%)=1(100.0)
+1(100.0)
+1(100.0)
+1(100.0)
+1(100.0)
+1(100.0)
+1(100.0)
+1(100.0)
+
+Catégorie 3
+Humiliation
+Culpabilité
+Stress
+Tristesse
+
+N(%)=3(100.0)
+1(33.3)
+1(33.3)
+2(66.7)
+2(66.7)
+105
+
+2(66.7)
+2(66.7)
+1(33.3)
+1(33.3)
+
+Non
+Oui
+N(%)=14(100.0)
+2(66.7)
+1(33.3)
+2(66.7)
+1(33.3)
+3(100.0)
+0(0.0)
+3(100.0)
+0(0.0)
+3(100.0)
+0(0.0)
+1(33.3)
+2(66.7)
+3(100.0)
+0(0.0)
+2(66.7)
+
+1(33.3)
+
+2(66.7)
+
+1(33.3)
+
+2(66.7)
+
+1(33.3)
+
+N(%)=0(100.0)
+
+1(100.0)
+1(100.0)
+1(100.0)
+N(%)=0(100.0)
+
+Colère
+2(66.7)
+Peur
+0(0.0)
+Image négative
+1(33.3)
+du corps
+Perte de confiance
+2(66.7)
+en soi et ses capacités
+Moins bonne
+2(66.7)
+performance
+Démotivation
+1(33.3)
+
+1(33.3)
+3(100.0)
+2(66.7)
+
+Catégorie 4
+Humiliation
+0(0.0)
+Culpabilité
+0(0.0)
+Stress
+0(0.0)
+Tristesse
+0(0.0)
+Colère
+0(0.0)
+Peur
+0(0.0)
+Image négative
+0(0.0)
+du corps
+Perte de confiance
+0(0.0)
+en soi et ses capacités
+Moins bonne
+0(0.0)
+performance
+Démotivation
+0(0.0)
+
+N(%)=1(100.0)
+1(100.0)
+1(100.0)
+1(100.0)
+1(100.0)
+1(100.0)
+1(100.0)
+1(100.0)
+
+Catégorie 5
+Humiliation
+1(50.0)
+Culpabilité
+1(50.0)
+Stress
+1(50.0)
+Tristesse
+1(50.0)
+Colère
+1(50.0)
+Peur
+1(50.0)
+Image négative
+1(50.0)
+du corps
+Perte de confiance
+1(50.0)
+en soi et ses capacités
+Moins bonne
+1(50.0)
+performance
+Démotivation
+1(50.0)
+
+N(%)=2(100.0)
+1(50.0)
+1(50.0)
+1(50.0)
+1(50.0)
+1(50.0)
+1(50.0)
+1(50.0)
+
+Catégorie 6
+Humiliation
+Culpabilité
+Stress
+
+N(%)=2(100.0)
+1(50.0)
+1(50.0)
+1(50.0)
+
+1(50.0)
+1(50.0)
+1(50.0)
+
+1(33.3)
+1(33.3)
+2(66.7)
+N(%)=0(100.0)
+
+1(100.0)
+1(100.0)
+1(100.0)
+N(%)=3(100.0)
+2(66.7)
+1(33.3)
+2(66.7)
+1(33.3)
+1(33.3)
+2(66.7)
+1(33.3)
+2(66.7)
+1(33.3)
+2(66.7)
+1(33.3)
+2(66.7)
+1(33.3)
+2(66.7)
+
+1(50.0)
+
+1(33.3)
+
+2(66.7)
+
+1(50.0)
+
+2(66.7)
+
+1(33.3)
+
+1(50.0)
+
+1(33.3)
+
+2(66.7)
+
+106
+
+N(%)=0(100.0)
+
+Tristesse
+1(50.0)
+Colère
+1(50.0)
+Peur
+1(50.0)
+Image négative
+1(50.0)
+du corps
+Perte de confiance
+1(50.0)
+en soi et ses capacités
+Moins bonne
+1(50.0)
+performance
+Démotivation
+1(50.0)
+
+1(50.0)
+1(50.0)
+1(50.0)
+1(50.0)
+1(50.0)
+1(50.0)
+1(50.0)
+
+Catégorie 7
+N(%)=1(100.0)
+Humiliation
+0(0.0)
+1(100.0)
+Culpabilité
+0(0.0)
+1(100.0)
+Stress
+0(0.0)
+1(100.0)
+Tristesse
+0(0.0)
+1(100.0)
+Colère
+0(0.0)
+1(100.0)
+Peur
+0(0.0)
+1(100.0)
+Image négative
+0(0.0)
+1(100.0)
+du corps
+Perte de confiance
+0(0.0)
+1(100.0)
+en soi et ses capacités
+Moins bonne
+0(0.0)
+1(100.0)
+performance
+Démotivation
+0(0.0)
+1(100.0)
+Note : non = pas du tout, oui = moyennement et fortement
+
+107
+
+N(%)=0(100.0)
+
+Annexe 19 : tableau 13 avec l’ensemble des données
+Tableau 13’
+Fréquence des différentes interprétations de négligence en fonction de la catégorie de
+comportements
+Échelle
+
+adulte du réseau sportif-athlète
+Non
+Oui
+Négligence éducationnelle
+N(%)=0(100.0)
+Normal
+Nécessaire à
+la performance
+Faisant partie de
+l’entrainement ou
+la compétition
+
+parent-athlète
+Non
+Oui
+N(%)=1(100.0)
+0(0.0)
+1(100.0)
+0(0.0)
+1(100.0)
+0(0.0)
+
+1(100.0)
+
+Négligence physique
+N(%)=15(100.0)
+N(%)=8(100.0)
+Normal
+4(26.7)
+10(66.7)
+1(12.5)
+5(62.5)
+Nécessaire à
+5(33.3)
+8(53.3)
+2(50.0)
+2(25.0)
+la performance
+Faisant partie de
+3(20.0)
+9(60.0)
+1(12.5)
+6(75.0)
+l’entrainement ou
+la compétition
+Note : oui = pas du tout, non = moyennement et tout à fait
+La fréquence cumulée peut ne pas atteindre 100 en raison de la modalité « ne sait pas » non
+représentée sur ce tableau
+
+108
+
+Annexe 20 : tableau 14 avec l’ensemble des données
+Tableau 14’
+Fréquence des différentes conséquences de négligence en fonction de la catégorie de
+comportements
+Échelle
+
+adulte du réseau sportif-athlète
+Non
+Oui
+Négligence éducationnelle
+N(%)=0(100.0)
+Humiliation
+Culpabilité
+Stress
+Tristesse
+Colère
+Peur
+Image négative
+du corps
+Perte de confiance
+en soi et ses capacités
+Moins bonne
+performance
+Démotivation
+
+parent-athlète
+Non
+Oui
+N(%)=1(100.0)
+0(0.0)
+1(100.0)
+0(0.0)
+1(100.0)
+0(0.0)
+1(100.0)
+0(0.0)
+1(100.0)
+0(0.0)
+1(100.0)
+0(0.0)
+1(100.0)
+1(100.0)
+0(0.0)
+
+Négligence physique
+Humiliation
+Culpabilité
+Stress
+Tristesse
+Colère
+Peur
+Image négative
+du corps
+Perte de confiance
+en soi et ses capacités
+Moins bonne
+performance
+Démotivation
+
+N(%)=6(100.0)
+8(100.0)
+0(0.0)
+6(75.0)
+2(25.0)
+8(100.0)
+0(0.0)
+8(100.0)
+0(0.0)
+8(100.0)
+0(0.0)
+8(100.0)
+0(0.0)
+8(100.0)
+0(0.0)
+
+N(%)=15(100.0)
+14(93.3)
+1(6.7)
+8(53.3)
+7(46.7)
+13(86.7)
+2(13.3)
+14(93.3)
+1(6.7)
+13(86.7)
+2(13.3)
+13(86.7)
+2(13.3)
+12(80.0)
+3(20.0)
+
+0(0.0)
+
+1(100.0)
+
+0(0.0)
+
+1(100.0)
+
+10(66.7)
+
+5(33.3)
+
+6(75.0)
+
+2(25.0)
+
+12(80.0)
+
+3(20.0)
+
+6(75.0)
+
+2(25.0)
+
+14(93.3)
+
+1(6.7)
+
+7(87.5)
+
+1(12.5)
+
+Note : oui = pas du tout, non = moyennement et fortement
+
+109
+
+

@@ -1,0 +1,104 @@
+---
+title: "Théo Valeurs Manquantes"
+date: "2023-09-06"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    keep_tex: yes
+geometry: margin=0.5cm
+---
+
+# Le but est 
+
+- un aperçu de leur quantité
+- une discussion des causes
+- peut-être! refaire la conjonction des 4 fichiers Excel
+
+
+# Franzoni
+
+- p. 30 
+
+*Tous les « pas de réponse » ont été inscrits comme valeur manquante dans le logiciel statistique.* - nous également
+
+- p.31 
+
+(*Au total, 165 participants ont commencé à répondre au questionnaire, mais 112 ne l’ont pas complété en entier. Parmi ces 112 personnes, 55 n’ont pas commencé la partie sociodémographique, cinq se sont arrêtés après la partie sociodémographique et n’ont pas commencé la section relative à la maltraitance en sport, et sept personnes n’ont pas complété les neuf items de maltraitance physique. Ces 67 personnes ont été exclues des analyses. Parmi ceux ayant commencé la partie concernant la maltraitance en sport, tous ont répondu aux questions sur la maltraitance physique (n=98), 58 répondants (59%) ont rempli les items de maltraitance psychologique, 55 la maltraitance sexuelle (56%) et 53 la négligence (54%). En somme, nous constatons que le nombre de répondants diminuait considérablement au fil du questionnaire.* )- pas pertinant pour nous:
+
+~1500 ont commencé, 781 ont fini - on ne travaille que sur ça
+
+
+# Valeurs Manquantes dans nos Résultats
+
+je vais comparer avec tableaux Théo, email 6.9. 
+
+
+## Question 1 et 2
+
+Seulement 1 valeur manque (ou aucune), toujours pour ```catégorie age``` :
+
+- MPS 1/335
+- PSY 1/706
+- NEG 1/335
+- SEX 0
+
+
+## Question 3
+
+- quelques textes (pas 1...5) étaient recodées comme NA
+- autres (exemples, toujours N=781): 
+
+
+### PSY pairs
+
+- catégorie 1: 381
+- catégorie 2: 176
+- catégorie 3: 655
+- catégorie 4: 604
+
+
+### SEX pairs
+
+- catégorie 1: 656 
+- catégorie 2: 656
+- catégorie 3: 758
+- catégorie 4: 772
+- catégorie 5: 762
+- catégorie 6: 771
+- catégorie 7: 776
+
+Mais:
+
+- dans le questionnaire, on ne peut pas procéder sans avoir fini avant 
+- réponse negative => pas questions d'interprétation/conséquence/auteur suivant, pourrait être la cause
+- oui => questions d'interprétation
+- alors pourquoi Théo a des NA dans ces tableaux?
+
+
+## Question 4
+
+- MPS, PSY, SEX : rien ne manque
+- NEG 23/166 adultes que dans l'analyse auteurs détaillées (je comprendrai mieux)
+
+
+# Valeurs Manquantes par la Conjonction des 4 Fichiers Excel
+
+- y en a !
+- mais combien ?
+
+Je propose: 
+
+- je contrôlerai quelques cas avec beaucoup de Valeurs Manquantes dans nos Résultats
+- on discute
+- seulement das le cas beaucoup étaient perdus, je ferai une nouvelle conjonction
+
+
+# Question Théo
+
+- Question 3 = 781
+- Question 1 + 2 = 778 particiants - pourquoi il manquent ces 3?
+
+# Envoi Théo aux Profs 15.9.

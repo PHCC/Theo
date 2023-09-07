@@ -1,0 +1,259 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=0.5cm]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Théo Valeurs Manquantes},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Théo Valeurs Manquantes}
+\author{}
+\date{\vspace{-2.5em}2023-09-06}
+
+\begin{document}
+\maketitle
+
+\hypertarget{le-but-est}{%
+\section{Le but est}\label{le-but-est}}
+
+\begin{itemize}
+\tightlist
+\item
+  un aperçu de leur quantité
+\item
+  une discussion des causes
+\item
+  peut-être! refaire la conjonction des 4 fichiers Excel
+\end{itemize}
+
+\hypertarget{franzoni}{%
+\section{Franzoni}\label{franzoni}}
+
+\begin{itemize}
+\tightlist
+\item
+  p.~30
+\end{itemize}
+
+\emph{Tous les « pas de réponse » ont été inscrits comme valeur
+manquante dans le logiciel statistique.} - nous également
+
+\begin{itemize}
+\tightlist
+\item
+  p.31
+\end{itemize}
+
+(\emph{Au total, 165 participants ont commencé à répondre au
+questionnaire, mais 112 ne l'ont pas complété en entier. Parmi ces 112
+personnes, 55 n'ont pas commencé la partie sociodémographique, cinq se
+sont arrêtés après la partie sociodémographique et n'ont pas commencé la
+section relative à la maltraitance en sport, et sept personnes n'ont pas
+complété les neuf items de maltraitance physique. Ces 67 personnes ont
+été exclues des analyses. Parmi ceux ayant commencé la partie concernant
+la maltraitance en sport, tous ont répondu aux questions sur la
+maltraitance physique (n=98), 58 répondants (59\%) ont rempli les items
+de maltraitance psychologique, 55 la maltraitance sexuelle (56\%) et 53
+la négligence (54\%). En somme, nous constatons que le nombre de
+répondants diminuait considérablement au fil du questionnaire.} )- pas
+pertinant pour nous:
+
+\textasciitilde1500 ont commencé, 781 ont fini - on ne travaille que sur
+ça
+
+\hypertarget{valeurs-manquantes-dans-nos-ruxe9sultats}{%
+\section{Valeurs Manquantes dans nos
+Résultats}\label{valeurs-manquantes-dans-nos-ruxe9sultats}}
+
+je vais comparer avec tableaux Théo, email 6.9.
+
+\hypertarget{question-1-et-2}{%
+\subsection{Question 1 et 2}\label{question-1-et-2}}
+
+Seulement 1 valeur manque (ou aucune), toujours pour
+\texttt{catégorie\ age} :
+
+\begin{itemize}
+\tightlist
+\item
+  MPS 1/335
+\item
+  PSY 1/706
+\item
+  NEG 1/335
+\item
+  SEX 0
+\end{itemize}
+
+\hypertarget{question-3}{%
+\subsection{Question 3}\label{question-3}}
+
+\begin{itemize}
+\tightlist
+\item
+  quelques textes (pas 1\ldots5) étaient recodées comme NA
+\item
+  autres (exemples, toujours N=781):
+\end{itemize}
+
+\hypertarget{psy-pairs}{%
+\subsubsection{PSY pairs}\label{psy-pairs}}
+
+\begin{itemize}
+\tightlist
+\item
+  catégorie 1: 381
+\item
+  catégorie 2: 176
+\item
+  catégorie 3: 655
+\item
+  catégorie 4: 604
+\end{itemize}
+
+\hypertarget{sex-pairs}{%
+\subsubsection{SEX pairs}\label{sex-pairs}}
+
+\begin{itemize}
+\tightlist
+\item
+  catégorie 1: 656
+\item
+  catégorie 2: 656
+\item
+  catégorie 3: 758
+\item
+  catégorie 4: 772
+\item
+  catégorie 5: 762
+\item
+  catégorie 6: 771
+\item
+  catégorie 7: 776
+\end{itemize}
+
+Mais:
+
+\begin{itemize}
+\tightlist
+\item
+  dans le questionnaire, on ne peut pas procéder sans avoir fini avant
+\item
+  réponse negative =\textgreater{} pas questions
+  d'interprétation/conséquence/auteur suivant, pourrait être la cause
+\item
+  oui =\textgreater{} questions d'interprétation
+\item
+  alors pourquoi Théo a des NA dans ces tableaux?
+\end{itemize}
+
+\hypertarget{question-4}{%
+\subsection{Question 4}\label{question-4}}
+
+\begin{itemize}
+\tightlist
+\item
+  MPS, PSY, SEX : rien ne manque
+\item
+  NEG 23/166 adultes que dans l'analyse auteurs détaillées (je
+  comprendrai mieux)
+\end{itemize}
+
+\hypertarget{valeurs-manquantes-par-la-conjonction-des-4-fichiers-excel}{%
+\section{Valeurs Manquantes par la Conjonction des 4 Fichiers
+Excel}\label{valeurs-manquantes-par-la-conjonction-des-4-fichiers-excel}}
+
+\begin{itemize}
+\tightlist
+\item
+  y en a !
+\item
+  mais combien ?
+\end{itemize}
+
+Je propose:
+
+\begin{itemize}
+\tightlist
+\item
+  je contrôlerai quelques cas avec beaucoup de Valeurs Manquantes dans
+  nos Résultats
+\item
+  on discute
+\item
+  seulement das le cas beaucoup étaient perdus, je ferai une nouvelle
+  conjonction
+\end{itemize}
+
+\hypertarget{question-thuxe9o}{%
+\section{Question Théo}\label{question-thuxe9o}}
+
+\begin{itemize}
+\tightlist
+\item
+  Question 3 = 781
+\item
+  Question 1 + 2 = 778 particiants - pourquoi il manquent ces 3?
+\end{itemize}
+
+\hypertarget{envoi-thuxe9o-aux-profs-15.9.}{%
+\section{Envoi Théo aux Profs
+15.9.}\label{envoi-thuxe9o-aux-profs-15.9.}}
+
+\end{document}
