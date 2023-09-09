@@ -1,3 +1,26 @@
+Salut Théo,
+
+concernant ta question pourquoi on a 781 participants pour question 3 mais 778 pour question 1 et 2:
+
+(Les 781 je peux facilement calculer des N et manquants, mais les 778 tu as d'où?
+En tout cas)
+
+ il y avait là un problème, des noms un peu bizarres dans 3 champs du fichier QEMS_all.omv qui ont inclus un renvoi à la ligne (line break), quelque chose comme
+
+"danse classique
+et aussi moderne"
+
+Dans la conversion dans un excel, cela a donné 3 lignes additionnelles, du coup 3 entrées de plus qui sont comptés comme participants. Y en a 778 participants pas 781, tu peux confirmer ça? 
+
+J'avais corrigé cela et fait question 1 et 2 avec les bonnes donnés. Pour la question 3 je ne pouvais pas travailler avec l'Excel corrigé mais plutôt de nouveau avec le fichier jamovi que j'ai converti dans un fichier RData et je pensais de ne pas avoir ce problème ainsi - mais apparemment je l'avais également.
+
+Ce problème est plutôt petit en comparaison avec les autres NA et j'aimerais le résoudre après, ça va?
+
+Bonne soirée,
+Christoph
+
+----------------------------------------------------------------------------------------
+
 Bonsoir Théo,
 
 j'ai fait question 3 comme discuté par skype et whattsapp.
@@ -10,8 +33,6 @@ Pour mieux évaluer les analyses que nous avons faites (et peut-être améliorer
 
 Bonne dimanche,
 Christoph
-
-
 
 ----------------------------------------------------------------------------------------
 
