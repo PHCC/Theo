@@ -1,5 +1,5 @@
 ---
-title: "Théo3count.Rmd Question 3 Count, pas Sum"
+title: "Théo3XL-count.Rmd Question 3 Count, pas Sum; Données de l'Excel"
 author: "Christoph"
 date: "2023-08-30..09-09"
 output:
@@ -29,9 +29,13 @@ library(dplyr)                                        # if_else etc.
 ## Lire 
 
 ```{r, warning=FALSE}
-setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
+setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo/new_donnees_colnames")
 
 #TOUT <- read.xlsx("QEMS_all-corr.xlsx", sheetName ="sheet1")  # java.lang.OutOfMemoryError: GC overhead limit exceeded
+TOUT <- read.xlsx("new_polished_itemname-CHP2.xlsx", sheetName ="Sheet1")[1:506]  # colonnes vides à la fin 
+```
+
+```
 load("QEMS_all.RData")
 #View(dataset)
 
@@ -39,11 +43,10 @@ traduction <- read.xlsx("new_donnees_colnames/new_polished_itemname:lignes1,2.xl
 #View(traduction)
 
 #TOUT <- read.xlsx("new_polished_itemname-CHP.xlsx", sheetName ="Sheet1")[1:506]  # colonnes vides à la fin
-```
+
 
 traduire noms des colonnes
 
-```{r}
 TOUT <- data.frame(dataset)  # deep copy
 
 for (i in 1:length(TOUT)) {
@@ -109,7 +112,7 @@ PSY <- filter(TOUT, PSY==1)
 
 #### Catégorie 1
 
-```
+```{r}
 PSY$Mpsy_paire_normalisation
 PSY$Mpsy_paire_necessite
 PSY$Mpsy_paire_partie_entrainement
@@ -131,7 +134,7 @@ Qu3nouv <- function(df, vec){
   for (i in 1:length(vec)) {
     vecFT[i] <- paste(vec[i],"FT",sep="")   # column names "Mpsy_paire_normalisationFT" etc.:
                                           # PSY["Mpsy_paire_normalisation"]       > 1 etc.
-    df[vecFT[i]] <- (df[vec[i]] > 1)      # "pas du tout" ou "si" ?
+    df[vecFT[i]] <- (df[vec[i]] > 0)      # "pas du tout" ou "si" ?
   }
 
   descriptives(df, eval(vecFT),
@@ -143,9 +146,11 @@ Qu3nouv <- function(df, vec){
 Qu3nouv(PSY, c("Mpsy_paire_normalisation","Mpsy_paire_necessite","Mpsy_paire_partie_entrainement"))
 ```
 
-Ta discussion mais avec les bons chiffres:
+La vielle discussion à partir du fichier .omv::
 
 Parmi les athlètes ayant subi une maltraitance psychologique par d'autres athlètes, la catégorie  "Insuffisance de soutien ou d'affection à l'égard d'un athlète" (catégorie 1) démontre que 73% ont considéré cela comme faisant partie, 58% ont considéré ça comme normal et 85% ont considéré ça comme nécessaire à la performance. 
+
+Ces chiffres ont changé, mais sont toujour sembables. Probablement dans toutes les colonnes du Jamovi il manqueaient des données.
 
 
 ```{r}
@@ -157,7 +162,7 @@ vec <- c("Mpsy_paire_démotivation","Mpsy_paire_moins_performe","Mpsy_paire_perd
 Qu3nouv(PSY, vec)
 ```
 
-Ta discussion adaptée aux bons chiffres:
+La vielle discussion était:
 
 Parmi les athlètes ayant subi une maltraitance psychologique par d'autres athlètes, la catégorie  "Insuffisance de soutien ou d'affection à l'égard d'un athlète" (catégorie 1) démontre que "peur" et  "image corps" sont les conséquence les plus expérimentées à 
 95.5%

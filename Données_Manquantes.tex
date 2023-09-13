@@ -1,0 +1,127 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=0.5cm]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Théo Donées Manquantes},
+  pdfauthor={Christoph},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Théo Donées Manquantes}
+\author{Christoph}
+\date{2023-09-10,11}
+
+\begin{document}
+\maketitle
+
+\begin{itemize}
+\tightlist
+\item
+  j'ai des fichiers avec le nombre (correct je suppose) de 778
+  participants, et autres avec les 3 factices
+\item
+  j'ai des fichiers qui donnent ces beaucoup des NA pour question 3, et
+  autres non
+\end{itemize}
+
+Exemple Maltraitance Psychologique Parents Catégorie 1: Normalisation,
+Faisant Partie, Nécessaire
+
+\begin{verbatim}
+Fichier                               Colonnes  sont vides?  Nombre de Participants  utilisé pour
+
+1A)
+new_polished_itemname.xlsx            HG HH HI  pas vides    778  
+4 Excel étaient compilés dans 1 Excel
+     
+new_polished_itemname-CHP2.xlsx       HG HH HI  pas vides    778                     Questions 1, 2, 4
+(quelques adaptations de ma part)
+
+1B)
+donnée-QEMS-excel.xlsx                HB HC HD  pas vides    781
+(c'était quoi?)
+
+donnée-QEMS-excel-CHP.xlsx            HB HC HD  pas vides    781  
+(quelques adaptations de ma part)
+
+1C)
+22janv2023-QEMS.xlsx                  HT HU HV  vides        ?-des lignes vides!
+(c'était quoi?)
+
+QEMS_data_S.xlsx                      HT HU HV  pas vides
+(le plus grand exemple des 4 petits)
+4 Excel étaient compilés dans 1 jamovi
+
+QEMS_all.omv                                    vides        781                     Question 3     
+contient des entrées N/A explicites
+        
+QEMS_all-corr.xlsx                    HU HV HW  vides        781
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi})}
+\tightlist
+\item
+  tester question 3 encore une fois avec les fichiers 1A), 1B), 1C) -
+  jusqu'au 15/16.9.
+\item
+  si ne fonctionne pas, je prends le 4 Excel - après le 16.9.
+\end{enumerate}
+
+\end{document}

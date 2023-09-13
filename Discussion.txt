@@ -1,5 +1,19 @@
 Salut Théo,
 
+Joint encore mon texte d'hier.
+
+J'ai essayé question 3 avec mon meilleur fichier Excel (778 participants et *probablement* pas de données manquantes). J'ai me suis vite souvenu du problème: Il y a beaucoup des "N/A". Â l'instant je crois que cela est anodin et simplement représente des cases vides.
+
+Ici, les réponses commencent à 0 (pas 1), j'ai changé et je suis en train d'analyser tout.
+J'aurais de résultats le 15. Puis il me faut forcement comparer un peu (pas tout) avec les 4 Excel. Ainsi je serai sur que tout est correct, peut être après le 15.
+
+À bientôt,
+Christoph
+
+----------------------------------------------------------------------------------------
+
+Salut Théo,
+
 concernant ta question pourquoi on a 781 participants pour question 3 mais 778 pour question 1 et 2:
 
 (Les 781 je peux facilement calculer des N et manquants, mais les 778 tu as d'où?

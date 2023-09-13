@@ -1,0 +1,43 @@
+---
+title: "Théo Donées Manquantes"
+author: "Christoph"
+date: "2023-09-10,11.."
+output:
+  pdf_document:
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    keep_tex: yes
+geometry: margin=0.5cm
+---
+
+- j'ai des fichiers avec le nombre (correct je suppose) de 778 participants, et autres avec les 3 factices
+- j'ai des fichiers qui donnent ces beaucoup des NA pour question 3, et autres non
+
+Exemple Maltraitance Psychologique Parents Catégorie 1: Normalisation, Faisant Partie, Nécessaire 
+
+```
+Fichier                               Colonnes  sont vides?  Nombre de Participants  utilisé pour
+
+new_polished_itemname.xlsx            HG HH HI  pas vides    778          
+new_polished_itemname-CHP2.xlsx       HG HH HI  pas vides    778                     Questions 1, 2, 4
+(quelques adaptations de ma part)
+
+donnée-QEMS-excel.xlsx                HB HC HD  pas vides    781
+donnée-QEMS-excel-CHP.xlsx            HB HC HD  pas vides    781  
+(quelques adaptations de ma part)
+
+22janv2023-QEMS.xlsx		      HT HU HV  vides        ?-des lignes vides!
+(c'était quoi?)
+
+QEMS_data_S.xlsx                      HT HU HV  pas vides
+(le plus grand exemple des 4 petits)
+
+QEMS_all.omv                                    !vides!      781               Question 3     
+contient des entrées N/A explicites
+        
+QEMS_all-corr.xlsx		      HU HV HW  vides        781
+```
+
+
+	
