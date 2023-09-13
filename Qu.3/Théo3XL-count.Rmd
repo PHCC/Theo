@@ -112,7 +112,8 @@ PSY <- filter(TOUT, PSY==1)
 
 #### Catégorie 1
 
-```{r}
+```
+{r}
 PSY$Mpsy_paire_normalisation
 PSY$Mpsy_paire_necessite
 PSY$Mpsy_paire_partie_entrainement
@@ -306,18 +307,19 @@ vec <- c( "mpsy_adulte_demotive_sport","Mpsy_adulte_moins_perf","mpsy_adulte_per
 Qu3nouv(PSY, vec)
 ```
 
+
 ### Parents: 4 Catégories
 
 #### Catégorie 1
 
+"Mpsy_parent_ignorer_item1"
+
 ```{r}
-vec <- c("Tu.as.considéré.cette.ignorance.indifférence.comme....normale...1",  # - = 229-231
-         "Tu.as.considéré.cette.ignorance.indifférence.comme....nécessair.1",
-         "Tu.as.considéré.cette.ignorance.indifférence.comme....faisant.p.1")
+vec <- c("mpsy_parent_demotiver_sport",
+"mpsy_parent_moins_perf",
+"Mpsy_parent_perdu_confiance")
 Qu3nouv(PSY, vec)
 ```
-
-Les entrées sount toutes NA
 
 ```{r}
 vec <- c("mpsy_parent_demotiver_sport","mpsy_parent_moins_perf",         # 217-226 = 232-241
@@ -337,43 +339,29 @@ Qu3nouv(PSY, vec)
 ```
 
 ```{r}
-vec <- c("Mpsy_parent_perdu_confiance_2",                               # 236,- = 251-260
-         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........1",
-         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........2",
-         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........3",
-         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........4",
-         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........5",
-         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........6",
-         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........7",
-         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........8",
-         "Suite.à.ces.critiques.ou.comportements..est.ce.que.tu.as........9"
+vec <- c("Mpsy_parent_perdu_confiance_2"                               # 236,- = 251-260
      )
 Qu3nouv(PSY, vec)
 ```
 
-Il y a des entrées > 0 seulement pour *Mpsy_parent_perdu_confiance_2*
+Il y a seulement une conséquence, *Mpsy_parent_perdu_confiance_2* !
 
 
 #### Catégorie 3
 
 ```{r}
-vec <- c("mpsy_parent_normalisation","mpsy_parent_necessaire_perf",  # 238-240 = 262-264
+vec <- c("mpsy_parent_normalisation","mpsy_parent_necessaire_perf",  # ...TOUT[238]
                  "Mpsy_parent_faisant_partie_entrainement")
 Qu3nouv(PSY, vec)
 ```
 
 ```{r}
 vec <- c(
-  "Suite.à.ces.menaces..est.ce.que.tu.as.......été.démotivé.à.cont.1",   # -,241-245,- = 265-274
-  "Suite.à.ces.menaces..est.ce.que.tu.as.......moins.bien.performé.1",
-  "Mpsy_parent_perdu_confiance_3",
-  "Suite.à.ces.menaces..est.ce.que.tu.as.......eu.une.image.négati.1",
-  "Mpsy_parent_peur",
-  "Mpsy_parent_colere",
-  "Mpsy_parent_triste_2",
-  "Mpsy_parent_stress_2",
-  "Suite.à.ces.menaces..est.ce.que.tu.as.......pensé.que.c.était.d.1",
-   "Suite.à.ces.menaces..est.ce.que.tu.as.......ressenti.de.l.humil.1"
+    "Mpsy_parent_perdu_confiance_3", "Mpsy_parent_peur",    # TOUT[239,240]  
+    "Mpsy_parent_colere","Mpsy_parent_triste_2",                                
+    "Mpsy_parent_stress_2", "Mpsy_parent_blesser_adversaire_item9",               
+    "Mpsy_parent_limite_contact_item10", "Mpsy_parent_blessé_soi_mm_item11",                
+    "mpsy_parent_vomir_item12", "mpsy_parent_dopage_item13"  # TOUT[247,248] 
 )
 Qu3nouv(PSY, vec)
 ```
@@ -382,28 +370,19 @@ Qu3nouv(PSY, vec)
 #### Catégorie 4
 
 ```{r}
-vec <- c("Mpsy_parent_consideration_normal",   # 252-254 = 281-283
+vec <- c("Mpsy_parent_consideration_normal",   # 252-254 = 281-283 = TOUT[250-252]
          "mpsy_parent_necessaire_perf_2","Mpsy_parent_partie_compet")
 Qu3nouv(PSY, vec)
 ```
 
 ```{r}
-vec <- c(          # 255,- = 284-293
-  "Mpsy_parent_demotiver",
-  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.1",
-  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.2",
-  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.3",
-  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.4",
-  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.5",
-  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.6",
-  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.7",
-  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.8",
-  "Suite.à.ces.comportements.qu.on.t.a.demandé.d.adopter..est.ce.q.9"
+vec <- c(          # 255,- = 284-293 = TOUT[253]
+  "Mpsy_parent_demotiver"
 )
 Qu3nouv(PSY, vec)
 ```
 
-Il y des entrées > 0 seulement pour *Mpsy_parent_demotiver*
+Il n'y a qu'une variable, *Mpsy_parent_demotiver*
 
 ----------------------------------------------------------------------------------------------------
 
@@ -463,19 +442,16 @@ Qu3nouv(MPS, vec)
 
 ```{r}
 vec <- c(
-  "Mphysique_adulte_auteur_normlisation",
-   "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...1",
-   "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...2"
-  )  # 49,-,- = 42-44
+  "Mphysique_adulte_auteur_normlisation"
+  )  
 Qu3nouv(MPS, vec)
 ```
 
----
-#(contrôle+ 1*5 + 2*9 + 3*19 = 80, OK)
----
+Qu'une interprétation!
+
 
 ```{r}
-vec <- c(   # 50-59 = 54-54
+vec <- c(   # TOUT[48-57]
   "Mphysique_adute_domotivation",
   "Mphysique_adulte_performance",
   "Mphysique_adulte_confiance","Mphysique_adulte_imagecorps","Mphysique_adulte_peur",

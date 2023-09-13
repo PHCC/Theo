@@ -1,11 +1,18 @@
 Salut Théo,
 
+S'il te plaît il faut tout bien contrôler. Par exemple je n'étais pas sûr si une variable est toujours une conséquence out déjà le prochain item. Je l'ai inclus, ça ne dérange pas (il n'y a que des pourcentages Oui/Non) et toi tu peux la laisser à côté. 
+
+----------------------------------------------------------------------------------------
+
+Salut Théo,
+
 Joint encore mon texte d'hier.
 
-J'ai essayé question 3 avec mon meilleur fichier Excel (778 participants et *probablement* pas de données manquantes). J'ai me suis vite souvenu du problème: Il y a beaucoup des "N/A". Â l'instant je crois que cela est anodin et simplement représente des cases vides.
+J'ai essayé question 3 avec mon meilleur fichier Excel (778 participants et *probablement* pas de données manquantes). J'ai me suis vite souvenu du problème qui ma fait changer vers le fichier Jamovi: Il y a beaucoup des "N/A" explicits. Entretemps je crois que cela est anodin et simplement représente des cases vides.
 
-Ici, les réponses commencent à 0 (pas 1), j'ai changé et je suis en train d'analyser tout.
-J'aurais de résultats le 15. Puis il me faut forcement comparer un peu (pas tout) avec les 4 Excel. Ainsi je serai sur que tout est correct, peut être après le 15.
+Ici, les réponses sont 0 ou 1 (pas 1, 2, ...), j'ai changé et je suis en train de re-analyser tout. Il me faut retrouver les interprétations et conséquences, parfois remettre les noms courts; j'aurais les résultats le 15. Puis il me faut forcement comparer un peu (pas tout) avec les 4 Excel. Ainsi je serai sur que tout est correct, peut être après le 15.
+
+Récemment j'ai observé que chaque participant a subi au moins une maltraitance et MPS et PSY et NEG et SEX! Cela m'a surpris un peu, c'était claire pour toi?
 
 À bientôt,
 Christoph
