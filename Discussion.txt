@@ -4,13 +4,13 @@ S'il te plaît il faut tout bien contrôler. Par exemple je n'étais pas sûr si
 
 ----------------------------------------------------------------------------------------
 
-Salut Théo,
+Bonsoir Théo,
 
-Joint encore mon texte d'hier.
+joint encore mon texte d'hier.
 
-J'ai essayé question 3 avec mon meilleur fichier Excel (778 participants et *probablement* pas de données manquantes). J'ai me suis vite souvenu du problème qui ma fait changer vers le fichier Jamovi: Il y a beaucoup des "N/A" explicits. Entretemps je crois que cela est anodin et simplement représente des cases vides.
+J'ai essayé question 3 avec mon meilleur fichier Excel (778 participants et *probablement* pas de données manquantes). Je me suis vite souvenu du problème qui m'a fait changer vers le fichier Jamovi: Il y a beaucoup des "N/A" explicits. Entretemps je crois que cela est anodin et simplement représente des cases vides - dans l'Excel, les colonnes avec que des N/A ne sont même pas incluses.
 
-Ici, les réponses sont 0 ou 1 (pas 1, 2, ...), j'ai changé et je suis en train de re-analyser tout. Il me faut retrouver les interprétations et conséquences, parfois remettre les noms courts; j'aurais les résultats le 15. Puis il me faut forcement comparer un peu (pas tout) avec les 4 Excel. Ainsi je serai sur que tout est correct, peut être après le 15.
+Ici, les réponses sont 0 ou 1 (pas 1, 2, ...), j'ai changé et je suis en train de re-analyser tout. Il me faut bien retrouver les interprétations et conséquences, parfois remettre les noms courts; j'aurais les résultats le 15. Puis il me faut forcement comparer un peu (pas tout) avec les 4 Excel - ainsi je serai sur que tout est correct, peut être après le 15.
 
 Récemment j'ai observé que chaque participant a subi au moins une maltraitance et MPS et PSY et NEG et SEX! Cela m'a surpris un peu, c'était claire pour toi?
 

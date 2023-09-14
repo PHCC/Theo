@@ -1,0 +1,19 @@
+Hallo Kevin,
+
+ja ich verstehe deine Anfrage gut - es gibt Gründe für die vielen Stunden:
+
+Théo ist kaum mehr an der Uni (Lausanne) oder zuhause (Genf) sondern meist bei seiner Freundin in Berlin. Er sprach seine Profs selten, beim letzten Mal vor 2 Wochen haben sie aber regeren Austausch vereinbart. Der statistische Teil gefiel ihnen.
+
+Er wird von mehreren Profs betreut und deren Erwartungen waren teils konträr (das macht ihm persönlich am meisten zu schaffen). Nach Abschluss eines gewissen Teils hatten sie einmal ihre Meinung geändert (ich hatte viel Zeit in eine Analyse gruppiert nach items gesteckt, dann wollten sie aber gruppiert nach Kategorien). 
+
+Sein Fragebogen ist umfangreich mit über 500 Fragen. Eine Prof hat das in 4 Excel files geschrieben. Die repetitive Struktur hat sie berücksichtigt durch Änderung Gross/Kleinschreibung nach dem Zufallsprinzip und ausserdem leere Spalten gelöscht. Ich kann mich also weder automatisch an den Spaltennamen noch -nummern orientieren, sondern muss für jede Forschungsfrage die 500 Namen der Hand durchgehen.
+
+Ein Kumpel hatte diese Dateien in eine Jamovi .mov Datei kompiliert mit der ich viel gearbeitet habe. Dabei gingen Daten verloren und ich hangle mich gerade wieder durch die 500 Namen und stelle auf Excel input um.
+
+Das habe ich in den nächsten Tagen und dann ist die Analyse abgeschlossen - sofern den Profs nicht wieder Änderungen einfallen. Für die Rechnungen hilft ihm übrigens sein Opa.
+
+Schönen Gruss,
+Christoph
+
+
+
