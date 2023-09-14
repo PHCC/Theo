@@ -1,7 +1,7 @@
 ---
 title: "Théo3XL-count.Rmd Question 3 Count, pas Sum; Données de l'Excel"
 author: "Christoph"
-date: "2023-08-30..09-09"
+date: "2023-09-13..15"
 output:
   pdf_document:
     latex_engine: xelatex
@@ -33,38 +33,6 @@ setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo/new_donnees_
 
 #TOUT <- read.xlsx("QEMS_all-corr.xlsx", sheetName ="sheet1")  # java.lang.OutOfMemoryError: GC overhead limit exceeded
 TOUT <- read.xlsx("new_polished_itemname-CHP2.xlsx", sheetName ="Sheet1")[1:506]  # colonnes vides à la fin 
-```
-
-```
-load("QEMS_all.RData")
-#View(dataset)
-
-traduction <- read.xlsx("new_donnees_colnames/new_polished_itemname:lignes1,2.xlsx", sheetName ="sheet1")
-#View(traduction)
-
-#TOUT <- read.xlsx("new_polished_itemname-CHP.xlsx", sheetName ="Sheet1")[1:506]  # colonnes vides à la fin
-
-
-traduire noms des colonnes
-
-TOUT <- data.frame(dataset)  # deep copy
-
-for (i in 1:length(TOUT)) {
-  for (j in 1:length(traduction)) {
-    name <- gsub(" ",".",colnames(TOUT)[i])
-    name <- gsub(",",".",name)
-    name <- gsub("-",".",name)
-    if ( name ==  colnames(traduction)[j]) {
-      # importé differément, donc " " est devenu "." dans traduction !
-      
-      #print(paste("ancien dataset",i,"traduction",j,":",colnames(TOUT)[i],"->",traduction[1,j]))
-      colnames(TOUT)[i] <- traduction[1,j]
-    }
-  }
-  
-  TOUT[,i] <- as.numeric(TOUT[,i])              # convertir facteurs dans de chiffres
-  TOUT[,i][!(TOUT[,i] %in% c(1:5,NA))] <- NA    # quelques entrées pas {1,2,3,4,5} -> NA
-}
 ```
 
 
@@ -133,9 +101,9 @@ Qu3nouv <- function(df, vec){
 
     vecFT <- NULL
   for (i in 1:length(vec)) {
-    vecFT[i] <- paste(vec[i],"FT",sep="")   # column names "Mpsy_paire_normalisationFT" etc.:
-                                          # PSY["Mpsy_paire_normalisation"]       > 1 etc.
-    df[vecFT[i]] <- (df[vec[i]] > 0)      # "pas du tout" ou "si" ?
+    vecFT[i] <- paste(vec[i],"FT",sep="")  # column names "Mpsy_paire_normalisationFT" etc.:
+                                           # PSY["Mpsy_paire_normalisation"]       > 1 etc.
+    df[vecFT[i]] <- (df[vec[i]] > 0)       # "pas du tout" ou "si" ?
   }
 
   descriptives(df, eval(vecFT),
@@ -144,7 +112,8 @@ Qu3nouv <- function(df, vec){
                freq=TRUE)
 }
 
-Qu3nouv(PSY, c("Mpsy_paire_normalisation","Mpsy_paire_necessite","Mpsy_paire_partie_entrainement"))
+Qu3nouv(PSY, c("Mpsy_paire_normalisation",  # TOUT[64-66]
+               "Mpsy_paire_necessite","Mpsy_paire_partie_entrainement"))
 ```
 
 La vielle discussion à partir du fichier .omv::
@@ -155,7 +124,8 @@ Ces chiffres ont changé, mais sont toujour sembables. Probablement dans toutes 
 
 
 ```{r}
-vec <- c("Mpsy_paire_démotivation","Mpsy_paire_moins_performe","Mpsy_paire_perdu_confiance",  # 69-78 = 75-84
+vec <- c("Mpsy_paire_démotivation","Mpsy_paire_moins_performe",  # TOUT[67-76]
+         "Mpsy_paire_perdu_confiance",  
     "Mpsy_paire_image_corps","Mpsy_paire_peur","Mpsy_paire_colere",
     "Mpsy_paire_triste","Mpsy_paire_stress","MPsy_paire_ta_faute",
     "Mpsy_paire_humiliation" )
@@ -174,7 +144,7 @@ et que triste est la moins expérimentée (73.5%)
 #### Catégorie 2
 
 ```{r}
-vec <- c("Mpsy_paire_consideration",  # 84-86 = 90-92
+vec <- c("Mpsy_paire_consideration",  # TOUT[82-84]
     "mpsy_paire_neccesiteperf",
     "Mpsy_paire_partie_compet")
 
@@ -183,7 +153,8 @@ Qu3nouv(PSY, vec)
 
 
 ```{r}
-vec <- c("Mpsy_paire_demotive","mpsy_paire_moins_perf","Mpsy_paire_perte_confiance",  # 87-96? = 93-102
+vec <- c("Mpsy_paire_demotive","mpsy_paire_moins_perf",  # TOUT[85-94]
+         "Mpsy_paire_perte_confiance",  
     "mpsy_paire_image_corps","Mpsy_paire_peur_2","Mpsy_paire_colere_2",
     "Mpsy_paire_triste_2","Mpsy_paire_stress_2","mpsy_paire_faute",
     "Mpsy_paire_humiliation_2"                                  
@@ -196,13 +167,15 @@ Qu3nouv(PSY, vec)
 #### Catégorie 3
 
 ```{r}
-vec <- c("mpsy_paire_normlisation","mpsy_paire_necessite_perf","mpsy_paire_partie_entrainement")  # 99-101 = 105-107
+vec <- c("mpsy_paire_normlisation",   # TOUT[98-99]
+         "mpsy_paire_necessite_perf","mpsy_paire_partie_entrainement")  
 
 Qu3nouv(PSY, vec)
 ```
 
 ```{r}
-vec <- c("mpsy_paire_demotive_sport","mpsy_paire_moins_perf_2","mpsy_paire_perdu_confiance",  # 102-111 = 108-117
+vec <- c("mpsy_paire_demotive_sport","mpsy_paire_moins_perf_2",  # TOUT[100-109]
+         "mpsy_paire_perdu_confiance",  
     "Mpsy_paire_image_corps_2","Mpsy_paire_peur_3","Mpsy_paire_colere_3",
     "mpsy_paire_triste","mpsy_paire_stress","Mpsy_paire_ta_faute",
     "Mpsy_paire_humiliation_3"
@@ -215,13 +188,15 @@ Qu3nouv(PSY, vec)
 #### Catégorie 4
 
 ```{r}
-vec <- c("Mpsy_paire_normalisation_2","mpsy_paire_necessaireperf","mpsy_paire_partie_entrainement_2") # 114-116 = 120-122
+vec <- c("Mpsy_paire_normalisation_2",  # TOUT[112-114]
+         "mpsy_paire_necessaireperf","mpsy_paire_partie_entrainement_2") 
 
 Qu3nouv(PSY, vec)
 ```
 
 ```{r}
-vec <- c("mpsy_paire_demotive","mpsy_paire_moins_perf_3","mpsy_paire_perte_confiance",  # 117-126 = 123-132
+vec <- c("mpsy_paire_demotive",     # TOUT[115-124]
+         "mpsy_paire_moins_perf_3","mpsy_paire_perte_confiance",  
     "mpsy_paire_image_neg","mpsy_paire_peur","mpsy_paire_colere",
     "mpsy_paire_triste_2","Mpsy_paire_stress_3","Mpsy_paire_faute",
     "mpsy_paire_humiliation"
@@ -239,12 +214,13 @@ Qu3nouv(PSY, vec)
 - 10 items conséquences
 
 ```{r}
-vec <- c("mpsy_adulte_considerer","mpsy_adulte_necessaire","Mpsy_adulte_faisant_partie")  # 129-131 = 141-143
+vec <- c("mpsy_adulte_considerer",
+         "mpsy_adulte_necessaire","Mpsy_adulte_faisant_partie")  # TOUT[127-129]
 Qu3nouv(PSY, vec)
 ```
 
 ```{r}
-vec <- c( "Mpsy_adulte_demotive","mpsy_adulte_moins_perf","Mpsy_adulte_perdu_confiance",  # 132-141 = 144-153
+vec <- c( "Mpsy_adulte_demotive","mpsy_adulte_moins_perf","Mpsy_adulte_perdu_confiance",  # TOUT[130-139]
      "mpsy_adulte_image_corps","mpsy_adulte_peur","mpsy_adulte_colere",
      "mpsy_adulte_triste","mpsy_adulte_stress","mpsy_adulte_ta_faute",
      "mpsy_adulte_humiliation")
@@ -258,12 +234,12 @@ Qu3nouv(PSY, vec)
 - 10 items conséquences
 
 ```{r}
-vec <- c("Mpsy_adulte_consideration","mpsy_adulte_necessaire_2","Mpsy_adulte_partie_compet") # 155-157 = 167-169
+vec <- c("Mpsy_adulte_consideration","mpsy_adulte_necessaire_2","Mpsy_adulte_partie_compet")  # TOUT[153-155]
 Qu3nouv(PSY, vec)
 ```
 
 ```{r}
-vec <- c( "Mpsy_adulte_demotive_2","mpsy_adulte_moins_perf_2","Mpsy_adulte_perduconfiance",  # 158-167 = 170-179
+vec <- c( "Mpsy_adulte_demotive_2","mpsy_adulte_moins_perf_2","Mpsy_adulte_perduconfiance",   # TOUT[156-165]
      "Mpsy_adulte_image_corps","mpsy_adulte_peur_2","mpsy_adulte_colere_2",
      "mpsy_adulte_triste_2","mpsy_adulte_stress_2","mpsy_adulte_ta_faute_2",
      "mpsy_adulte_humiliation_2")
@@ -277,13 +253,13 @@ Qu3nouv(PSY, vec)
 - 13 items conséquences
     
 ```{r}
-vec <- c("Mpsy_adulte_auteur_considerer_normal","mpsy_adulte_necessaireperf",  # 177-179 = 189-191
+vec <- c("Mpsy_adulte_auteur_considerer_normal","mpsy_adulte_necessaireperf",   # TOUT[175-177]
         "mpsy_adulte_partie_entrainement") 
 Qu3nouv(PSY, vec)
 ```
 
 ```{r}
-vec <- c("mpsy_adulte_demotive","mpsy_adulte_moins_perf_3","mpsy_adulte_perdu_confiance",  # 180-189 = 192-201
+vec <- c("mpsy_adulte_demotive","mpsy_adulte_moins_perf_3","mpsy_adulte_perdu_confiance",  # TOUT[178-187]
     "mpsy_adulte_image_neg","mpsy_adulte_peur_3","mpsy_adulte_colere_3",
     "mpsy_adulte_triste_3","Mpsy_Adulte_stress","mpsy_adulte_ta_faute_3",
     "mpsy_adulte_ressenti_humuliation")
@@ -294,13 +270,13 @@ Qu3nouv(PSY, vec)
 #### Catégorie 4:
 
 ```{r}
-vec <- c("mpsy_adulte_considération_normale","mpsy_adulte_necessaire_perf",  # 203-205 = 215-217  
+vec <- c("mpsy_adulte_considération_normale","mpsy_adulte_necessaire_perf",   # TOUT[201-203]
          "mpsy_adulte_partie_compet") 
 Qu3nouv(PSY, vec)
 ```
 
 ```{r}
-vec <- c( "mpsy_adulte_demotive_sport","Mpsy_adulte_moins_perf","mpsy_adulte_perdu_confiance_2", # 206-215 = 218-227
+vec <- c( "mpsy_adulte_demotive_sport","Mpsy_adulte_moins_perf","mpsy_adulte_perdu_confiance_2",  # TOUT[202-213]
      "Mpsy_adulte_image_neg","Mpsy_adulte_peur","mpsy_adulte_colère",
      "Mpsy_adulte_triste","mpsy_adulte_stress_3","mpsy_adulte_ta_faute_4",
      "Mpsy_adulte_humiliation")
@@ -310,19 +286,12 @@ Qu3nouv(PSY, vec)
 
 ### Parents: 4 Catégories
 
-#### Catégorie 1
+#### Catégorie 1 = "Mpsy_parent_ignorer_item1"
 
-"Mpsy_parent_ignorer_item1"
-
-```{r}
-vec <- c("mpsy_parent_demotiver_sport",
-"mpsy_parent_moins_perf",
-"Mpsy_parent_perdu_confiance")
-Qu3nouv(PSY, vec)
-```
+Il n'y a pas d'interprétation! J'ai bien vu?
 
 ```{r}
-vec <- c("mpsy_parent_demotiver_sport","mpsy_parent_moins_perf",         # 217-226 = 232-241
+vec <- c("mpsy_parent_demotiver_sport","mpsy_parent_moins_perf",         #  # TOUT[215-224]
   "Mpsy_parent_perdu_confiance","mpsy_parent_image_corps","mpsy_parent_peur", 
     "mpsy_parent_colere","Mpsy_parent_triste","Mpsy_parent_stress",
     "Mpsy_parent_ta_faute","Mpsy_parent_humiliation"
@@ -334,13 +303,12 @@ Qu3nouv(PSY, vec)
 #### Catégorie 2
 
 ```{r}
-vec <- c("Mpsy_parent_normalisation","mpsy_parent_necessaire","mpsy_parent_faisant_partie")  # 233-235 = 248-250
+vec <- c("Mpsy_parent_normalisation","mpsy_parent_necessaire","mpsy_parent_faisant_partie")  # TOUT[231-233]
 Qu3nouv(PSY, vec)
 ```
 
 ```{r}
-vec <- c("Mpsy_parent_perdu_confiance_2"                               # 236,- = 251-260
-     )
+vec <- c("Mpsy_parent_perdu_confiance_2")                            # TOUT[234]
 Qu3nouv(PSY, vec)
 ```
 
@@ -350,14 +318,14 @@ Il y a seulement une conséquence, *Mpsy_parent_perdu_confiance_2* !
 #### Catégorie 3
 
 ```{r}
-vec <- c("mpsy_parent_normalisation","mpsy_parent_necessaire_perf",  # ...TOUT[238]
+vec <- c("mpsy_parent_normalisation","mpsy_parent_necessaire_perf",  # TOUT[236-238]
                  "Mpsy_parent_faisant_partie_entrainement")
 Qu3nouv(PSY, vec)
 ```
 
 ```{r}
 vec <- c(
-    "Mpsy_parent_perdu_confiance_3", "Mpsy_parent_peur",    # TOUT[239,240]  
+    "Mpsy_parent_perdu_confiance_3", "Mpsy_parent_peur",             # TOUT[239,240]  
     "Mpsy_parent_colere","Mpsy_parent_triste_2",                                
     "Mpsy_parent_stress_2", "Mpsy_parent_blesser_adversaire_item9",               
     "Mpsy_parent_limite_contact_item10", "Mpsy_parent_blessé_soi_mm_item11",                
@@ -370,13 +338,13 @@ Qu3nouv(PSY, vec)
 #### Catégorie 4
 
 ```{r}
-vec <- c("Mpsy_parent_consideration_normal",   # 252-254 = 281-283 = TOUT[250-252]
+vec <- c("Mpsy_parent_consideration_normal",   # TOUT[250-252]
          "mpsy_parent_necessaire_perf_2","Mpsy_parent_partie_compet")
 Qu3nouv(PSY, vec)
 ```
 
 ```{r}
-vec <- c(          # 255,- = 284-293 = TOUT[253]
+vec <- c(          # TOUT[253]
   "Mpsy_parent_demotiver"
 )
 Qu3nouv(PSY, vec)
@@ -388,20 +356,20 @@ Il n'y a qu'une variable, *Mpsy_parent_demotiver*
 
 # MPS
 
-```
-descriptives(MPS, c("Mphysique_paire_normalisation", 
-                    "Mphysique_paire_necessite_perf",
-                    "Mphysique_paire_faire_partie"),
-             freq=TRUE)
-```
-
-tous les 3: N=282, 62 Manquants. Testé exemple i=37:
-
-- corréspond au .Rdata exporté du .mov
-- corréspond au QEMS_data_F.xlsx 
-- ce sont simplement MPS mais pas par paire
-
-- paire, adulte, parent : 1 catégorie, 3 items, 3 interpretations, 10 conséquences = OK ?                          
+---
+#descriptives(MPS, c("Mphysique_paire_normalisation", 
+#                    "Mphysique_paire_necessite_perf",
+#                    "Mphysique_paire_faire_partie"),
+#             freq=TRUE)
+#
+#tous les 3: N=282, 62 Manquants. Testé exemple i=37:
+#
+#- corréspond au .Rdata exporté du .mov
+#- corréspond au QEMS_data_F.xlsx 
+#- ce sont simplement MPS mais pas par paire
+#
+#- paire, adulte, parent : 1 catégorie, 3 items, 3 interpretations, 10 conséquences = OK ?                          
+---
 
 ```{r}
 TOUT$MPS <- TOUT$Mphysique_pairs_item1!=1                 | TOUT$Mphysique_paire_item2!=1         | 
@@ -423,13 +391,13 @@ MPS <- filter(TOUT, MPS==1)
 
 ```{r}
 vec <- c(
-  "Mphysique_paire_normalisation","Mphysique_paire_necessite_perf","Mphysique_paire_faire_partie") # Var...txt 26-28 = colnames(TOUT).txt 19-21 
+  "Mphysique_paire_normalisation","Mphysique_paire_necessite_perf","Mphysique_paire_faire_partie")  # TOUT[24-26]
 Qu3nouv(MPS, vec)
 ```
 
 ```{r}
 vec <- c(
-    "Mphysique_paire_demotivation","Mphysique_paire_moins_performé","Mphysique_paire_perteconfiance",  # 29-38 = 22-31
+    "Mphysique_paire_demotivation","Mphysique_paire_moins_performé","Mphysique_paire_perteconfiance",   # TOUT[27-36]
     "Mphysique_paire_image_neg","Mphysique_paire_peur","Mphysique_paire_colere",
      "Mphysique_paire_triste","Mphysique_paire_stress","Mphysique_paire_ta_faute",
      "Mphysique_paire_humiliation"  
@@ -442,7 +410,7 @@ Qu3nouv(MPS, vec)
 
 ```{r}
 vec <- c(
-  "Mphysique_adulte_auteur_normlisation"
+  "Mphysique_adulte_auteur_normlisation"   # TOUT[47]
   )  
 Qu3nouv(MPS, vec)
 ```
@@ -464,28 +432,21 @@ Qu3nouv(MPS, vec)
 
 ## Parents: 1 Catégorie
 
+Les deux avec seulement 1 interprétation et 1 conséquence
+
 ```{r}
-vec <- c("Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...3",  # -,-,- = 58-60
-         "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...4",
-         "Tu.as.considéré.ces.évènements.de.maltraitance.physique.comme...5")
+vec <- c("Mphysique_parent_consideration")  # TOUT[61]
 Qu3nouv(MPS, vec)
 ```
 
-toutes les valeurs sont NA.
 
 ```{r}
-vec <- c("Mphysique_parent_consideration","Mphysique_parent_suite_a",
-         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..1",
-         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..2",
-         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..3",
-         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..4",
-         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..5",
-         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..6",
-         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..7",
-         "Suite.à.ces.événements.de.maltraitance.physique..est.ce.que.tu..8")
-# 63,64,-,...- = 61-67
+vec <- c("Mphysique_parent_suite_a"     # TOUT[62]
+)
 Qu3nouv(MPS, vec)
 ```
+
+Toutes les valeurs manquent vraiment.
 
 ---------------------------------------------------------------------------------------------------------------------------------
 
@@ -504,7 +465,7 @@ TOUT$SEX <- TOUT$Msex_paire_remarque_apparence_item1!=1    | TOUT$Msex_paire_pro
 
             TOUT$Msex_adulte_remarque_sex_item1!=1             | TOUT$msex_adulte_envoi_image_sex_item2!=1       |
             TOUT$Msex_adulte_exhibition_partie_intime_item2!=1 | TOUT$msex_adulte_photo_partie_intime_item3!=1   |
-            TOUT["msex_adulte_force-a_toucher_item3"]!=1       | TOUT$msex_adulte_toucher_malalaise_item4!=1     |
+            TOUT$msex_adulte_force.a_toucher_item3!=1          | TOUT$msex_adulte_toucher_malalaise_item4!=1     |
             TOUT$msex_adulte_embrasser_bouche_item5!=1         | TOUT$Msex_adulte_frotter_partie_intime_item6!=1 |
             TOUT$Msex_adulte_tentation_relation_sex_item7!=1   | TOUT$Msex_adulte_forcer_relation_sex_avec_sans_pene_item8!=1 
   
@@ -519,18 +480,19 @@ SEX <- filter(TOUT, SEX==1)
 #### Catégorie 1
 
 ```{r}
-vec <- c(  # 258-260 = 296-298
+vec <- c(   # TOUT[256-258]
   "msex_paire_normalite","Msex_paire_necesstite","msex_paire_partie_compet")
 Qu3nouv(SEX, vec)
 ```
 
-Ta discussion mais avec les bons chiffres:
-
-Parmi les athlètes ayant subi une maltraitance sexuelle par un pair, la catégorie "Harcèlement verbal d'un athlète" (catégorie 1),  démontre que 92% ont considéré cela comme faisant partie, 94% ont considéré ça comme normal et 92% ont considéré ça comme nécessaire à la performance.
-
+---
+#Ta discussion mais avec les bons chiffres:
+#
+#Parmi les athlètes ayant subi une maltraitance sexuelle par un pair, la catégorie "Harcèlement verbal d'un athlète" (catégorie 1),  démontre que 92% ont considéré cela comme faisant partie, 94% ont considéré ça comme normal et 92% ont considéré ça comme nécessaire à la performance.
+---
 
 ```{r}
-vec <- c(  # 261-270 = 299-308
+vec <- c(   # TOUT[259-268]
   "Msex_paire_demotive","Msex_paire_moins_perf","Msex_paire_perdu_confiance",
   "Msex_paire_image_neg_corps","msex_paire_peur","Msex_paire_colere",
   "msex_paire_triste","msex_paire_stress","Msex_paire_ta_faute",
@@ -543,14 +505,14 @@ Qu3nouv(SEX, vec)
 #### Catégorie 2
 
 ```{r}
-VEC <- c(  # 272-274 = 310-312
+VEC <- c(   # TOUT[270-272]
   "msex_paire_consideration_normale","msex_paire_necessaire_perf","Msex_paire_fait_partie_compet"
 )
 Qu3nouv(SEX, vec)
 ```
 
 ```{r}
-vec <- c(  # 275-284 = 313-322
+vec <- c(   # TOUT[273-282]
   "msex_paire_demotive","msex_paire_moins_perf","msex_paire_perdu_confiance",
   "Msex_paire_image_corps","Msex_paire_peur_2","msex_paire_colere",
   "msex_paire_triste_2","msex_paire_stress_2","msex_paire_ta_faute",
@@ -563,17 +525,17 @@ Qu3nouv(SEX, vec)
 #### Catégorie 3
 
 ```{r}
-vec <- c(  # 286-288 = 324-326
+vec <- c(   # TOUT[284-286]
   "msex_paire_normalite_2","msex_paire_consideration_necessaire_perf","msex_paire_consideration_partie_perf"
 )
 Qu3nouv(SEX, vec)
 ```
 
 ```{r}
-vec <- c(  # 289-298 = 327-336
+vec <- c(   # TOUT[287-296]
   "Msex_paire_consideration_demotive","msex_paire_moins_perf_2","msex_paire_perdu_confiance_2",
   "Msex_paire_image_corps_2","msex_paire_peur_3","msex_paire_colere_3",
-  "msex:_paire_triste","msex_paire_stress_3","msex_paire_ta_faute_3",
+  "msex._paire_triste","msex_paire_stress_3","msex_paire_ta_faute_3",
   "msex_paire_humiliation_2"
   )
 Qu3nouv(SEX, vec)
@@ -586,18 +548,19 @@ Un participant a experienecé cela comme humiliant, un autre non (je ne donnerai
 #### Catégorie 4
 
 ```{r}
-vec <- c(  # 300-302 = 338-340
-  "Msex_paire_normalite","msex_paire_neccesite_perf","Msex_paire_partie_entrainement"
+vec <- c(  
+  "Msex_paire_normalite","msex_paire_neccesite_perf","Msex_paire_partie_entrainement"  # TOUT[298-300]
 )
 Qu3nouv(SEX, vec)
 ```
 
 ```{r}
-vec <- c(  # 303-311,- = 341-350 
-  "Msex_paire_demotive_2","msex_paire_moins_perf_3","msex_paire_perdu_confiance_3",
-  "msex_paire_image_neg","msex_paire_peur_4","msex_paire_peur_5",
-  "msex_paire_triste_3","msex_paire_stress_4","msex_paire_ta_faute_4",
-  "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..1"
+vec <- c(  # TOUT[301-309]
+  "Msex_paire_demotive_2","msex_paire_moins_perf_3",                         
+  "msex_paire_perdu_confiance_3","msex_paire_image_neg",                                
+  "msex_paire_peur_4","msex_paire_peur_5",                              
+  "msex_paire_triste_3","msex_paire_stress_4",                                 
+  "msex_paire_ta_faute_4"              
   )
 Qu3nouv(SEX, vec)
 ```
@@ -606,24 +569,17 @@ Qu3nouv(SEX, vec)
 #### Catégorie 5
 
 ```{r}
-vec <- c(  # 314-316 = 353-355
+vec <- c(  # TOUT[312-314]
   "Msex_paire_normalité","msex_paire_necessaire_perf_2","Msex_paire_faisant_partie_entrainement"
 )
 Qu3nouv(SEX, vec)
 ```
 
 ```{r}
-vec <- c(  # ..317..322.. = 356-365
-  "Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.1",
-  "msex_paire_moins_perf_4",
-  "Msex_paire_perte_confiance",
-  "Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.1",
-  "Msex_paire_peur",
-  "msex_paire_colere_4",
-  "msex_paire_triste_4",
-  "msex_paire_stress_5",
-  "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.1",
-  "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..2"
+vec <- c(  # TOUT[315-320]
+  "msex_paire_moins_perf_4","Msex_paire_perte_confiance",                   
+  "Msex_paire_peur","msex_paire_colere_4",                 
+  "msex_paire_triste_4","msex_paire_stress_5"  
   )
 Qu3nouv(SEX, vec)
 ```
@@ -631,53 +587,47 @@ Qu3nouv(SEX, vec)
 
 #### Catégorie 6
 
+"msex_paire_viol_penetration_item7"
+
 ```{r}
-vec <- c(  # 324-326 = 367-369
+vec <- c(  # TOUT[322-324]
   "msex_paire_normalite_3","msex_paire_necessaire_perf_3","msex_paire_faisant_partie"
 )
 Qu3nouv(SEX, vec)
 ```
 
+
 ```{r}
-vec <- c(  # ..327..331.. = 370-379
-  "Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.2",
-  "msex_paire_moins_perf_5",
-  "Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..1",
-  "Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.2",
-  "msex_paire_peur_6",
-  "msex_paire_colere_5",
-  "msex_paire_triste_5",
-  "msex_paire_stress_6",
-  "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.2",
-  "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..3"
+vec <- c(  # TOUT[325-329]
+  "msex_paire_moins_perf_5","msex_paire_peur_6",                           
+  "msex_paire_colere_5","msex_paire_triste_5",                              
+  "msex_paire_stress_6"
   )
 Qu3nouv(SEX, vec)
 ```
 
+Ici on a un maximum de 2 ! Masi minimum=0, rien à changer dans l'analyse...
+
 
 #### Catégorie 7
 
+Que 2 interprétations
+
 ```{r}
-vec <- c(  # 333,334,- = 381-383
+vec <- c(  # TOUT[331-332]
   "msex_paire_normalite_4",
-  "msex_paire_necessaire_perf_4",
-  "Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..1"
+  "msex_paire_necessaire_perf_4"
 )
 Qu3nouv(SEX, vec)
 ```
 
 ```{r}
-vec <- c(  # ..335..339.. = 384-393
-    "Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.3",
+vec <- c(  # TOUT[333-337]
     "msex_paire_moins_perf_6",
-    "Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..2",
-    "Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.3",
     "msex_paire_peur_7",
     "msex_paire_colere_6",
     "msex_paire_triste_6",
-    "msex_paire_stress_7",
-    "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.3",
-    "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..4"
+    "msex_paire_stress_7"
   )
 Qu3nouv(SEX, vec)
 ```
@@ -688,14 +638,14 @@ Qu3nouv(SEX, vec)
 #### Catégorie 1
 
 ```{r}
-vec <- c(  # 349-351 = 403-405
+vec <- c(  # TOUT[347-349]
   "Msex_adulte_normalite","msex_adulte_necessaire_perf","Msex_adulte_fsisant_partie"
 )
 Qu3nouv(SEX, vec)
 ```
 
 ```{r}
-vec <- c(  # 352-361 = 406-415
+vec <- c(  # TOUT[350-359]
   "msex_adulte_demotive","Msex_adulte_moins_perf","msex_adulte_perdu_confiance",
   "msex_adulte_image_corps","msex_adulte_peur","msex_adulte_colere",
   "msex_adulte_triste","msex_adulte_stress","msex_adulte_ta_faute",
@@ -708,26 +658,19 @@ Qu3nouv(SEX, vec)
 #### Catégorie 2
 
 ```{r}
-vec <- c(  # 363,364,- = 424-426
+vec <- c(  # TOUT[361-362]
   "msex_adulte_normalite",
-  "msex_adulte_necessaire_perf_5",
-  "Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..2"
-)
+  "msex_adulte_necessaire_perf_5")
 Qu3nouv(SEX, vec)
 ```
 
+jamais le cas.
+
 ```{r}
-vec <- c(  # ..365..369.. = 427-436
-  "Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.4",
-  "msex_adulte_moins_perf",
-  "Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..3",
-  "Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.4",
-  "msex_adulte_peur_6",
-  "msex_adulte_colere_6",
-  "Msex_adulte_triste",
-  "msex_adulte_stress (2)",
-  "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.4",
-  "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..5"
+vec <- c(  # TOUT[363-367]
+  "msex_adulte_moins_perf", "msex_adulte_peur_6",                                  
+  "msex_adulte_colere_6", "Msex_adulte_triste",                                  
+  "msex_adulte_stress..2."     
   )
 Qu3nouv(SEX, vec)
 ```
@@ -736,27 +679,17 @@ Qu3nouv(SEX, vec)
 #### Catégorie 3
 
 ```{r}
-vec <- c(  # 371-372, = 445-447
-  "Msex_adulte_normalité","msex_adulte_necessaire_perf_3",
-  "Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..3"
+vec <- c(  # TOUT[369-370]
+  "Msex_adulte_normalité","msex_adulte_necessaire_perf_3"
 )
 Qu3nouv(SEX, vec)
 ```
 
 ```{r}
-vec <- c(  # ..373..377.. = 447-457
-  "Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..3",
-  "Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.5",
-  "msex_adulte_moins_perf_7",
-  "Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..4",
-  "Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.5",
-  "msex_adulte_peur_3",
-  "msex_adulte_colere_7",
-  "msex_adulte_triste_2",
-  "msex_adulte_stress_3",
-  "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.5",
-  "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..6"
-)
+vec <- c(  # TOUT[371-375]
+  "msex_adulte_moins_perf_7", "msex_adulte_peur_3",                                  
+  "msex_adulte_colere_7", "msex_adulte_triste_2",                                
+  "msex_adulte_stress_3")      
 Qu3nouv(SEX, vec)
 ```
 
@@ -764,24 +697,17 @@ Qu3nouv(SEX, vec)
 #### Catégorie 4
 
 ```{r}
-vec <- c(  # 379-380 = 466-468
-  "msex_adulte_normalite_2","msex_adulte_necessaire_perf_7","Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..4"
+vec <- c(  # TOUT[377-378]
+  "msex_adulte_normalite_2","msex_adulte_necessaire_perf_7"
 )
 Qu3nouv(SEX, vec)
 ```
 
 ```{r}
-vec <- c(  # ..381..385.. = 469-478
-  "Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.6",
-  "msex_adulte_moins_perf_8",
-  "Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..5",
-  "Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.6",
-  "Msex_adulte_peur",
-  "msex_adulte_colere_4",
-  "msex_adulte_triste_8",
-  "msex_adulte_stress_8",
-  "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.6",
-  "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..7"
+vec <- c(  # TOUT[379-383]
+  "msex_adulte_moins_perf_8", "Msex_adulte_peur",                                    
+  "msex_adulte_colere_4", "msex_adulte_triste_8",                                
+  "msex_adulte_stress_8"                            
   )
 Qu3nouv(SEX, vec)
 ```
@@ -790,14 +716,16 @@ Qu3nouv(SEX, vec)
 #### Catégorie 5
 
 ```{r}
-vec <- c(  # 396-398 = 489-491
-  "Msex_adulte_normalite_2","msex_adulte_necessaire_perf_5 (2)","msex_adulte_faisant_partie"  
+vec <- c(  # TOUT[394-396]
+  "Msex_adulte_normalite_2",                             
+  "msex_adulte_necessaire_perf_5..2.",
+  "msex_adulte_faisant_partie"
 )
 Qu3nouv(SEX, vec)
 ```
 
 ```{r}
-vec <- c(  # 399-408 = 492-501
+vec <- c(  # TOUT[397-406]
   "Msex_adulte_demotive","msex_adulte_moins_perf_4","Msex_adulte_perdu_confiance",
   "Msex_adulte_image_neg_corps","msex_adulte_peur_4","msex_adulte_colere_5",
   "msex_adulte_triste_4","msex_adulte_stress_5","msex_adulte_ta_faute_2",
@@ -810,23 +738,19 @@ Qu3nouv(SEX, vec)
 #### Catégorie 6
 
 ```{r}
-vec <- c(                                                             # 410,411,- = 510-512
-  "msex_adulte_normalite_7","msex_adulte_necessaire_perf_8","Tu.as.considéré.cela.comme....faisant.partie.de.l.entrainement..5")
+vec <- c(   # TOUT[408-409]
+  "msex_adulte_normalite_7","msex_adulte_necessaire_perf_8")
 Qu3nouv(SEX, vec)
 ```
 
+
 ```{r}
-vec <- c(  # ..412..416.. = 513-522
-  "Suite.à.cela..est.ce.que.tu.as.......été.démotivé.à.continuer.t.7",
+vec <- c(  # TOUT[410-414]
   "msex_adulte_moins_perf_5",
-  "Suite.à.cela..est.ce.que.tu.as.......perdu.confiance.en.toi.et..6",
-  "Suite.à.cela..est.ce.que.tu.as.......eu.une.image.négative.de.t.7",
   "msex_adulte_peur_9",
   "Msex_adulte_colere",
   "msex_adulte_triste_9",
-  "msex_adulte_stress_9",
-  "Suite.à.cela..est.ce.que.tu.as.......pensé.que.c.était.de.ta.fa.7",
-  "Suite.à.cela..est.ce.que.tu.as.......ressenti.de.l.humiliation..8"
+  "msex_adulte_stress_9"
   )
 Qu3nouv(SEX, vec)
 ```
@@ -863,13 +787,13 @@ NEG <- filter(TOUT, NEG==1)
 #### Catégorie 1
 
 ```{r}
-vec <- c(  # 435-437
+vec <- c(   # TOUT[433-435]
   "Neg_adulte_normalite","Neg_adulte_necessaire_perf","Neg_adulte_faisant_partie" )
 Qu3nouv(NEG, vec)
 ```
 
 ```{r}
-vec <- c(  # 438-447
+vec <- c(   # TOUT[436-455]
   "Neg_adulte_demotiver","Neg_adulte_moins_perf","Neg_adulte_perdu_confiance",
   "Neg_adulte_image_neg_corps","Neg_adulte_peur","Neg_adulte_colere",
   "Neg_adulte_triste","Neg_adulte_stress","Neg_adulte_ta_faute",
@@ -881,14 +805,14 @@ Qu3nouv(NEG, vec)
 #### Catégorie 2
 
 ```{r}
-vec <- c(  # 456-458
+vec <- c(   # TOUT[454-456]
   "neg_adulte_normalite","Neg_adulte_necessaire_perf_2","neg_adulte_faisant_partie"
 )
 Qu3nouv(NEG, vec)
 ```
 
 ```{r}
-vec <- c(  # 459-468
+vec <- c(   # TOUT[457-466]
   "Neg_adulte_demotive","Neg_adulte_moins_perf_2","Neg_adulte_perdu_confiance_2",
   "Neg_adulte_image_coprs","Neg_Adulte_peur","Neg_adulte_colere_2",
   "Neg_adulte_triste_2","Neg_adulte_stress_2","Neg_adulte_ta_faute_2",
@@ -901,14 +825,14 @@ Qu3nouv(NEG, vec)
 #### Catégorie 3
 
 ```{r}
-vec <- c(  # 477-479
+vec <- c(   # TOUT[475-477]
   "Neg_adulte_normalite_2","Neg_adulte_necessaire_perf_3","Neg_adulte_faisant_partie_perf"
 )
 Qu3nouv(NEG, vec)
 ```
 
 ```{r}
-vec<- c(  # 480-489
+vec<- c(  #  TOUT[478-487]
   "Neg_adulte_demotive_2","Neg_adulte_moins_perf_3","Neg_adulte_perdu_confiance_3",
   "Neg_adulte_image_corps","Neg_adulte_peur_2","Neg_adulte_colere_3",
   "Neg_adulte_triste_3","Neg_adulte_stress_3","Neg_adulte_ta_faute_3",
@@ -923,25 +847,16 @@ Qu3nouv(NEG, vec)
 #### Catégorie 1
 
 ```{r}
-vec <- c(  # 493-495
+vec <- c(   # TOUT[491-493]
   "Neg_parent_normalite","neg_parent_necessaire_perf","neg_parent_faisant_partie"  
 )
 Qu3nouv(NEG, vec)
 ```
 
 ```{r}
-vec <- c(  # ..496..497.. = 615-624
+vec <- c(   # TOUT[494-495]
   "neg_parent_demotive",
-  "neg_parent_moins_perf",
-  "Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..1",
-  "Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..2",
-  "Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..3",
-  "Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..4",
-  "Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..5",
-  "Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..6",
-  "Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..7",
-  "Au.moment.où.cette.négligence.physique.est.arrivée..est.ce.que..8"
-  )
+  "neg_parent_moins_perf"  )
 Qu3nouv(NEG, vec)
 ```
 
@@ -951,48 +866,31 @@ il n'y a que *neg_parent_demotive*
 #### Catégorie 2
 
 ```{r}
-vec <- c(  # 499-501
+vec <- c(   # TOUT[497-499]
   "neg_parent_normalite","Neg_parent_necessaire_perf","neg_parent_faisant_partie_2"  
 )
 Qu3nouv(NEG, vec)
 ```
 
 ```{r}
-vec <- c("neg_parent_demotive_2",  # 52, - = 629-638 
-         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.1",
-         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.2",
-         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.3",
-         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.4",
-         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.5",
-         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.6",
-         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.7",
-         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.8",
-         "Au.moment.où.cette.négligence.éducationnelle.est.arrivée..est.c.9")
+vec <- c("neg_parent_demotive_2")  # TOUT[500]
 Qu3nouv(NEG, vec)
 ```
-
-Pour *neg_parent_demotive_2* y a 11 entrées au niveau 1 qui est devenu FALSE.
 
 
 #### Catégorie 3
 
 ```{r}
-vec <- c("Tu.as.considéré.cette.négligence.émotionnelle.comme....normale..1",   # -,504,505 = 640-642
-         "Neg_adulte_necessaire","neg_parent_faisant_partie_3")
+vec <- c("Neg_adulte_necessaire","neg_parent_faisant_partie_3")  # TOUT[502-503]
 Qu3nouv(NEG, vec)
 ```
 
+"Neg_parent_demotive"                                 
+[505] "neg_adulte_moins_perf"                        
+
 ```{r}
-vec <- c("Neg_parent_demotive",                 # 506-507,- = 643-652
-         "neg_adulte_moins_perf",
-         "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..1",
-         "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..2",
-         "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..3",
-         "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..4",
-         "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..5",
-         "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..6",
-         "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..7",
-         "Au.moment.où.cette.négligence.émotionnelle.est.arrivée..est.ce..8")
+vec <- c("Neg_parent_demotive",                 # TOUT[504-505]
+         "neg_adulte_moins_perf")
 Qu3nouv(NEG, vec)
 ```
 
