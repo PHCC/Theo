@@ -276,7 +276,7 @@ Qu3nouv(PSY, vec)
 ```
 
 ```{r}
-vec <- c( "mpsy_adulte_demotive_sport","Mpsy_adulte_moins_perf","mpsy_adulte_perdu_confiance_2",  # TOUT[202-213]
+vec <- c( "mpsy_adulte_demotive_sport","Mpsy_adulte_moins_perf","mpsy_adulte_perdu_confiance_2",  # TOUT[204-213]
      "Mpsy_adulte_image_neg","Mpsy_adulte_peur","mpsy_adulte_colère",
      "Mpsy_adulte_triste","mpsy_adulte_stress_3","mpsy_adulte_ta_faute_4",
      "Mpsy_adulte_humiliation")
@@ -432,7 +432,7 @@ Qu3nouv(MPS, vec)
 
 ## Parents: 1 Catégorie
 
-Les deux avec seulement 1 interprétation et 1 conséquence
+Seulement 1 interprétation et 1 conséquence
 
 ```{r}
 vec <- c("Mphysique_parent_consideration")  # TOUT[61]
@@ -793,7 +793,7 @@ Qu3nouv(NEG, vec)
 ```
 
 ```{r}
-vec <- c(   # TOUT[436-455]
+vec <- c(   # TOUT[436-445]
   "Neg_adulte_demotiver","Neg_adulte_moins_perf","Neg_adulte_perdu_confiance",
   "Neg_adulte_image_neg_corps","Neg_adulte_peur","Neg_adulte_colere",
   "Neg_adulte_triste","Neg_adulte_stress","Neg_adulte_ta_faute",

@@ -1,6 +1,177 @@
+Salut Christoph, 
+
+J’ai donc refais l’excel. J’ai laissé les noms déjà existants en noir. Chaque nouvelle variable est en rouge. Dans la deuxième ligne il y a qqfois des corrections que j’ai remarqué tu verras c’est assez logique. J’ai mis chaque nom avec la catégorie comme ça tu peux plus facilement te retrouver. Cependant les réponses sont encore sous forme de lettre et non en chiffre. 
+
+Le problème est que toutes les réponses ont été décalées vu le nombre de variable que j’ai ajouté. Je me demande donc si en réalité très peu de réponse dans les tableaux sont justes. Cependant, dès à présent nous avons une base correcte. 
+
+Serait-il donc possible d’avoir à nouveau l’ensemble des données concernant toutes les questions ? Dans le document « rendu 15 décembre 2023 » je voudrais utiliser pour ma thèse le tableau 1, 2, 3 (normalment pas beaucoup de changement si je me trompe pas ?) le 7 avec les p-valeurs comme discuté, et les deux derniers qui eux vont considérablement changés avec le nouvel Excel. 
+
+Je tiens aussi à m’excuser, si j’avais su ça nous aurait épargnié beaucoup de travail. 
+
+Est-ce que tu voudrais faire un Skype pour qu’on soit clair ou tu penses avoir compris ? 
+
+Bonne soirée 
+
+Théo 
+
+Envoyé de mon iPhone
+
+---------------------------------------
+
+Début du message transféré :
+
+De: Marion Gendre <gendre.mariongabrielle@gmail.com>
+Date: 1 octobre 2023 à 00:46:26 UTC+2
+À: Théo 🦁☀️ <tonossi.theo@gmail.com>
+Objet: lla
+
+﻿-- 
+
+Marion Gabrielle Gendre
+1 Attachment(s)
+MA_Theo_tableau.xlsx
+
+-----------------------------------------------------------------------------------------
+
+Bonsoir Théo,
+
+oui en fait j'avais vu qu'il manquent et des valeurs dans des colonnes existantes et des colonnes entières. Joint en bas mes tests que j'ai augmenté tout à l'heure en testant le nouvel Excel MA_Theo_tableau.xlsx.
+
+
+J'ai poursuivi 2 cas dans les 4 Excel d'origine:
+
+1. Psy Parent Catégorie 2 interprétation: 
+  - dans mon analyse il y a N=15
+  - cela correspond à new_polished_itemname.xlsx Sheet1 Colonne IB, il y a 15 entrées
+  mais
+  - QEMS_data_SE.xlsx colonne JB a  1 entrèe 
+  - QEMS_data_S.xlsx  colonne JA a 10 entrèes 
+  - QEMS_data_FE.xlsx colonne IZ a  0 entrèee 
+  - QEMS_data_F.xlsx  colonne IZ a  5 entrèe 
+  ce sont 16 entrées au total, alors 1 de plus
+  - cela correspond à MA_Theo_tableau.xlsx Colonne JD, il y a 16 entrées
+
+2. Physique adulte (il n'y a que 1 catégorie):
+  - dans mon analyse il n'y a que 1 interprétation Mphysique_adulte_auteur_normalisation ("auteur" était tapé de trop je crois)
+  - ça correspond à new_polished_itemname.xlsx colonne AU, les colonnes suivantes ne concernent plus l'interprétation
+  - mais dans QEMS_data_F il y a 3 interprétations, par exemple AN7=AO7=AP7=Moyennement
+  - dans MA_Theo_tableau.xlsx il y a 3 interprétations dans les colonnes AR, AS, AT
+
+Alors super! Vous avec résolu les 2 problèmes au même temps.
+
+Merci pour remettre les mêmes item names comme dans new_polished_itemname.xlsx - comme ça je ne devrai pas changer mon analyse (mais toujours ajouter les nouvelles colonnes).
+
+Les lettres qui portent les colonnes (A, B, C... AA, AB, ...) me sont égal, dans R je travaille avec leur nom, toi tu dirais "item name" . Le mieux serai un Excel de la forme
+
+ itemname_1 itemname_2 ...        (ligne 1)
+    données    données            (lignes suivantes)
+    données    données
+    données    données
+           ...
+
+C.a.d. avec une seule ligne des titre (je faisais ça moi-même, mais moins de personnes touchent le fichiers Excel, plus tout sera consistent)
+
+Je re-travaillerai l'analyse demain (s'il y a déjà les nouvelles noms des colonnes), puis la semaine prochaine. Quand je m'occupe de question 3, je ferai au même temps le nouveau test khi-carré. Quand je m'occupe des auteurs, je ferai au même temps le deuxième nouveau test khi-carré.
+
+À bientôt!
+Christoph
+
+-------------------------------------------------------------------------------------
+
+Salut Christoph, 
+
+Alors, on peut s'occuper de remettre les noms au propre et "court" nous même comme discuté au téléphone. On a déplacé les questions de maltraitance à la colonne "O" pour que ça corresponde à l'autre fichier "new_polished_itemname.xlsx".
+
+Voilà redis moi si tu as des questions. 
+
+
+1 Attachment(s)
+
+Download as Zip
+MA_Theo_tableau
+.xlsx
+
+-------------------------------------------------------------------------------------
+
+28/9
+
+je ferai:
+
+- tester encore 8 cas (alors 10 au total) et estimer la gravité des données manquantes
+
+jusqu'à tôt la semaine prochaine - dans le pire de cas il faudrait refaire new_polished_itemname.xlsx, puis tout les résultats (ce qui n'est pas de travail, c'est tout automatisé - mais l'interprétation pourrait changer).
+
+Tes tableaux le mieux qu'après, également mes nouvelles tests: 
+
+- hyp. 2.1 test chi-carré catégories vs interprétations
+- hyp 2.2 catégorie vs conséquences
+- letzte mail: will noch mehr chi^2 !! 
+
+Delais
+
+10/10 Mar résultats
+15/12 rendu complet
+
+-----------------------------------------------------------------------------------
+ 
+
+Salut Christoph, 
+
+J'espère que tu vas bien. 
+Voici ma méthodologie et les tableaux que je vais utiliser pour ma thèse. Je vais utiliser en plus particulier les tableaux de la question 3 (Tableau 10 et 11, page 20-23). Pour ces deux tableaux, nous faisons de la statistique descriptive n'est-ce pas ? Je voulais savoir s'il était possible d'une manière ou d'une autre d'inclure un test pour pouvoir répondre à mes questions de recherche et ainsi avoir des p-valeur ? 
+
+Merci pour ton temps et à bientôt
+
+Théo Tonossi
+
+
+1 Attachment(s)
+
+Download as Zip
+Rendu 15 septembre 23.docx
+124.8 KB
+
+----------------------------------------------------------------------------------
+
+Bonsoir Théo,
+
+J'ai poursuivi 2 cas dans les 4 Excel d'origine:
+
+1. Psy Parent Catégorie 2: 
+  - dans mon analyse il y a N=15
+  - cela correspond à new_polished_itemname.xlsx Sheet1 Colonne IB, il y a 15 entrées
+  mais
+  - QEMS_data_SE.xlsx colonne JB a  1 entrèe 
+  - QEMS_data_S.xlsx  colonne JA a 10 entrèes 
+  - QEMS_data_FE.xlsx colonne IZ a  0 entrèee 
+  - QEMS_data_F.xlsx  colonne IZ a  5 entrèe 
+  ce sont 16 entrées au total, alors 1 de plus
+
+2. Physique adulte (il n'y a que 1 catégorie):
+  - dans mon analyse il n'y a que 1 interprétation Mphysique_adulte_auteur_normalisation ("auteur" était tapé de trop je crois)
+  - ça correspond à new_polished_itemname.xlsx colonne AU, les colonnes suivantes ne concernent plus l'interprétation
+  - mais dans QEMS_data_F il y a 3 interprétations, par exemple AN7=AO7=AP7=Moyennement
+
+Je te prie de suivre mes contrôles (il est trop facile de se tromper dans les colonnes). Sinon, ça vaudrait d'effectuer un contrôle à plus grand échelle, puis peut-être refaire le fichier new_polished_itemname.xlsx .
+
+Mais d'abord, bonne chance avec ton travail que tu a!
+
+Christoph
+
+
+----------------------------------------------------------------------------------------
 Salut Théo,
 
-S'il te plaît il faut tout bien contrôler. Par exemple je n'étais pas sûr si une variable est toujours une conséquence out déjà le prochain item. Je l'ai inclus, ça ne dérange pas (il n'y a que des pourcentages Oui/Non) et toi tu peux la laisser à côté. 
+Joint les nouveau résultats à partir de l'Excel new_polished_itemname. Quelques remarques:
+
+- le tableau "Descriptives" est parfois coupé dans l'Excel. Mais il était plutôt un contrôle pour moi
+- parfois je n'étais pas sûr si une variable est toujours une conséquence out déjà le prochain item. Je l'ai inclus, ça ne dérange pas (il n'y a que des pourcentages Oui/Non) et toi tu peux la laisser de côté
+- Catégorie 1 = “Mpsy_parent_ignorer_item1” n’a pas d’interprétation - j’ai bien vu?
+
+Je suis en train de faire quelques comparaisons avec les 4 Excel du début et j'enverrai mes commentaires encore aujourd'hui.
+
+Àn plus tard,
+Christoph
 
 ----------------------------------------------------------------------------------------
 
@@ -39,6 +210,39 @@ Ce problème est plutôt petit en comparaison avec les autres NA et j'aimerais l
 
 Bonne soirée,
 Christoph
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ----------------------------------------------------------------------------------------
 

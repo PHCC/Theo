@@ -1,0 +1,26 @@
+---
+title: "Théo Donées Manquantes"
+author: "Christoph"
+date: "2023-09-10,11.."
+output:
+  pdf_document:
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    keep_tex: yes
+geometry: margin=0.5cm
+---
+
+Exemple Maltraitance Psychologique Parents Catégorie 1: Normalisation, Faisant Partie, Nécessaire 
+
+```
+Fichier                     Colonnes  sont vides?  Nombre de Participants
+
+new_polished_itemname.xlsx  HG HH HI  pas vides    778
+donnée-QEMS-excel.xlsx      HB HC HD  pas vides    781
+donnée-QEMS-excel-CHP.xlsx  HB HC HD  pas vides    781  
+22janv2023-QEMS.xlsx		    HT HU HV  vides        913?? 
+QEMS_all-corr.xlsx		      HU HV HW  vides        781
+```
+
+	

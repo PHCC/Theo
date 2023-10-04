@@ -1,0 +1,1442 @@
+Théo4
+Christoph
+2023-05-22..27
+
+Libraries
+library(xlsx)
+library(jmv)
+library(dplyr)
+#library(tigerstats)
+
+# Fichiers Excel
+# Analyses Jamovi
+# filter etc.
+# beaux tableaux croisés
+
+Données
+Lire
+setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
+TOUT <- read.xlsx("new_polished_itemname-CHP2.xlsx", sheetName ="Sheet1")[1:506]
+
+# enlever colonnes vides à la fin
+
+Afficher
+(sur écran mais pas dans le PDF ou word)
+#View(TOUT)
+#colnames(TOUT)
+
+# Noms des Variables
+
+MPS
+TOUT$MPS <- TOUT$Mphysique_pairs_item1 > 0
+TOUT$Mphysique_paire_item3 > 0
+
+| TOUT$Mphysique_paire_item2 > 0
+|
+
+|
+
+TOUT$Mphysique_adulte_secoue_agrippe_item1 > 0 | TOUT$Mphysique_adulte_frappe_item2 > 0 |
+TOUT$Mphysique_adulte_etouffe_item3 > 0
+|
+TOUT$Mphysique_parent_secoue > 0
+TOUT$Mphysique_parent_ettoufe > 0
+
+| TOUT$Mphysique_parent_frappe > 0
+
+|
+
+TOUT$MPS <- if_else(TOUT$MPS, 1, 0)
+MPS <- filter(TOUT, MPS==1)
+#View(MPS)
+
+Recoder
+MPS$auteur_pairs
+
+<- MPS$Mphysique_pairs_item1
+
+> 0 | MPS$Mphysique_paire_item2
+
+MPS$auteur_parents <- MPS$Mphysique_parent_secoue > 0 | MPS$Mphysique_parent_frappe
+MPS$auteur_adulte
+
+<- MPS$Mphysique_adulte_auteur_entraineur
+> 0 |
+MPS$Mphysique_adulte_auteur_entraineurassistant > 0 |
+
+> 0 | MPS$Mphysique_paire_item
+
+> 0 | MPS$Mphysique_parent_ett
+
+MPS$Mphysique_adulte_auteur_prepaphysique
+MPS$Mphysique_adulte_auteur_medecin
+MPS$Mphysique_adulte_auteur_psy
+MPS$Mphysique_adulte_auteur_arbitre
+MPS$Mphysique_adulte_auteur_autre
+MPS$auteur <- as.factor(case_when(MPS$auteur_pairs
+MPS$auteur_parents
+MPS$auteur_adulte
+TRUE
+
+~
+~
+~
+~
+
+>
+>
+>
+>
+>
+
+Statistiques Descriptives
+1. Les grands groupes
+descriptives(MPS, c("auteur"), freq=TRUE)
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+�������������������������
+auteur
+�������������������������
+N
+335
+Manquants
+0
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�������������������������
+
+FRÉQUENCES
+Fréquences de auteur
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+adulte
+41
+12.23881
+pairs
+281
+83.88060
+parents
+13
+3.88060
+�����������������������������������������������������
+
+% cumulés
+12.23881
+96.11940
+100.00000
+
+2. Les grands groupes mais adultes detaillés
+descriptives(MPS, c("auteur_detail"), freq=TRUE)
+
+|
+|
+|
+|
+
+"pairs" ,
+"parents",
+"adulte" ,
+"ne pas specifié"
+
+MPS$auteur_detail <- as.factor(case_when(
+MPS$auteur_pairs
+~ "pairs" ,
+MPS$auteur_parents ~ "parents",
+MPS$Mphysique_adulte_auteur_entraineur
+MPS$Mphysique_adulte_auteur_entraineurassistant
+MPS$Mphysique_adulte_auteur_prepaphysique
+MPS$Mphysique_adulte_auteur_medecin
+MPS$Mphysique_adulte_auteur_psy
+MPS$Mphysique_adulte_auteur_arbitre
+MPS$Mphysique_adulte_auteur_autre
+TRUE
+~ "ne pas specifié"
+))
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+0
+0
+0
+0
+0
+
+>
+>
+>
+>
+>
+>
+>
+
+))
+
+0
+0
+0
+0
+0
+0
+0
+
+~
+~
+~
+~
+~
+~
+~
+
+"entraineur"
+,
+"entraineurassistant",
+"prepaphysique"
+,
+"medecin"
+,
+"psy"
+,
+"arbitre"
+,
+"autre"
+,
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+�������������������������������
+auteur_detail
+�������������������������������
+N
+335
+Manquants
+0
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�������������������������������
+
+FRÉQUENCES
+Fréquences de auteur_detail
+���������������������������������������������������������������
+Modalités
+Quantités
+���������������������������������������������������������������
+autre
+1
+entraineur
+39
+entraineurassistant
+1
+pairs
+281
+parents
+13
+���������������������������������������������������������������
+
+% du Total
+
+% cumulés
+
+0.29851
+11.64179
+0.29851
+83.88060
+3.88060
+
+0.29851
+11.94030
+12.23881
+96.11940
+100.00000
+
+Entraineurassistant et surtout entraineur (+ un autre) sont les seuls auteurs adultes, ça pourrait changer pour les autres maltraitances.
+3. Que les adultes detaillés
+MPS %>% filter(auteur=="adulte") %>% descriptives(c("auteur_detail"), freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+�������������������������������
+auteur_detail
+�������������������������������
+N
+41
+Manquants
+0
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�������������������������������
+
+FRÉQUENCES
+Fréquences de auteur_detail
+���������������������������������������������������������������
+Modalités
+Quantités
+���������������������������������������������������������������
+autre
+1
+entraineur
+39
+entraineurassistant
+1
+pairs
+0
+
+% du Total
+
+% cumulés
+
+2.43902
+95.12195
+2.43902
+0.00000
+
+2.43902
+97.56098
+100.00000
+100.00000
+
+##
+##
+
+parents
+0
+���������������������������������������������������������������
+
+0.00000
+
+100.00000
+
+PSY
+TOUT$PSY <- TOUT$Mpsy_paire_ignoré_item1 > 0 | TOUT$Mpsy_paire_investissement_item2 > 0 |
+TOUT$Mpsy_paire_critique_perf_item3 > 0 | TOUT$Mpsy_paire_apparence_item4 > 0 |
+TOUT$Mpsy_paire_rumeur_item5 > 0 | TOUT$Mpsy_paire_humiliation_item6 > 0 |
+TOUT$Mpsy_paire_menace_exclusion_item7 > 0 | TOUT$mpsy_paire_menace_physique_item8 > 0 |
+TOUT$Mpsy_paire_encourager_humiliation_item9 > 0 | TOUT$mpsy_paire_limite_contacte_item10 > 0 |
+TOUT$Mpsy_adulte_ignoer_item1 > 0 | TOUT$mpsy_adulte_critique_invesstissement_item2 > 0 |
+TOUT$mpsy_adulte_critique_perf_item2 > 0 | TOUT$mpsy_adulte_critiquer_apparence_item3 > 0 |
+TOUT$mpsy_adulte_rumeur_item4 > 0 | TOUT$mpsy_adulte_ridiculiser_item5 > 0 |
+TOUT$Mpsy_adulte_crier_dessus_item6 > 0 | TOUT$mpsy_adulte_menace_expulsion_item7 > 0 |
+TOUT$mpsy_adulte_menacephysi_item8 > 0 | TOUT$mpsy_adulte_humiliation_autrui_item9 > 0 |
+TOUT$mpsy_adulte_limitation_contact_item10 > 0 | TOUT$mpsy_adulte_jouer_blesser_item11 > 0 |
+TOUT$mpsy_adulte_entrainer_a_vomir_item12 > 0 | TOUT$mpsy_adulte_dopage_item13 > 0 |
+TOUT$mpsy_adulte_poids_ideal_item13 > 0 |
+TOUT$Mpsy_parent_ignorer_item1 > 0 | TOUT$mpsy_parent_invesstissment_item2 > 0 |
+TOUT$mpsy_parent_critique_perf_item3 > 0 | TOUT$Mpsy_parent_critique_corps_item4 > 0 |
+TOUT$mpsy_parent_rumeur_item5 > 0 | TOUT$mpsy_parent_ridiculisà_perf_item6 > 0 |
+TOUT$mpsy_parent_crier_dessus_item7 > 0 | TOUT$Mpsy_parent_menace_physique_item8 > 0 |
+TOUT$Mpsy_parent_blesser_adversaire_item9 > 0 | TOUT$Mpsy_parent_limite_contact_item10 > 0 |
+TOUT$Mpsy_parent_blessé_soi_mm_item11 > 0 | TOUT$mpsy_parent_vomir_item12 > 0 |
+TOUT$mpsy_parent_dopage_item13 > 0 | TOUT$Mpsy_parent_poids_ideal_item14 > 0
+TOUT$PSY <- if_else(TOUT$PSY, 1, 0)
+PSY <- filter(TOUT, PSY==1)
+
+Recoder
+PSY$auteur_pairs
+
+<- PSY$Mpsy_paire_ignoré_item1 > 0 | PSY$Mpsy_paire_investissement_item2 > 0 |
+PSY$Mpsy_paire_critique_perf_item3 > 0 | PSY$Mpsy_paire_apparence_item4 > 0 |
+PSY$Mpsy_paire_rumeur_item5 > 0 | PSY$Mpsy_paire_humiliation_item6 > 0 |
+PSY$Mpsy_paire_menace_exclusion_item7 > 0 | PSY$mpsy_paire_menace_physique_item8 > 0 |
+PSY$Mpsy_paire_encourager_humiliation_item9 > 0 | PSY$mpsy_paire_limite_contacte_item10 > 0
+
+PSY$auteur_parents <- PSY$Mpsy_parent_ignorer_item1 > 0 | PSY$mpsy_parent_invesstissment_item2 > 0 |
+PSY$mpsy_parent_critique_perf_item3 > 0 | PSY$Mpsy_parent_critique_corps_item4 > 0 |
+PSY$mpsy_parent_rumeur_item5 > 0 | PSY$mpsy_parent_ridiculisà_perf_item6 > 0 |
+PSY$mpsy_parent_crier_dessus_item7 > 0 | PSY$Mpsy_parent_menace_physique_item8 > 0 |
+PSY$Mpsy_parent_blesser_adversaire_item9 > 0 | PSY$Mpsy_parent_limite_contact_item10 > 0 |
+PSY$Mpsy_parent_blessé_soi_mm_item11 > 0 | PSY$mpsy_parent_vomir_item12 > 0 |
+PSY$mpsy_parent_dopage_item13 > 0 | PSY$Mpsy_parent_poids_ideal_item14 > 0
+PSY$auteur_adulte
+
+<- PSY$Mpsy_adulte_ignoer_item1 > 0 | PSY$mpsy_adulte_critique_invesstissement_item2 > 0 |
+PSY$mpsy_adulte_critique_perf_item2 > 0 | PSY$mpsy_adulte_critiquer_apparence_item3 > 0 |
+PSY$mpsy_adulte_rumeur_item4 > 0 | PSY$mpsy_adulte_ridiculiser_item5 > 0 |
+PSY$Mpsy_adulte_crier_dessus_item6 > 0 | PSY$mpsy_adulte_menace_expulsion_item7 > 0 |
+PSY$mpsy_adulte_menacephysi_item8 > 0 | PSY$mpsy_adulte_humiliation_autrui_item9 > 0 |
+PSY$mpsy_adulte_limitation_contact_item10 > 0 | PSY$mpsy_adulte_jouer_blesser_item11 > 0 |
+PSY$mpsy_adulte_entrainer_a_vomir_item12 > 0 | PSY$mpsy_adulte_dopage_item13 > 0 |
+PSY$mpsy_adulte_poids_ideal_item13 > 0
+
+PSY$auteur <- as.factor(case_when(PSY$auteur_pairs
+
+~ "pairs"
+
+,
+
+PSY$auteur_parents ~ "parents",
+PSY$auteur_adulte ~ "adulte" ,
+TRUE
+~ "ne pas specifié"
+
+))
+
+# ce niveau ne occure pas, OK.
+
+PSY$auteur_detail <- as.factor(case_when(
+PSY$auteur_pairs
+~ "pairs" ,
+PSY$auteur_parents ~ "parents",
+PSY$mpsy_adulte_auteur_2 >0 | PSY$mpsy_adulte_auteur_entraineur >0 |
+PSY$mpsy_adulte_auteur_entraineur_2 > 0 ~ "entraineur"
+,
+PSY$mpsy_adulte_entraineurassistant >0 | PSY$mpsy_adulte_auteur_entraineur_assistant >0 |
+PSY$mpsy_adulte_auteur_assist_coach > 0 ~ "entraineurassistant",
+PSY$mpsy_adulte_prepaphy >0 | PSY$mpsy_adulte_auteur_prepaphy >0 |
+PSY$mpsy_adulte_auteur_prepaphy_2 > 0
+~ "prepaphysique"
+,
+PSY$mpsy_adulte_medecin >0 | PSY$mpsy_adulte_auteur_medecin >0 |
+PSY$mpsy_adulte_equipe_medical> 0
+~ "medecin"
+,
+PSY$mpsy_adulte_auteur_psychologue >0 | PSY$mpsy_adulte_auteur_psy >0 |
+PSY$mpsy_adulte_auteur_psychologue > 0 ~ "psy"
+,
+PSY$mpsy_adulte_auteur_arbitre >0 | PSY$mpsy_adulte_auteur_arbitre_2 >0 |
+PSY$mpsy_adulte_auteur_arbitre_3 > 0
+~ "arbitre"
+,
+PSY$mpsy_adulte_auteur_autre >0 | PSY$mpsy_adulte_auteur_autre_2 >0 |
+PSY$mpsy_adulte_auteur_autre_3 > 0
+~ "autre"
+,
+TRUE
+
+~ "ne pas specifié"
+
+• mpsy_adulte_auteur_2 est l’entraineur, correct ?
+• il y a 1 cas “ne pas specifié”, on ne sait que ignoré par un adulte
+
+Statistiques Descriptives
+1. Les grands groupes
+descriptives(PSY, c("auteur"), freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+�������������������������
+auteur
+�������������������������
+N
+707
+Manquants
+0
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�������������������������
+
+FRÉQUENCES
+Fréquences de auteur
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+adulte
+34
+4.80905
+pairs
+654
+92.50354
+parents
+19
+2.68741
+�����������������������������������������������������
+
+% cumulés
+4.80905
+97.31259
+100.00000
+
+))
+
+2. Les grands groupes mais adultes detaillés
+descriptives(PSY, c("auteur_detail"), freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+�������������������������������
+auteur_detail
+�������������������������������
+N
+707
+Manquants
+0
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�������������������������������
+
+FRÉQUENCES
+Fréquences de auteur_detail
+�����������������������������������������������������������
+Modalités
+Quantités
+�����������������������������������������������������������
+arbitre
+2
+entraineur
+30
+ne pas specifié
+1
+pairs
+654
+parents
+19
+prepaphysique
+1
+�����������������������������������������������������������
+
+% du Total
+
+% cumulés
+
+0.28289
+4.24328
+0.14144
+92.50354
+2.68741
+0.14144
+
+0.28289
+4.52617
+4.66761
+97.17115
+99.85856
+100.00000
+
+3. Que les adultes detaillés
+PSY %>% filter(auteur=="adulte") %>% descriptives(c("auteur_detail"), freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+�������������������������������
+auteur_detail
+�������������������������������
+N
+34
+Manquants
+0
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�������������������������������
+
+FRÉQUENCES
+Fréquences de auteur_detail
+�����������������������������������������������������������
+Modalités
+Quantités
+�����������������������������������������������������������
+arbitre
+2
+
+% du Total
+
+% cumulés
+
+5.88235
+
+5.88235
+
+##
+##
+##
+##
+##
+##
+
+entraineur
+30
+ne pas specifié
+1
+pairs
+0
+parents
+0
+prepaphysique
+1
+�����������������������������������������������������������
+
+88.23529
+2.94118
+0.00000
+0.00000
+2.94118
+
+94.11765
+97.05882
+97.05882
+97.05882
+100.00000
+
+NEG
+TOUT$NEG <- TOUT$Neg_adulte_entrainer_blesse_item1 > 0 | TOUT$neg_adulte_dopage_soutenu_item2 > 0 |
+TOUT$neg_adulte_poids_ideal_item3 > 0
+| TOUT$Neg_adulte_louper_ecole_item4 > 0
+|
+TOUT$Neg_adulte_laisser_humilier_item5 > 0 |
+TOUT$Neg_parent_laisser_entrainer_blesser_item1 > 0 | TOUT$Neg_parent_dopage_item2 > 0 |
+TOUT$Neg_parent_poids_ideal_item3 > 0
+| TOUT$Neg_parent_arret_ecole_item4 > 0 |
+TOUT$neg_parent_laisser_humilier_autrui_item5 > 0
+TOUT$NEG <- if_else(TOUT$NEG, 1, 0)
+NEG <- filter(TOUT, NEG==1)
+
+Recoder
+# grep -i neg VariablesEtc.txt |grep -i parent|grep -i item :
+NEG$auteur_parents <- NEG$Neg_parent_laisser_entrainer_blesser_item1 > 0 | NEG$Neg_parent_dopage_item2 > 0
+|
+NEG$Neg_parent_poids_ideal_item3 > 0
+| NEG$Neg_parent_arret_ecole_item4 > 0 |
+NEG$neg_parent_laisser_humilier_autrui_item5 > 0
+# grep -i neg VariablesEtc.txt |grep -i adult|grep -i item :
+NEG$auteur_adulte <- NEG$Neg_adulte_entrainer_blesse_item1 > 0 | NEG$neg_adulte_dopage_soutenu_item2 |
+NEG$neg_adulte_poids_ideal_item3
+> 0 | NEG$Neg_adulte_louper_ecole_item4
+|
+NEG$Neg_adulte_laisser_humilier_item5
+NEG$auteur <- as.factor(case_when(NEG$auteur_parents ~ "parents",
+NEG$auteur_adulte ~ "adulte" ,
+TRUE
+~ "ne pas specifié"
+NEG$auteur_detail <- as.factor(case_when(
+NEG$auteur_parents ~ "parents",
+NEG$Neg_adulte_auteur_entraineur
+NEG$neg_adulte_auteur_entraineur_assist
+NEG$Neg_adulte_prepa_physique
+NEG$Neg_adulte_medecin
+NEG$neg_adulte_psy
+NEG$Neg_adulte_arbitre
+NEG$Neg_adulte_auteur_autre
+is.na(NEG$Neg_adulte_auteur_autre)
+TRUE
+~ "ne pas specifié"
+
+Statistiques Descriptives
+1. Les grands groupes
+descriptives(NEG, c("auteur"), freq=TRUE)
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+
+>
+>
+>
+>
+>
+>
+>
+))
+
+0
+0
+0
+0
+0
+0
+0
+
+~
+~
+~
+~
+~
+~
+~
+~
+#
+
+))
+
+# seulement test ... y n'a pas "ne
+
+"entraineur"
+,
+"entraineurassistant",
+"prepaphysique"
+,
+"medecin"
+,
+"psy"
+,
+"arbitre"
+,
+"autre"
+,
+NA
+,
+seulement test ... y n'a pas "ne pas specifi
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+Statistiques descriptives
+�������������������������
+auteur
+�������������������������
+N
+355
+Manquants
+0
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�������������������������
+
+FRÉQUENCES
+Fréquences de auteur
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+adulte
+166
+46.76056
+parents
+189
+53.23944
+�����������������������������������������������������
+
+% cumulés
+46.76056
+100.00000
+
+2. Les grands groupes mais adultes detaillés
+descriptives(NEG, c("auteur_detail"), freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+�������������������������������
+auteur_detail
+�������������������������������
+N
+332
+Manquants
+23
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�������������������������������
+
+FRÉQUENCES
+Fréquences de auteur_detail
+���������������������������������������������������������������
+Modalités
+Quantités
+���������������������������������������������������������������
+autre
+14
+entraineur
+125
+entraineurassistant
+1
+medecin
+1
+parents
+189
+prepaphysique
+2
+���������������������������������������������������������������
+
+% du Total
+
+% cumulés
+
+4.21687
+37.65060
+0.30120
+0.30120
+56.92771
+0.60241
+
+4.21687
+41.86747
+42.16867
+42.46988
+99.39759
+100.00000
+
+Ne plus qu’entraineurassistant et entraineur (+ un autre) comme pour MPS
+
+3. Que les adultes detaillés
+NEG %>% filter(auteur=="adulte") %>% descriptives(c("auteur_detail"), freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+�������������������������������
+auteur_detail
+�������������������������������
+N
+143
+Manquants
+23
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�������������������������������
+
+FRÉQUENCES
+Fréquences de auteur_detail
+���������������������������������������������������������������
+Modalités
+Quantités
+���������������������������������������������������������������
+autre
+14
+entraineur
+125
+entraineurassistant
+1
+medecin
+1
+parents
+0
+prepaphysique
+2
+���������������������������������������������������������������
+
+% du Total
+
+% cumulés
+
+9.79021
+87.41259
+0.69930
+0.69930
+0.00000
+1.39860
+
+9.79021
+97.20280
+97.90210
+98.60140
+98.60140
+100.00000
+
+SEX
+# grep -i sex VariablesEtc.txt |grep -i item :
+TOUT$SEX <- TOUT$Msex_paire_remarque_apparence_item1 > 0
+| TOUT$Msex_paire_proposition_sex_item2 > 0
+TOUT$msex_paire_exhibitionisme_item3 > 0
+| TOUT$msex_paire_photo_intime_item4 > 0
+TOUT$msex_paire_attouchement_item5 > 0
+| TOUT$Msex_paire_embrasser_item6 > 0
+TOUT$msex_paire_frotter_partie_intime_item7 > 0 | TOUT$msex_paire_viol_penetration_item7 > 0
+TOUT$Msex_paire_avec_sans_penetration_non_consentie_item8 > 0
+|
+
+|
+|
+|
+|
+
+TOUT$Msex_adulte_remarque_sex_item1 > 0
+| TOUT$msex_adulte_envoi_image_sex_item2 > 0
+TOUT$Msex_adulte_exhibition_partie_intime_item2 > 0 |
+TOUT$msex_adulte_photo_partie_intime_item3 > 0
+| TOUT$msex_adulte_force.a_toucher_item3 > 0
+TOUT$msex_adulte_toucher_malalaise_item4 > 0
+|
+TOUT$msex_adulte_embrasser_bouche_item5 > 0
+| TOUT$Msex_adulte_frotter_partie_intime_item6 > 0
+TOUT$Msex_adulte_tentation_relation_sex_item7 > 0
+| TOUT$Msex_adulte_forcer_relation_sex_avec_sans_pe
+TOUT$SEX <- if_else(TOUT$SEX, 1, 0)
+SEX <- filter(TOUT, SEX==1)
+
+Recoder
+SEX$auteur_paire
+
+<- SEX$Msex_paire_remarque_apparence_item1 > 0
+SEX$msex_paire_exhibitionisme_item3 > 0
+
+| SEX$Msex_paire_proposition_sex_item2 > 0
+| SEX$msex_paire_photo_intime_item4 > 0
+
+|
+|
+
+SEX$msex_paire_attouchement_item5 > 0
+| SEX$Msex_paire_embrasser_item6 > 0
+|
+SEX$msex_paire_frotter_partie_intime_item7 > 0 | SEX$msex_paire_viol_penetration_item7 > 0 |
+SEX$Msex_paire_avec_sans_penetration_non_consentie_item8 > 0
+SEX$auteur_adulte
+
+<- SEX$Msex_adulte_remarque_sex_item1 > 0
+| SEX$msex_adulte_envoi_image_sex_item2 >
+SEX$Msex_adulte_exhibition_partie_intime_item2 > 0 |
+SEX$msex_adulte_photo_partie_intime_item3 > 0
+| SEX$msex_adulte_force.a_toucher_item3 >
+SEX$msex_adulte_toucher_malalaise_item4 > 0
+|
+SEX$msex_adulte_embrasser_bouche_item5 > 0
+| SEX$Msex_adulte_frotter_partie_intime_it
+SEX$Msex_adulte_tentation_relation_sex_item7 > 0
+| SEX$Msex_adulte_forcer_relation_sex_avec
+
+SEX$auteur <- as.factor(case_when(SEX$auteur_paire
+SEX$auteur_adulte
+TRUE
+
+~ "paire",
+~ "adulte" ,
+~ "ne pas specifié"
+
+))
+
+# y n'a pas ce niveau, OK
+
+SEX$auteur_detail <- as.factor(case_when(
+SEX$auteur_paire
+
+~ "paire",
+
+SEX$Msex_adulte_auteur_entraineur
+SEX$Msex_adulte_auteur_entraineur_2
+
+> 0 | SEX$msex_adulte_auteur_entraineur_assis > 0 |
+> 0 | SEX$msex_adulte_auteur_entraineur_assis_2 > 0
+~ "entraineu
+SEX$msex_adulte_auteur_prepa_physique > 0
+~ "prepaphy
+> 0 | SEX$msex_adulte_auteur_medecin
+> 0 ~ "medecin"
+SEX$Msex_adulte_auteur_medecin
+
+SEX$msex_adulte_auteur_psy
+> 0 | SEX$msex_adulte_auteur_psy_2
+> 0 ~ "psy",
+SEX$msex_adulte_auteur_arbitre
+> 0 | SEX$msex_adulte_auteur_arbitre_2 > 0 ~ "arbitre",
+SEX$msex_adulte_auteur_autre
+> 0 | SEX$msex_adulte_auteur_autre_2
+> 0 ~ "autre",
+TRUE
+~ "ne pas specifié"
+))
+• y n’a pas “entraineurassistant” pourquoi ??
+• msex_adulte_auteur_entraineur_assis/2 je compte comme “msex_adulte_auteur_entraineur”, OK ?
+
+Statistiques Descriptives
+1. Les grands groupes
+descriptives(SEX, c("auteur"), freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+�������������������������
+auteur
+�������������������������
+N
+175
+Manquants
+0
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�������������������������
+
+FRÉQUENCES
+Fréquences de auteur
+�����������������������������������������������������
+Modalités
+Quantités
+% du Total
+�����������������������������������������������������
+adulte
+36
+20.57143
+paire
+139
+79.42857
+
+% cumulés
+20.57143
+100.00000
+
+##
+
+�����������������������������������������������������
+
+2. Les grands groupes mais adultes detaillés
+descriptives(SEX, c("auteur_detail"), freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+�������������������������������
+auteur_detail
+�������������������������������
+N
+175
+Manquants
+0
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�������������������������������
+
+FRÉQUENCES
+Fréquences de auteur_detail
+�����������������������������������������������������������
+Modalités
+Quantités
+�����������������������������������������������������������
+autre
+7
+entraineur
+20
+medecin
+5
+ne pas specifié
+3
+paire
+139
+prepaphysique
+1
+�����������������������������������������������������������
+
+% du Total
+
+% cumulés
+
+4.00000
+11.42857
+2.85714
+1.71429
+79.42857
+0.57143
+
+4.00000
+15.42857
+18.28571
+20.00000
+99.42857
+100.00000
+
+• ne plus qu’entraineurassistant et entraineur (+ un autre) comme pour MPS
+• mais il y a 3 cas “ne pas specifié”, je les ai examiné:
+#View(filter(SEX, auteur_detail=="ne pas specifié"))
+Et en fait, auteur adulte est clair, mais l’auteur n’était pas specifié davantage (même pas “autre” était coché, “ne pas specifié” est ma
+conclusion à moi).
+3. Que les adultes detaillés
+SEX %>% filter(auteur=="adulte") %>% descriptives(c("auteur_detail"), freq=TRUE)
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+STATISTIQUES DESCRIPTIVES
+Statistiques descriptives
+�������������������������������
+auteur_detail
+�������������������������������
+N
+36
+Manquants
+0
+Moyenne
+Médiane
+Ecart-type
+Minimum
+Maximum
+�������������������������������
+
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+##
+
+FRÉQUENCES
+Fréquences de auteur_detail
+�����������������������������������������������������������
+Modalités
+Quantités
+�����������������������������������������������������������
+autre
+7
+entraineur
+20
+medecin
+5
+ne pas specifié
+3
+paire
+0
+prepaphysique
+1
+�����������������������������������������������������������
+
+Les même 3 “ne pas specifié”, c’est clair.
+
+% du Total
+
+% cumulés
+
+19.44444
+55.55556
+13.88889
+8.33333
+0.00000
+2.77778
+
+19.44444
+75.00000
+88.88889
+97.22222
+97.22222
+100.00000
+
+
