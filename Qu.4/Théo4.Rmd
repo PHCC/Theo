@@ -31,7 +31,7 @@ library(dplyr)                                        # filter etc.
 ## Lire
 
 ```{r}
-setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
+setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo/new_donnees_colnames")
 TOUT <- read.xlsx("new_polished_itemname-CHP2.xlsx", sheetName ="Sheet1")[1:506]  # enlever colonnes vides à la fin
 ```
 

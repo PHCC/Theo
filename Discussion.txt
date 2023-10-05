@@ -1,5 +1,107 @@
 Salut Christoph, 
 
+Pour les deux derniers tableaux : 
+
+
+Je voudrais faire un test d'indépendance entre les catégories de chaque maltraitance.
+
+- hypothèse 0 : les interprétations des différentes catégories sont identiques, normalisation catégorie 1 = normalisation catégorie 2 = normalisation catégorie 3 = etc
+-Hypothèse 1 : les interprétation des différentes catégorie ne sont pas identiques 
+
+Tableau des interprétations, j'aimerais pouvoir dire : 
+
+Exemple 1 : On voit qu'il y a une différence significative (P<.0.01) entre la catégorie 1 et 3 de la maltraitance psychologique concernant l'expérience. La catégorie 1 de la maltraitance psychologique "insuffisance de soutien" est perçue comme nécessaire à la performance par 59% des athlètes ayant subi une maltraitance psychologique, alors que la catégorie 3 "terroriser un athlète" est perçue comme nécessaire à la performance seulement par 34% des athlètes ayant subi une maltraitance psychologique. 
+
+Tableau des conséquences : 
+
+J'aimerais faire un test d'indépendance entre les différentes catégories de chaque maltraitance
+
+- Hypothèse 0 = les conséquences des différentes catégories sont identiques, humiliation catégorie 1 = humiliation catégorie 2 = humiliation catégorie 3 = etc
+-Hypothèse 1 = Les conséquence des différentes catégories ne sont pas identitques)
+
+Exemple 2 : On voit qu'il y a une différence significative (P<.0.01) entre la catégorie 1 et 3 de la maltraitance psychologique concernant l'expérience (conséquence). 59 % des athlètes ont ressenti de l'humiliation dans la catégorie 1 de la maltraitance psychologique "insuffisance de soutien"  et seulement 22%  dans la catégorie 3 "terroriser un athlète".
+
+J'ai pensé que c'était la meilleure manière de faire au vu de la construction du questionnaire, j'espère que ça te sembles être intelligent.
+
+Bonne soirée à toi 
+
+Théo 
+
+-----------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Salut Christoph, 
+
 J’ai donc refais l’excel. J’ai laissé les noms déjà existants en noir. Chaque nouvelle variable est en rouge. Dans la deuxième ligne il y a qqfois des corrections que j’ai remarqué tu verras c’est assez logique. J’ai mis chaque nom avec la catégorie comme ça tu peux plus facilement te retrouver. Cependant les réponses sont encore sous forme de lettre et non en chiffre. 
 
 Le problème est que toutes les réponses ont été décalées vu le nombre de variable que j’ai ajouté. Je me demande donc si en réalité très peu de réponse dans les tableaux sont justes. Cependant, dès à présent nous avons une base correcte. 

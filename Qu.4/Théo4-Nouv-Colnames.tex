@@ -1,0 +1,807 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=0.5cm]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Théo4-Nouvel Excel Colnames},
+  pdfauthor={Christoph},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Théo4-Nouvel Excel Colnames}
+\author{Christoph}
+\date{2023-10-05}
+
+\begin{document}
+\maketitle
+
+\hypertarget{libraries}{%
+\section{Libraries}\label{libraries}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(xlsx)                                         }\CommentTok{\# Fichiers Excel}
+\FunctionTok{library}\NormalTok{(jmv)                                          }\CommentTok{\# Analyses Jamovi}
+\FunctionTok{library}\NormalTok{(dplyr)                                        }\CommentTok{\# filter etc.}
+\CommentTok{\#library(tigerstats)                                   \# beaux tableaux croisés}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{donnuxe9es}{%
+\section{Données}\label{donnuxe9es}}
+
+\hypertarget{lire}{%
+\subsection{Lire}\label{lire}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo"}\NormalTok{)}
+\NormalTok{TOUT }\OtherTok{\textless{}{-}} \FunctionTok{read.xlsx}\NormalTok{(}\StringTok{"MA\_Theo\_tableau{-}ed.xlsx"}\NormalTok{, }\AttributeTok{sheetName =}\StringTok{"Feuil1"}\NormalTok{) }\CommentTok{\#[1:506]  \# enlever colonnes vides à la fin}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{afficher}{%
+\subsection{Afficher}\label{afficher}}
+
+(sur écran mais pas dans le PDF ou word)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#View(TOUT)}
+\FunctionTok{noquote}\NormalTok{(}\FunctionTok{colnames}\NormalTok{(TOUT))   }\CommentTok{\# Noms des Variables}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1] ID                                                               
+##   [2] date                                                             
+##   [3] page                                                             
+##   [4] langue                                                           
+##   [5] serie                                                            
+##   [6] Liberte_participation                                            
+##   [7] Categorie_age                                                    
+##   [8] age                                                              
+##   [9] canton                                                           
+##  [10] sexe_genre                                                       
+##  [11] sexe_genre_1                                                     
+##  [12] niveau_de_pratique                                               
+##  [13] sport_principal                                                  
+##  [14] NA.                                                              
+##  [15] sport_cleaned                                                    
+##  [16] sport_categories                                                 
+##  [17] arret_pratique                                                   
+##  [18] Mphysique_pairs_item1                                            
+##  [19] Mphysique_paire_item2                                            
+##  [20] Mphysique_paire_item3                                            
+##  [21] Mphysique_paire_normalisation                                    
+##  [22] Mphysique_paire_necessite_perf                                   
+##  [23] Mphysique_paire_faire_partie                                     
+##  [24] Mphysique_paire_demotivation                                     
+##  [25] Mphysique_paire_moins_performé                                   
+##  [26] Mphysique_paire_perteconfiance                                   
+##  [27] Mphysique_paire_image_neg                                        
+##  [28] Mphysique_paire_peur                                             
+##  [29] Mphysique_paire_colere                                           
+##  [30] Mphysique_paire_triste                                           
+##  [31] Mphysique_paire_stress                                           
+##  [32] Mphysique_paire_ta_faute                                         
+##  [33] Mphysique_paire_humiliation                                      
+##  [34] Mphysique_adulte_secoue_agrippe_item1                            
+##  [35] Mphysique_adulte_frappe_item2                                    
+##  [36] Mphysique_adulte_etouffe_item3                                   
+##  [37] Mphysique_adulte_auteur_entraineur                               
+##  [38] Mphysique_adulte_auteur_entraineurassistant                      
+##  [39] Mphysique_adulte_auteur_prepaphysique                            
+##  [40] Mphysique_adulte_auteur_medecin                                  
+##  [41] Mphysique_adulte_auteur_psy                                      
+##  [42] Mphysique_adulte_auteur_arbitre                                  
+##  [43] Mphysique_adulte_auteur_autre                                    
+##  [44] Mphysique_adulte_auteur_normlisation                             
+##  [45] Mphysique_adulte_performance                                     
+##  [46] Mphysique_adulte_faisant_partie_categorie_1                      
+##  [47] Mphysique_adute_domotivation                                     
+##  [48] Mphysique_adulte_moins_performe_categorie_1                      
+##  [49] Mphysique_adulte_confiance                                       
+##  [50] Mphysique_adulte_imagecorps                                      
+##  [51] Mphysique_adulte_peur                                            
+##  [52] Mphysique_adulte_colere                                          
+##  [53] Mphysique_adulte_triste                                          
+##  [54] Mphysique_adulte_stress                                          
+##  [55] Mphysique_adulte_responsabilite                                  
+##  [56] Mphysique_adulte_humiliation                                     
+##  [57] Mphysique_parent_secoue                                          
+##  [58] Mphysique_parent_frappe                                          
+##  [59] Mphysique_parent_ettoufe                                         
+##  [60] Mphysique_parent_consideration_normal_categorie_1                
+##  [61] Mphysique_parent_necessaire_perf_categorie_1                     
+##  [62] Mphysique_parent_faisant_partie_                                 
+##  [63] Mphysique_parent_demotive_categorie_1                            
+##  [64] Mphysique_parent_moinsperf_categorie_1                           
+##  [65] Mphysique_parent_perduconfiance_categorie_1                      
+##  [66] Mphysique_parent_imageneg_categorie_1                            
+##  [67] Mphysique_parent_peur_categorie_1                                
+##  [68] Mphysique_parent_colere_categorie_1                              
+##  [69] Mphysique_parent_triste_categorie_1                              
+##  [70] Mphysique_parent_stress_categorie_1                              
+##  [71] Mphysique_parent_tafaute_categorie_1                             
+##  [72] Mphysique_parent_humiliation_categorie_1                         
+##  [73] Mpsy_paire_ignoré_item1                                          
+##  [74] Mpsy_paire_normalisation                                         
+##  [75] Mpsy_paire_necessite                                             
+##  [76] Mpsy_paire_partie_entrainement                                   
+##  [77] Mpsy_paire_démotivation                                          
+##  [78] Mpsy_paire_moins_performe                                        
+##  [79] Mpsy_paire_perdu_confiance                                       
+##  [80] Mpsy_paire_image_corps                                           
+##  [81] Mpsy_paire_peur                                                  
+##  [82] Mpsy_paire_colere                                                
+##  [83] Mpsy_paire_triste                                                
+##  [84] Mpsy_paire_stress                                                
+##  [85] MPsy_paire_ta_faute                                              
+##  [86] Mpsy_paire_humiliation                                           
+##  [87] Mpsy_paire_investissement_item2                                  
+##  [88] Mpsy_paire_critique_perf_item3                                   
+##  [89] Mpsy_paire_apparence_item4                                       
+##  [90] Mpsy_paire_rumeur_item5                                          
+##  [91] Mpsy_paire_humiliation_item6                                     
+##  [92] Mpsy_paire_consideration                                         
+##  [93] mpsy_paire_neccesiteperf                                         
+##  [94] Mpsy_paire_partie_compet                                         
+##  [95] Mpsy_paire_demotive                                              
+##  [96] mpsy_paire_moins_perf                                            
+##  [97] Mpsy_paire_perte_confiance                                       
+##  [98] mpsy_paire_image_corps                                           
+##  [99] Mpsy_paire_peur_2                                                
+## [100] Mpsy_paire_colere_2                                              
+## [101] Mpsy_paire_triste_2                                              
+## [102] Mpsy_paire_stress_2                                              
+## [103] mpsy_paire_faute                                                 
+## [104] Mpsy_paire_humiliation_2                                         
+## [105] Mpsy_paire_menace_exclusion_item7                                
+## [106] mpsy_paire_menace_physique_item8                                 
+## [107] mpsy_paire_normlisation                                          
+## [108] mpsy_paire_necessite_perf                                        
+## [109] mpsy_paire_partie_entrainement                                   
+## [110] mpsy_paire_demotive_sport                                        
+## [111] mpsy_paire_moins_perf_2                                          
+## [112] mpsy_paire_perdu_confiance                                       
+## [113] Mpsy_paire_image_corps_2                                         
+## [114] Mpsy_paire_peur_3                                                
+## [115] Mpsy_paire_colere_3                                              
+## [116] mpsy_paire_triste                                                
+## [117] mpsy_paire_stress                                                
+## [118] Mpsy_paire_ta_faute                                              
+## [119] Mpsy_paire_humiliation_3                                         
+## [120] Mpsy_paire_encourager_humiliation_item9                          
+## [121] mpsy_paire_limite_contacte_item10                                
+## [122] Mpsy_paire_normalisation_2                                       
+## [123] mpsy_paire_necessaireperf                                        
+## [124] mpsy_paire_partie_entrainement_2                                 
+## [125] mpsy_paire_demotive                                              
+## [126] mpsy_paire_moins_perf_3                                          
+## [127] mpsy_paire_perte_confiance                                       
+## [128] mpsy_paire_image_neg                                             
+## [129] mpsy_paire_peur                                                  
+## [130] mpsy_paire_colere                                                
+## [131] mpsy_paire_triste_2                                              
+## [132] Mpsy_paire_stress_3                                              
+## [133] Mpsy_paire_faute                                                 
+## [134] mpsy_paire_humiliation                                           
+## [135] Mpsy_adulte_ignoer_item1                                         
+## [136] mpsy_adulte_auteur_entraineur                                    
+## [137] mpsy_adulte_auteur_entraineurassistant                           
+## [138] mpsy_adulte_auteur_prepaphysique                                 
+## [139] mpsy_adulte_auteur_medecin                                       
+## [140] mpsy_adulte_auteur_prepa_physique                                
+## [141] mpsy_adulte_auteur_arbitre                                       
+## [142] mpsy_adulte_auteur_autre                                         
+## [143] mpsy_adulte_considerer                                           
+## [144] mpsy_adulte_necessaire                                           
+## [145] Mpsy_adulte_faisant_partie                                       
+## [146] Mpsy_adulte_demotive                                             
+## [147] mpsy_adulte_moins_perf                                           
+## [148] Mpsy_adulte_perdu_confiance                                      
+## [149] mpsy_adulte_image_corps                                          
+## [150] mpsy_adulte_peur                                                 
+## [151] mpsy_adulte_colere                                               
+## [152] mpsy_adulte_triste                                               
+## [153] mpsy_adulte_stress                                               
+## [154] mpsy_adulte_ta_faute                                             
+## [155] mpsy_adulte_humiliation                                          
+## [156] mpsy_adulte_critique_invesstissement_item2                       
+## [157] mpsy_adulte_critique_perf_item2                                  
+## [158] mpsy_adulte_critiquer_apparence_item3                            
+## [159] mpsy_adulte_rumeur_item4                                         
+## [160] mpsy_adulte_ridiculiser_item5                                    
+## [161] Mpsy_adulte_crier_dessus_item6                                   
+## [162] Mpsy_adulte_auteur_2_entraineur                                  
+## [163] mpsy_adulte_entraineurassistant                                  
+## [164] mpsy_adulte_prepaphy                                             
+## [165] mpsy_adulte_medecin                                              
+## [166] mpsy_adulte_auteur_psychologue                                   
+## [167] mpsy_adulte_auteur_arbitre.1                                     
+## [168] mpsy_adulte_auteur_autre.1                                       
+## [169] Mpsy_adulte_consideration                                        
+## [170] mpsy_adulte_necessaire_2                                         
+## [171] Mpsy_adulte_partie_compet                                        
+## [172] Mpsy_adulte_demotive_2                                           
+## [173] mpsy_adulte_moins_perf_2                                         
+## [174] Mpsy_adulte_perduconfiance                                       
+## [175] Mpsy_adulte_image_corps                                          
+## [176] mpsy_adulte_peur_2                                               
+## [177] mpsy_adulte_colere_2                                             
+## [178] mpsy_adulte_triste_2                                             
+## [179] mpsy_adulte_stress_2                                             
+## [180] mpsy_adulte_ta_faute_2                                           
+## [181] mpsy_adulte_humiliation_2                                        
+## [182] mpsy_adulte_menace_expulsion_item7                               
+## [183] mpsy_adulte_menacephysi_item8                                    
+## [184] mpsy_adulte_auteur_entraineur.1                                  
+## [185] mpsy_adulte_auteur_entraineur_assistant                          
+## [186] mpsy_adulte_auteur_prepaphy                                      
+## [187] mpsy_adulte_auteur_medecin.1                                     
+## [188] mpsy_adulte_auteur_psy                                           
+## [189] mpsy_adulte_auteur_arbitre_2                                     
+## [190] mpsy_adulte_auteur_autre_2                                       
+## [191] Mpsy_adulte_auteur_considerer_normal                             
+## [192] mpsy_adulte_necessaireperf                                       
+## [193] mpsy_adulte_partie_entrainement                                  
+## [194] mpsy_adulte_demotive                                             
+## [195] mpsy_adulte_moins_perf_3                                         
+## [196] mpsy_adulte_perdu_confiance                                      
+## [197] mpsy_adulte_image_neg                                            
+## [198] mpsy_adulte_peur_3                                               
+## [199] mpsy_adulte_colere_3                                             
+## [200] mpsy_adulte_triste_3                                             
+## [201] Mpsy_Adulte_stress                                               
+## [202] mpsy_adulte_ta_faute_3                                           
+## [203] mpsy_adulte_ressenti_humuliation                                 
+## [204] mpsy_adulte_humiliation_autrui_item9                             
+## [205] mpsy_adulte_limitation_contact_item10                            
+## [206] mpsy_adulte_jouer_blesser_item11                                 
+## [207] mpsy_adulte_entrainer_a_vomir_item12                             
+## [208] mpsy_adulte_dopage_item13                                        
+## [209] mpsy_adulte_poids_ideal_item13                                   
+## [210] mpsy_adulte_auteur_entraineur_2                                  
+## [211] mpsy_adulte_auteur_assist_coach                                  
+## [212] mpsy_adulte_auteur_prepaphy_2                                    
+## [213] mpsy_adulte_equipe_medical                                       
+## [214] Mpsy_adulte_auteur_psychologue                                   
+## [215] mpsy_adulte_auteur_arbitre_3                                     
+## [216] mpsy_adulte_auteur_autre_3                                       
+## [217] mpsy_adulte_considération_normale                                
+## [218] mpsy_adulte_necessaire_perf                                      
+## [219] mpsy_adulte_partie_compet                                        
+## [220] mpsy_adulte_demotive_sport                                       
+## [221] Mpsy_adulte_moins_perf                                           
+## [222] mpsy_adulte_perdu_confiance_2                                    
+## [223] Mpsy_adulte_image_neg                                            
+## [224] Mpsy_adulte_peur                                                 
+## [225] mpsy_adulte_colère                                               
+## [226] Mpsy_adulte_triste                                               
+## [227] mpsy_adulte_stress_3                                             
+## [228] mpsy_adulte_ta_faute_4                                           
+## [229] Mpsy_adulte_humiliation                                          
+## [230] Mpsy_parent_ignorer_item1                                        
+## [231] Mpsy_parent_normale_categorie_1                                  
+## [232] Mpsy_parent_necessaire_categorie_1                               
+## [233] Mpsy_parent_faisantpartie_categorie_1                            
+## [234] mpsy_parent_demotiver_sport                                      
+## [235] mpsy_parent_moins_perf                                           
+## [236] Mpsy_parent_perdu_confiance                                      
+## [237] mpsy_parent_image_corps                                          
+## [238] mpsy_parent_peur                                                 
+## [239] mpsy_parent_colere                                               
+## [240] Mpsy_parent_triste                                               
+## [241] Mpsy_parent_stress                                               
+## [242] Mpsy_parent_ta_faute                                             
+## [243] Mpsy_parent_humiliation                                          
+## [244] mpsy_parent_invesstissment_item2                                 
+## [245] mpsy_parent_critique_perf_item3                                  
+## [246] Mpsy_parent_critique_corps_item4                                 
+## [247] mpsy_parent_rumeur_item5                                         
+## [248] mpsy_parent_ridiculisà_perf_item6                                
+## [249] mpsy_parent_crier_dessus_item7                                   
+## [250] Mpsy_parent_normalisation                                        
+## [251] mpsy_parent_necessaire                                           
+## [252] mpsy_parent_faisant_partie                                       
+## [253] Mpsy_parent_demotive_e_categorie_2                               
+## [254] Mpsy_parent_moinsperf_categorie_2                                
+## [255] Mpsy_parent_perdu_confiance_2                                    
+## [256] Mpsy_parent_imageneg_categorie_2                                 
+## [257] Mpsy_parent_peur_categorie_2                                     
+## [258] Mpsy_parent_colere_categorie_2                                   
+## [259] Mpsy_parent_tristess_categorie_2                                 
+## [260] Mpsy_parent_stress_categorie_2                                   
+## [261] Mpsy_parent_tafaute_categorie_2                                  
+## [262] Mpsy_parent_humiliation_categorie_2                              
+## [263] Mpsy_parent_menace_physique_item8                                
+## [264] mpsy_parent_normalisation                                        
+## [265] mpsy_parent_necessaire_perf                                      
+## [266] Mpsy_parent_faisant_partie_entrainement                          
+## [267] Mpsy_parent_demotive_e_categorie_3                               
+## [268] Mpsy_parent_moinsperf_categorie_3                                
+## [269] Mpsy_parent_perdu_confiance_3                                    
+## [270] Mpsy_parent_imageneg_categorie_3                                 
+## [271] Mpsy_parent_peur                                                 
+## [272] Mpsy_parent_colere                                               
+## [273] Mpsy_parent_triste_2                                             
+## [274] Mpsy_parent_stress_2                                             
+## [275] Mpsy_parent_tafaute_categorie_3                                  
+## [276] Mpsy_parent_humiliation_categorie_3                              
+## [277] Mpsy_parent_blesser_adversaire_item9                             
+## [278] Mpsy_parent_limite_contact_item10                                
+## [279] Mpsy_parent_blessé_soi_mm_item11                                 
+## [280] mpsy_parent_vomir_item12                                         
+## [281] mpsy_parent_dopage_item13                                        
+## [282] Mpsy_parent_poids_ideal_item14                                   
+## [283] Mpsy_parent_consideration_normal                                 
+## [284] mpsy_parent_necessaire_perf_2                                    
+## [285] Mpsy_parent_partie_compet                                        
+## [286] Mpsy_parent_demotiver                                            
+## [287] Mpsy_parent_moinsperf_categorie_4                                
+## [288] Mpsy_parent_perdu_confiance_categorie_4                          
+## [289] Mpsy_parent_imageneg_categorie_4                                 
+## [290] Mpsy_parent_peur_categorie_4                                     
+## [291] Mpsy_parent_colere_categorie_4                                   
+## [292] Mpsy_parent_triste_2_categorie_4                                 
+## [293] Mpsy_parent_stress_2_categorie_4                                 
+## [294] Mpsy_parent_tafaute_categorie_4                                  
+## [295] Mpsy_parent_humiliation_categorie_4                              
+## [296] Msex_paire_remarque_apparence_item1                              
+## [297] Msex_paire_proposition_sex_item2                                 
+## [298] msex_paire_normalite                                             
+## [299] Msex_paire_necesstite                                            
+## [300] msex_paire_partie_compet                                         
+## [301] Msex_paire_demotive                                              
+## [302] Msex_paire_moins_perf                                            
+## [303] Msex_paire_perdu_confiance                                       
+## [304] Msex_paire_image_neg_corps                                       
+## [305] msex_paire_peur                                                  
+## [306] Msex_paire_colere                                                
+## [307] msex_paire_triste                                                
+## [308] msex_paire_stress                                                
+## [309] Msex_paire_ta_faute                                              
+## [310] Msex_paire_humiliation                                           
+## [311] msex_paire_exhibitionisme_item3                                  
+## [312] msex_paire_consideration_normale                                 
+## [313] msex_paire_necessaire_perf                                       
+## [314] Msex_paire_fait_partie_compet                                    
+## [315] msex_paire_demotive                                              
+## [316] msex_paire_moins_perf                                            
+## [317] msex_paire_perdu_confiance                                       
+## [318] Msex_paire_image_corps                                           
+## [319] Msex_paire_peur_2                                                
+## [320] msex_paire_colere                                                
+## [321] msex_paire_triste_2                                              
+## [322] msex_paire_stress_2                                              
+## [323] msex_paire_ta_faute                                              
+## [324] msex_paire_humiliation                                           
+## [325] msex_paire_photo_intime_item4                                    
+## [326] msex_paire_normalite_2                                           
+## [327] msex_paire_consideration_necessaire_perf                         
+## [328] msex_paire_consideration_partie_perf                             
+## [329] Msex_paire_consideration_demotive                                
+## [330] msex_paire_moins_perf_2                                          
+## [331] msex_paire_perdu_confiance_2                                     
+## [332] Msex_paire_image_corps_2                                         
+## [333] msex_paire_peur_3                                                
+## [334] msex_paire_colere_3                                              
+## [335] msex._paire_triste                                               
+## [336] msex_paire_stress_3                                              
+## [337] msex_paire_ta_faute_3                                            
+## [338] msex_paire_humiliation_2                                         
+## [339] msex_paire_attouchement_item5                                    
+## [340] Msex_paire_normalite                                             
+## [341] msex_paire_neccesite_perf                                        
+## [342] Msex_paire_partie_entrainement                                   
+## [343] Msex_paire_demotive_2                                            
+## [344] msex_paire_moins_perf_3                                          
+## [345] msex_paire_perdu_confiance_3                                     
+## [346] msex_paire_image_neg                                             
+## [347] msex_paire_peur_4                                                
+## [348] msex_paire_peur_5                                                
+## [349] msex_paire_triste_3                                              
+## [350] msex_paire_stress_4                                              
+## [351] msex_paire_ta_faute_4                                            
+## [352] Msex_paire_humiliation_categorie_4                               
+## [353] Msex_paire_embrasser_item6                                       
+## [354] msex_paire_frotter_partie_intime_item7                           
+## [355] Msex_paire_normalité                                             
+## [356] msex_paire_necessaire_perf_2                                     
+## [357] Msex_paire_faisant_partie_entrainement                           
+## [358] msex_paire_demotivation_categorie_5                              
+## [359] msex_paire_moins_perf_4                                          
+## [360] Msex_paire_perte_confiance                                       
+## [361] msex_paire_imageneg_cat_5                                        
+## [362] Msex_paire_peur                                                  
+## [363] msex_paire_colere_4                                              
+## [364] msex_paire_triste_4                                              
+## [365] msex_paire_stress_5                                              
+## [366] msex_paire_tafaute_categorie_5                                   
+## [367] msex_paire_humiliation_categorie_5                               
+## [368] msex_paire_viol_penetration_item7                                
+## [369] msex_paire_normalite_3                                           
+## [370] msex_paire_necessaire_perf_3                                     
+## [371] msex_paire_faisant_partie                                        
+## [372] msex_paire_demotivation_categorie_6                              
+## [373] msex_paire_moins_perf_5                                          
+## [374] msex_paire_perteconfiance_categorie_6                            
+## [375] msex_paire_imageneg_categorie_6                                  
+## [376] msex_paire_peur_6                                                
+## [377] msex_paire_colere_5                                              
+## [378] msex_paire_triste_5                                              
+## [379] msex_paire_stress_6                                              
+## [380] msex_paire_tafaute_categorie_6                                   
+## [381] msex_paire_humiliation_categorie_6                               
+## [382] Msex_paire_avec_sans_penetration_non_consentie_item8             
+## [383] msex_paire_normalite_4                                           
+## [384] msex_paire_necessaire_perf_4                                     
+## [385] msex_pair_faisantpartie_categorie_7                              
+## [386] msex_pair_demotivation_categorie_7                               
+## [387] msex_paire_moins_perf_categorie_7                                
+## [388] msex_paire_perteconfiance_categorie_7                            
+## [389] msex_pair_imagecoprs_categorie7                                  
+## [390] msex_paire_peur_7                                                
+## [391] msex_paire_colere_6                                              
+## [392] msex_paire_triste_6                                              
+## [393] msex_paire_stress_7                                              
+## [394] msex_pair_tafaute_categorie_7                                    
+## [395] msex_pair_humiliation_categorie_7                                
+## [396] Msex_adulte_remarque_sex_item1                                   
+## [397] msex_adulte_envoi_image_sex_item2                                
+## [398] Msex_adulte_auteur_entraineur                                    
+## [399] msex_adulte_auteur_entraineur_assis                              
+## [400] msex_adulte_auteur_prepa_physique                                
+## [401] Msex_adulte_auteur_medecin                                       
+## [402] msex_adulte_auteur_psy                                           
+## [403] msex_adulte_auteur_arbitre                                       
+## [404] msex_adulte_auteur_autre                                         
+## [405] Msex_adulte_normalite                                            
+## [406] msex_adulte_necessaire_perf                                      
+## [407] Msex_adulte_fsisant_partie                                       
+## [408] msex_adulte_demotive                                             
+## [409] Msex_adulte_moins_perf                                           
+## [410] msex_adulte_perdu_confiance                                      
+## [411] msex_adulte_image_corps                                          
+## [412] msex_adulte_peur                                                 
+## [413] msex_adulte_colere                                               
+## [414] msex_adulte_triste                                               
+## [415] msex_adulte_stress                                               
+## [416] msex_adulte_ta_faute                                             
+## [417] msex_adulte_humiliation                                          
+## [418] Msex_adulte_exhibition_partie_intime_item2...item_3_categorie_2..
+## [419] msex_adulte_entraineur_categorie_2                               
+## [420] Msex_adulte_assisstant_categorie_2                               
+## [421] msex_adulte_prepaphysique_categorie_2                            
+## [422] msex_adulte_medecin_categorie_2                                  
+## [423] msex_adulte_psy_categorie_2                                      
+## [424] msex_adulte_abitre_categorie_2                                   
+## [425] msex_adulte_autre_categorie2                                     
+## [426] msex_adulte_normalite                                            
+## [427] msex_adulte_necessaire_perf_5                                    
+## [428] msex_adulte_faisantpartie_categorie_2                            
+## [429] msex_adulte_demotivation_categorie_2                             
+## [430] msex_adulte_moins_perf                                           
+## [431] msex_adulte_perteconfiance_categorie_2                           
+## [432] msex_adulte_imageneg_categorie_2                                 
+## [433] msex_adulte_peur_6                                               
+## [434] msex_adulte_colere_6                                             
+## [435] Msex_adulte_triste                                               
+## [436] msex_adulte_stress..2.                                           
+## [437] msex_adulte_tafaute_categorie_2                                  
+## [438] msex_adulte_humiliation_categorie_2                              
+## [439] msex_adulte_photo_partie_intime_item3...item_4_categorie_3       
+## [440] msex_adulte_entraineur_categorie_3                               
+## [441] Msex_adulte_assisstant_categorie_3                               
+## [442] msex_adulte_prepaphysique_categorie_3                            
+## [443] msex_adulte_medecin_categorie_3                                  
+## [444] msex_adulte_psy_categorie_3                                      
+## [445] msex_adulte_abitre_categorie_3                                   
+## [446] msex_adulte_autre_categorie_3                                    
+## [447] Msex_adulte_normalité                                            
+## [448] msex_adulte_necessaire_perf_3                                    
+## [449] msex_adulte_moins_perf_7                                         
+## [450] msex_adulte_demotivation_categorie_3                             
+## [451] msex_adulte_moinsperf_categorie_3                                
+## [452] msex_adulte_perte_confiance_categorie_3                          
+## [453] msex_adulte_imagecoprs_categorie_3                               
+## [454] msex_adulte_peur_3                                               
+## [455] msex_adulte_colere_7                                             
+## [456] msex_adulte_triste_2                                             
+## [457] msex_adulte_stress_3                                             
+## [458] msex_adulte_tafaute_categorie_3                                  
+## [459] msex_adulte_humiliation_categorie_3                              
+## [460] msex_adulte_force.a_toucher_item3...item_5_categorie_4.          
+## [461] msex_adulte_entraineur_categorie_4                               
+## [462] Msex_adulte_assisstant_categorie_4                               
+## [463] msex_adulte_prepaphysique_categorie_4                            
+## [464] msex_adulte_medecin_categorie_4                                  
+## [465] msex_adulte_psy_categorie_4                                      
+## [466] msex_adulte_abitre_categorie_4                                   
+## [467] msex_adulte_autre_categorie_4                                    
+## [468] msex_adulte_normalite_2                                          
+## [469] msex_adulte_necessaire_perf_7                                    
+## [470] msex_adulte_faisantpartie_categorie_4                            
+## [471] msex_adulte_demotivationcategorie_4                              
+## [472] msex_adulte_moins_perf_8                                         
+## [473] msex_adulte_perteconfiance_categorie_4                           
+## [474] msex_adulte_imagecorps_categorie_4                               
+## [475] Msex_adulte_peur                                                 
+## [476] msex_adulte_colere_4                                             
+## [477] msex_adulte_triste_8                                             
+## [478] msex_adulte_stress_8                                             
+## [479] msex_adulte_tafaute_categorie_4                                  
+## [480] msex_adulte_humiliation_categorie_4                              
+## [481] msex_adulte_toucher_malalaise_item4...Item6_categorie_5          
+## [482] msex_adulte_embrasser_bouche_item5...Item_7_categorie_5          
+## [483] Msex_adulte_frotter_partie_intime_item6...item_8_categorie_5..   
+## [484] Msex_adulte_auteur_entraineur_2                                  
+## [485] msex_adulte_auteur_entraineur_assis_2                            
+## [486] Msex_adulte_prepa_physique                                       
+## [487] msex_adulte_auteur_medecin                                       
+## [488] msex_adulte_auteur_psy_2                                         
+## [489] msex_adulte_auteur_arbitre_2                                     
+## [490] msex_adulte_auteur_autre_2                                       
+## [491] Msex_adulte_normalite_2                                          
+## [492] msex_adulte_necessaire_perf_5..2.                                
+## [493] msex_adulte_faisant_partie                                       
+## [494] Msex_adulte_demotive                                             
+## [495] msex_adulte_moins_perf_4                                         
+## [496] Msex_adulte_perdu_confiance                                      
+## [497] Msex_adulte_image_neg_corps                                      
+## [498] msex_adulte_peur_4                                               
+## [499] msex_adulte_colere_5                                             
+## [500] msex_adulte_triste_4                                             
+## [501] msex_adulte_stress_5                                             
+## [502] msex_adulte_ta_faute_2                                           
+## [503] Msex_adulte_humiliation                                          
+## [504] Msex_adulte_tentation_relation_sex_item7...item_9_categorie_6..  
+## [505] Msex_adulte_auteur_entraineur_2_categorie_6                      
+## [506] msex_adulte_auteur_entraineur_assis_2_categorie_6                
+## [507] Msex_adulte_prepa_physique_categorie_6                           
+## [508] msex_adulte_auteur_medecin_categorie_6                           
+## [509] msex_adulte_auteur_psy_2_categorie_6                             
+## [510] msex_adulte_auteur_arbitre_2_categorie_6                         
+## [511] msex_adulte_auteur_autre_2_categorie_6                           
+## [512] Msex_adulte_normalite_2_categorie_6                              
+## [513] msex_adulte_necessaire_perf_5..2._categorie_6                    
+## [514] msex_adulte_faisant_partie_categorie_6                           
+## [515] Msex_adulte_demotive_categorie_6                                 
+## [516] msex_adulte_moins_perf_4_categorie_6                             
+## [517] Msex_adulte_perdu_confiance_categorie_6                          
+## [518] Msex_adulte_image_neg_corps_categorie_6                          
+## [519] msex_adulte_peur_4_categorie_6                                   
+## [520] msex_adulte_colere_5_categorie_6                                 
+## [521] msex_adulte_triste_4_categorie_6                                 
+## [522] msex_adulte_stress_5_categorie_6                                 
+## [523] msex_adulte_ta_faute_2_categorie_6                               
+## [524] Msex_adulte_humiliation_categorie_6                              
+## [525] Msex_adulte_forcer_relation_sex_avec_sans_pene_item8             
+## [526] Msex_adulte_auteur_entraineur_2_categorie_7                      
+## [527] msex_adulte_auteur_entraineur_assis_2_categorie_7                
+## [528] Msex_adulte_prepa_physique_categorie_7                           
+## [529] msex_adulte_auteur_medecin_categorie_7                           
+## [530] msex_adulte_auteur_psy_2_categorie_7                             
+## [531] msex_adulte_auteur_arbitre_2_categorie_7                         
+## [532] msex_adulte_auteur_autre_2_categorie_7                           
+## [533] Msex_adulte_normalite_2_categorie_7                              
+## [534] msex_adulte_necessaire_perf_5..2._categorie_7                    
+## [535] msex_adulte_faisant_partie_categorie_7                           
+## [536] Msex_adulte_demotive_categorie_7                                 
+## [537] msex_adulte_moins_perf_4_categorie_7                             
+## [538] Msex_adulte_perdu_confiance_categorie_7                          
+## [539] Msex_adulte_image_neg_corps_categorie_7                          
+## [540] msex_adulte_peur_4_categorie_7                                   
+## [541] msex_adulte_colere_5_categorie_7                                 
+## [542] msex_adulte_triste_4_categorie_7                                 
+## [543] msex_adulte_stress_5_categorie_7                                 
+## [544] msex_adulte_ta_faute_2_categorie_7                               
+## [545] Msex_adulte_humiliation_categorie_7                              
+## [546] negadulte_item._cat_1                                            
+## [547] negadulte_item2_cat_1                                            
+## [548] negadulte_item_3_cat_1                                           
+## [549] Neg_adulte_entraineur_cat_1                                      
+## [550] Neg_adulte_assit_entrain_cat_1                                   
+## [551] Neg_adulte_prepa_physiqu_cat_1                                   
+## [552] Neg_adulte_medecin_cat_1                                         
+## [553] Neg_adulte_Psy_cat_1                                             
+## [554] Neg_adulte_arbitre_cat_1                                         
+## [555] Neg_adulte_autre_cat_1                                           
+## [556] Neg_adulte_normal_cat_1                                          
+## [557] Neg_adulte_necessite_cat_1                                       
+## [558] Neg_adulte_faisant_partie_cat_1                                  
+## [559] Neg_adulte_demotiver                                             
+## [560] Neg_adulte_moins_perf                                            
+## [561] Neg_adulte_perdu_confiance                                       
+## [562] Neg_adulte_image_neg_corps                                       
+## [563] Neg_adulte_peur                                                  
+## [564] Neg_adulte_colere                                                
+## [565] Neg_adulte_triste                                                
+## [566] Neg_adulte_stress                                                
+## [567] Neg_adulte_ta_faute                                              
+## [568] Neg_adulte_humiliation                                           
+## [569] Neg_adulte_louper_ecole_item4                                    
+## [570] Neg_adulte_entraineur                                            
+## [571] Neg_adulte_entraineur_assit                                      
+## [572] neg_adulte_prepa_physique                                        
+## [573] Neg_adulte_medecin_2                                             
+## [574] neg_adulte_psy_2                                                 
+## [575] neg_adulte_arbitre                                               
+## [576] neg_adulte_autre                                                 
+## [577] neg_adulte_normalite                                             
+## [578] Neg_adulte_necessaire_perf_2                                     
+## [579] neg_adulte_faisant_partie                                        
+## [580] Neg_adulte_demotive                                              
+## [581] Neg_adulte_moins_perf_2                                          
+## [582] Neg_adulte_perdu_confiance_2                                     
+## [583] Neg_adulte_image_coprs                                           
+## [584] Neg_Adulte_peur                                                  
+## [585] Neg_adulte_colere_2                                              
+## [586] Neg_adulte_triste_2                                              
+## [587] Neg_adulte_stress_2                                              
+## [588] Neg_adulte_ta_faute_2                                            
+## [589] Neg_adulte_humiliation_2                                         
+## [590] Neg_adulte_laisser_humilier_item5                                
+## [591] Neg_adulte_entraineur_2                                          
+## [592] Neg_adulte_entraineur_assistant                                  
+## [593] Neg_adulte_prepa_phys                                            
+## [594] Neg_adulte_medecin_3                                             
+## [595] neg_adulte_psy_3                                                 
+## [596] Neg_adulte_arbitrw                                               
+## [597] Neg_adulte_autre                                                 
+## [598] Neg_adulte_normalite_2                                           
+## [599] Neg_adulte_necessaire_perf_3                                     
+## [600] Neg_adulte_faisant_partie_perf                                   
+## [601] Neg_adulte_demotive_2                                            
+## [602] Neg_adulte_moins_perf_3                                          
+## [603] Neg_adulte_perdu_confiance_3                                     
+## [604] Neg_adulte_image_corps                                           
+## [605] Neg_adulte_peur_2                                                
+## [606] Neg_adulte_colere_3                                              
+## [607] Neg_adulte_triste_3                                              
+## [608] Neg_adulte_stress_3                                              
+## [609] Neg_adulte_ta_faute_3                                            
+## [610] Neg_adulte_humiliation_3                                         
+## [611] Neg_parent_laisser_entrainer_blesser_item1                       
+## [612] Neg_parent_dopage_item2                                          
+## [613] Neg_parent_poids_ideal_item3                                     
+## [614] Neg_parent_normalite                                             
+## [615] neg_parent_necessaire_perf                                       
+## [616] neg_parent_faisant_partie                                        
+## [617] neg_parent_demotive                                              
+## [618] neg_parent_moins_perf                                            
+## [619] Neg_parent_perdu_confiance_3_cat_1                               
+## [620] Neg_parente_image_corpscat_1cat_1                                
+## [621] Neg_parent_peur_2cat_1                                           
+## [622] Neg_parente_colere_3cat_1                                        
+## [623] Neg_parent_triste_3cat_1                                         
+## [624] Neg_parent_stress_3cat_1                                         
+## [625] Neg_parent_ta_faute_3cat_1                                       
+## [626] Neg_parent_humiliation_3cat_1                                    
+## [627] Neg_parent_arret_ecole_item4                                     
+## [628] neg_parent_normalite                                             
+## [629] Neg_parent_necessaire_perf                                       
+## [630] neg_parent_faisant_partie_2                                      
+## [631] neg_parent_demotive_2                                            
+## [632] neg_parent_moins_perf_categorie_2                                
+## [633] Neg_parent_perdu_confiance_3_cat_2                               
+## [634] Neg_parente_image_corpscat_1cat_2                                
+## [635] Neg_parent_peur_2cat_2                                           
+## [636] Neg_parente_colere_3cat_2                                        
+## [637] Neg_parent_triste_3cat_2                                         
+## [638] Neg_parent_stress_3cat_2                                         
+## [639] Neg_parent_ta_faute_3cat_2                                       
+## [640] Neg_parent_humiliation_3cat_2                                    
+## [641] neg_parent_laisser_humilier_autrui_item5                         
+## [642] Neg_adulte_necessaire                                            
+## [643] neg_parent_necessaire_cat_3                                      
+## [644] neg_parent_faisant_partie_3                                      
+## [645] Neg_parent_demotive                                              
+## [646] neg_adulte_moins_perf                                            
+## [647] Neg_parent_perdu_confiance_3_cat_3                               
+## [648] Neg_parente_image_corpscat_1cat_3                                
+## [649] Neg_parent_peur_2cat_3                                           
+## [650] Neg_parente_colere_3cat_3                                        
+## [651] Neg_parent_triste_3cat_3                                         
+## [652] Neg_parent_stress_3cat_3                                         
+## [653] Neg_parent_ta_faute_3cat_3                                       
+## [654] Neg_parent_humiliation_3cat_3
+\end{verbatim}
+
+\end{document}
