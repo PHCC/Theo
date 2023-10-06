@@ -32,7 +32,7 @@ library(dplyr)                                        # filter etc.
 
 ```{r}
 setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
-TOUT <- read.xlsx("MA_Theo_tableau-ed.xlsx", sheetName ="Feuil1") #[1:506]  # enlever colonnes vides à la fin
+TOUT <- read.xlsx("MA_Theo_tableau-ed.xlsx", sheetName ="Feuil1") 
 ```
 
 
@@ -45,6 +45,8 @@ View(TOUT)
 #noquote(colnames(TOUT))   # Noms des Variables j'ai un fichier Théo-Nouv-Colnames.txt
 ```
 
+dernier = [654] Neg_parent_humiliation_3cat_3 = Excel
+
 
 # MPS
 
@@ -56,7 +58,7 @@ TOUT$MPS <- TOUT$Mphysique_pairs_item1 != "Jamais"                 | TOUT$Mphysi
                 TOUT$Mphysique_adulte_etouffe_item3 != "Jamais"    |
   
             TOUT$Mphysique_parent_secoue != "Jamais"               | TOUT$Mphysique_parent_frappe != "Jamais"       | 
-                TOUT$Mphysique_parent_ettoufe != "Jamais"
+                TOUT$Mphysique_parent_ettoufe != "Jamais"  # en haiut = nouvel Excel
 
 TOUT$MPS <- if_else(TOUT$MPS, 1, 0)
 MPS <- filter(TOUT, MPS==1)
@@ -72,13 +74,13 @@ MPS$auteur_pairs   <- MPS$Mphysique_pairs_item1   != "Jamais" | MPS$Mphysique_pa
 
 MPS$auteur_parents <- MPS$Mphysique_parent_secoue != "Jamais" | MPS$Mphysique_parent_frappe  != "Jamais" | MPS$Mphysique_parent_ettoufe != "Jamais"   # = nouveau XL
 
-MPS$auteur_adulte  <- MPS$Mphysique_adulte_auteur_entraineur          != "Jamais" |
-                      MPS$Mphysique_adulte_auteur_entraineurassistant != "Jamais" |
-                      MPS$Mphysique_adulte_auteur_prepaphysique       != "Jamais" |
-                      MPS$Mphysique_adulte_auteur_medecin             != "Jamais" |
-                      MPS$Mphysique_adulte_auteur_psy                 != "Jamais" |
-                      MPS$Mphysique_adulte_auteur_arbitre             != "Jamais" |
-                      MPS$Mphysique_adulte_auteur_autre               != "Jamais" 
+MPS$auteur_adulte  <- MPS$Mphysique_adulte_auteur_entraineur          == "Oui" |   # = nouveau XL
+                      MPS$Mphysique_adulte_auteur_entraineurassistant == "Oui" |
+                      MPS$Mphysique_adulte_auteur_prepaphysique       == "Oui" |
+                      MPS$Mphysique_adulte_auteur_medecin             == "Oui" |
+                      MPS$Mphysique_adulte_auteur_psy                 == "Oui" |
+                      MPS$Mphysique_adulte_auteur_arbitre             == "Oui" |
+                      MPS$Mphysique_adulte_auteur_autre               == "Oui" 
 
 MPS$auteur <- as.factor(case_when(MPS$auteur_pairs   ~ "pairs"  ,
                                   MPS$auteur_parents ~ "parents",
@@ -88,18 +90,19 @@ MPS$auteur <- as.factor(case_when(MPS$auteur_pairs   ~ "pairs"  ,
 MPS$auteur_detail <- as.factor(case_when(
                        MPS$auteur_pairs   ~ "pairs"  ,
                        MPS$auteur_parents ~ "parents",
-                       MPS$Mphysique_adulte_auteur_entraineur          != "Jamais" ~ "entraineur"         ,
-                       MPS$Mphysique_adulte_auteur_entraineurassistant != "Jamais" ~ "entraineurassistant",
-                       MPS$Mphysique_adulte_auteur_prepaphysique       != "Jamais" ~ "prepaphysique"      ,
-                       MPS$Mphysique_adulte_auteur_medecin             != "Jamais" ~ "medecin"            ,
-                       MPS$Mphysique_adulte_auteur_psy                 != "Jamais" ~ "psy"                ,
-                       MPS$Mphysique_adulte_auteur_arbitre             != "Jamais" ~ "arbitre"            ,
-                       MPS$Mphysique_adulte_auteur_autre               != "Jamais" ~ "autre"              ,
+                       MPS$Mphysique_adulte_auteur_entraineur          == "Oui" ~ "entraineur"         ,
+                       MPS$Mphysique_adulte_auteur_entraineurassistant == "Oui" ~ "entraineurassistant",
+                       MPS$Mphysique_adulte_auteur_prepaphysique       == "Oui" ~ "prepaphysique"      ,
+                       MPS$Mphysique_adulte_auteur_medecin             == "Oui" ~ "medecin"            ,
+                       MPS$Mphysique_adulte_auteur_psy                 == "Oui" ~ "psy"                ,
+                       MPS$Mphysique_adulte_auteur_arbitre             == "Oui" ~ "arbitre"            ,
+                       MPS$Mphysique_adulte_auteur_autre               == "Oui" ~ "autre"              ,
                        TRUE               ~ "ne pas specifié"   ))
 ```
   
 
 ## Statistiques Descriptives 
+
 
 ### 1. Les grands groupes
 
@@ -115,24 +118,18 @@ descriptives(MPS, c("auteur_detail"), freq=TRUE)
 ```
 
 
-### 3. Que les adultes detaillés
-
-```{r}
-MPS %>% filter(auteur=="adulte") %>% descriptives(c("auteur_detail"), freq=TRUE)
-```
-
 ----------------------------------------------------------------------------
 
 # PSY
 
 ```{r}
-TOUT$PSY <- TOUT$Mpsy_paire_ignoré_item1 != "Jamais" | TOUT$Mpsy_paire_investissement_item2 != "Jamais" |
+TOUT$PSY <- TOUT$Mpsy_paire_ignoré_item1 != "Jamais" | TOUT$Mpsy_paire_investissement_item2 != "Jamais" |   # ~ nouvel Exel
             TOUT$Mpsy_paire_critique_perf_item3 != "Jamais" | TOUT$Mpsy_paire_apparence_item4 != "Jamais" |
             TOUT$Mpsy_paire_rumeur_item5 != "Jamais" | TOUT$Mpsy_paire_humiliation_item6 != "Jamais" |
             TOUT$Mpsy_paire_menace_exclusion_item7 != "Jamais" | TOUT$mpsy_paire_menace_physique_item8 != "Jamais" |
             TOUT$Mpsy_paire_encourager_humiliation_item9 != "Jamais" | TOUT$mpsy_paire_limite_contacte_item10 != "Jamais" |
 
-            TOUT$Mpsy_adulte_ignoer_item1 != "Jamais" | TOUT$mpsy_adulte_critique_invesstissement_item2 != "Jamais" |
+            TOUT$Mpsy_adulte_ignoer_item1 != "Jamais" | TOUT$mpsy_adulte_critique_invesstissement_item2 != "Jamais" |   # ~ nouvel Exel
             TOUT$mpsy_adulte_critique_perf_item2 != "Jamais" | TOUT$mpsy_adulte_critiquer_apparence_item3 != "Jamais" |
             TOUT$mpsy_adulte_rumeur_item4 != "Jamais" | TOUT$mpsy_adulte_ridiculiser_item5 != "Jamais" |
             TOUT$Mpsy_adulte_crier_dessus_item6 != "Jamais" | TOUT$mpsy_adulte_menace_expulsion_item7 != "Jamais" |
@@ -141,7 +138,7 @@ TOUT$PSY <- TOUT$Mpsy_paire_ignoré_item1 != "Jamais" | TOUT$Mpsy_paire_investis
             TOUT$mpsy_adulte_entrainer_a_vomir_item12 != "Jamais" | TOUT$mpsy_adulte_dopage_item13 != "Jamais" |
             TOUT$mpsy_adulte_poids_ideal_item13 != "Jamais" |
 
-            TOUT$Mpsy_parent_ignorer_item1 != "Jamais" | TOUT$mpsy_parent_invesstissment_item2 != "Jamais" |
+            TOUT$Mpsy_parent_ignorer_item1 != "Jamais" | TOUT$mpsy_parent_invesstissment_item2 != "Jamais" |   # ~ nouvel Exel
             TOUT$mpsy_parent_critique_perf_item3 != "Jamais" | TOUT$Mpsy_parent_critique_corps_item4 != "Jamais" |
             TOUT$mpsy_parent_rumeur_item5 != "Jamais" | TOUT$mpsy_parent_ridiculisà_perf_item6 != "Jamais" |
             TOUT$mpsy_parent_crier_dessus_item7 != "Jamais" | TOUT$Mpsy_parent_menace_physique_item8 != "Jamais" | 
@@ -162,14 +159,6 @@ PSY$auteur_pairs   <- PSY$Mpsy_paire_ignoré_item1 != "Jamais" | PSY$Mpsy_paire_
                       PSY$Mpsy_paire_menace_exclusion_item7 != "Jamais" | PSY$mpsy_paire_menace_physique_item8 != "Jamais" |
                       PSY$Mpsy_paire_encourager_humiliation_item9 != "Jamais" | PSY$mpsy_paire_limite_contacte_item10 != "Jamais" 
 
-PSY$auteur_parents <- PSY$Mpsy_parent_ignorer_item1 != "Jamais" | PSY$mpsy_parent_invesstissment_item2 != "Jamais" |
-                      PSY$mpsy_parent_critique_perf_item3 != "Jamais" | PSY$Mpsy_parent_critique_corps_item4 != "Jamais" |
-                      PSY$mpsy_parent_rumeur_item5 != "Jamais" | PSY$mpsy_parent_ridiculisà_perf_item6 != "Jamais" |
-                      PSY$mpsy_parent_crier_dessus_item7 != "Jamais" | PSY$Mpsy_parent_menace_physique_item8 != "Jamais" | 
-                      PSY$Mpsy_parent_blesser_adversaire_item9 != "Jamais" | PSY$Mpsy_parent_limite_contact_item10 != "Jamais" | 
-                      PSY$Mpsy_parent_blessé_soi_mm_item11 != "Jamais" | PSY$mpsy_parent_vomir_item12 != "Jamais" | 
-                      PSY$mpsy_parent_dopage_item13 != "Jamais" | PSY$Mpsy_parent_poids_ideal_item14 != "Jamais" 
-
 PSY$auteur_adulte  <- PSY$Mpsy_adulte_ignoer_item1 != "Jamais" | PSY$mpsy_adulte_critique_invesstissement_item2 != "Jamais" |
                       PSY$mpsy_adulte_critique_perf_item2 != "Jamais" | PSY$mpsy_adulte_critiquer_apparence_item3 != "Jamais" |
                       PSY$mpsy_adulte_rumeur_item4 != "Jamais" | PSY$mpsy_adulte_ridiculiser_item5 != "Jamais" |
@@ -179,7 +168,13 @@ PSY$auteur_adulte  <- PSY$Mpsy_adulte_ignoer_item1 != "Jamais" | PSY$mpsy_adulte
                       PSY$mpsy_adulte_entrainer_a_vomir_item12 != "Jamais" | PSY$mpsy_adulte_dopage_item13 != "Jamais" |
                       PSY$mpsy_adulte_poids_ideal_item13 != "Jamais" 
 
-
+PSY$auteur_parents <- PSY$Mpsy_parent_ignorer_item1 != "Jamais" | PSY$mpsy_parent_invesstissment_item2 != "Jamais" |
+                      PSY$mpsy_parent_critique_perf_item3 != "Jamais" | PSY$Mpsy_parent_critique_corps_item4 != "Jamais" |
+                      PSY$mpsy_parent_rumeur_item5 != "Jamais" | PSY$mpsy_parent_ridiculisà_perf_item6 != "Jamais" |
+                      PSY$mpsy_parent_crier_dessus_item7 != "Jamais" | PSY$Mpsy_parent_menace_physique_item8 != "Jamais" | 
+                      PSY$Mpsy_parent_blesser_adversaire_item9 != "Jamais" | PSY$Mpsy_parent_limite_contact_item10 != "Jamais" | 
+                      PSY$Mpsy_parent_blessé_soi_mm_item11 != "Jamais" | PSY$mpsy_parent_vomir_item12 != "Jamais" | 
+                      PSY$mpsy_parent_dopage_item13 != "Jamais" | PSY$Mpsy_parent_poids_ideal_item14 != "Jamais" 
 
 PSY$auteur <- as.factor(case_when(PSY$auteur_pairs   ~ "pairs"  ,
                                   PSY$auteur_parents ~ "parents",
@@ -190,39 +185,49 @@ PSY$auteur <- as.factor(case_when(PSY$auteur_pairs   ~ "pairs"  ,
 ```{r}
 PSY$auteur_detail <- as.factor(case_when(
                        PSY$auteur_pairs   ~ "pairs"  ,  
-                       PSY$auteur_parents ~ "parents",   # bis hier OK
+                       PSY$auteur_parents ~ "parents",   # = XL
 
-                       PSY$mpsy_adulte_auteur_2 != "Jamais" | PSY$mpsy_adulte_auteur_entraineur != "Jamais" |
-                       PSY$mpsy_adulte_auteur_entraineur_2 != "Jamais" ~ "entraineur"))     
-```                       
-                       PSY$mpsy_adulte_entraineurassistant != "Jamais" | PSY$mpsy_adulte_auteur_entraineur_assistant != "Jamais" |
-                       PSY$mpsy_adulte_auteur_assist_coach != "Jamais" ~ "entraineurassistant"))   # bis hier bug
+                       PSY$mpsy_adulte_auteur_entraineur== "Oui" |
+                       PSY$Mpsy_adulte_auteur_2_entraineur== "Oui" |
+                       PSY$mpsy_adulte_auteur_entraineur.1== "Oui" |
+                       PSY$mpsy_adulte_auteur_entraineur_2== "Oui" ~ "entraineur", 
+                       
+                       PSY$mpsy_adulte_auteur_entraineurassistant== "Oui" |
+                       PSY$mpsy_adulte_auteur_entraineur_assistant== "Oui" |
+                       PSY$mpsy_adulte_auteur_assist_coach== "Oui"  ~ "entraineurassistant",
+                       
+                       PSY$mpsy_adulte_auteur_prepaphysique== "Oui" | 
+                       PSY$mpsy_adulte_auteur_prepa_physique== "Oui" |
+                       PSY$mpsy_adulte_auteur_prepaphy== "Oui" |
+                       PSY$mpsy_adulte_auteur_prepaphy_2== "Oui" ~ "prepaphysique",
+  
+                       PSY$mpsy_adulte_auteur_medecin== "Oui" |
+                       PSY$mpsy_adulte_auteur_medecin.1== "Oui" ~ "medecin",
+  
+                       PSY$mpsy_adulte_auteur_arbitre== "Oui" |
+                       PSY$mpsy_adulte_auteur_arbitre.1== "Oui" |
+                       PSY$mpsy_adulte_auteur_arbitre_2== "Oui" |
+                       PSY$mpsy_adulte_auteur_arbitre_3== "Oui" ~ "arbitre",
+                       
+                       PSY$mpsy_adulte_auteur_psychologue== "Oui" |
+                       PSY$Mpsy_adulte_auteur_psychologue== "Oui" |
+                       PSY$mpsy_adulte_auteur_psy== "Oui" ~ "psychologe",
+  
+                       PSY$mpsy_adulte_auteur_autre== "Oui" |
+                       PSY$mpsy_adulte_auteur_autre.1== "Oui" |
+                       PSY$mpsy_adulte_auteur_autre_2== "Oui" |
+                       PSY$mpsy_adulte_auteur_autre_3== "Oui" ~ "autre",
 
-                       PSY$mpsy_adulte_prepaphy != "Jamais" | PSY$mpsy_adulte_auteur_prepaphy != "Jamais" |
-                       PSY$mpsy_adulte_auteur_prepaphy_2 != "Jamais"   ~ "prepaphysique"        ,
-                       
-                       PSY$mpsy_adulte_medecin != "Jamais" | PSY$mpsy_adulte_auteur_medecin != "Jamais" |
-                       PSY$mpsy_adulte_equipe_medical!= "Jamais",       ~ "medecin"  # bis hier bug
-
-                       ,
-                       PSY$mpsy_adulte_auteur_psychologue != "Jamais" | PSY$mpsy_adulte_auteur_psy != "Jamais" |
-                       PSY$mpsy_adulte_auteur_psychologue != "Jamais"  ~ "psy"                ,
-                       
-                       PSY$mpsy_adulte_auteur_arbitre != "Jamais" | PSY$mpsy_adulte_auteur_arbitre_2 != "Jamais" |
-                       PSY$mpsy_adulte_auteur_arbitre_3 != "Jamais"    ~ "arbitre"            ,
-                       
-                       PSY$mpsy_adulte_auteur_autre != "Jamais" | PSY$mpsy_adulte_auteur_autre_2 != "Jamais" |
-                       PSY$mpsy_adulte_auteur_autre_3 != "Jamais"      ~ "autre"              , 
-                       
                        TRUE               ~ "ne pas specifié"   ))  
 ```
   
-- mpsy_adulte_auteur_2 est l'entraineur, correct ?
-- il y a 1 cas "ne pas specifié", on ne sait que *ignoré* par un *adulte*
+?? - il y a 1 cas "ne pas specifié", on ne sait que *ignoré* par un *adulte* ??
+
 
 ## Statistiques Descriptives 
 
-### 1. Les grands groupes
+
+## 1. Les grands groupes
 
 ```{r}
 descriptives(PSY, c("auteur"), freq=TRUE)

@@ -1,7 +1,7 @@
 ---
-title: "Théo"
+title: "Théo12-Nouv.Rmd"
 author: "Christoph"
-date: "2023-05-02..08,18.."
+date: "2023-10-05..."
 output:
   word_document:
     toc: no
@@ -31,8 +31,8 @@ library(dplyr)                                        # filter etc.
 ## Lire
 
 ```{r}
-setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo/new_donnees_colnames")
-TOUT <- read.xlsx("new_polished_itemname-CHP2.xlsx", sheetName ="Sheet1")  # enlevé 3 linebreaks fausses     [1:506]  # colonnes vides à la fin?
+setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
+TOUT <- read.xlsx("MA_Theo_tableau2-ed.xlsx", sheetName ="Feuil1")  
 ```
 
 
@@ -41,7 +41,7 @@ TOUT <- read.xlsx("new_polished_itemname-CHP2.xlsx", sheetName ="Sheet1")  # enl
 (sur écran mais pas dans le PDF ou word)
 
 ```{r}
-#View(TOUT)
+View(TOUT)
 #colnames(TOUT)   # Noms des Variables
 ```
 
@@ -91,7 +91,7 @@ tab_prev <- function(maltyp){
   prev_sexe <- inv.table(maltyp, "sexe_genre", c("Une fille","Un garçon","Les catégories ne me correspondent pas"))   # 
   prevalences(prev_sexe)
 
-  prev_sport <- inv.table(maltyp, "sport_categories", c("athletisme/sport endurance", "sport individuel", "sport artistique", "basket-ball", "sport d'equipe", "autres", "sport de combat", "sport endurance", "football"))   # 
+  prev_sport <- inv.table(maltyp, "Sport_categorie", c("athletisme/sport endurance", "sport individuel", "sport artistique", "basket-ball", "sport d'equipe", "autres", "sport de combat", "sport endurance", "football"))   # 
   prevalences(prev_sport)
 
   prev_niveau <- inv.table(maltyp, "niveau_de_pratique", c("National", "Régional", "Autre", 
@@ -106,16 +106,23 @@ tab_prev <- function(maltyp){
 # MPS
 
 ```{r}
-TOUT$MPS <- TOUT$Mphysique_pairs_item1>=1                 | TOUT$Mphysique_paire_item2>=1         | 
-                TOUT$Mphysique_paire_item3>=1             | 
-  
-            TOUT$Mphysique_adulte_secoue_agrippe_item1>=1 | TOUT$Mphysique_adulte_frappe_item2>=1 | 
-                TOUT$Mphysique_adulte_etouffe_item3>=1    |
-  
-            TOUT$Mphysique_parent_secoue>=1               | TOUT$Mphysique_parent_frappe>=1       | 
-                TOUT$Mphysique_parent_ettoufe>=1
+avait <- function(item){
+  item != "Jamais" & item != "Pas de réponse"
+}
+```
 
-TOUT$MPS <- if_else(TOUT$MPS, 1, 0)
+
+```{r}
+TOUT$mps <- avait(TOUT$Mphysique_pairs_item1)                 | avait(TOUT$Mphysique_paire_item2)         | 
+                TOUT$Mphysique_paire_item3!="Pas du tout"     |
+
+            avait(TOUT$Mphysique_adulte_secoue_agrippe_item1) | avait(TOUT$Mphysique_adulte_frappe_item2) | 
+                TOUT$Mphysique_adulte_etouffe_item3=="Oui"    |
+  
+            avait(TOUT$Mphysique_parent_secoue)               | avait(TOUT$Mphysique_parent_frappe)       | 
+                ( TOUT$Mphysique_parent_ettoufe != "Pas du tout" & ! is.na(TOUT$Mphysique_parent_ettoufe) )
+
+TOUT$MPS <- if_else(TOUT$mps, 1, 0)
 
 MPS <- filter(TOUT, MPS==1)
 ```
@@ -123,13 +130,14 @@ MPS <- filter(TOUT, MPS==1)
 ## Statistiques Descriptives 
 
 ```{r}
-descriptives(MPS, c("Categorie_age", "sexe_genre", "sport_categories", "niveau_de_pratique", "avant_12_ans"), 
+descriptives(MPS, c( "Categorie_age",
+  "sexe_genre", "Sport_categorie", "niveau_de_pratique"
+                     , "avant_12_ans" 
+  ), 
              freq=TRUE)
 ```
 
-Plupart > 12 ans, alors probablement 0 signifie < 12 ans.
-
-Ces résultats corréspondent à ```new_polished_itemname-MP.omv``` .
+ça a changé, maintenant la plupart a commencé avant 12 ans - tu sais certainement si cela est correct?
 
 Mais ces ne sont pas encore les prévalences mais plutôt les frequences des caractéristiques sociodémographiques des cas MPS.
 
@@ -142,37 +150,37 @@ Prévalences sont les  frequences de MPS dans les différentes classes sociodém
 tab_prev("MPS")
 ```
 
-# Petites discussions MPS
-
-- la prévalence de MAP est de 16.8% chez les 16-19 ans, 17.5% chez les 20-23 ans et 22.5% chez les 24 ans ou plus
-- 100% prevalence dans la catégorie ```Les catégories ne me correspondent pas``` - mais il n'y avait qu'un seul cas
-
+---
+## Petites discussions MPS
+#- la prévalence de MAP est de 16.8% chez les 16-19 ans, 17.5% chez les 20-23 ans et 22.5% chez les 24 ans ou plus
+#- 100% prevalence dans la catégorie ```Les catégories ne me correspondent pas``` - mais il n'y avait qu'un seul cas
+---
 
 # PSY
 
 ```{r}
-TOUT$PSY <- TOUT$Mpsy_paire_ignoré_item1>=1 | TOUT$Mpsy_paire_investissement_item2>=1 |
-            TOUT$Mpsy_paire_critique_perf_item3>=1 | TOUT$Mpsy_paire_apparence_item4>=1 |
-            TOUT$Mpsy_paire_rumeur_item5>=1 | TOUT$Mpsy_paire_humiliation_item6>=1 |
-            TOUT$Mpsy_paire_menace_exclusion_item7>=1 | TOUT$mpsy_paire_menace_physique_item8>=1 |
-            TOUT$Mpsy_paire_encourager_humiliation_item9>=1 | TOUT$mpsy_paire_limite_contacte_item10>=1 |
+TOUT$PSY <- TOUT$Mpsy_paire_ignoré_item1 != "Jamais" | TOUT$Mpsy_paire_investissement_item2 != "Jamais" |   # ~ nouvel Exel
+            TOUT$Mpsy_paire_critique_perf_item3 != "Jamais" | TOUT$Mpsy_paire_apparence_item4 != "Jamais" |
+            TOUT$Mpsy_paire_rumeur_item5 != "Jamais" | TOUT$Mpsy_paire_humiliation_item6 != "Jamais" |
+            TOUT$Mpsy_paire_menace_exclusion_item7 != "Jamais" | TOUT$mpsy_paire_menace_physique_item8 != "Jamais" |
+            TOUT$Mpsy_paire_encourager_humiliation_item9 != "Jamais" | TOUT$mpsy_paire_limite_contacte_item10 != "Jamais" |
 
-            TOUT$Mpsy_adulte_ignoer_item1>=1 | TOUT$mpsy_adulte_critique_invesstissement_item2>=1 |
-            TOUT$mpsy_adulte_critique_perf_item2>=1 | TOUT$mpsy_adulte_critiquer_apparence_item3>=1 |
-            TOUT$mpsy_adulte_rumeur_item4>=1 | TOUT$mpsy_adulte_ridiculiser_item5>=1 |
-            TOUT$Mpsy_adulte_crier_dessus_item6>=1 | TOUT$mpsy_adulte_menace_expulsion_item7>=1 |
-            TOUT$mpsy_adulte_menacephysi_item8>=1 | TOUT$mpsy_adulte_humiliation_autrui_item9>=1 |
-            TOUT$mpsy_adulte_limitation_contact_item10>=1 | TOUT$mpsy_adulte_jouer_blesser_item11>=1 |
-            TOUT$mpsy_adulte_entrainer_a_vomir_item12>=1 | TOUT$mpsy_adulte_dopage_item13>=1 |
-            TOUT$mpsy_adulte_poids_ideal_item13>=1 |
+            TOUT$Mpsy_adulte_ignoer_item1 != "Jamais" | TOUT$mpsy_adulte_critique_invesstissement_item2 != "Jamais" |   # ~ nouvel Exel
+            TOUT$mpsy_adulte_critique_perf_item2 != "Jamais" | TOUT$mpsy_adulte_critiquer_apparence_item3 != "Jamais" |
+            TOUT$mpsy_adulte_rumeur_item4 != "Jamais" | TOUT$mpsy_adulte_ridiculiser_item5 != "Jamais" |
+            TOUT$Mpsy_adulte_crier_dessus_item6 != "Jamais" | TOUT$mpsy_adulte_menace_expulsion_item7 != "Jamais" |
+            TOUT$mpsy_adulte_menacephysi_item8 != "Jamais" | TOUT$mpsy_adulte_humiliation_autrui_item9 != "Jamais" |
+            TOUT$mpsy_adulte_limitation_contact_item10 != "Jamais" | TOUT$mpsy_adulte_jouer_blesser_item11 != "Jamais" |
+            TOUT$mpsy_adulte_entrainer_a_vomir_item12 != "Jamais" | TOUT$mpsy_adulte_dopage_item13 != "Jamais" |
+            TOUT$mpsy_adulte_poids_ideal_item13 != "Jamais" |
 
-            TOUT$Mpsy_parent_ignorer_item1>=1 | TOUT$mpsy_parent_invesstissment_item2>=1 |
-            TOUT$mpsy_parent_critique_perf_item3>=1 | TOUT$Mpsy_parent_critique_corps_item4>=1 |
-            TOUT$mpsy_parent_rumeur_item5>=1 | TOUT$mpsy_parent_ridiculisà_perf_item6>=1 |
-            TOUT$mpsy_parent_crier_dessus_item7>=1 | TOUT$Mpsy_parent_menace_physique_item8>=1 | 
-            TOUT$Mpsy_parent_blesser_adversaire_item9>=1 | TOUT$Mpsy_parent_limite_contact_item10>=1 | 
-            TOUT$Mpsy_parent_blessé_soi_mm_item11>=1 | TOUT$mpsy_parent_vomir_item12>=1 | 
-            TOUT$mpsy_parent_dopage_item13>=1 | TOUT$Mpsy_parent_poids_ideal_item14>=1 
+            TOUT$Mpsy_parent_ignorer_item1 != "Jamais" | TOUT$mpsy_parent_invesstissment_item2 != "Jamais" |   # ~ nouvel Exel
+            TOUT$mpsy_parent_critique_perf_item3 != "Jamais" | TOUT$Mpsy_parent_critique_corps_item4 != "Jamais" |
+            TOUT$mpsy_parent_rumeur_item5 != "Jamais" | TOUT$mpsy_parent_ridiculisà_perf_item6 != "Jamais" |
+            TOUT$mpsy_parent_crier_dessus_item7 != "Jamais" | TOUT$Mpsy_parent_menace_physique_item8 != "Jamais" | 
+            TOUT$Mpsy_parent_blesser_adversaire_item9 != "Jamais" | TOUT$Mpsy_parent_limite_contact_item10 != "Jamais" | 
+            TOUT$Mpsy_parent_blessé_soi_mm_item11 != "Jamais" | TOUT$mpsy_parent_vomir_item12 != "Jamais" | 
+            TOUT$mpsy_parent_dopage_item13 != "Jamais" | TOUT$Mpsy_parent_poids_ideal_item14 != "Jamais" 
   
 TOUT$PSY <- if_else(TOUT$PSY, 1, 0)
 PSY <- filter(TOUT, PSY==1)
@@ -181,7 +189,7 @@ PSY <- filter(TOUT, PSY==1)
 ## Statistiques Descriptives 
 
 ```{r}
-descriptives(PSY, c("Categorie_age","sexe_genre","sport_categories","niveau_de_pratique","avant_12_ans"), 
+descriptives(PSY, c("Categorie_age","sexe_genre","Sport_categorie","niveau_de_pratique","avant_12_ans"), 
              freq=TRUE)
 ```
 
