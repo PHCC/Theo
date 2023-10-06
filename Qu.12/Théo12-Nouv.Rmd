@@ -32,7 +32,7 @@ library(dplyr)                                        # filter etc.
 
 ```{r}
 setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
-TOUT <- read.xlsx("MA_Theo_tableau2-ed.xlsx", sheetName ="Feuil1")  
+TOUT <- read.xlsx("MA_Theo_tableau1-ed.xlsx", sheetName ="Feuil1")    # Copié Sport_catégorie dedans du 2èm
 ```
 
 
@@ -141,6 +141,25 @@ descriptives(MPS, c( "Categorie_age",
 
 Mais ces ne sont pas encore les prévalences mais plutôt les frequences des caractéristiques sociodémographiques des cas MPS.
 
+Tous les participants ont subi au moins une maltraitance physique.
+
+
+# Tableau 1
+
+descriptives(..., c( "Categorie_age",
+  "sexe_genre", "Sport_categorie", "niveau_de_pratique"
+                     , "avant_12_ans" 
+  ), 
+             freq=TRUE)
+```{r}
+Tableau1Col234 <- function(cat){
+   tab <- table(TOUT[,cat], TOUT$sexe_genre)
+  print(                      tab    )
+  print( round(100*prop.table(tab),1)) 
+}
+
+Tableau1Col234("Categorie_age")
+```
 
 ## Prévalences
 
@@ -186,6 +205,9 @@ TOUT$PSY <- if_else(TOUT$PSY, 1, 0)
 PSY <- filter(TOUT, PSY==1)
 ```
 
+Tout le monde a subi au moins une maltraitance psychologique!
+
+
 ## Statistiques Descriptives 
 
 ```{r}
@@ -204,23 +226,27 @@ tab_prev("PSY")
 # NEG
 
 ```{r}
-TOUT$NEG <- TOUT$Neg_adulte_entrainer_blesse_item1>=1 | TOUT$neg_adulte_dopage_soutenu_item2>=1 |
-            TOUT$neg_adulte_poids_ideal_item3>=1      | TOUT$Neg_adulte_louper_ecole_item4>=1   |
+TOUT$NEG <- TOUT$negadulte_item._cat_1>=1 | TOUT$negadulte_item2_cat_1>=1 |
+            TOUT$negadulte_item_3_cat_1>=1      | TOUT$Neg_adulte_louper_ecole_item4>=1   |
             TOUT$Neg_adulte_laisser_humilier_item5>=1 |
 
             TOUT$Neg_parent_laisser_entrainer_blesser_item1>=1 | TOUT$Neg_parent_dopage_item2>=1 |
             TOUT$Neg_parent_poids_ideal_item3>=1               | TOUT$Neg_parent_arret_ecole_item4>=1 |
             TOUT$neg_parent_laisser_humilier_autrui_item5>=1
 
+
 TOUT$NEG <- if_else(TOUT$NEG, 1, 0)
 
 NEG <- filter(TOUT, NEG==1)
 ```
 
+Tout le monde a subi une maltraitance de négligence!
+
+
 ## Statistiques Descriptives 
 
 ```{r}
-descriptives(NEG, c("Categorie_age","sexe_genre","sport_categories","niveau_de_pratique","avant_12_ans"), 
+descriptives(NEG, c("Categorie_age","sexe_genre","Sport_categorie","niveau_de_pratique","avant_12_ans"), 
              freq=TRUE)
 ```
 
@@ -242,22 +268,26 @@ TOUT$SEX <- TOUT$Msex_paire_remarque_apparence_item1>=1    | TOUT$Msex_paire_pro
             TOUT$Msex_paire_avec_sans_penetration_non_consentie_item8>=1    |
 
             TOUT$Msex_adulte_remarque_sex_item1>=1             | TOUT$msex_adulte_envoi_image_sex_item2>=1       |
-            TOUT$Msex_adulte_exhibition_partie_intime_item2>=1 | TOUT$msex_adulte_photo_partie_intime_item3>=1   |
-  
-            TOUT$msex_adulte_force.a_toucher_item3>=1          |                                                      
-                                                                TOUT$msex_adulte_toucher_malalaise_item4>=1     |
-            TOUT$msex_adulte_embrasser_bouche_item5>=1         | TOUT$Msex_adulte_frotter_partie_intime_item6>=1 |
-            TOUT$Msex_adulte_tentation_relation_sex_item7>=1   | TOUT$Msex_adulte_forcer_relation_sex_avec_sans_pene_item8>=1 
+            TOUT$Msex_adulte_exhibition_partie_intime_item_3_categorie_2>=1 | 
+            TOUT$msex_adulte_photo_partie_intime_item_4_categorie_3>=1 |
+            TOUT$msex_adulte_force.a_toucher_item_5_categorie_4>=1          |                                                      
+            TOUT$msex_adulte_toucher_malalaise_Item6_categorie_5>=1     |
+            TOUT$msex_adulte_embrasser_bouche_Item_7_categorie_5>=1         |            
+            TOUT$Msex_adulte_frotter_partie_intime_item_8_categorie_5>=1 |
+            TOUT$Msex_adulte_tentation_relation_sex_item_9_categorie_6>=1   | 
+            TOUT$Msex_adulte_forcer_relation_sex_avec_sans_pene_item8>=1 
   
 TOUT$SEX <- if_else(TOUT$SEX, 1, 0)
 
 SEX <- filter(TOUT, SEX==1)
 ```
 
+Tout le monde avait subi au moins 1 maltraitance sexuélle!
+
 ## Statistiques Descriptives 
 
 ```{r}
-descriptives(SEX, c("Categorie_age","sexe_genre","sport_categories","niveau_de_pratique","avant_12_ans"), 
+descriptives(SEX, c("Categorie_age","sexe_genre","Sport_categorie","niveau_de_pratique","avant_12_ans"), 
              freq=TRUE)
 ```
 

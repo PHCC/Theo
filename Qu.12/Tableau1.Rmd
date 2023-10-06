@@ -1,0 +1,80 @@
+---
+title: "Tableau1.Rmd"
+author: "Christoph"
+date: "2023-10-06"
+output:
+  word_document:
+    toc: no
+    toc_depth: '3'
+  pdf_document:
+    latex_engine: xelatex
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    keep_tex: yes
+geometry: margin=0.5cm
+---
+
+
+# Libraries
+
+```{r, comment=FALSE, warning=FALSE, message=FALSE}
+library(xlsx)                                         # Fichiers Excel
+#library(jmv)                                          # Analyses Jamovi
+library(dplyr)                                        # filter etc.
+#library(tigerstats)                                   # beaux tableaux croisés
+```
+
+
+# Données
+
+## Lire
+
+```{r}
+setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
+TOUT <- read.xlsx("MA_Theo_tableau1-ed.xlsx", sheetName ="Feuil1")    # Copié Sport_catégorie dedans du 2èm Excel
+```
+
+
+## Afficher
+
+(sur écran mais pas dans le PDF ou word)
+
+```{r}
+View(TOUT)
+#colnames(TOUT)   # Noms des Variables
+```
+
+
+# Tableau 1
+
+je donne pour chaque catégorie dans la forme des plusieurs petits tableaux:
+
+- 1: Tableau 1 colonne 1, Taille échantillon (N=881), N
+- 2: Tableau 1 colonne 1, Taille échantillon, %
+- 3: Tableau 1 colonnes 3, 4, 5; N
+- 4: Tableau 1 colonnes 3, 4, 5; %
+
+```{r}
+Tableau1Col234 <- function(cat){
+  print(noquote(paste("====================================================",cat,": ======================================================")))
+
+  tab <- table(TOUT[,cat]) 
+  print(tab)
+  print( round(100*prop.table(tab),1)) 
+ 
+  tab <- table(TOUT[,cat], TOUT$sexe_genre) 
+  print(tab)
+  print( round(100*prop.table(tab),1)) 
+  
+  print(noquote(""))
+}
+
+Tableau1Col234("Categorie_age")
+Tableau1Col234("Sport_categorie")
+Tableau1Col234("niveau_de_pratique")
+Tableau1Col234("avant_12_ans")
+```
+
+- La plupart ont commencé avant 12 ans, c'était à l'invers avec les vielles données! Tout sait si ça est correct? 
+- Aussi il y a bc. plus de jeunes filles qu'après, c'est interéssant (forcées par leus parents?).
