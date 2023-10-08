@@ -1,0 +1,1055 @@
+---
+title: "Théo3XL-count-nouv.Rmd Question 3 Count, pas Sum; Données du nouveau Excel"
+author: "Christoph"
+date: "2023-10-08"
+output:
+  pdf_document:
+    latex_engine: xelatex
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    keep_tex: yes
+  word_document:
+    toc: no
+    toc_depth: '3' 
+geometry: margin=0.5cm
+---
+
+# Libraries
+
+```{r, comment=FALSE, warning=FALSE, message=FALSE}
+library(xlsx)                                         # Fichiers Excel
+library(jmv)                                          # Analyses Jamovi
+library(dplyr)                                        # if_else etc.
+```
+
+
+# Données
+
+## Lire 
+
+```{r, warning=FALSE}
+setwd("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo")
+
+#TOUT <- read.xlsx("QEMS_all-corr.xlsx", sheetName ="sheet1")  # java.lang.OutOfMemoryError: GC overhead limit exceeded
+TOUT <- read.xlsx("MA_Theo_tableau1-ed.xlsx", sheetName ="Feuil1")    # Copié Sport_catégorie dedans du 2èm
+```
+
+
+## Afficher
+
+(sur écran mais pas dans le PDF ou word)
+
+```{r}
+#View(TOUT)
+#colnames(TOUT)   # Noms des Variables
+```
+
+```{r}
+avait <- function(item){
+  #(item != "Jamais" & item != "Pas de réponse" & item != "Pas du tout") | item =="Oui"
+  return( ifelse(item != "Jamais" & item != "0",1,0) )   # "0" occure seulement pour TOUT$mpsy_parent_invesstissment_item2 
+}
+```
+
+
+# PSY 
+
+```{r}
+TOUT$psy <- avait(TOUT$Mpsy_paire_ignoré_item1) + avait(TOUT$Mpsy_paire_investissement_item2) +   # ~ nouvel Exel
+            avait(TOUT$Mpsy_paire_critique_perf_item3) + avait(TOUT$Mpsy_paire_apparence_item4) +
+            avait(TOUT$Mpsy_paire_rumeur_item5) + avait(TOUT$Mpsy_paire_humiliation_item6) +
+            avait(TOUT$Mpsy_paire_menace_exclusion_item7) + avait(TOUT$mpsy_paire_menace_physique_item8) +
+            avait(TOUT$Mpsy_paire_encourager_humiliation_item9) + avait(TOUT$mpsy_paire_limite_contacte_item10) +
+
+            avait(TOUT$Mpsy_adulte_ignoer_item1) + avait(TOUT$mpsy_adulte_critique_invesstissement_item2) +   # ~ nouvel Exel
+            avait(TOUT$mpsy_adulte_critique_perf_item2) + avait(TOUT$mpsy_adulte_critiquer_apparence_item3) +
+            avait(TOUT$mpsy_adulte_rumeur_item4) + avait(TOUT$mpsy_adulte_ridiculiser_item5) +
+            avait(TOUT$Mpsy_adulte_crier_dessus_item6) + avait(TOUT$mpsy_adulte_menace_expulsion_item7) +
+            avait(TOUT$mpsy_adulte_menacephysi_item8) + avait(TOUT$mpsy_adulte_humiliation_autrui_item9) +
+            avait(TOUT$mpsy_adulte_limitation_contact_item10) + avait(TOUT$mpsy_adulte_jouer_blesser_item11) +
+            avait(TOUT$mpsy_adulte_entrainer_a_vomir_item12) + avait(TOUT$mpsy_adulte_dopage_item13) +
+            avait(TOUT$mpsy_adulte_poids_ideal_item13) +
+
+            avait(TOUT$Mpsy_parent_ignorer_item1) + avait(TOUT$mpsy_parent_invesstissment_item2) +   # ~ nouvel Exel
+            # item2 pas encodé comme les autres
+            avait(TOUT$mpsy_parent_critique_perf_item3) +
+  avait(TOUT$Mpsy_parent_critique_corps_item4) +
+            avait(TOUT$mpsy_parent_rumeur_item5) + avait(TOUT$mpsy_parent_ridiculisà_perf_item6) +
+  
+            avait(TOUT$mpsy_parent_crier_dessus_item7) + avait(TOUT$Mpsy_parent_menace_physique_item8) + 
+            avait(TOUT$Mpsy_parent_blesser_adversaire_item9) + avait(TOUT$Mpsy_parent_limite_contact_item10) + 
+            avait(TOUT$Mpsy_parent_blessé_soi_mm_item11) + avait(TOUT$mpsy_parent_vomir_item12) + 
+            avait(TOUT$mpsy_parent_dopage_item13) + avait(TOUT$Mpsy_parent_poids_ideal_item14)
+  
+TOUT$PSY <- if_else(TOUT$psy > 0, 1, 0)
+PSY <- filter(TOUT, PSY==1)
+```
+
+711 ont subi au moins une maltraitance psychologique 
+
+
+### Paires: 4 Catégories
+
+#### Catégorie 1
+
+```{r}
+Qu3nouv <- function(df, vec){
+  "print(descriptives(df, eval(vec), 
+                     n=F, missing=F, mean=F, median=F, sd=F, min=F, max=F,
+                     freq=TRUE))           # contrôle "
+
+  for (i in 1:length(vec)) {                           # (geht auf einmal?)
+    df[vec[i]][df[vec[i]]=="Ne sait pas"]<-NA          # vu pour interprétations, pas pour consequences
+  }
+
+  for (i in 1:length(vec)) {                           # (geht auf einmal?)
+    df[,vec[i]] <- factor(df[,vec[i]])
+  }
+  "print(descriptives(df, eval(vec), 
+                     n=F, missing=F, mean=F, median=F, sd=F, min=F, max=F,
+                     freq=TRUE))           # contrôle"
+
+  vecFT <- NULL
+  for (i in 1:length(vec)) {
+    vecFT[i] <- paste(vec[i],"FT",sep="")  # column names "Mpsy_paire_normalisationFT" etc.
+    df[vecFT[i]] <- (df[vec[i]] != "Pas du tout")       
+  }
+
+  descriptives(df, eval(vecFT),
+               n=F,missing=F, mean=F,median=F, sd=F,min=F,max=F,
+               freq=TRUE)
+}
+```
+
+```{r}
+Qu3nouv(PSY, c("Mpsy_paire_normalisation",  # 74-76
+               "Mpsy_paire_necessite","Mpsy_paire_partie_entrainement"))
+```
+
+
+```{r}
+vec <- c("Mpsy_paire_démotivation","Mpsy_paire_moins_performe",  # 77-79
+         "Mpsy_paire_perdu_confiance",  
+         
+    "Mpsy_paire_image_corps","Mpsy_paire_peur","Mpsy_paire_colere",  # 80-86
+    "Mpsy_paire_triste","Mpsy_paire_stress","MPsy_paire_ta_faute",
+    "Mpsy_paire_humiliation" )
+
+Qu3nouv(PSY, vec)
+```
+
+
+#### Catégorie 2
+
+```{r}
+vec <- c("Mpsy_paire_consideration",  # 92-94
+    "mpsy_paire_neccesiteperf",
+    "Mpsy_paire_partie_compet")
+
+Qu3nouv(PSY, vec)
+```
+
+```{r}
+vec <- c("Mpsy_paire_demotive","mpsy_paire_moins_perf",  # 95-104
+         "Mpsy_paire_perte_confiance",  
+    "mpsy_paire_image_corps","Mpsy_paire_peur_2","Mpsy_paire_colere_2",
+    "Mpsy_paire_triste_2","Mpsy_paire_stress_2","mpsy_paire_faute",
+    "Mpsy_paire_humiliation_2"                                  
+     )
+
+Qu3nouv(PSY, vec)
+```
+
+
+#### Catégorie 3
+
+```{r}
+vec <- c("mpsy_paire_normlisation",   # 107-109
+         "mpsy_paire_necessite_perf","mpsy_paire_partie_entrainement")  
+
+Qu3nouv(PSY, vec)
+```
+
+
+```{r}
+vec <- c("mpsy_paire_demotive_sport","mpsy_paire_moins_perf_2",  # 110-119
+         "mpsy_paire_perdu_confiance",  
+    "Mpsy_paire_image_corps_2","Mpsy_paire_peur_3","Mpsy_paire_colere_3",
+    "mpsy_paire_triste","mpsy_paire_stress","Mpsy_paire_ta_faute",
+    "Mpsy_paire_humiliation_3"
+     )
+
+Qu3nouv(PSY, vec)
+```
+
+
+#### Catégorie 4
+
+```{r}
+vec <- c("Mpsy_paire_normalisation_2",  # 122-124
+         "mpsy_paire_necessaireperf","mpsy_paire_partie_entrainement_2") 
+
+Qu3nouv(PSY, vec)
+```
+
+```{r}
+vec <- c("mpsy_paire_demotive",     # 125-134
+         "mpsy_paire_moins_perf_3","mpsy_paire_perte_confiance",  
+    "mpsy_paire_image_neg","mpsy_paire_peur","mpsy_paire_colere",
+    "mpsy_paire_triste_2","Mpsy_paire_stress_3","Mpsy_paire_faute",
+    "mpsy_paire_humiliation"
+     )
+
+Qu3nouv(PSY, vec)
+```
+
+
+### Adultes: 4 Catégories
+
+#### Catégorie 1
+
+```{r}
+vec <- c("mpsy_adulte_considerer",
+         "mpsy_adulte_necessaire","Mpsy_adulte_faisant_partie")  # 143-145
+Qu3nouv(PSY, vec)
+```
+
+```{r}
+vec <- c( "Mpsy_adulte_demotive","mpsy_adulte_moins_perf","Mpsy_adulte_perdu_confiance",  # 146-155
+     "mpsy_adulte_image_corps","mpsy_adulte_peur","mpsy_adulte_colere",
+     "mpsy_adulte_triste","mpsy_adulte_stress","mpsy_adulte_ta_faute",
+     "mpsy_adulte_humiliation")
+Qu3nouv(PSY, vec)
+```
+
+
+#### Catégorie 2
+
+```{r}
+vec <- c("Mpsy_adulte_consideration","mpsy_adulte_necessaire_2","Mpsy_adulte_partie_compet")  # 169-171
+Qu3nouv(PSY, vec)
+```
+
+```{r}
+vec <- c( "Mpsy_adulte_demotive_2","mpsy_adulte_moins_perf_2","Mpsy_adulte_perduconfiance",   # 172-181
+     "Mpsy_adulte_image_corps","mpsy_adulte_peur_2","mpsy_adulte_colere_2",
+     "mpsy_adulte_triste_2","mpsy_adulte_stress_2","mpsy_adulte_ta_faute_2",
+     "mpsy_adulte_humiliation_2")
+Qu3nouv(PSY, vec)
+```
+
+
+#### Catégorie 3:
+
+```{r}
+vec <- c("Mpsy_adulte_auteur_considerer_normal","mpsy_adulte_necessaireperf",   # 191-193
+        "mpsy_adulte_partie_entrainement") 
+Qu3nouv(PSY, vec)
+```
+
+```{r}
+vec <- c("mpsy_adulte_demotive","mpsy_adulte_moins_perf_3","mpsy_adulte_perdu_confiance",  # 194-203
+    "mpsy_adulte_image_neg","mpsy_adulte_peur_3","mpsy_adulte_colere_3",
+    "mpsy_adulte_triste_3","Mpsy_Adulte_stress","mpsy_adulte_ta_faute_3",
+    "mpsy_adulte_ressenti_humuliation")
+Qu3nouv(PSY, vec)
+```
+
+
+#### Catégorie 4:
+
+```{r}
+vec <- c("mpsy_adulte_considération_normale","mpsy_adulte_necessaire_perf",   # 217-219
+         "mpsy_adulte_partie_compet") 
+Qu3nouv(PSY, vec)
+```
+
+```{r}
+vec <- c( "mpsy_adulte_demotive_sport","Mpsy_adulte_moins_perf","mpsy_adulte_perdu_confiance_2",  # 220-229
+     "Mpsy_adulte_image_neg","Mpsy_adulte_peur","mpsy_adulte_colère",
+     "Mpsy_adulte_triste","mpsy_adulte_stress_3","mpsy_adulte_ta_faute_4",
+     "Mpsy_adulte_humiliation")
+Qu3nouv(PSY, vec)
+```
+
+
+### Parents: 4 Catégories
+
+#### Catégorie 1 = "Mpsy_parent_ignorer_item1"
+
+Avec le nouvel Excel y a des interprétations:
+
+```{r}
+vec <- c("Mpsy_parent_normale_categorie_1","Mpsy_parent_necessaire_categorie_1",  # 231-233
+    "Mpsy_parent_faisantpartie_categorie_1"
+     )
+Qu3nouv(PSY, vec)
+```
+
+```{r}
+vec <- c("mpsy_parent_demotiver_sport","mpsy_parent_moins_perf",         #  234-243
+  "Mpsy_parent_perdu_confiance","mpsy_parent_image_corps","mpsy_parent_peur", 
+    "mpsy_parent_colere","Mpsy_parent_triste","Mpsy_parent_stress",
+    "Mpsy_parent_ta_faute","Mpsy_parent_humiliation"
+     )
+Qu3nouv(PSY, vec)
+```
+
+
+#### Catégorie 2
+
+```{r}
+vec <- c("Mpsy_parent_normalisation","mpsy_parent_necessaire","mpsy_parent_faisant_partie")  # 250-252
+Qu3nouv(PSY, vec)
+```
+
+Il y avait qu'une consequence, maintenant les 10:
+
+```{r}
+vec <- c("Mpsy_parent_demotive_e_categorie_2",    # 253-262
+         "Mpsy_parent_moinsperf_categorie_2",
+         "Mpsy_parent_perdu_confiance_2",
+         "Mpsy_parent_imageneg_categorie_2",
+         "Mpsy_parent_peur_categorie_2",
+         "Mpsy_parent_colere_categorie_2",
+         "Mpsy_parent_tristess_categorie_2",
+         "Mpsy_parent_stress_categorie_2",
+         "Mpsy_parent_tafaute_categorie_2",
+         "Mpsy_parent_humiliation_categorie_2")
+Qu3nouv(PSY, vec)
+```
+
+
+#### Catégorie 3
+
+```{r}
+vec <- c("mpsy_parent_normalisation","mpsy_parent_necessaire_perf",  # 264-266
+                 "Mpsy_parent_faisant_partie_entrainement")
+Qu3nouv(PSY, vec)
+```
+
+
+
+consequences changés:
+
+```{r}
+vec <- c("Mpsy_parent_demotive_e_categorie_3",      # 267-276
+         "Mpsy_parent_moinsperf_categorie_3",
+         "Mpsy_parent_perdu_confiance_3",
+         "Mpsy_parent_imageneg_categorie_3",
+         "Mpsy_parent_peur",
+         "Mpsy_parent_colere",
+         "Mpsy_parent_triste_2",
+         "Mpsy_parent_stress_2",
+         "Mpsy_parent_tafaute_categorie_3",
+        "Mpsy_parent_humiliation_categorie_3" 
+)
+Qu3nouv(PSY, vec)
+```
+
+
+#### Catégorie 4
+
+```{r}
+vec <- c("Mpsy_parent_consideration_normal",   # 283-285
+         "mpsy_parent_necessaire_perf_2","Mpsy_parent_partie_compet")
+Qu3nouv(PSY, vec)
+```
+
+9 consequences de plus:
+
+```{r}
+vec <- c(          # 286-295
+  "Mpsy_parent_demotiver",
+  "Mpsy_parent_moinsperf_categorie_4",
+  "Mpsy_parent_perdu_confiance_categorie_4",
+  "Mpsy_parent_imageneg_categorie_4",
+  "Mpsy_parent_peur_categorie_4",
+  "Mpsy_parent_colere_categorie_4",
+  "Mpsy_parent_triste_2_categorie_4",
+  "Mpsy_parent_stress_2_categorie_4",
+  "Mpsy_parent_tafaute_categorie_4",
+  "Mpsy_parent_humiliation_categorie_4"
+)
+Qu3nouv(PSY, vec)
+```
+
+----------------------------------------------------------------------------------------------------
+
+# MPS
+
+
+```{r}
+TOUT$mps <- avait(TOUT$Mphysique_pairs_item1)                 + avait(TOUT$Mphysique_paire_item2)         +
+            avait(TOUT$Mphysique_paire_item3)     +
+
+            avait(TOUT$Mphysique_adulte_secoue_agrippe_item1) + avait(TOUT$Mphysique_adulte_frappe_item2) + 
+            avait(TOUT$Mphysique_adulte_etouffe_item3)    +
+  
+            avait(TOUT$Mphysique_parent_secoue)               + avait(TOUT$Mphysique_parent_frappe)       + 
+            avait(TOUT$Mphysique_parent_ettoufe)
+
+TOUT$MPS <- if_else(TOUT$mps>0, 1, 0)
+
+MPS <- filter(TOUT, MPS==1)
+```
+
+Au total: 344 des 781 participants ont subi au moins une MPS.
+
+
+## Paires : 1 Catégorie
+
+```{r}
+vec <- c(
+  "Mphysique_paire_normalisation","Mphysique_paire_necessite_perf","Mphysique_paire_faire_partie")  # 21-23
+Qu3nouv(MPS, vec)
+```
+
+```{r}
+vec <- c(
+    "Mphysique_paire_demotivation","Mphysique_paire_moins_performé","Mphysique_paire_perteconfiance",   # 24-33
+    "Mphysique_paire_image_neg","Mphysique_paire_peur","Mphysique_paire_colere",
+     "Mphysique_paire_triste","Mphysique_paire_stress","Mphysique_paire_ta_faute",
+     "Mphysique_paire_humiliation"  
+     )
+Qu3nouv(MPS, vec)
+```
+
+
+## Adultes: 1 Catégorie
+
+nouveau Excel 3 interprétations
+
+```{r}
+vec <- c(
+  "Mphysique_adulte_auteur_normlisation",   # 44-46
+  "Mphysique_adulte_performance",
+  "Mphysique_adulte_faisant_partie_categorie_1"
+  )  
+Qu3nouv(MPS, vec)
+```
+
+```{r}
+vec <- c(   # 47-56
+  "Mphysique_adute_domotivation",
+  "Mphysique_adulte_moins_performe_categorie_1",
+  "Mphysique_adulte_confiance","Mphysique_adulte_imagecorps","Mphysique_adulte_peur",
+  "Mphysique_adulte_colere","Mphysique_adulte_triste","Mphysique_adulte_stress",
+  "Mphysique_adulte_responsabilite","Mphysique_adulte_humiliation"
+     )
+Qu3nouv(MPS, vec)
+```
+
+
+## Parents: 1 Catégorie
+
+Nouvelles interprétations et consequences
+
+```{r}
+vec <- c(         # 60-62
+  "Mphysique_parent_consideration_normal_categorie_1",
+  "Mphysique_parent_necessaire_perf_categorie_1",
+  "Mphysique_parent_faisant_partie_"
+)  
+Qu3nouv(MPS, vec)
+```
+
+
+
+```{r}
+vec <- c("Mphysique_parent_demotive_categorie_1",    # 63-72
+     "Mphysique_parent_moinsperf_categorie_1", 
+     "Mphysique_parent_perduconfiance_categorie_1", 
+     "Mphysique_parent_imageneg_categorie_1", 
+     "Mphysique_parent_peur_categorie_1", 
+     "Mphysique_parent_colere_categorie_1", 
+     "Mphysique_parent_triste_categorie_1", 
+     "Mphysique_parent_stress_categorie_1", 
+     "Mphysique_parent_tafaute_categorie_1", 
+     "Mphysique_parent_humiliation_categorie_1"
+)
+Qu3nouv(MPS, vec)
+```
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+# SEX
+
+- et paires et adultes 7 catégories, la première avec 2 items (Franzoni p. 92) 
+- paires 9 items
+- adultes 8 items
+
+```{r}
+TOUT$sex <- avait(TOUT$Msex_paire_remarque_apparence_item1)    + avait(TOUT$Msex_paire_proposition_sex_item2)  +
+            avait(TOUT$msex_paire_exhibitionisme_item3)        + avait(TOUT$msex_paire_photo_intime_item4)     +
+            avait(TOUT$msex_paire_attouchement_item5)          + avait(TOUT$Msex_paire_embrasser_item6)        +
+            avait(TOUT$msex_paire_frotter_partie_intime_item7) + avait(TOUT$msex_paire_viol_penetration_item7) +
+            avait(TOUT$Msex_paire_avec_sans_penetration_non_consentie_item8)    +
+
+            avait(TOUT$Msex_adulte_remarque_sex_item1)             + avait(TOUT$msex_adulte_envoi_image_sex_item2)       +
+            avait(TOUT$Msex_adulte_exhibition_partie_intime_item_3_categorie_2) +        # = Excel
+            #          Msex_adulte_exhibition_partie_intime_item2...item_3_categorie_2.. # = .txt, egal
+            avait(TOUT$msex_adulte_photo_partie_intime_item_4_categorie_3) +
+            avait(TOUT$msex_adulte_force.a_toucher_item_5_categorie_4)          +                                                      
+            avait(TOUT$msex_adulte_toucher_malalaise_Item6_categorie_5)     +
+            avait(TOUT$msex_adulte_embrasser_bouche_Item_7_categorie_5)         +            
+            avait(TOUT$Msex_adulte_frotter_partie_intime_item_8_categorie_5) +
+            avait(TOUT$Msex_adulte_tentation_relation_sex_item_9_categorie_6)   + 
+            avait(TOUT$Msex_adulte_forcer_relation_sex_avec_sans_pene_item8) 
+  
+TOUT$SEX <- if_else(TOUT$sex > 0, 1, 0)
+
+SEX <- filter(TOUT, SEX==1)
+```
+
+178 ont subi SEX.
+
+
+## Paires: 7 Catégories
+
+#### Catégorie 1
+
+```{r}
+vec <- c(   # 289-300
+  "msex_paire_normalite","Msex_paire_necesstite","msex_paire_partie_compet")
+Qu3nouv(SEX, vec)
+```
+
+```{r}
+vec <- c(   # 301-310
+  "Msex_paire_demotive","Msex_paire_moins_perf","Msex_paire_perdu_confiance",
+  "Msex_paire_image_neg_corps","msex_paire_peur","Msex_paire_colere",
+  "msex_paire_triste","msex_paire_stress","Msex_paire_ta_faute",
+  "Msex_paire_humiliation"
+  )
+Qu3nouv(SEX, vec)
+```
+
+
+
+#### Catégorie 2
+
+```{r}
+VEC <- c(   # 312-314
+  "msex_paire_consideration_normale","msex_paire_necessaire_perf","Msex_paire_fait_partie_compet"
+)
+Qu3nouv(SEX, vec)
+```
+
+```{r}
+vec <- c(   # 315-324
+  "msex_paire_demotive","msex_paire_moins_perf","msex_paire_perdu_confiance",
+  "Msex_paire_image_corps","Msex_paire_peur_2","msex_paire_colere",
+  "msex_paire_triste_2","msex_paire_stress_2","msex_paire_ta_faute",
+  "msex_paire_humiliation"
+  )
+Qu3nouv(SEX, vec)
+```
+
+#### Catégorie 3
+
+```{r}
+vec <- c(   # 326-328
+  "msex_paire_normalite_2","msex_paire_consideration_necessaire_perf","msex_paire_consideration_partie_perf"
+)
+Qu3nouv(SEX, vec)
+```
+
+```{r}
+vec <- c(   # 329-338
+  "Msex_paire_consideration_demotive","msex_paire_moins_perf_2","msex_paire_perdu_confiance_2",
+  "Msex_paire_image_corps_2","msex_paire_peur_3","msex_paire_colere_3",
+  "msex._paire_triste","msex_paire_stress_3","msex_paire_ta_faute_3",
+  "msex_paire_humiliation_2"
+  )
+Qu3nouv(SEX, vec)
+```
+
+je ne donnerais pas de pourcentages pour des Counts plus petits que 5, ils ne seront pas du tout exacts.
+
+#### Catégorie 4
+
+```{r}
+vec <- c(  
+  "Msex_paire_normalite","msex_paire_neccesite_perf","Msex_paire_partie_entrainement"  # 340-342
+)
+Qu3nouv(SEX, vec)
+```
+
+```{r}
+vec <- c(  # 343-352
+  "Msex_paire_demotive_2","msex_paire_moins_perf_3",                         
+  "msex_paire_perdu_confiance_3","msex_paire_image_neg",                                
+  "msex_paire_peur_4","msex_paire_peur_5",                              
+  "msex_paire_triste_3","msex_paire_stress_4",                                 
+  "Msex_paire_humiliation_categorie_4"              
+  )
+Qu3nouv(SEX, vec)
+```
+
+
+#### Catégorie 5
+
+355 Msex_paire_normalité
+    356 msex_paire_necessaire_perf_2
+    357 Msex_paire_faisant_partie_entrainement
+
+```{r}
+vec <- c(  # 355-357
+  "Msex_paire_normalité","msex_paire_necessaire_perf_2","Msex_paire_faisant_partie_entrainement"
+)
+Qu3nouv(SEX, vec)
+```
+
+
+
+```{r}
+vec <- c(   # 358-367
+  "msex_paire_demotivation_categorie_5",
+  "msex_paire_moins_perf_4",
+  "Msex_paire_perte_confiance",
+  "msex_paire_imageneg_cat_5",
+  "Msex_paire_peur",
+  "msex_paire_colere_4",
+  "msex_paire_triste_4",
+  "msex_paire_stress_5",
+  "msex_paire_tafaute_categorie_5",
+  "msex_paire_humiliation_categorie_5"
+  )
+Qu3nouv(SEX, vec)
+```
+
+
+#### Catégorie 6
+
+"msex_paire_viol_penetration_item7"
+
+```{r}
+vec <- c(  # 369-371
+  "msex_paire_normalite_3","msex_paire_necessaire_perf_3","msex_paire_faisant_partie"
+)
+Qu3nouv(SEX, vec)
+```
+
+```{r}
+vec <- c(  # 372-381
+  "msex_paire_demotivation_categorie_6",
+  "msex_paire_moins_perf_5",
+  "msex_paire_perteconfiance_categorie_6",
+  "msex_paire_imageneg_categorie_6",
+  "msex_paire_peur_6",
+  "msex_paire_colere_5",
+  "msex_paire_triste_5",
+  "msex_paire_stress_6",
+  "msex_paire_tafaute_categorie_6",
+  "msex_paire_humiliation_categorie_6"
+  )
+Qu3nouv(SEX, vec)
+```
+
+#### Catégorie 7
+
+Nouveau: 3 interprétations
+
+```{r}
+vec <- c(  # 383-385
+  "msex_paire_normalite_4",
+  "msex_paire_necessaire_perf_4",
+  "msex_pair_faisantpartie_categorie_7"
+)
+Qu3nouv(SEX, vec)
+```
+
+5 consequences de plus:
+
+
+
+```{r}
+vec <- c(  # 386-395
+  "msex_pair_demotivation_categorie_7",
+  "msex_paire_moins_perf_categorie_7",
+  "msex_paire_perteconfiance_categorie_7",
+  "msex_pair_imagecoprs_categorie7",
+  "msex_paire_peur_7",
+  "msex_paire_colere_6",
+  "msex_paire_triste_6",
+  "msex_paire_stress_7",
+  "msex_pair_tafaute_categorie_7",
+  "msex_pair_humiliation_categorie_7"
+  )
+Qu3nouv(SEX, vec)
+```
+
+
+## Adultes: 6 Catégories
+
+#### Catégorie 1
+
+```{r}
+vec <- c(  # 405-407
+  "Msex_adulte_normalite","msex_adulte_necessaire_perf","Msex_adulte_fsisant_partie"
+)
+Qu3nouv(SEX, vec)
+```
+
+```{r}
+vec <- c(  # 408-417
+  "msex_adulte_demotive","Msex_adulte_moins_perf","msex_adulte_perdu_confiance",
+  "msex_adulte_image_corps","msex_adulte_peur","msex_adulte_colere",
+  "msex_adulte_triste","msex_adulte_stress","msex_adulte_ta_faute",
+  "msex_adulte_humiliation"
+  )
+Qu3nouv(SEX, vec)
+```
+
+
+#### Catégorie 2
+
+```{r}
+vec <- c(  # 426-428
+  "msex_adulte_normalite",
+  "msex_adulte_necessaire_perf_5",
+  "msex_adulte_faisantpartie_categorie_2")
+Qu3nouv(SEX, vec)
+```
+
+429 
+
+```{r}
+vec <- c(  # 429-438
+  "msex_adulte_demotivation_categorie_2",
+  "msex_adulte_moins_perf",
+  "msex_adulte_perteconfiance_categorie_2",
+  "msex_adulte_imageneg_categorie_2",
+  "msex_adulte_peur_6",
+  "msex_adulte_colere_6",
+  "Msex_adulte_triste",
+  "msex_adulte_stress..2.",
+  "msex_adulte_tafaute_categorie_2",
+  "msex_adulte_humiliation_categorie_2"
+  )
+Qu3nouv(SEX, vec)
+```
+
+
+#### Catégorie 3
+
+```{r}
+vec <- c(  # 447-449
+  "Msex_adulte_normalité","msex_adulte_necessaire_perf_3"
+)
+Qu3nouv(SEX, vec)
+```
+
+```{r}
+vec <- c(  #450-459
+  "msex_adulte_demotivation_categorie_3",
+  "msex_adulte_moinsperf_categorie_3",
+  "msex_adulte_perte_confiance_categorie_3",
+  "msex_adulte_imagecoprs_categorie_3",
+  "msex_adulte_peur_3",
+  "msex_adulte_colere_7",
+  "msex_adulte_triste_2",
+  "msex_adulte_stress_3",
+  "msex_adulte_tafaute_categorie_3",
+  "msex_adulte_humiliation_categorie_3"
+  )      
+Qu3nouv(SEX, vec)
+```
+
+
+#### Catégorie 4
+
+```{r}
+vec <- c(  # 468-470
+  "msex_adulte_normalite_2","msex_adulte_necessaire_perf_7", "msex_adulte_faisantpartie_categorie_4"
+)
+Qu3nouv(SEX, vec)
+```
+
+```{r}
+vec <- c(  # 
+  "msex_adulte_demotivationcategorie_4",
+  "msex_adulte_moins_perf_8",
+  "msex_adulte_perteconfiance_categorie_4",
+  "msex_adulte_imagecorps_categorie_4",
+  "Msex_adulte_peur",
+  "msex_adulte_colere_4",
+  "msex_adulte_triste_8",
+  "msex_adulte_stress_8",
+  "msex_adulte_tafaute_categorie_4",
+  "msex_adulte_humiliation_categorie_4"
+  )
+Qu3nouv(SEX, vec)
+```
+
+
+#### Catégorie 5
+
+```{r}
+vec <- c(  # 491-493
+  "Msex_adulte_normalite_2",                             
+  "msex_adulte_necessaire_perf_5..2.",
+  "msex_adulte_faisant_partie"
+)
+Qu3nouv(SEX, vec)
+```
+
+```{r}
+vec <- c(  # 494-503
+  "Msex_adulte_demotive","msex_adulte_moins_perf_4","Msex_adulte_perdu_confiance",
+  "Msex_adulte_image_neg_corps","msex_adulte_peur_4","msex_adulte_colere_5",
+  "msex_adulte_triste_4","msex_adulte_stress_5","msex_adulte_ta_faute_2",
+  "Msex_adulte_humiliation"
+  )
+Qu3nouv(SEX, vec)
+```
+
+
+#### Catégorie 6
+
+tout nouveau
+
+```{r}
+vec <- c(   # 512-514
+   "Msex_adulte_normalite_2_categorie_6",
+   "msex_adulte_necessaire_perf_5..2._categorie_6",
+   "msex_adulte_faisant_partie_categorie_6"
+)
+Qu3nouv(SEX, vec)
+```
+
+Très peu des counts, du coup pourcentages pas fiables.
+
+```{r}
+vec <- c(  # 515-524
+  "Msex_adulte_demotive_categorie_6",
+  "msex_adulte_moins_perf_4_categorie_6",
+  "Msex_adulte_perdu_confiance_categorie_6",
+  "Msex_adulte_image_neg_corps_categorie_6",
+  "msex_adulte_peur_4_categorie_6",
+  "msex_adulte_colere_5_categorie_6",
+  "msex_adulte_triste_4_categorie_6",
+  "msex_adulte_stress_5_categorie_6",
+  "msex_adulte_ta_faute_2_categorie_6",
+  "Msex_adulte_humiliation_categorie_6"  )
+Qu3nouv(SEX, vec)
+```
+
+## Catégorie 7
+
+nouveau: interprétations et consequences
+
+```{r}
+vec <- c(  # 533-535
+   "Msex_adulte_normalite_2_categorie_7",
+   "msex_adulte_necessaire_perf_5..2._categorie_7",
+   "msex_adulte_faisant_partie_categorie_7")
+Qu3nouv(SEX, vec)
+```
+
+pourcentages pas fiables 
+
+```{r}
+vec <- c(  # 536-545
+  "Msex_adulte_demotive_categorie_7",
+  "msex_adulte_moins_perf_4_categorie_7",
+  "Msex_adulte_perdu_confiance_categorie_7",
+  "Msex_adulte_image_neg_corps_categorie_7",
+  "msex_adulte_peur_4_categorie_7",
+  "msex_adulte_colere_5_categorie_7",
+  "msex_adulte_triste_4_categorie_7",
+  "msex_adulte_stress_5_categorie_7",
+  "msex_adulte_ta_faute_2_categorie_7",
+  "Msex_adulte_humiliation_categorie_7")
+Qu3nouv(SEX, vec)
+```
+
+pourcentages pas fiables
+
+
+# NEG
+
+et adultes et parents 3 catégories (Franzoni p. 95) avec 5 items au total
+
+```{r}
+TOUT$neg <- avait(TOUT$negadulte_item._cat_1) + avait(TOUT$negadulte_item2_cat_1) +
+            avait(TOUT$negadulte_item_3_cat_1) > avait(TOUT$Neg_adulte_louper_ecole_item4) +
+            avait(TOUT$Neg_adulte_laisser_humilier_item5) +
+
+            avait(TOUT$Neg_parent_laisser_entrainer_blesser_item1) + avait(TOUT$Neg_parent_dopage_item2) +
+            avait(TOUT$Neg_parent_poids_ideal_item3) +              avait(TOUT$Neg_parent_arret_ecole_item4) +
+            avait(TOUT$neg_parent_laisser_humilier_autrui_item5) 
+
+TOUT$NEG <- if_else(TOUT$neg > 0, 1, 0)
+
+NEG <- filter(TOUT, NEG==1)
+```
+
+117 ont subi NEG.
+
+
+## Adultes: 3 Catégorie
+
+#### Catégorie 1
+
+```{r}
+vec <- c(   # 556-558
+  "Neg_adulte_normal_cat_1",
+  "Neg_adulte_necessite_cat_1",
+  "Neg_adulte_faisant_partie_cat_1" )
+Qu3nouv(NEG, vec)
+```
+
+```{r}
+vec <- c(   # 559-568
+  "Neg_adulte_demotiver","Neg_adulte_moins_perf","Neg_adulte_perdu_confiance",
+  "Neg_adulte_image_neg_corps","Neg_adulte_peur","Neg_adulte_colere",
+  "Neg_adulte_triste","Neg_adulte_stress","Neg_adulte_ta_faute",
+  "Neg_adulte_humiliation")
+Qu3nouv(NEG, vec)
+```
+
+
+#### Catégorie 2
+
+```{r}
+vec <- c(   # 577-579
+  "neg_adulte_normalite","Neg_adulte_necessaire_perf_2","neg_adulte_faisant_partie"
+)
+Qu3nouv(NEG, vec)
+```
+
+pourcentages pas fiables
+
+```{r}
+vec <- c(   # 580-589
+  "Neg_adulte_demotive","Neg_adulte_moins_perf_2","Neg_adulte_perdu_confiance_2",
+  "Neg_adulte_image_coprs","Neg_Adulte_peur","Neg_adulte_colere_2",
+  "Neg_adulte_triste_2","Neg_adulte_stress_2","Neg_adulte_ta_faute_2",
+  "Neg_adulte_humiliation_2"
+  )
+Qu3nouv(NEG, vec)
+```
+
+pourcentages pas fiables
+
+
+#### Catégorie 3
+
+```{r}
+vec <- c(   # 598-600
+  "Neg_adulte_normalite_2","Neg_adulte_necessaire_perf_3","Neg_adulte_faisant_partie_perf"
+)
+Qu3nouv(NEG, vec)
+```
+
+porcentages pas du tout fiables
+
+```{r}
+vec<- c(  #  601-610
+  "Neg_adulte_demotive_2","Neg_adulte_moins_perf_3","Neg_adulte_perdu_confiance_3",
+  "Neg_adulte_image_corps","Neg_adulte_peur_2","Neg_adulte_colere_3",
+  "Neg_adulte_triste_3","Neg_adulte_stress_3","Neg_adulte_ta_faute_3",
+  "Neg_adulte_humiliation_3"
+  )
+Qu3nouv(NEG, vec)
+```
+
+pourcentages pas du tout fiables
+
+
+## Parents: 3 Catégories
+
+#### Catégorie 1
+
+```{r}
+vec <- c(   # 614-616
+  "Neg_parent_normalite","neg_parent_necessaire_perf","neg_parent_faisant_partie"  
+)
+Qu3nouv(NEG, vec)
+```
+
+8 consequences nouvelles:
+
+```{r}
+vec <- c(   # 617-626
+  "neg_parent_demotive",
+  "neg_parent_moins_perf",
+  "Neg_parent_perdu_confiance_3_cat_1",
+  "Neg_parente_image_corpscat_1cat_1",
+  "Neg_parent_peur_2cat_1",
+  "Neg_parente_colere_3cat_1",
+  "Neg_parent_triste_3cat_1",
+  "Neg_parent_stress_3cat_1",
+  "Neg_parent_ta_faute_3cat_1",
+  "Neg_parent_humiliation_3cat_1"
+)
+Qu3nouv(NEG, vec)
+```
+
+
+#### Catégorie 2
+
+```{r}
+vec <- c(   # 628-630
+  "neg_parent_normalite","Neg_parent_necessaire_perf","neg_parent_faisant_partie_2"  
+)
+Qu3nouv(NEG, vec)
+```
+
+c'étaient jamais cochées.
+
+9 nouvelles consequences:
+
+```{r}
+vec <- c(  # 631-640
+  "neg_parent_demotive_2",
+  "neg_parent_moins_perf_categorie_2",
+  "Neg_parent_perdu_confiance_3_cat_2",
+  "Neg_parente_image_corpscat_1cat_2",
+  "Neg_parent_peur_2cat_2",
+  "Neg_parente_colere_3cat_2",
+  "Neg_parent_triste_3cat_2",
+  "Neg_parent_stress_3cat_2",
+  "Neg_parent_ta_faute_3cat_2",
+  "Neg_parent_humiliation_3cat_2")
+Qu3nouv(NEG, vec)
+```
+
+c'étaient jamais cochées.
+
+
+#### Catégorie 3
+
+```{r}
+vec <- c(  # 642-644
+  "Neg_adulte_necessaire",
+  "neg_parent_necessaire_cat_3",
+  "neg_parent_faisant_partie_3"
+)
+Qu3nouv(NEG, vec)
+```
+
+jamais cochées.
+
+8 nouvelles consequences:
+
+```{r}
+vec <- c(    # 645-654
+  "Neg_parent_demotive",
+  "neg_adulte_moins_perf",
+  "Neg_parent_perdu_confiance_3_cat_3",
+  "Neg_parente_image_corpscat_1cat_3",
+  "Neg_parent_peur_2cat_3",
+  "Neg_parente_colere_3cat_3",
+  "Neg_parent_triste_3cat_3",
+  "Neg_parent_stress_3cat_3",
+  "Neg_parent_ta_faute_3cat_3",
+  "Neg_parent_humiliation_3cat_3"
+)
+Qu3nouv(NEG, vec)
+```
+
+jamais cochées.
