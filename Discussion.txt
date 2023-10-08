@@ -1,5 +1,24 @@
 Bonsoir Théo,
 
+entretemps je me suis habitué au nouvel Excel et je procède un peu mieux. Joint les chiffres pour tes Tableaux 2 et 3. Est tout compréhensible?
+
+Quelques remarques:
+
+Ton tableau 2 est juste une partie du tableau 3: Fréquence est donne par un nombre, si on cite le pourcentage, c'est une prévalence. Du coup, tableau 3 suffit pour ton travail. Mais je ne comprends pas pourquoi l'addition des pourcentages dans ton tableau 3 donne > 100% ? Par exemple MPS dans les catégories d'âge = 40.1 + 41.3 + 50.7 = 132.1 !
+
+Le chiffre 1 "sexe ni homme ni femme" est problématique pour le test khi-carré qui exige des fréquences d'au moins 5. Du coup j'ai remplacé le test khi-carré par le test exact de Fisher. Il teste la même question que le test khi-carré mais il est toujours exact.  
+
+Les valeurs p tellement petites (données dans la notion scientifique "p-value = 1.602e-07" etc.) ne sont pas super intéressantes. Dans un texte on écrit simplement "< 0.001". Dans les autres cas, 2 chiffres suffisent - par exemple "0.11" et non pas "0.107"
+
+Demain je continuerai avec les Tableaux 10 et 11, après 7.
+
+Bonne soirée,
+Christoph
+
+------------------------------------------------------------------------------------
+
+Bonsoir Théo,
+
 voici les chiffres pour ton Tableau 1. Est tout compréhensible?
 
 J'ai aussi fait ceux pour Tableau 2 et je travaille sur 3. Cela me donne une comparaison pour Tableau 2 et j'enverrai ça quand j'aurai fini 3.

@@ -1,17 +1,17 @@
 ---
 title: "Théo12-Nouv.Rmd"
 author: "Christoph"
-date: "2023-10-05..."
+date: "2023-10-05..07"
 output:
-  word_document:
-    toc: no
-    toc_depth: '3'
   pdf_document:
     latex_engine: xelatex
     toc: no
     toc_depth: 3
     extra_dependencies: []
     keep_tex: yes
+  word_document:
+    toc: no
+    toc_depth: '3'
 geometry: margin=0.5cm
 ---
 
@@ -41,7 +41,7 @@ TOUT <- read.xlsx("MA_Theo_tableau1-ed.xlsx", sheetName ="Feuil1")    # Copié S
 (sur écran mais pas dans le PDF ou word)
 
 ```{r}
-View(TOUT)
+#View(TOUT)
 #colnames(TOUT)   # Noms des Variables
 ```
 
@@ -75,137 +75,131 @@ inv.table <- function(maltyp, categorie, titres) {
   return(df)
 }
 
-prevalences <- function(it){
+prevalences <- function(it, fisher=FALSE){
   print(noquote("Prévalences selon cette catégorie:"))
   print( it[1,]/(it[1,]+it[2,]) )
   print(noquote(""))
-  print(chisq.test(it))
+  #
+  if(fisher) {
+    print(fisher.test(it) )   #, simulate.p.value=TRUE)  # ganz exakt braucht zuviel Speicher
+  }else{
+    print(chisq.test(it))
+  }
 }
 
 tab_prev <- function(maltyp){
   print(noquote(paste("========================== maltraitance",maltyp,": ===================================")))
   
-  prev_age <- inv.table(maltyp, "Categorie_age", c("16-19 ans ","20-23 ans","24 ans et plus"))         # titre automatique ne vaut pas
+  prev_age <- inv.table(maltyp, "Categorie_age", c("16-19 ans","20-23 ans","24 ans et plus"))         # titre automatique ne vaut pas
   prevalences(prev_age)
 
   prev_sexe <- inv.table(maltyp, "sexe_genre", c("Une fille","Un garçon","Les catégories ne me correspondent pas"))   # 
-  prevalences(prev_sexe)
+  prevalences(prev_sexe,TRUE)
 
-  prev_sport <- inv.table(maltyp, "Sport_categorie", c("athletisme/sport endurance", "sport individuel", "sport artistique", "basket-ball", "sport d'equipe", "autres", "sport de combat", "sport endurance", "football"))   # 
+  prev_sport <- inv.table(maltyp, "Sport_categorie", c("Sport endurance", "Sport indiv", "Sport artistique", "Basketball", "Sport equipe", "Autre", "Sport combat", "Sport endurance", "Football"))   # 
   prevalences(prev_sport)
 
   prev_niveau <- inv.table(maltyp, "niveau_de_pratique", c("National", "Régional", "Autre", 
                                   "International", "Inter-régional (inter-cantonal)", "Régional (cantonal)"))   # 
   prevalences(prev_niveau)
 
-  prev_12ans <- inv.table(maltyp, "avant_12_ans", c(0,1))   # 
+  prev_12ans <- inv.table(maltyp, "avant_12_ans", c("Oui", "Non"))   # 
   prevalences(prev_12ans)
 }
 ```
+
 
 # MPS
 
 ```{r}
 avait <- function(item){
-  item != "Jamais" & item != "Pas de réponse"
+  #(item != "Jamais" & item != "Pas de réponse" & item != "Pas du tout") | item =="Oui"
+  return( ifelse(item != "Jamais" & item != "0",1,0) )   # "0" occure seulement pour TOUT$mpsy_parent_invesstissment_item2 
 }
 ```
 
 
 ```{r}
-TOUT$mps <- avait(TOUT$Mphysique_pairs_item1)                 | avait(TOUT$Mphysique_paire_item2)         | 
-                TOUT$Mphysique_paire_item3!="Pas du tout"     |
+TOUT$mps <- avait(TOUT$Mphysique_pairs_item1)                 + avait(TOUT$Mphysique_paire_item2)         +
+            avait(TOUT$Mphysique_paire_item3)     +
 
-            avait(TOUT$Mphysique_adulte_secoue_agrippe_item1) | avait(TOUT$Mphysique_adulte_frappe_item2) | 
-                TOUT$Mphysique_adulte_etouffe_item3=="Oui"    |
+            avait(TOUT$Mphysique_adulte_secoue_agrippe_item1) + avait(TOUT$Mphysique_adulte_frappe_item2) + 
+            avait(TOUT$Mphysique_adulte_etouffe_item3)    +
   
-            avait(TOUT$Mphysique_parent_secoue)               | avait(TOUT$Mphysique_parent_frappe)       | 
-                ( TOUT$Mphysique_parent_ettoufe != "Pas du tout" & ! is.na(TOUT$Mphysique_parent_ettoufe) )
+            avait(TOUT$Mphysique_parent_secoue)               + avait(TOUT$Mphysique_parent_frappe)       + 
+            avait(TOUT$Mphysique_parent_ettoufe)
 
-TOUT$MPS <- if_else(TOUT$mps, 1, 0)
+TOUT$MPS <- if_else(TOUT$mps>0, 1, 0)
 
 MPS <- filter(TOUT, MPS==1)
 ```
 
+---
+#Pour donner une idée pour une mésure ne pas à bas seuil je liste pour chaque participant la somme des entrées $\neq$ 0:
+#
+#```{r}
+#TOUT$mps 
+#```
+#
+#(cette idée est assez grossière, par exemple "1 fois" est compté exactement comme "souvent". Il faudra discuter pour en trouver une #meilleure)
+---
+
+Au total: 344 des 781 participants ont subi au moins une MPS.
+
+
 ## Statistiques Descriptives 
 
 ```{r}
-descriptives(MPS, c( "Categorie_age",
-  "sexe_genre", "Sport_categorie", "niveau_de_pratique"
+descriptives(MPS, c( "Categorie_age", "sexe_genre", "Sport_categorie", "niveau_de_pratique"
                      , "avant_12_ans" 
   ), 
              freq=TRUE)
 ```
 
-ça a changé, maintenant la plupart a commencé avant 12 ans - tu sais certainement si cela est correct?
-
-Mais ces ne sont pas encore les prévalences mais plutôt les frequences des caractéristiques sociodémographiques des cas MPS.
-
-Tous les participants ont subi au moins une maltraitance physique.
-
-
-# Tableau 1
-
-descriptives(..., c( "Categorie_age",
-  "sexe_genre", "Sport_categorie", "niveau_de_pratique"
-                     , "avant_12_ans" 
-  ), 
-             freq=TRUE)
-```{r}
-Tableau1Col234 <- function(cat){
-   tab <- table(TOUT[,cat], TOUT$sexe_genre)
-  print(                      tab    )
-  print( round(100*prop.table(tab),1)) 
-}
-
-Tableau1Col234("Categorie_age")
-```
 
 ## Prévalences
 
-Prévalences sont les  frequences de MPS dans les différentes classes sociodémographiques.
+Prévalences sont les  fréquences de MPS dans les différentes classes sociodémographiques.
 
 ```{r}
 tab_prev("MPS")
 ```
 
----
-## Petites discussions MPS
-#- la prévalence de MAP est de 16.8% chez les 16-19 ans, 17.5% chez les 20-23 ans et 22.5% chez les 24 ans ou plus
-#- 100% prevalence dans la catégorie ```Les catégories ne me correspondent pas``` - mais il n'y avait qu'un seul cas
----
 
 # PSY
 
 ```{r}
-TOUT$PSY <- TOUT$Mpsy_paire_ignoré_item1 != "Jamais" | TOUT$Mpsy_paire_investissement_item2 != "Jamais" |   # ~ nouvel Exel
-            TOUT$Mpsy_paire_critique_perf_item3 != "Jamais" | TOUT$Mpsy_paire_apparence_item4 != "Jamais" |
-            TOUT$Mpsy_paire_rumeur_item5 != "Jamais" | TOUT$Mpsy_paire_humiliation_item6 != "Jamais" |
-            TOUT$Mpsy_paire_menace_exclusion_item7 != "Jamais" | TOUT$mpsy_paire_menace_physique_item8 != "Jamais" |
-            TOUT$Mpsy_paire_encourager_humiliation_item9 != "Jamais" | TOUT$mpsy_paire_limite_contacte_item10 != "Jamais" |
+TOUT$psy <- avait(TOUT$Mpsy_paire_ignoré_item1) + avait(TOUT$Mpsy_paire_investissement_item2) +   # ~ nouvel Exel
+            avait(TOUT$Mpsy_paire_critique_perf_item3) + avait(TOUT$Mpsy_paire_apparence_item4) +
+            avait(TOUT$Mpsy_paire_rumeur_item5) + avait(TOUT$Mpsy_paire_humiliation_item6) +
+            avait(TOUT$Mpsy_paire_menace_exclusion_item7) + avait(TOUT$mpsy_paire_menace_physique_item8) +
+            avait(TOUT$Mpsy_paire_encourager_humiliation_item9) + avait(TOUT$mpsy_paire_limite_contacte_item10) +
 
-            TOUT$Mpsy_adulte_ignoer_item1 != "Jamais" | TOUT$mpsy_adulte_critique_invesstissement_item2 != "Jamais" |   # ~ nouvel Exel
-            TOUT$mpsy_adulte_critique_perf_item2 != "Jamais" | TOUT$mpsy_adulte_critiquer_apparence_item3 != "Jamais" |
-            TOUT$mpsy_adulte_rumeur_item4 != "Jamais" | TOUT$mpsy_adulte_ridiculiser_item5 != "Jamais" |
-            TOUT$Mpsy_adulte_crier_dessus_item6 != "Jamais" | TOUT$mpsy_adulte_menace_expulsion_item7 != "Jamais" |
-            TOUT$mpsy_adulte_menacephysi_item8 != "Jamais" | TOUT$mpsy_adulte_humiliation_autrui_item9 != "Jamais" |
-            TOUT$mpsy_adulte_limitation_contact_item10 != "Jamais" | TOUT$mpsy_adulte_jouer_blesser_item11 != "Jamais" |
-            TOUT$mpsy_adulte_entrainer_a_vomir_item12 != "Jamais" | TOUT$mpsy_adulte_dopage_item13 != "Jamais" |
-            TOUT$mpsy_adulte_poids_ideal_item13 != "Jamais" |
+            avait(TOUT$Mpsy_adulte_ignoer_item1) + avait(TOUT$mpsy_adulte_critique_invesstissement_item2) +   # ~ nouvel Exel
+            avait(TOUT$mpsy_adulte_critique_perf_item2) + avait(TOUT$mpsy_adulte_critiquer_apparence_item3) +
+            avait(TOUT$mpsy_adulte_rumeur_item4) + avait(TOUT$mpsy_adulte_ridiculiser_item5) +
+            avait(TOUT$Mpsy_adulte_crier_dessus_item6) + avait(TOUT$mpsy_adulte_menace_expulsion_item7) +
+            avait(TOUT$mpsy_adulte_menacephysi_item8) + avait(TOUT$mpsy_adulte_humiliation_autrui_item9) +
+            avait(TOUT$mpsy_adulte_limitation_contact_item10) + avait(TOUT$mpsy_adulte_jouer_blesser_item11) +
+            avait(TOUT$mpsy_adulte_entrainer_a_vomir_item12) + avait(TOUT$mpsy_adulte_dopage_item13) +
+            avait(TOUT$mpsy_adulte_poids_ideal_item13) +
 
-            TOUT$Mpsy_parent_ignorer_item1 != "Jamais" | TOUT$mpsy_parent_invesstissment_item2 != "Jamais" |   # ~ nouvel Exel
-            TOUT$mpsy_parent_critique_perf_item3 != "Jamais" | TOUT$Mpsy_parent_critique_corps_item4 != "Jamais" |
-            TOUT$mpsy_parent_rumeur_item5 != "Jamais" | TOUT$mpsy_parent_ridiculisà_perf_item6 != "Jamais" |
-            TOUT$mpsy_parent_crier_dessus_item7 != "Jamais" | TOUT$Mpsy_parent_menace_physique_item8 != "Jamais" | 
-            TOUT$Mpsy_parent_blesser_adversaire_item9 != "Jamais" | TOUT$Mpsy_parent_limite_contact_item10 != "Jamais" | 
-            TOUT$Mpsy_parent_blessé_soi_mm_item11 != "Jamais" | TOUT$mpsy_parent_vomir_item12 != "Jamais" | 
-            TOUT$mpsy_parent_dopage_item13 != "Jamais" | TOUT$Mpsy_parent_poids_ideal_item14 != "Jamais" 
+            avait(TOUT$Mpsy_parent_ignorer_item1) + avait(TOUT$mpsy_parent_invesstissment_item2) +   # ~ nouvel Exel
+            # item2 pas encodé comme les autres
+            avait(TOUT$mpsy_parent_critique_perf_item3) +
+  avait(TOUT$Mpsy_parent_critique_corps_item4) +
+            avait(TOUT$mpsy_parent_rumeur_item5) + avait(TOUT$mpsy_parent_ridiculisà_perf_item6) +
   
-TOUT$PSY <- if_else(TOUT$PSY, 1, 0)
+            avait(TOUT$mpsy_parent_crier_dessus_item7) + avait(TOUT$Mpsy_parent_menace_physique_item8) + 
+            avait(TOUT$Mpsy_parent_blesser_adversaire_item9) + avait(TOUT$Mpsy_parent_limite_contact_item10) + 
+            avait(TOUT$Mpsy_parent_blessé_soi_mm_item11) + avait(TOUT$mpsy_parent_vomir_item12) + 
+            avait(TOUT$mpsy_parent_dopage_item13) + avait(TOUT$Mpsy_parent_poids_ideal_item14)
+  
+TOUT$PSY <- if_else(TOUT$psy > 0, 1, 0)
 PSY <- filter(TOUT, PSY==1)
 ```
 
-Tout le monde a subi au moins une maltraitance psychologique!
+711 ont subi au moins une maltraitance psychologique!
 
 
 ## Statistiques Descriptives 
@@ -226,22 +220,20 @@ tab_prev("PSY")
 # NEG
 
 ```{r}
-TOUT$NEG <- TOUT$negadulte_item._cat_1>=1 | TOUT$negadulte_item2_cat_1>=1 |
-            TOUT$negadulte_item_3_cat_1>=1      | TOUT$Neg_adulte_louper_ecole_item4>=1   |
-            TOUT$Neg_adulte_laisser_humilier_item5>=1 |
+TOUT$neg <- avait(TOUT$negadulte_item._cat_1) + avait(TOUT$negadulte_item2_cat_1) +
+            avait(TOUT$negadulte_item_3_cat_1) > avait(TOUT$Neg_adulte_louper_ecole_item4) +
+            avait(TOUT$Neg_adulte_laisser_humilier_item5) +
 
-            TOUT$Neg_parent_laisser_entrainer_blesser_item1>=1 | TOUT$Neg_parent_dopage_item2>=1 |
-            TOUT$Neg_parent_poids_ideal_item3>=1               | TOUT$Neg_parent_arret_ecole_item4>=1 |
-            TOUT$neg_parent_laisser_humilier_autrui_item5>=1
+            avait(TOUT$Neg_parent_laisser_entrainer_blesser_item1) + avait(TOUT$Neg_parent_dopage_item2) +
+            avait(TOUT$Neg_parent_poids_ideal_item3) +              avait(TOUT$Neg_parent_arret_ecole_item4) +
+            avait(TOUT$neg_parent_laisser_humilier_autrui_item5) 
 
-
-TOUT$NEG <- if_else(TOUT$NEG, 1, 0)
+TOUT$NEG <- if_else(TOUT$neg > 0, 1, 0)
 
 NEG <- filter(TOUT, NEG==1)
 ```
 
-Tout le monde a subi une maltraitance de négligence!
-
+117 ont subi NEG.
 
 ## Statistiques Descriptives 
 
@@ -261,28 +253,29 @@ tab_prev("NEG")
 # SEX
 
 ```{r}
-TOUT$SEX <- TOUT$Msex_paire_remarque_apparence_item1>=1    | TOUT$Msex_paire_proposition_sex_item2>=1  |
-            TOUT$msex_paire_exhibitionisme_item3>=1        | TOUT$msex_paire_photo_intime_item4>=1     |
-            TOUT$msex_paire_attouchement_item5>=1          | TOUT$Msex_paire_embrasser_item6>=1        |
-            TOUT$msex_paire_frotter_partie_intime_item7>=1 | TOUT$msex_paire_viol_penetration_item7>=1 |
-            TOUT$Msex_paire_avec_sans_penetration_non_consentie_item8>=1    |
+TOUT$sex <- avait(TOUT$Msex_paire_remarque_apparence_item1)    + avait(TOUT$Msex_paire_proposition_sex_item2)  +
+            avait(TOUT$msex_paire_exhibitionisme_item3)        + avait(TOUT$msex_paire_photo_intime_item4)     +
+            avait(TOUT$msex_paire_attouchement_item5)          + avait(TOUT$Msex_paire_embrasser_item6)        +
+            avait(TOUT$msex_paire_frotter_partie_intime_item7) + avait(TOUT$msex_paire_viol_penetration_item7) +
+            avait(TOUT$Msex_paire_avec_sans_penetration_non_consentie_item8)    +
 
-            TOUT$Msex_adulte_remarque_sex_item1>=1             | TOUT$msex_adulte_envoi_image_sex_item2>=1       |
-            TOUT$Msex_adulte_exhibition_partie_intime_item_3_categorie_2>=1 | 
-            TOUT$msex_adulte_photo_partie_intime_item_4_categorie_3>=1 |
-            TOUT$msex_adulte_force.a_toucher_item_5_categorie_4>=1          |                                                      
-            TOUT$msex_adulte_toucher_malalaise_Item6_categorie_5>=1     |
-            TOUT$msex_adulte_embrasser_bouche_Item_7_categorie_5>=1         |            
-            TOUT$Msex_adulte_frotter_partie_intime_item_8_categorie_5>=1 |
-            TOUT$Msex_adulte_tentation_relation_sex_item_9_categorie_6>=1   | 
-            TOUT$Msex_adulte_forcer_relation_sex_avec_sans_pene_item8>=1 
+            avait(TOUT$Msex_adulte_remarque_sex_item1)             + avait(TOUT$msex_adulte_envoi_image_sex_item2)       +
+            avait(TOUT$Msex_adulte_exhibition_partie_intime_item_3_categorie_2) + 
+            avait(TOUT$msex_adulte_photo_partie_intime_item_4_categorie_3) +
+            avait(TOUT$msex_adulte_force.a_toucher_item_5_categorie_4)          +                                                      
+            avait(TOUT$msex_adulte_toucher_malalaise_Item6_categorie_5)     +
+            avait(TOUT$msex_adulte_embrasser_bouche_Item_7_categorie_5)         +            
+            avait(TOUT$Msex_adulte_frotter_partie_intime_item_8_categorie_5) +
+            avait(TOUT$Msex_adulte_tentation_relation_sex_item_9_categorie_6)   + 
+            avait(TOUT$Msex_adulte_forcer_relation_sex_avec_sans_pene_item8) 
   
-TOUT$SEX <- if_else(TOUT$SEX, 1, 0)
+TOUT$SEX <- if_else(TOUT$sex > 0, 1, 0)
 
 SEX <- filter(TOUT, SEX==1)
 ```
 
-Tout le monde avait subi au moins 1 maltraitance sexuélle!
+178 ont subi SEX.
+
 
 ## Statistiques Descriptives 
 
