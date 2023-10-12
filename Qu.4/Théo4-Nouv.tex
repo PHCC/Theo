@@ -1,0 +1,565 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=0.5cm]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Théo4-Nouvel Excel},
+  pdfauthor={Christoph},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Théo4-Nouvel Excel}
+\author{Christoph}
+\date{2023-10-05,10}
+
+\begin{document}
+\maketitle
+
+\hypertarget{libraries}{%
+\section{Libraries}\label{libraries}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(xlsx)                                         }\CommentTok{\# Fichiers Excel}
+\FunctionTok{library}\NormalTok{(jmv)                                          }\CommentTok{\# Analyses Jamovi}
+\FunctionTok{library}\NormalTok{(dplyr)                                        }\CommentTok{\# filter etc.}
+\CommentTok{\#library(tigerstats)                                   \# beaux tableaux croisés}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{donnuxe9es}{%
+\section{Données}\label{donnuxe9es}}
+
+\hypertarget{lire}{%
+\subsection{Lire}\label{lire}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo"}\NormalTok{)}
+\NormalTok{TOUT }\OtherTok{\textless{}{-}} \FunctionTok{read.xlsx}\NormalTok{(}\StringTok{"MA\_Theo\_tableau1{-}ed.xlsx"}\NormalTok{, }\AttributeTok{sheetName =}\StringTok{"Feuil1"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{afficher}{%
+\subsection{Afficher}\label{afficher}}
+
+(sur écran mais pas dans le PDF ou word)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{View}\NormalTok{(TOUT)}
+\CommentTok{\#noquote(colnames(TOUT))   \# Noms des Variables j\textquotesingle{}ai un fichier Théo{-}Nouv{-}Colnames.txt}
+\end{Highlighting}
+\end{Shaded}
+
+dernier = {[}654{]} Neg\_parent\_humiliation\_3cat\_3 = Excel
+
+\hypertarget{mps}{%
+\section{MPS}\label{mps}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{avait }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(item)\{}
+  \FunctionTok{return}\NormalTok{( }\FunctionTok{ifelse}\NormalTok{(item }\SpecialCharTok{!=} \StringTok{"Jamais"} \SpecialCharTok{\&}\NormalTok{ item }\SpecialCharTok{!=} \StringTok{"0"}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{) )   }\CommentTok{\# "0" occure seulement pour TOUT$mpsy\_parent\_invesstissment\_item2 }
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{TOUT}\SpecialCharTok{$}\NormalTok{mps }\OtherTok{\textless{}{-}} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_pairs\_item1)                 }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_paire\_item2)         }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_paire\_item3)     }\SpecialCharTok{+}
+
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_adulte\_secoue\_agrippe\_item1) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_adulte\_frappe\_item2) }\SpecialCharTok{+} 
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_adulte\_etouffe\_item3)    }\SpecialCharTok{+}
+  
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_parent\_secoue)               }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_parent\_frappe)       }\SpecialCharTok{+} 
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mphysique\_parent\_ettoufe)}
+
+\NormalTok{TOUT}\SpecialCharTok{$}\NormalTok{MPS }\OtherTok{\textless{}{-}} \FunctionTok{if\_else}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mps}\SpecialCharTok{\textgreater{}}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+
+\NormalTok{MPS }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(TOUT, MPS}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Au total: 344 des 781 participants ont subi au moins une MPS.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tableau\_auteurs }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(vec)\{}
+\NormalTok{  pairs               }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{1}\NormalTok{],}\DecValTok{0}\NormalTok{),}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{1}\NormalTok{]}\SpecialCharTok{/}\DecValTok{711}\NormalTok{,}\DecValTok{3}\NormalTok{)}\SpecialCharTok{*}\DecValTok{100}\NormalTok{)}
+\NormalTok{  parents             }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{2}\NormalTok{],}\DecValTok{0}\NormalTok{),}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{2}\NormalTok{]}\SpecialCharTok{/}\DecValTok{711}\NormalTok{,}\DecValTok{3}\NormalTok{)}\SpecialCharTok{*}\DecValTok{100}\NormalTok{)}
+\NormalTok{  entraineur          }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{3}\NormalTok{],}\DecValTok{0}\NormalTok{),}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{3}\NormalTok{]}\SpecialCharTok{/}\DecValTok{711}\NormalTok{,}\DecValTok{3}\NormalTok{)}\SpecialCharTok{*}\DecValTok{100}\NormalTok{)}
+\NormalTok{  entraineurassistant }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{4}\NormalTok{],}\DecValTok{0}\NormalTok{),}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{4}\NormalTok{]}\SpecialCharTok{/}\DecValTok{711}\NormalTok{,}\DecValTok{3}\NormalTok{)}\SpecialCharTok{*}\DecValTok{100}\NormalTok{)}
+\NormalTok{  prepaphysique       }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{5}\NormalTok{],}\DecValTok{0}\NormalTok{),}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{5}\NormalTok{]}\SpecialCharTok{/}\DecValTok{711}\NormalTok{,}\DecValTok{3}\NormalTok{)}\SpecialCharTok{*}\DecValTok{100}\NormalTok{)}
+\NormalTok{  medecin             }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{6}\NormalTok{],}\DecValTok{0}\NormalTok{),}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{6}\NormalTok{]}\SpecialCharTok{/}\DecValTok{711}\NormalTok{,}\DecValTok{3}\NormalTok{)}\SpecialCharTok{*}\DecValTok{100}\NormalTok{)}
+\NormalTok{  arbitre             }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{7}\NormalTok{],}\DecValTok{0}\NormalTok{),}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{7}\NormalTok{]}\SpecialCharTok{/}\DecValTok{711}\NormalTok{,}\DecValTok{3}\NormalTok{)}\SpecialCharTok{*}\DecValTok{100}\NormalTok{)}
+\NormalTok{  psychologe          }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{8}\NormalTok{],}\DecValTok{0}\NormalTok{),}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{8}\NormalTok{]}\SpecialCharTok{/}\DecValTok{711}\NormalTok{,}\DecValTok{3}\NormalTok{)}\SpecialCharTok{*}\DecValTok{100}\NormalTok{)}
+\NormalTok{  adulte\_autre        }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{9}\NormalTok{],}\DecValTok{0}\NormalTok{),}\FunctionTok{round}\NormalTok{(vec[}\DecValTok{9}\NormalTok{]}\SpecialCharTok{/}\DecValTok{711}\NormalTok{,}\DecValTok{3}\NormalTok{)}\SpecialCharTok{*}\DecValTok{100}\NormalTok{)}
+
+\NormalTok{  df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(pairs, parents, entraineur, entraineurassistant, prepaphysique, medecin, arbitre, psychologe, adulte\_autre)}
+  \FunctionTok{rownames}\NormalTok{(df) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"nombre"}\NormalTok{,}\StringTok{"pourcentage"}\NormalTok{)}
+\NormalTok{  df}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{recoder}{%
+\subsection{Recoder}\label{recoder}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# grep {-}i mphys Théo4{-}Nouv{-}Colnames.txt |grep {-}i pair|grep {-}i item :}
+\NormalTok{MPS}\SpecialCharTok{$}\NormalTok{auteur\_pair  }\OtherTok{\textless{}{-}} \FunctionTok{avait}\NormalTok{(MPS}\SpecialCharTok{$}\NormalTok{Mphysique\_pairs\_item1) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(MPS}\SpecialCharTok{$}\NormalTok{Mphysique\_paire\_item2) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(MPS}\SpecialCharTok{$}\NormalTok{Mphysique\_paire\_item3) }\SpecialCharTok{\textgreater{}} \DecValTok{0}   \CommentTok{\# = nouveau XL}
+
+\CommentTok{\# grep {-}i mphys Théo4{-}Nouv{-}Colnames.txt |grep {-}i parent :}
+\NormalTok{MPS}\SpecialCharTok{$}\NormalTok{auteur\_parents }\OtherTok{\textless{}{-}} \FunctionTok{avait}\NormalTok{(MPS}\SpecialCharTok{$}\NormalTok{Mphysique\_parent\_secoue) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(MPS}\SpecialCharTok{$}\NormalTok{Mphysique\_parent\_frappe) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(MPS}\SpecialCharTok{$}\NormalTok{Mphysique\_parent\_ettoufe) }\SpecialCharTok{\textgreater{}} \DecValTok{0}   \CommentTok{\# = nouveau XL}
+
+\NormalTok{vec }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+  \FunctionTok{sum}\NormalTok{(MPS}\SpecialCharTok{$}\NormalTok{auteur\_pair   }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{),}
+
+  \FunctionTok{sum}\NormalTok{(MPS}\SpecialCharTok{$}\NormalTok{auteur\_parents }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{),}
+
+  \CommentTok{\# grep {-}i mphys Théo4{-}Nouv{-}Colnames.txt |grep {-}i adulte|grep {-}i auteur :}
+
+  \FunctionTok{sum}\NormalTok{((MPS}\SpecialCharTok{$}\NormalTok{Mphysique\_adulte\_auteur\_entraineur}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) ,}
+  \FunctionTok{sum}\NormalTok{((MPS}\SpecialCharTok{$}\NormalTok{Mphysique\_adulte\_auteur\_entraineurassistant}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) ,}
+  \FunctionTok{sum}\NormalTok{((MPS}\SpecialCharTok{$}\NormalTok{Mphysique\_adulte\_auteur\_prepaphysique}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) ,}
+  \FunctionTok{sum}\NormalTok{((MPS}\SpecialCharTok{$}\NormalTok{Mphysique\_adulte\_auteur\_medecin}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) ,}
+  \FunctionTok{sum}\NormalTok{((MPS}\SpecialCharTok{$}\NormalTok{Mphysique\_adulte\_auteur\_arbitre}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) ,}
+  \FunctionTok{sum}\NormalTok{((MPS}\SpecialCharTok{$}\NormalTok{Mphysique\_adulte\_auteur\_psy}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) ,}
+  \FunctionTok{sum}\NormalTok{((MPS}\SpecialCharTok{$}\NormalTok{Mphysique\_adulte\_auteur\_autre}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) )}
+
+\FunctionTok{tableau\_auteurs}\NormalTok{(vec)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             pairs parents entraineur entraineurassistant prepaphysique medecin
+## nombre      288.0    42.0      100.0                  21           8.0     1.0
+## pourcentage  40.5     5.9       14.1                   3           1.1     0.1
+##             arbitre psychologe adulte_autre
+## nombre          2.0        2.0            7
+## pourcentage     0.3        0.3            1
+\end{verbatim}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{psy}{%
+\section{PSY}\label{psy}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{TOUT}\SpecialCharTok{$}\NormalTok{psy }\OtherTok{\textless{}{-}} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_ignoré\_item1) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_investissement\_item2) }\SpecialCharTok{+}   \CommentTok{\# \textasciitilde{} nouvel Exel}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_critique\_perf\_item3) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_apparence\_item4) }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_rumeur\_item5) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_humiliation\_item6) }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_menace\_exclusion\_item7) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_menace\_physique\_item8) }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_encourager\_humiliation\_item9) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_limite\_contacte\_item10) }\SpecialCharTok{+}
+
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_ignoer\_item1) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_critique\_invesstissement\_item2) }\SpecialCharTok{+}   \CommentTok{\# \textasciitilde{} nouvel Exel}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_critique\_perf\_item2) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_critiquer\_apparence\_item3) }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_rumeur\_item4) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_ridiculiser\_item5) }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_crier\_dessus\_item6) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_menace\_expulsion\_item7) }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_menacephysi\_item8) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_humiliation\_autrui\_item9) }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_limitation\_contact\_item10) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_jouer\_blesser\_item11) }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_entrainer\_a\_vomir\_item12) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_dopage\_item13) }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_poids\_ideal\_item13) }\SpecialCharTok{+}
+
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_ignorer\_item1) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_invesstissment\_item2) }\SpecialCharTok{+}   \CommentTok{\# \textasciitilde{} nouvel Exel}
+            \CommentTok{\# item2 pas encodé comme les autres}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_critique\_perf\_item3) }\SpecialCharTok{+}
+  \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_critique\_corps\_item4) }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_rumeur\_item5) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_ridiculisà\_perf\_item6) }\SpecialCharTok{+}
+  
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_crier\_dessus\_item7) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_menace\_physique\_item8) }\SpecialCharTok{+} 
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_blesser\_adversaire\_item9) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_limite\_contact\_item10) }\SpecialCharTok{+} 
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_blessé\_soi\_mm\_item11) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_vomir\_item12) }\SpecialCharTok{+} 
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_dopage\_item13) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_poids\_ideal\_item14)}
+  
+\NormalTok{TOUT}\SpecialCharTok{$}\NormalTok{PSY }\OtherTok{\textless{}{-}} \FunctionTok{if\_else}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{psy }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+\NormalTok{PSY }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(TOUT, PSY}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+711 ont subi au moins une maltraitance psychologique `
+
+\hypertarget{recoder-1}{%
+\subsection{Recoder}\label{recoder-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# grep {-}i psy Théo4{-}Nouv{-}Colnames.txt |grep {-}i paire|grep {-}i item :}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{auteur\_pairs   }\OtherTok{\textless{}{-}} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_ignoré\_item1)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_investissement\_item2)}\SpecialCharTok{+}
+                      \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_critique\_perf\_item3)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_apparence\_item4)}\SpecialCharTok{+}
+                      \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_rumeur\_item5)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_humiliation\_item6)}\SpecialCharTok{+}
+                      \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_menace\_exclusion\_item7)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_menace\_physique\_item8)}\SpecialCharTok{+}
+                      \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_paire\_encourager\_humiliation\_item9)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_paire\_limite\_contacte\_item10) }
+
+\CommentTok{\# grep {-}i psy Théo4{-}Nouv{-}Colnames.txt |grep  {-}i adulte|grep {-}i item :}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{auteur\_adulte  }\OtherTok{\textless{}{-}} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_ignoer\_item1)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_critique\_invesstissement\_item2)}\SpecialCharTok{+}
+                      \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_critique\_perf\_item2)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_critiquer\_apparence\_item3)}\SpecialCharTok{+}
+                      \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_rumeur\_item4)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_ridiculiser\_item5)}\SpecialCharTok{+}
+                      \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_crier\_dessus\_item6)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_menace\_expulsion\_item7)}\SpecialCharTok{+}
+                      \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_menacephysi\_item8)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_humiliation\_autrui\_item9)}\SpecialCharTok{+}
+                      \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_limitation\_contact\_item10)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_jouer\_blesser\_item11)}\SpecialCharTok{+}
+                      \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_entrainer\_a\_vomir\_item12)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_dopage\_item13)}\SpecialCharTok{+}
+                      \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_poids\_ideal\_item13) }
+
+\CommentTok{\# grep {-}i psy Théo4{-}Nouv{-}Colnames.txt |grep {-}i parent|grep {-}i item :}
+\NormalTok{PSY}\SpecialCharTok{$}\NormalTok{auteur\_parents }\OtherTok{\textless{}{-}} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_ignorer\_item1)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_invesstissment\_item2)}\SpecialCharTok{+}
+                      \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_critique\_perf\_item3)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_critique\_corps\_item4)}\SpecialCharTok{+}
+                      \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_rumeur\_item5)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_ridiculisà\_perf\_item6)}\SpecialCharTok{+}
+                      \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_crier\_dessus\_item7)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_menace\_physique\_item8)}\SpecialCharTok{+} 
+                      \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_blesser\_adversaire\_item9)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_limite\_contact\_item10)}\SpecialCharTok{+} 
+                      \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_blessé\_soi\_mm\_item11)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_vomir\_item12)}\SpecialCharTok{+} 
+                      \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{mpsy\_parent\_dopage\_item13)}\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_parent\_poids\_ideal\_item14) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+\FunctionTok{sum}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{auteur\_pairs   }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{),}
+
+\FunctionTok{sum}\NormalTok{(PSY}\SpecialCharTok{$}\NormalTok{auteur\_parents }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{),}
+
+\CommentTok{\# grep {-}i psy Théo4{-}Nouv{-}Colnames.txt |grep {-}i adulte|grep {-}i auteur :}
+
+\FunctionTok{sum}\NormalTok{((PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_entraineur  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{    (PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_auteur\_2\_entraineur}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{    (PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_entraineur}\FloatTok{.1}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{    (PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_entraineur\_2}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) ,}
+
+\FunctionTok{sum}\NormalTok{((PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_entraineurassistant }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{    (PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_entraineur\_assistant}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{    (PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_assist\_coach        }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{),}
+
+\FunctionTok{sum}\NormalTok{((PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_prepaphysique }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{)}\SpecialCharTok{+}
+\NormalTok{    (PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_prepa\_physique}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{    (PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_prepaphy      }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{    (PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_prepaphy\_2    }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{),}
+
+\FunctionTok{sum}\NormalTok{((PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_medecin  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{    (PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_medecin}\FloatTok{.1}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{),}
+  
+\FunctionTok{sum}\NormalTok{((PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_arbitre  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{    (PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_arbitre}\FloatTok{.1}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{    (PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_arbitre\_2}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{    (PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_arbitre\_3}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{),}
+  
+\FunctionTok{sum}\NormalTok{((PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_psychologue}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{    (PSY}\SpecialCharTok{$}\NormalTok{Mpsy\_adulte\_auteur\_psychologue}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{    (PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_psy        }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{),}
+  
+\FunctionTok{sum}\NormalTok{((PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_autre  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{    (PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_autre}\FloatTok{.1}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{    (PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_autre\_2}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{    (PSY}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_autre\_3}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{))}
+
+\CommentTok{\#TRUE                                              \textasciitilde{} "ne pas specifié"   ))   müsste sum=0 zählen. lohnt noicht!}
+\end{Highlighting}
+\end{Shaded}
+
+Le maltraitances psychologiques étaient commis par un ou plusieurs
+auteurs (à partir des données on ne peut pas differencier leur nombre),
+avec le nombre de cas ou pourcentage sur les 711 cas PSY comme detaillé
+dans le tableau suivant:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tableau\_auteurs}\NormalTok{(vec)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             pairs parents entraineur entraineurassistant prepaphysique medecin
+## nombre        661   308.0      543.0               105.0          81.0     4.0
+## pourcentage    93    43.3       76.4                14.8          11.4     0.6
+##             arbitre psychologe adulte_autre
+## nombre         44.0        8.0         92.0
+## pourcentage     6.2        1.1         12.9
+\end{verbatim}
+
+\hypertarget{neg}{%
+\section{NEG}\label{neg}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{TOUT}\SpecialCharTok{$}\NormalTok{neg }\OtherTok{\textless{}{-}} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{negadulte\_item.\_cat\_1) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{negadulte\_item2\_cat\_1) }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{negadulte\_item\_3\_cat\_1) }\SpecialCharTok{\textgreater{}} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_louper\_ecole\_item4) }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_laisser\_humilier\_item5) }\SpecialCharTok{+}
+
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Neg\_parent\_laisser\_entrainer\_blesser\_item1) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Neg\_parent\_dopage\_item2) }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Neg\_parent\_poids\_ideal\_item3) }\SpecialCharTok{+}              \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Neg\_parent\_arret\_ecole\_item4) }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{neg\_parent\_laisser\_humilier\_autrui\_item5) }
+
+\NormalTok{TOUT}\SpecialCharTok{$}\NormalTok{NEG }\OtherTok{\textless{}{-}} \FunctionTok{if\_else}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{neg }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+
+\NormalTok{NEG }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(TOUT, NEG}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+117 ont subi NEG.
+
+\hypertarget{recoder-2}{%
+\subsection{Recoder}\label{recoder-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# grep {-}i neg Théo4{-}Nouv{-}Colnames.txt |grep {-}i parent|grep {-}i item :}
+\NormalTok{NEG}\SpecialCharTok{$}\NormalTok{auteur\_parents }\OtherTok{\textless{}{-}} \FunctionTok{avait}\NormalTok{(NEG}\SpecialCharTok{$}\NormalTok{Neg\_parent\_laisser\_entrainer\_blesser\_item1) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(NEG}\SpecialCharTok{$}\NormalTok{Neg\_parent\_dopage\_item2) }\SpecialCharTok{+}
+                      \FunctionTok{avait}\NormalTok{(NEG}\SpecialCharTok{$}\NormalTok{Neg\_parent\_poids\_ideal\_item3) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(NEG}\SpecialCharTok{$}\NormalTok{Neg\_parent\_arret\_ecole\_item4) }\SpecialCharTok{+}
+                      \FunctionTok{avait}\NormalTok{(NEG}\SpecialCharTok{$}\NormalTok{neg\_parent\_laisser\_humilier\_autrui\_item5)}
+
+\CommentTok{\# grep {-}i neg Théo4{-}Nouv{-}Colnames.txt |grep {-}i adult  :                  }
+\NormalTok{vec }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+  \DecValTok{0}\NormalTok{,}
+  \FunctionTok{sum}\NormalTok{(NEG}\SpecialCharTok{$}\NormalTok{auteur\_parents }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{),}
+                      
+  \FunctionTok{sum}\NormalTok{((NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_entraineur\_cat\_1}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_entraineur      }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_entraineur\_2    }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) ,}
+                     
+  \FunctionTok{sum}\NormalTok{((NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_assit\_entrain\_cat\_1}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_entraineur\_assit}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_entraineur\_assistant}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) ,}
+
+  \FunctionTok{sum}\NormalTok{((NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_prepa\_physiqu\_cat\_1}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (NEG}\SpecialCharTok{$}\NormalTok{neg\_adulte\_prepa\_physique}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_prepa\_phys}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) ,}
+
+  \FunctionTok{sum}\NormalTok{((NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_medecin\_cat\_1}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_medecin\_2}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_medecin\_3}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) ,}
+
+  \FunctionTok{sum}\NormalTok{((NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_arbitre\_cat\_1}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (NEG}\SpecialCharTok{$}\NormalTok{neg\_adulte\_arbitre}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_arbitrw}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) ,}
+
+  \FunctionTok{sum}\NormalTok{((NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_Psy\_cat\_1}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (NEG}\SpecialCharTok{$}\NormalTok{neg\_adulte\_psy\_2}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (NEG}\SpecialCharTok{$}\NormalTok{neg\_adulte\_psy\_3}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) ,}
+
+  \FunctionTok{sum}\NormalTok{((NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_autre\_cat\_1}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (NEG}\SpecialCharTok{$}\NormalTok{neg\_adulte\_autre}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (NEG}\SpecialCharTok{$}\NormalTok{Neg\_adulte\_autre}\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{))}
+      
+\FunctionTok{tableau\_auteurs}\NormalTok{(vec)                }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             pairs parents entraineur entraineurassistant prepaphysique medecin
+## nombre          0     6.0      102.0                22.0          13.0       7
+## pourcentage     0     0.8       14.3                 3.1           1.8       1
+##             arbitre psychologe adulte_autre
+## nombre            0          0           14
+## pourcentage       0          0            2
+\end{verbatim}
+
+J'ai bien contrôlé: il n'y a pas de négligance par arbitre ou
+psychologe.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{sex}{%
+\section{SEX}\label{sex}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{TOUT}\SpecialCharTok{$}\NormalTok{sex }\OtherTok{\textless{}{-}} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Msex\_paire\_remarque\_apparence\_item1)    }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Msex\_paire\_proposition\_sex\_item2)  }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{msex\_paire\_exhibitionisme\_item3)        }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{msex\_paire\_photo\_intime\_item4)     }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{msex\_paire\_attouchement\_item5)          }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Msex\_paire\_embrasser\_item6)        }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{msex\_paire\_frotter\_partie\_intime\_item7) }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{msex\_paire\_viol\_penetration\_item7) }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Msex\_paire\_avec\_sans\_penetration\_non\_consentie\_item8)    }\SpecialCharTok{+}
+
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_remarque\_sex\_item1)             }\SpecialCharTok{+} \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{msex\_adulte\_envoi\_image\_sex\_item2)       }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_exhibition\_partie\_intime\_item\_3\_categorie\_2) }\SpecialCharTok{+}        \CommentTok{\# = Excel}
+            \CommentTok{\#          Msex\_adulte\_exhibition\_partie\_intime\_item2...item\_3\_categorie\_2.. \# = .txt, egal}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{msex\_adulte\_photo\_partie\_intime\_item\_4\_categorie\_3) }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{msex\_adulte\_force.a\_toucher\_item\_5\_categorie\_4)          }\SpecialCharTok{+}                                                      
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{msex\_adulte\_toucher\_malalaise\_Item6\_categorie\_5)     }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{msex\_adulte\_embrasser\_bouche\_Item\_7\_categorie\_5)         }\SpecialCharTok{+}            
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_frotter\_partie\_intime\_item\_8\_categorie\_5) }\SpecialCharTok{+}
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_tentation\_relation\_sex\_item\_9\_categorie\_6)   }\SpecialCharTok{+} 
+            \FunctionTok{avait}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_forcer\_relation\_sex\_avec\_sans\_pene\_item8) }
+  
+\NormalTok{TOUT}\SpecialCharTok{$}\NormalTok{SEX }\OtherTok{\textless{}{-}} \FunctionTok{if\_else}\NormalTok{(TOUT}\SpecialCharTok{$}\NormalTok{sex }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{)}
+
+\NormalTok{SEX }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(TOUT, SEX}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+781 ont subi SEX.
+
+\hypertarget{recoder-3}{%
+\subsection{Recoder}\label{recoder-3}}
+
+\hypertarget{grep--i-msex-theo4-nouv-colnames.txt-grep--i-pairegrep--i-item}{%
+\section{grep -i msex Théo4-Nouv-Colnames.txt \textbar grep -i
+paire\textbar grep -i item
+:}\label{grep--i-msex-theo4-nouv-colnames.txt-grep--i-pairegrep--i-item}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{SEX}\SpecialCharTok{$}\NormalTok{auteur\_paire   }\OtherTok{\textless{}{-}}\FunctionTok{avait}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_remarque\_apparence\_item1)   }\SpecialCharTok{+}\FunctionTok{avait}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_proposition\_sex\_item2) }\SpecialCharTok{+}
+                     \FunctionTok{avait}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_exhibitionisme\_item3)       }\SpecialCharTok{+}\FunctionTok{avait}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_photo\_intime\_item4)    }\SpecialCharTok{+}
+                     \FunctionTok{avait}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_attouchement\_item5)         }\SpecialCharTok{+}\FunctionTok{avait}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_embrasser\_item6)       }\SpecialCharTok{+}
+                     \FunctionTok{avait}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_frotter\_partie\_intime\_item7)}\SpecialCharTok{+}\FunctionTok{avait}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{msex\_paire\_viol\_penetration\_item7)}\SpecialCharTok{+}
+                     \FunctionTok{avait}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{Msex\_paire\_avec\_sans\_penetration\_non\_consentie\_item8)  }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}
+  \FunctionTok{sum}\NormalTok{(SEX}\SpecialCharTok{$}\NormalTok{auteur\_paire   }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{),}
+  \DecValTok{0}\NormalTok{,}
+
+\CommentTok{\# grep {-}i msex Théo4{-}Nouv{-}Colnames.txt |grep {-}i adult|grep {-}i auteur  :}
+
+  \FunctionTok{sum}\NormalTok{((SEX}\SpecialCharTok{$}\NormalTok{mpsy\_adulte\_auteur\_entraineur  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_auteur\_entraineur  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_auteur\_entraineur\_2  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_auteur\_entraineur\_2\_categorie\_6  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_auteur\_entraineur\_2\_categorie\_7  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{),}
+
+  \FunctionTok{sum}\NormalTok{((SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_entraineur\_assis\_2\_categorie\_6  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_entraineur\_assis\_2\_categorie\_7  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{),}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_entraineur\_assis\_2  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{),}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_entraineur\_assis  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{),}
+
+  \FunctionTok{sum}\NormalTok{((SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_prepa\_physique  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{),}
+
+  \FunctionTok{sum}\NormalTok{((SEX}\SpecialCharTok{$}\NormalTok{Msex\_adulte\_auteur\_medecin  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{+}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_medecin  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{),}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_medecin\_categorie\_6  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{),}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_medecin\_categorie\_7  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{),}
+
+  \FunctionTok{sum}\NormalTok{((SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_arbitre  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{),}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_arbitre\_2  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{),}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_arbitre\_2\_categorie\_6  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{),}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_arbitre\_2\_categorie\_7  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{),}
+
+  \FunctionTok{sum}\NormalTok{((SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_psy  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{),}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_psy\_2\_categorie\_6  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{),}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_psy\_2  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{),}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_psy\_2\_categorie\_7  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{),}
+
+  \FunctionTok{sum}\NormalTok{((SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_autre\_2\_categorie\_7  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{),}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_autre\_2\_categorie\_6  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{),}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_autre  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{),}
+\NormalTok{      (SEX}\SpecialCharTok{$}\NormalTok{msex\_adulte\_auteur\_autre\_2  }\SpecialCharTok{==} \StringTok{"Oui"}\NormalTok{) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) )}
+
+\FunctionTok{tableau\_auteurs}\NormalTok{(vec)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             pairs parents entraineur entraineurassistant prepaphysique medecin
+## nombre        142       0       89.0                20.0           6.0     9.0
+## pourcentage    20       0       12.5                 2.8           0.8     1.3
+##             arbitre psychologe adulte_autre
+## nombre          3.0          0         17.0
+## pourcentage     0.4          0          2.4
+\end{verbatim}
+
+J'ai bien contrôlé: il n'ya pas de m altraitance sexuelle par un
+psychologue.
+
+\end{document}

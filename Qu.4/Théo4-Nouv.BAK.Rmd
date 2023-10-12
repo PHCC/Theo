@@ -1,17 +1,17 @@
 ---
 title: "Théo4-Nouvel Excel"
 author: "Christoph"
-date: "2023-10-05,10"
+date: "2023-10-05"
 output:
+  word_document:
+    toc: no
+    toc_depth: '3'
   pdf_document:
     latex_engine: xelatex
     toc: no
     toc_depth: 3
     extra_dependencies: []
     keep_tex: yes
-  word_document:
-    toc: no
-    toc_depth: '3'
 geometry: margin=0.5cm
 ---
 
@@ -73,52 +73,58 @@ MPS <- filter(TOUT, MPS==1)
 
 Au total: 344 des 781 participants ont subi au moins une MPS.
 
-```{r}
-tableau_auteurs <- function(vec){
-  pairs               <- c(round(vec[1],0),round(vec[1]/711,3)*100)
-  parents             <- c(round(vec[2],0),round(vec[2]/711,3)*100)
-  entraineur          <- c(round(vec[3],0),round(vec[3]/711,3)*100)
-  entraineurassistant <- c(round(vec[4],0),round(vec[4]/711,3)*100)
-  prepaphysique       <- c(round(vec[5],0),round(vec[5]/711,3)*100)
-  medecin             <- c(round(vec[6],0),round(vec[6]/711,3)*100)
-  arbitre             <- c(round(vec[7],0),round(vec[7]/711,3)*100)
-  psychologe          <- c(round(vec[8],0),round(vec[8]/711,3)*100)
-  adulte_autre        <- c(round(vec[9],0),round(vec[9]/711,3)*100)
-
-  df <- data.frame(pairs, parents, entraineur, entraineurassistant, prepaphysique, medecin, arbitre, psychologe, adulte_autre)
-  rownames(df) <- c("nombre","pourcentage")
-  df
-}
-```
-
 
 ## Recoder
 
 ```{r}
-# grep -i mphys Théo4-Nouv-Colnames.txt |grep -i pair|grep -i item :
-MPS$auteur_pair  <- avait(MPS$Mphysique_pairs_item1) + avait(MPS$Mphysique_paire_item2) + avait(MPS$Mphysique_paire_item3) > 0   # = nouveau XL
+MPS$auteur_pairs   <- avait(MPS$Mphysique_pairs_item1) + avait(MPS$Mphysique_paire_item2) + avait(MPS$Mphysique_paire_item3) > 0   # = nouveau XL
 
-# grep -i mphys Théo4-Nouv-Colnames.txt |grep -i parent :
 MPS$auteur_parents <- avait(MPS$Mphysique_parent_secoue) + avait(MPS$Mphysique_parent_frappe) + avait(MPS$Mphysique_parent_ettoufe) > 0   # = nouveau XL
 
-vec <- c(
-  sum(MPS$auteur_pair   > 0),
+MPS$auteur_adulte  <- MPS$Mphysique_adulte_auteur_entraineur          == "Oui" |   # = nouveau XL
+                      MPS$Mphysique_adulte_auteur_entraineurassistant == "Oui" |
+                      MPS$Mphysique_adulte_auteur_prepaphysique       == "Oui" |
+                      MPS$Mphysique_adulte_auteur_medecin             == "Oui" |
+                      MPS$Mphysique_adulte_auteur_psy                 == "Oui" |
+                      MPS$Mphysique_adulte_auteur_arbitre             == "Oui" |
+                      MPS$Mphysique_adulte_auteur_autre               == "Oui" 
 
-  sum(MPS$auteur_parents > 0),
+MPS$auteur <- as.factor(case_when(MPS$auteur_pairs   ~ "pairs"  ,
+                                  MPS$auteur_parents ~ "parents",
+                                  MPS$auteur_adulte  ~ "adulte" ,
+                                  TRUE               ~ "ne pas specifié"   ))
 
-  # grep -i mphys Théo4-Nouv-Colnames.txt |grep -i adulte|grep -i auteur :
-
-  sum((MPS$Mphysique_adulte_auteur_entraineur== "Oui") > 0) ,
-  sum((MPS$Mphysique_adulte_auteur_entraineurassistant== "Oui") > 0) ,
-  sum((MPS$Mphysique_adulte_auteur_prepaphysique== "Oui") > 0) ,
-  sum((MPS$Mphysique_adulte_auteur_medecin== "Oui") > 0) ,
-  sum((MPS$Mphysique_adulte_auteur_arbitre== "Oui") > 0) ,
-  sum((MPS$Mphysique_adulte_auteur_psy== "Oui") > 0) ,
-  sum((MPS$Mphysique_adulte_auteur_autre== "Oui") > 0) )
-
-tableau_auteurs(vec)
+MPS$auteur_detail <- as.factor(case_when(
+                       MPS$auteur_pairs   ~ "pairs"  ,
+                       MPS$auteur_parents ~ "parents",
+                       MPS$Mphysique_adulte_auteur_entraineur          == "Oui" ~ "entraineur"         ,
+                       MPS$Mphysique_adulte_auteur_entraineurassistant == "Oui" ~ "entraineurassistant",
+                       MPS$Mphysique_adulte_auteur_prepaphysique       == "Oui" ~ "prepaphysique"      ,
+                       MPS$Mphysique_adulte_auteur_medecin             == "Oui" ~ "medecin"            ,
+                       MPS$Mphysique_adulte_auteur_psy                 == "Oui" ~ "psy"                ,
+                       MPS$Mphysique_adulte_auteur_arbitre             == "Oui" ~ "arbitre"            ,
+                       MPS$Mphysique_adulte_auteur_autre               == "Oui" ~ "autre"              ,
+                       TRUE               ~ "ne pas specifié"   ))
 ```
   
+
+## Statistiques Descriptives 
+
+
+### 1. Les grands groupes
+
+```{r}
+descriptives(MPS, c("auteur"), freq=TRUE)
+```
+
+
+### 2. Les grands groupes mais adultes detaillés
+
+```{r}
+descriptives(MPS, c("auteur_detail"), freq=TRUE)
+```
+
+
 ----------------------------------------------------------------------------
 
 # PSY
@@ -159,16 +165,13 @@ PSY <- filter(TOUT, PSY==1)
 
 ## Recoder
 
-
 ```{r}
-# grep -i psy Théo4-Nouv-Colnames.txt |grep -i paire|grep -i item :
 PSY$auteur_pairs   <- avait(PSY$Mpsy_paire_ignoré_item1)+ avait(PSY$Mpsy_paire_investissement_item2)+
                       avait(PSY$Mpsy_paire_critique_perf_item3)+ avait(PSY$Mpsy_paire_apparence_item4)+
                       avait(PSY$Mpsy_paire_rumeur_item5)+ avait(PSY$Mpsy_paire_humiliation_item6)+
                       avait(PSY$Mpsy_paire_menace_exclusion_item7)+ avait(PSY$mpsy_paire_menace_physique_item8)+
                       avait(PSY$Mpsy_paire_encourager_humiliation_item9)+ avait(PSY$mpsy_paire_limite_contacte_item10) 
 
-# grep -i psy Théo4-Nouv-Colnames.txt |grep  -i adulte|grep -i item :
 PSY$auteur_adulte  <- avait(PSY$Mpsy_adulte_ignoer_item1)+ avait(PSY$mpsy_adulte_critique_invesstissement_item2)+
                       avait(PSY$mpsy_adulte_critique_perf_item2)+ avait(PSY$mpsy_adulte_critiquer_apparence_item3)+
                       avait(PSY$mpsy_adulte_rumeur_item4)+ avait(PSY$mpsy_adulte_ridiculiser_item5)+
@@ -178,7 +181,6 @@ PSY$auteur_adulte  <- avait(PSY$Mpsy_adulte_ignoer_item1)+ avait(PSY$mpsy_adulte
                       avait(PSY$mpsy_adulte_entrainer_a_vomir_item12)+ avait(PSY$mpsy_adulte_dopage_item13)+
                       avait(PSY$mpsy_adulte_poids_ideal_item13) 
 
-# grep -i psy Théo4-Nouv-Colnames.txt |grep -i parent|grep -i item :
 PSY$auteur_parents <- avait(PSY$Mpsy_parent_ignorer_item1)+ avait(PSY$mpsy_parent_invesstissment_item2)+
                       avait(PSY$mpsy_parent_critique_perf_item3)+ avait(PSY$Mpsy_parent_critique_corps_item4)+
                       avait(PSY$mpsy_parent_rumeur_item5)+ avait(PSY$mpsy_parent_ridiculisà_perf_item6)+
@@ -188,13 +190,15 @@ PSY$auteur_parents <- avait(PSY$Mpsy_parent_ignorer_item1)+ avait(PSY$mpsy_paren
                       avait(PSY$mpsy_parent_dopage_item13)+ avait(PSY$Mpsy_parent_poids_ideal_item14) 
 ```
 
+pour 1 participant.e, 1 ou plusieurs X étaient auteur dans ces nombre de cas:
+
 ```{r}
 vec <- c(
 sum(PSY$auteur_pairs   > 0),
 
 sum(PSY$auteur_parents > 0),
 
-# grep -i psy Théo4-Nouv-Colnames.txt |grep -i adulte|grep -i auteur :
+# grep -i mpsy Théo4-Nouv-Colnames.txt |grep -i adult|grep -i auteur  :
 
 sum((PSY$mpsy_adulte_auteur_entraineur  == "Oui") +
     (PSY$Mpsy_adulte_auteur_2_entraineur== "Oui") +
@@ -228,14 +232,52 @@ sum((PSY$mpsy_adulte_auteur_autre  == "Oui") +
     (PSY$mpsy_adulte_auteur_autre_3== "Oui") > 0))
 
 #TRUE                                              ~ "ne pas specifié"   ))   müsste sum=0 zählen. lohnt noicht!
+    
+pairs               <- c(round(vec[1],0),round(vec[1]/711,3)*100)
+parents             <- c(round(vec[2],0),round(vec[2]/711,3)*100)
+entraineur          <- c(round(vec[3],0),round(vec[3]/711,3)*100)
+entraineurassistant <- c(round(vec[4],0),round(vec[4]/711,3)*100)
+prepaphysique       <- c(round(vec[5],0),round(vec[5]/711,3)*100)
+medecin             <- c(round(vec[6],0),round(vec[6]/711,3)*100)
+arbitre             <- c(round(vec[7],0),round(vec[7]/711,3)*100)
+psychologe          <- c(round(vec[8],0),round(vec[8]/711,3)*100)
+adulte_autre        <- c(round(vec[9],0),round(vec[9]/711,3)*100)
 ```
-
-Le maltraitances psychologiques étaient commis par un ou plusieurs auteurs (à partir des données on ne peut pas differencier leur nombre), avec le nombre de cas ou pourcentage sur les 711 cas PSY comme detaillé dans le tableau suivant:
+  
+Le maltraitances psychologiques étaient commis par un ou plusieurs auteurs dans le nombre de cas ou pourcentage des 711 cas PSY comme detaillé dans le tableau suivant:
 
 ```{r}
-tableau_auteurs(vec)
+df <- data.frame(pairs, parents, entraineur, entraineurassistant, prepaphysique, medecin, arbitre, psychologe, adulte_autre)
+rownames(df) <- c("nombre","pourcentage")
+df
 ```
 
+
+
+## Statistiques Descriptives 
+
+
+## 1. Les grands groupes
+
+```{r}
+descriptives(PSY, c("auteur"), freq=TRUE)
+```
+
+
+### 2. Les grands groupes mais adultes detaillés
+
+```{r}
+descriptives(PSY, c("auteur_detail"), freq=TRUE)
+```
+
+
+### 3. Que les adultes detaillés
+
+```{r}
+PSY %>% filter(auteur=="adulte") %>% descriptives(c("auteur_detail"), freq=TRUE)
+```
+
+-----------------------------------------------------------------------------
 
 # NEG
 
@@ -258,48 +300,57 @@ NEG <- filter(TOUT, NEG==1)
 ## Recoder
 
 ```{r}
-# grep -i neg Théo4-Nouv-Colnames.txt |grep -i parent|grep -i item :
-NEG$auteur_parents <- avait(NEG$Neg_parent_laisser_entrainer_blesser_item1) + avait(NEG$Neg_parent_dopage_item2) +
-                      avait(NEG$Neg_parent_poids_ideal_item3) + avait(NEG$Neg_parent_arret_ecole_item4) +
-                      avait(NEG$neg_parent_laisser_humilier_autrui_item5)
+# grep -i neg VariablesEtc.txt |grep -i parent|grep -i item :
+NEG$auteur_parents <- NEG$Neg_parent_laisser_entrainer_blesser_item1 != "Jamais" | NEG$Neg_parent_dopage_item2 != "Jamais"      |
+                      NEG$Neg_parent_poids_ideal_item3 != "Jamais"               | NEG$Neg_parent_arret_ecole_item4 != "Jamais" |
+                      NEG$neg_parent_laisser_humilier_autrui_item5 != "Jamais"
 
-# grep -i neg Théo4-Nouv-Colnames.txt |grep -i adult  :                  
-vec <- c(
-  0,
-  sum(NEG$auteur_parents > 0),
-                      
-  sum((NEG$Neg_adulte_entraineur_cat_1== "Oui") +
-      (NEG$Neg_adulte_entraineur      == "Oui") +
-      (NEG$Neg_adulte_entraineur_2    == "Oui") > 0) ,
-                     
-  sum((NEG$Neg_adulte_assit_entrain_cat_1== "Oui") +
-      (NEG$Neg_adulte_entraineur_assit== "Oui") +
-      (NEG$Neg_adulte_entraineur_assistant== "Oui") > 0) ,
+# grep -i neg VariablesEtc.txt |grep -i adult|grep -i item  :
+NEG$auteur_adulte  <- NEG$Neg_adulte_entrainer_blesse_item1 != "Jamais" | NEG$neg_adulte_dopage_soutenu_item2 |
+                      NEG$neg_adulte_poids_ideal_item3      != "Jamais" | NEG$Neg_adulte_louper_ecole_item4   |
+                      NEG$Neg_adulte_laisser_humilier_item5
+  
+NEG$auteur <- as.factor(case_when(NEG$auteur_parents ~ "parents",
+                                  NEG$auteur_adulte  ~ "adulte" ,
+                                  TRUE               ~ "ne pas specifié"   ))    # seulement test ... y n'a pas "ne pas specifié", OK 
 
-  sum((NEG$Neg_adulte_prepa_physiqu_cat_1== "Oui") +
-      (NEG$neg_adulte_prepa_physique== "Oui") +
-      (NEG$Neg_adulte_prepa_phys== "Oui") > 0) ,
-
-  sum((NEG$Neg_adulte_medecin_cat_1== "Oui") +
-      (NEG$Neg_adulte_medecin_2== "Oui") +
-      (NEG$Neg_adulte_medecin_3== "Oui") > 0) ,
-
-  sum((NEG$Neg_adulte_arbitre_cat_1== "Oui") +
-      (NEG$neg_adulte_arbitre== "Oui") +
-      (NEG$Neg_adulte_arbitrw== "Oui") > 0) ,
-
-  sum((NEG$Neg_adulte_Psy_cat_1== "Oui") +
-      (NEG$neg_adulte_psy_2== "Oui") +
-      (NEG$neg_adulte_psy_3== "Oui") > 0) ,
-
-  sum((NEG$Neg_adulte_autre_cat_1== "Oui") +
-      (NEG$neg_adulte_autre== "Oui") +
-      (NEG$Neg_adulte_autre== "Oui") > 0))
-      
-tableau_auteurs(vec)                
+NEG$auteur_detail <- as.factor(case_when(
+                       NEG$auteur_parents ~ "parents",
+                       NEG$Neg_adulte_auteur_entraineur          != "Jamais" ~ "entraineur"         ,
+                       NEG$neg_adulte_auteur_entraineur_assist   != "Jamais" ~ "entraineurassistant",
+                       NEG$Neg_adulte_prepa_physique             != "Jamais" ~ "prepaphysique"      ,
+                       NEG$Neg_adulte_medecin                    != "Jamais" ~ "medecin"            ,
+                       NEG$neg_adulte_psy                        != "Jamais" ~ "psy"                ,
+                       NEG$Neg_adulte_arbitre                    != "Jamais" ~ "arbitre"            ,
+                       NEG$Neg_adulte_auteur_autre               != "Jamais" ~ "autre"              ,
+                       is.na(NEG$Neg_adulte_auteur_autre)            ~ NA              ,
+                       TRUE               ~ "ne pas specifié"   ))   # seulement test ... y n'a pas "ne pas specifié", OK 
 ```
 
-J'ai bien contrôlé: il n'y a pas de négligance par arbitre ou psychologe.
+
+## Statistiques Descriptives 
+
+### 1. Les grands groupes
+
+```{r}
+descriptives(NEG, c("auteur"), freq=TRUE)
+```
+
+
+### 2. Les grands groupes mais adultes detaillés
+
+```{r}
+descriptives(NEG, c("auteur_detail"), freq=TRUE)
+```
+
+Ne plus qu'entraineurassistant et entraineur (+ un autre) comme pour MPS
+
+
+### 3. Que les adultes detaillés
+
+```{r}
+NEG %>% filter(auteur=="adulte") %>% descriptives(c("auteur_detail"), freq=TRUE)
+```
 
 ----------------------------------------------------------------------------------
 
@@ -333,56 +384,73 @@ SEX <- filter(TOUT, SEX==1)
  
 ## Recoder
 
-# grep -i msex Théo4-Nouv-Colnames.txt |grep -i paire|grep -i item :
 ```{r}
-SEX$auteur_paire   <-avait(SEX$Msex_paire_remarque_apparence_item1)   +avait(SEX$Msex_paire_proposition_sex_item2) +
-                     avait(SEX$msex_paire_exhibitionisme_item3)       +avait(SEX$msex_paire_photo_intime_item4)    +
-                     avait(SEX$msex_paire_attouchement_item5)         +avait(SEX$Msex_paire_embrasser_item6)       +
-                     avait(SEX$msex_paire_frotter_partie_intime_item7)+avait(SEX$msex_paire_viol_penetration_item7)+
-                     avait(SEX$Msex_paire_avec_sans_penetration_non_consentie_item8)  
+SEX$auteur_paire   <- SEX$Msex_paire_remarque_apparence_item1 != "Jamais"    | SEX$Msex_paire_proposition_sex_item2 != "Jamais"  |
+                      SEX$msex_paire_exhibitionisme_item3 != "Jamais"        | SEX$msex_paire_photo_intime_item4 != "Jamais"     |
+                      SEX$msex_paire_attouchement_item5 != "Jamais"          | SEX$Msex_paire_embrasser_item6 != "Jamais"        |
+                      SEX$msex_paire_frotter_partie_intime_item7 != "Jamais" | SEX$msex_paire_viol_penetration_item7 != "Jamais" |
+                      SEX$Msex_paire_avec_sans_penetration_non_consentie_item8 != "Jamais"  
+
+SEX$auteur_adulte  <- SEX$Msex_adulte_remarque_sex_item1 != "Jamais"             | SEX$msex_adulte_envoi_image_sex_item2 != "Jamais"       |
+                      SEX$Msex_adulte_exhibition_partie_intime_item2 != "Jamais" |
+                      SEX$msex_adulte_photo_partie_intime_item3 != "Jamais"      | SEX$msex_adulte_force.a_toucher_item3 != "Jamais"          | 
+                      SEX$msex_adulte_toucher_malalaise_item4 != "Jamais"        |
+                      SEX$msex_adulte_embrasser_bouche_item5 != "Jamais"         | SEX$Msex_adulte_frotter_partie_intime_item6 != "Jamais" |
+                      SEX$Msex_adulte_tentation_relation_sex_item7 != "Jamais"   | SEX$Msex_adulte_forcer_relation_sex_avec_sans_pene_item8 != "Jamais" 
+ 
+SEX$auteur <- as.factor(case_when(SEX$auteur_paire   ~ "paire",
+                                  SEX$auteur_adulte  ~ "adulte" ,
+                                  TRUE               ~ "ne pas specifié"   ))  # y n'a pas ce niveau, OK
 ```
 
 ```{r}
-vec <- c(
-  sum(SEX$auteur_paire   > 0),
-  0,
+SEX$auteur_detail <- as.factor(case_when(
+                       SEX$auteur_paire                                                                ~ "paire",
+                       
+                       SEX$Msex_adulte_auteur_entraineur    != "Jamais" | SEX$msex_adulte_auteur_entraineur_assis != "Jamais" |
+                      SEX$Msex_adulte_auteur_entraineur_2  != "Jamais" | SEX$msex_adulte_auteur_entraineur_assis_2 != "Jamais" 
+                                                                                                       ~ "entraineur",   
+                       SEX$msex_adulte_auteur_prepa_physique != "Jamais"                                        ~ "prepaphysique",
+                       SEX$Msex_adulte_auteur_medecin       != "Jamais" | SEX$msex_adulte_auteur_medecin   != "Jamais" ~ "medecin" ,     
 
-# grep -i msex Théo4-Nouv-Colnames.txt |grep -i adult|grep -i auteur  :
-
-  sum((SEX$mpsy_adulte_auteur_entraineur  == "Oui") +
-      (SEX$Msex_adulte_auteur_entraineur  == "Oui") +
-      (SEX$Msex_adulte_auteur_entraineur_2  == "Oui") +
-      (SEX$Msex_adulte_auteur_entraineur_2_categorie_6  == "Oui") +
-      (SEX$Msex_adulte_auteur_entraineur_2_categorie_7  == "Oui") > 0),
-
-  sum((SEX$msex_adulte_auteur_entraineur_assis_2_categorie_6  == "Oui") +
-      (SEX$msex_adulte_auteur_entraineur_assis_2_categorie_7  == "Oui"),
-      (SEX$msex_adulte_auteur_entraineur_assis_2  == "Oui"),
-      (SEX$msex_adulte_auteur_entraineur_assis  == "Oui") > 0),
-
-  sum((SEX$msex_adulte_auteur_prepa_physique  == "Oui") > 0),
-
-  sum((SEX$Msex_adulte_auteur_medecin  == "Oui") +
-      (SEX$msex_adulte_auteur_medecin  == "Oui"),
-      (SEX$msex_adulte_auteur_medecin_categorie_6  == "Oui"),
-      (SEX$msex_adulte_auteur_medecin_categorie_7  == "Oui") > 0),
-
-  sum((SEX$msex_adulte_auteur_arbitre  == "Oui"),
-      (SEX$msex_adulte_auteur_arbitre_2  == "Oui"),
-      (SEX$msex_adulte_auteur_arbitre_2_categorie_6  == "Oui"),
-      (SEX$msex_adulte_auteur_arbitre_2_categorie_7  == "Oui") > 0),
-
-  sum((SEX$msex_adulte_auteur_psy  == "Oui"),
-      (SEX$msex_adulte_auteur_psy_2_categorie_6  == "Oui"),
-      (SEX$msex_adulte_auteur_psy_2  == "Oui"),
-      (SEX$msex_adulte_auteur_psy_2_categorie_7  == "Oui") > 0),
-
-  sum((SEX$msex_adulte_auteur_autre_2_categorie_7  == "Oui"),
-      (SEX$msex_adulte_auteur_autre_2_categorie_6  == "Oui"),
-      (SEX$msex_adulte_auteur_autre  == "Oui"),
-      (SEX$msex_adulte_auteur_autre_2  == "Oui") > 0) )
-
-tableau_auteurs(vec)
+                       SEX$msex_adulte_auteur_psy           != "Jamais" | SEX$msex_adulte_auteur_psy_2     != "Jamais" ~ "psy",          
+                       SEX$msex_adulte_auteur_arbitre       != "Jamais" | SEX$msex_adulte_auteur_arbitre_2 != "Jamais" ~ "arbitre",     
+                       SEX$msex_adulte_auteur_autre         != "Jamais" | SEX$msex_adulte_auteur_autre_2   != "Jamais" ~ "autre",
+                       TRUE               ~ "ne pas specifié"   ))
 ```
 
-J'ai bien contrôlé: il n'ya pas de m altraitance sexuelle par un psychologue.
+- y n'a pas "entraineurassistant" pourquoi ??
+- msex_adulte_auteur_entraineur_assis/2 je compte comme "msex_adulte_auteur_entraineur", OK ? 
+
+
+## Statistiques Descriptives 
+
+### 1. Les grands groupes
+
+```{r}
+descriptives(SEX, c("auteur"), freq=TRUE)
+```
+
+
+### 2. Les grands groupes mais adultes detaillés
+
+```{r}
+descriptives(SEX, c("auteur_detail"), freq=TRUE)
+```
+
+- ne plus qu'entraineurassistant et entraineur (+ un autre) comme pour MPS
+- mais il y a 3 cas "ne pas specifié", je les ai examiné:
+
+```{r}
+#View(filter(SEX, auteur_detail=="ne pas specifié"))
+```
+
+Et en fait, auteur adulte est clair, mais l'auteur n'était pas specifié davantage (même pas "autre" était coché, "ne pas specifié" est ma conclusion à moi). 
+
+### 3. Que les adultes detaillés
+
+```{r}
+SEX %>% filter(auteur=="adulte") %>% descriptives(c("auteur_detail"), freq=TRUE)
+```
+
+Les même 3 "ne pas specifié", c'est clair.

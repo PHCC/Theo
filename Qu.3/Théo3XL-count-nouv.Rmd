@@ -47,7 +47,6 @@ TOUT <- read.xlsx("MA_Theo_tableau1-ed.xlsx", sheetName ="Feuil1")    # Copié S
 
 ```{r}
 avait <- function(item){
-  #(item != "Jamais" & item != "Pas de réponse" & item != "Pas du tout") | item =="Oui"
   return( ifelse(item != "Jamais" & item != "0",1,0) )   # "0" occure seulement pour TOUT$mpsy_parent_invesstissment_item2 
 }
 ```
@@ -379,7 +378,6 @@ Qu3nouv(PSY, vec)
 
 # MPS
 
-
 ```{r}
 TOUT$mps <- avait(TOUT$Mphysique_pairs_item1)                 + avait(TOUT$Mphysique_paire_item2)         +
             avait(TOUT$Mphysique_paire_item3)     +
@@ -503,7 +501,7 @@ TOUT$SEX <- if_else(TOUT$sex > 0, 1, 0)
 SEX <- filter(TOUT, SEX==1)
 ```
 
-178 ont subi SEX.
+781 ont subi SEX.
 
 
 ## Paires: 7 Catégories
