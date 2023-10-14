@@ -1,0 +1,103 @@
+---
+title: "Tests des Proportions des Auteurs"
+author: "Christoph"
+date: "2023-10-13"
+output:
+  pdf_document:
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    keep_tex: yes
+geometry: margin=0.5cm
+---
+
+```{r}
+valeurs_p <- function(nombres, N){
+  for( i in 1:(length(nombres)-1)){
+    for( j in (i+1):length(nombres)){
+      #print(paste(nombres[[i]], nombres[[j]]))
+      if (nombres[[i]] == 0){
+        if(nombres[[j]]==0){
+          p <- 1
+        }else{
+          p <- 0
+        }
+      }else{
+        if (nombres[[j]] == 0){
+          p <- 0
+        }else{
+          p <- max(  
+            prop.test(x=nombres[[i]],n=N,p=nombres[[j]]/N)$p.value, 
+            prop.test(x=nombres[[j]],n=N,p=nombres[[i]]/N)$p.value )
+        }
+      }
+      if(p< 0.001){
+        p <- "< 0.001"
+      }else{
+        p <- round(p,3)
+      }
+ 
+      #print(paste(i, nombres[[i]], N, nombres[[i]]/N))
+      print(noquote(paste(
+      
+        noms[i],nombres[[i]],"=",round(nombres[[i]]*100/N,1),"%",  
+        "vs",
+        noms[j],nombres[[j]],"=",round(nombres[[j]]*100/N,1),"%",  
+        "    : valeur p",
+        noquote(p)
+       )))
+
+      #print()
+    } 
+  }
+}
+
+noms <- c("pairs", "parents", "entraineur", "entraineurassistant", 
+          "prepaphysique", "medecin", "arbitre", "psychologe", "adulte_autre")
+```
+
+
+# MPS
+
+```{r, warning=FALSE}
+N <- 344
+nombres <- list(288.0, 42.0, 100.0,   21, 8.0, 1.0,   2.0, 2.0, 7)
+names(nombres) <- noms
+
+valeurs_p(nombres, N)
+```
+
+
+# PSY
+
+```{r, warning=FALSE}
+N <- 711
+nombres <- list(661, 308.0, 543.0,  105.0, 81.0, 4.0,  44.0, 8.0, 92.0)
+names(nombres) <- noms
+
+valeurs_p(nombres, N)
+```
+
+# NEG
+
+```{r, warning=FALSE}
+N <- 117
+nombres <- list(0, 6.0, 102.0,   22.0, 13.0, 7,   0, 0, 14)
+names(nombres) <- noms
+
+valeurs_p(nombres, N)
+```
+
+# SEX
+
+```{r, warning=FALSE}
+N <- 178
+nombres <- list(142, 0, 89.0,   20.0, 6.0, 9.0,   3.0, 0, 17.0)
+names(nombres) <- noms
+
+valeurs_p(nombres, N)
+```
+
+
+
+

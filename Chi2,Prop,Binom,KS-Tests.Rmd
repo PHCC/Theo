@@ -1,0 +1,64 @@
+---
+title: "Chi2+Prop+KS+Binom-Tests"
+author: "Christoph"
+date: "2023-10-12,13"
+output:
+  pdf_document:
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    keep_tex: yes
+geometry: margin=0.5cm
+---
+
+# $\chi^2$ Test nur 1 Variable
+
+aus UZH-Methodenberatung
+
+```{r}
+chisq.test(x=c(203,45), p=c(186/248,62/248))
+```
+
+# Prop~$\chi^2$
+
+aus "Essential R" mit Théo's Zahlen
+
+```{r}
+prop.test(x=98 , n= 100, p=87/100)
+prop.test(x=980, n=1000, p=87/100)  # Unterschiedlich, ich brauche also Zahlen!
+prop.test(x=87, n=100, p=98/100)
+
+prop.test(x=98, n=100, p=93/100)
+```
+
+
+# Binomial
+
+```{r}
+binom.test(x=c(203,45), p=186/248)
+```
+
+```{r}
+binom.test(x=c(203,45), p=186/248)
+```
+
+
+# KS "drawn from same population?"
+
+```{r}
+ks.test(x=c(203,45), y=c(3, 1))
+ks.test(x=c(135,45), y=c(3, 1))
+
+# nein das geht nur? für Stichproben:
+ks.test(x=c(1,1,1, 2), y=c(1,1,1, 2))
+ks.test(x=c(1,1,1,1,1,2, 2,2), y=c(1,1,1, 2))
+```
+
+Mit Théo's Zahlen:
+
+```{r}
+x<-c(rep(1,661),rep(0,711-661))
+y<-c(rep(1,308),rep(0,711-308))
+ks.test(x, y)
+ks.test(y, x)
+```

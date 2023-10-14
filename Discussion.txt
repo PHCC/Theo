@@ -1,5 +1,108 @@
 Bonsoir Théo,
 
+je joins les tests des proportions pour les auteurs. 
+
+Ce ne sont pas de test d'indépendance (qui concernent 2 variables). Et ne compare pas bcp. de petits chiffres comme avant mais seulement 2 chiffres, souvent plutôt grands. Du coup, le valeurs p sont pour la plupart plus petites, même < 0.001 (pas > 0.001 comme tu avais écrit).
+
+Je compare chaque catégorie d'auteur avec chaque autre avec hypothèse 0: par ces 2 catégories on a le même pourcentage de maltraitance. J'ai utilisé la fonction prop.test() qui se base sur le test khi-carré mais n'a pas la condition "somme des pourcentages=100%".
+
+Si tout est bon, je ferai les tests pour les interprétations et conséquences.
+
+Je viens de trouver un faute de frappe dans mon analyse auteurs: "la phrase 781 ont subi SEX" n'est clairement pas correct, je voulais dire "178 ont subi SEX".
+
+À bientôt,
+Christoph 
+
+
+------------------------------------------------------------------------------
+
+Question 2 les auteurs de maltraitance
+ 
+·      Hypothèse générale 0 : Les auteurs de maltraitance sont identiques selon la forme de maltraitance expérimentée
+ 
+Hypothèse générale 1 : Les auteurs de maltraitance diffèrent selon la forme de maltraitance expérimentée
+ 
+Pour premier tableau avec seulement pairs / adulte / parent 
+
+- Avec un degré significatif de p>0.001, Les athlètes sont plus victime de maltraitance psychologique par les pairs (98%) que par les parents (87%). 
+
+Pour le deuxième tableau avec le descriptif détaillé des adulte seulement
+
+- Avec un degré significatif de p>0.001, Les athlètes sont plus victimes de maltraitance psychologique par les arbitres (98%) que par les medecins (87%). 
+
+
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+
+
+
+
+Je voudrais faire un test d'indépendance entre les catégories de chaque maltraitance.
+
+- hypothèse 0 : les interprétations des différentes catégories sont identiques, normalisation catégorie 1 = normalisation catégorie 2 = normalisation catégorie 3 = etc
+-Hypothèse 1 : les interprétation des différentes catégorie ne sont pas identiques 
+
+Tableau des interprétations, j'aimerais pouvoir dire : 
+
+Exemple 1 : On voit qu'il y a une différence significative (P<.0.01) entre la catégorie 1 et 3 de la maltraitance psychologique concernant l'expérience. La catégorie 1 de la maltraitance psychologique "insuffisance de soutien" est perçue comme nécessaire à la performance par 59% des athlètes ayant subi une maltraitance psychologique, alors que la catégorie 3 "terroriser un athlète" est perçue comme nécessaire à la performance seulement par 34% des athlètes ayant subi une maltraitance psychologique. 
+
+
+
+
+Tableau des conséquences : 
+
+J'aimerais faire un test d'indépendance entre les différentes catégories de chaque maltraitance
+
+- Hypothèse 0 = les conséquences des différentes catégories sont identiques, humiliation catégorie 1 = humiliation catégorie 2 = humiliation catégorie 3 = etc
+-Hypothèse 1 = Les conséquence des différentes catégories ne sont pas identitques)
+
+Exemple 2 : On voit qu'il y a une différence significative (P<.0.01) entre la catégorie 1 et 3 de la maltraitance psychologique concernant l'expérience (conséquence). 59 % des athlètes ont ressenti de l'humiliation dans la catégorie 1 de la maltraitance psychologique "insuffisance de soutien"  et seulement 22%  dans la catégorie 3 "terroriser un athlète".
+
+J'ai pensé que c'était la meilleure manière de faire au vu de la construction du questionnaire, j'espère que ça te sembles être intelligent.
+
+------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Salut Théo,
+
+oui en fait, pour les paires il manqueait catégorie 2 SEX interprétations (petite faute de frappe dans le code). 
+
+J'ai mis à jour le code et PDF et joins le dernier. Je travaille sur les tests additionnels.
+
+Â bientôt,
+Christoph
+
+------------------------------------------------------------------------------------
+
+Théo wa: manque catégorie 2 SEX interprétations
+
+Bonsoir Théo,
 entretemps je me suis habitué au nouvel Excel et je procède un peu mieux. Joint les chiffres pour tes Tableaux 2 et 3. Est tout compréhensible?
 
 Quelques remarques:

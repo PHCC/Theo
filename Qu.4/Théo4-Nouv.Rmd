@@ -328,7 +328,7 @@ TOUT$SEX <- if_else(TOUT$sex > 0, 1, 0)
 SEX <- filter(TOUT, SEX==1)
 ```
 
-781 ont subi SEX.
+178 ont subi SEX.
 
  
 ## Recoder

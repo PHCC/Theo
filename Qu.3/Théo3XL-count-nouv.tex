@@ -106,7 +106,7 @@
 \title{Théo3XL-count-nouv.Rmd Question 3 Count, pas Sum; Données du
 nouveau Excel}
 \author{Christoph}
-\date{2023-10-08}
+\date{2023-10-12}
 
 \begin{document}
 \maketitle
@@ -152,7 +152,6 @@ nouveau Excel}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{avait }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(item)\{}
-  \CommentTok{\#(item != "Jamais" \& item != "Pas de réponse" \& item != "Pas du tout") | item =="Oui"}
   \FunctionTok{return}\NormalTok{( }\FunctionTok{ifelse}\NormalTok{(item }\SpecialCharTok{!=} \StringTok{"Jamais"} \SpecialCharTok{\&}\NormalTok{ item }\SpecialCharTok{!=} \StringTok{"0"}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{) )   }\CommentTok{\# "0" occure seulement pour TOUT$mpsy\_parent\_invesstissment\_item2 }
 \NormalTok{\}}
 \end{Highlighting}
@@ -2618,7 +2617,7 @@ Nouvelles interprétations et consequences
 \end{Highlighting}
 \end{Shaded}
 
-178 ont subi SEX.
+781 ont subi SEX.
 
 \hypertarget{paires-7-catuxe9gories}{%
 \subsection{Paires: 7 Catégories}\label{paires-7-catuxe9gories}}
@@ -2780,7 +2779,7 @@ Nouvelles interprétations et consequences
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{VEC }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(   }\CommentTok{\# 312{-}314}
+\NormalTok{vec }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(   }\CommentTok{\# 312{-}314}
   \StringTok{"msex\_paire\_consideration\_normale"}\NormalTok{,}\StringTok{"msex\_paire\_necessaire\_perf"}\NormalTok{,}\StringTok{"Msex\_paire\_fait\_partie\_compet"}
 \NormalTok{)}
 \FunctionTok{Qu3nouv}\NormalTok{(SEX, vec)}
@@ -2793,93 +2792,30 @@ Nouvelles interprétations et consequences
 ## 
 ##  FREQUENCIES
 ## 
-##  Frequencies of Msex_paire_demotiveFT               
+##  Frequencies of msex_paire_consideration_normaleFT  
 ##  ────────────────────────────────────────────────── 
 ##    Levels    Counts    % of Total    Cumulative %   
 ##  ────────────────────────────────────────────────── 
-##    FALSE        107      85.60000        85.60000   
-##    TRUE          18      14.40000       100.00000   
+##    FALSE         10      62.50000        62.50000   
+##    TRUE           6      37.50000       100.00000   
 ##  ────────────────────────────────────────────────── 
 ## 
 ## 
-##  Frequencies of Msex_paire_moins_perfFT             
+##  Frequencies of msex_paire_necessaire_perfFT        
 ##  ────────────────────────────────────────────────── 
 ##    Levels    Counts    % of Total    Cumulative %   
 ##  ────────────────────────────────────────────────── 
-##    FALSE        109      87.20000        87.20000   
-##    TRUE          16      12.80000       100.00000   
+##    FALSE         12      75.00000        75.00000   
+##    TRUE           4      25.00000       100.00000   
 ##  ────────────────────────────────────────────────── 
 ## 
 ## 
-##  Frequencies of Msex_paire_perdu_confianceFT        
+##  Frequencies of Msex_paire_fait_partie_competFT     
 ##  ────────────────────────────────────────────────── 
 ##    Levels    Counts    % of Total    Cumulative %   
 ##  ────────────────────────────────────────────────── 
-##    FALSE         99      79.20000        79.20000   
-##    TRUE          26      20.80000       100.00000   
-##  ────────────────────────────────────────────────── 
-## 
-## 
-##  Frequencies of Msex_paire_image_neg_corpsFT        
-##  ────────────────────────────────────────────────── 
-##    Levels    Counts    % of Total    Cumulative %   
-##  ────────────────────────────────────────────────── 
-##    FALSE         87      69.60000        69.60000   
-##    TRUE          38      30.40000       100.00000   
-##  ────────────────────────────────────────────────── 
-## 
-## 
-##  Frequencies of msex_paire_peurFT                   
-##  ────────────────────────────────────────────────── 
-##    Levels    Counts    % of Total    Cumulative %   
-##  ────────────────────────────────────────────────── 
-##    FALSE         93      74.40000        74.40000   
-##    TRUE          32      25.60000       100.00000   
-##  ────────────────────────────────────────────────── 
-## 
-## 
-##  Frequencies of Msex_paire_colereFT                 
-##  ────────────────────────────────────────────────── 
-##    Levels    Counts    % of Total    Cumulative %   
-##  ────────────────────────────────────────────────── 
-##    FALSE         73      58.40000        58.40000   
-##    TRUE          52      41.60000       100.00000   
-##  ────────────────────────────────────────────────── 
-## 
-## 
-##  Frequencies of msex_paire_tristeFT                 
-##  ────────────────────────────────────────────────── 
-##    Levels    Counts    % of Total    Cumulative %   
-##  ────────────────────────────────────────────────── 
-##    FALSE         99      79.20000        79.20000   
-##    TRUE          26      20.80000       100.00000   
-##  ────────────────────────────────────────────────── 
-## 
-## 
-##  Frequencies of msex_paire_stressFT                 
-##  ────────────────────────────────────────────────── 
-##    Levels    Counts    % of Total    Cumulative %   
-##  ────────────────────────────────────────────────── 
-##    FALSE         84      67.20000        67.20000   
-##    TRUE          41      32.80000       100.00000   
-##  ────────────────────────────────────────────────── 
-## 
-## 
-##  Frequencies of Msex_paire_ta_fauteFT               
-##  ────────────────────────────────────────────────── 
-##    Levels    Counts    % of Total    Cumulative %   
-##  ────────────────────────────────────────────────── 
-##    FALSE        106      84.80000        84.80000   
-##    TRUE          19      15.20000       100.00000   
-##  ────────────────────────────────────────────────── 
-## 
-## 
-##  Frequencies of Msex_paire_humiliationFT            
-##  ────────────────────────────────────────────────── 
-##    Levels    Counts    % of Total    Cumulative %   
-##  ────────────────────────────────────────────────── 
-##    FALSE         75      60.00000        60.00000   
-##    TRUE          50      40.00000       100.00000   
+##    FALSE         12      75.00000        75.00000   
+##    TRUE           4      25.00000       100.00000   
 ##  ──────────────────────────────────────────────────
 \end{verbatim}
 
