@@ -1,0 +1,166 @@
+##    FT           N        pourcent       pourcCum
+##  Frequencies of Mpsy_paire_normalisationFT          1
+##    FALSE        178      47.21485        47.21485   
+##    TRUE         199      52.78515       100.00000   
+##  Frequencies of Mpsy_paire_necessiteFT              
+##    FALSE        313      80.46272        80.46272   
+##    TRUE          76      19.53728       100.00000   
+##  Frequencies of Mpsy_paire_partie_entrainementFT    
+##    FALSE        230      59.58549        59.58549   
+##    TRUE         156      40.41451       100.00000   
+
+ 
+##  Frequencies of Mpsy_paire_considerationFT          2
+##    FALSE        331      56.87285        56.87285   
+##    TRUE         251      43.12715       100.00000   
+##  Frequencies of mpsy_paire_neccesiteperfFT          
+##    FALSE        427      72.12838        72.12838   
+##    TRUE         165      27.87162       100.00000   
+##  Frequencies of Mpsy_paire_partie_competFT          
+##    FALSE        346      58.24916        58.24916   
+##    TRUE         248      41.75084       100.00000   
+
+
+##  Frequencies of mpsy_paire_normlisationFT          3 
+##    FALSE         95      79.83193        79.83193   
+##    TRUE          24      20.16807       100.00000   
+##  Frequencies of mpsy_paire_necessite_perfFT         
+##    FALSE        110      89.43089        89.43089   
+##    TRUE          13      10.56911       100.00000   
+##  Frequencies of mpsy_paire_partie_entrainementFT    
+##    FALSE         90      73.77049        73.77049   
+##    TRUE          32      26.22951       100.00000  
+ 
+
+##  Frequencies of Mpsy_paire_normalisation_2FT        4
+##    FALSE         97      56.06936        56.06936   
+##    TRUE          76      43.93064       100.00000   
+##  Frequencies of mpsy_paire_necessaireperfFT         
+##    FALSE         98      56.64740        56.64740   
+##    TRUE          75      43.35260       100.00000   
+##  Frequencies of mpsy_paire_partie_entrainement_2FT  
+##    FALSE         88      50.57471        50.57471   
+##    TRUE          86      49.42529       100.00000   
+
+
+##  Frequencies of mpsy_adulte_considererFT            1
+##    FALSE        131      63.59223        63.59223   
+##    TRUE          75      36.40777       100.00000   
+##  Frequencies of mpsy_adulte_necessaireFT            
+##    FALSE        164      78.84615        78.84615   
+##    TRUE          44      21.15385       100.00000   
+##  Frequencies of Mpsy_adulte_faisant_partieFT        
+##    FALSE        146      70.19231        70.19231   
+##    TRUE          62      29.80769       100.00000  
+ 
+ 
+##  Frequencies of Mpsy_adulte_considerationFT         2
+##    FALSE        184      36.58052        36.58052   
+##    TRUE         319      63.41948       100.00000   
+##  Frequencies of mpsy_adulte_necessaire_2FT          
+##    FALSE        219      43.28063        43.28063   
+##    TRUE         287      56.71937       100.00000   
+##  Frequencies of Mpsy_adulte_partie_competFT         
+##    FALSE        176      34.44227        34.44227   
+##    TRUE         335      65.55773       100.00000  
+ 
+
+##  Frequencies of Mpsy_adulte_auteur_considerer_normalFT 3
+##    FALSE         71      59.16667        59.16667   
+##    TRUE          49      40.83333       100.00000   
+##  Frequencies of mpsy_adulte_necessaireperfFT        
+##    FALSE         78      64.46281        64.46281   
+##    TRUE          43      35.53719       100.00000   
+##  Frequencies of mpsy_adulte_partie_entrainementFT   
+##    FALSE         67      55.37190        55.37190   
+##    TRUE          54      44.62810       100.00000   
+
+
+##  Frequencies of mpsy_adulte_considération_normaleFT 4
+##    FALSE        111      28.90625        28.90625   
+##    TRUE         273      71.09375       100.00000   
+##  Frequencies of mpsy_adulte_necessaire_perfFT       
+##    FALSE         90      23.49869        23.49869   
+##    TRUE         293      76.50131       100.00000   
+##  Frequencies of mpsy_adulte_partie_competFT         
+##    FALSE         83      21.61458        21.61458   
+##    TRUE         301      78.38542       100.00000   
+
+ 
+##  Frequencies of Mpsy_parent_normale_categorie_1FT   1
+##    FALSE         23      53.48837        53.48837   
+##    TRUE          20      46.51163       100.00000   
+##  Frequencies of Mpsy_parent_necessaire_categorie_1FT 
+##    FALSE         29      65.90909        65.90909   
+##    TRUE          15      34.09091       100.00000   
+##  Frequencies of Mpsy_parent_faisantpartie_categorie_1FT 
+##    FALSE         30      68.18182        68.18182   
+##    TRUE          14      31.81818       100.00000   
+
+
+##  Frequencies of Mpsy_parent_normalisationFT         2
+##    FALSE         90      33.83459        33.83459   
+##    TRUE         176      66.16541       100.00000   
+##  Frequencies of mpsy_parent_necessaireFT            
+##    FALSE        130      48.50746        48.50746   
+##    TRUE         138      51.49254       100.00000   
+##  Frequencies of mpsy_parent_faisant_partieFT        
+##    FALSE        130      48.87218        48.87218   
+##    TRUE         136      51.12782       100.00000   
+
+
+##  Frequencies of mpsy_parent_normalisationFT         3
+##    FALSE         11      68.75000        68.75000   
+##    TRUE           5      31.25000       100.00000   
+##  Frequencies of mpsy_parent_necessaire_perfFT       
+##    FALSE         11      68.75000        68.75000   
+##    TRUE           5      31.25000       100.00000   
+##  Frequencies of Mpsy_parent_faisant_partie_entrainementFT 
+##    FALSE         11      68.75000        68.75000   
+##    TRUE           5      31.25000       100.00000   
+
+
+##  Frequencies of Mpsy_parent_consideration_normalFT  4
+##    FALSE         30      30.00000        30.00000   
+##    TRUE          70      70.00000       100.00000   
+##  Frequencies of mpsy_parent_necessaire_perf_2FT     
+##    FALSE         24      24.48980        24.48980   
+##    TRUE          74      75.51020       100.00000   
+##  Frequencies of Mpsy_parent_partie_competFT         
+##    FALSE         28      28.28283        28.28283   
+##    TRUE          71      71.71717       100.00000   
+
+
+##  Frequencies of Mphysique_paire_normalisationFT     1
+##    FALSE        119      44.23792        44.23792   
+##    TRUE         150      55.76208       100.00000   
+##  Frequencies of Mphysique_paire_necessite_perfFT    
+##    FALSE        166      60.80586        60.80586   
+##    TRUE         107      39.19414       100.00000   
+##  Frequencies of Mphysique_paire_faire_partieFT      
+##    FALSE        120      43.32130        43.32130   
+##    TRUE         157      56.67870       100.00000   
+
+
+##  Frequencies of Mphysique_adulte_auteur_normlisationFT 1
+##    FALSE         32      29.35780        29.35780   
+##    TRUE          77      70.64220       100.00000   
+##  Frequencies of Mphysique_adulte_performanceFT      
+##    FALSE         50      44.64286        44.64286   
+##    TRUE          62      55.35714       100.00000   
+##  Frequencies of Mphysique_adulte_faisant_partie_categorie_1FT 
+##    FALSE         47      41.59292        41.59292   
+##    TRUE          66      58.40708       100.00000   
+
+
+##  Frequencies of Mphysique_parent_consideration_normal_categorie_1FT 1
+##    FALSE         10      27.77778        27.77778   
+##    TRUE          26      72.22222       100.00000   
+##  Frequencies of Mphysique_parent_necessaire_perf_categorie_1FT 
+##    FALSE         16      43.24324        43.24324   
+##    TRUE          21      56.75676       100.00000   
+##  Frequencies of Mphysique_parent_faisant_partie_FT  
+##    FALSE         19      54.28571        54.28571   
+##    TRUE          16      45.71429       100.00000   
+
+
