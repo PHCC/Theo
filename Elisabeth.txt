@@ -1,0 +1,46 @@
+Hallo Elisabeth,
+
+ich bin mir nicht ganz sicher dass zwischen euch alles richtig disktiert/verstanden wurde.
+
+"Fehler aufgetaucht sind, die euch länger beschäftigt haben und aufgrund dessen auch einiges an Stunden zusammen kam und die Fehlerquelle nicht gefunden wurde."
+
+Théo hatte mir folgende Dateien gegeben:
+
+1. 4 Original-Excel, fehlerfrei. Diese konnte man nicht unmittelbar in der Auswertung benutzen
+2. eine kompilierte Jamovi-Datei mit vielen Fehlern. Auf diese Tatsache habe ich sehr früh hingewiesen, und verwendete fortan:
+3. eine kompilierte Excel Datei, mit immer noch etlichen Fehlern. Auf diese Tatsache habe ich dann hingewiesen. Die Fehler haben mich keine Zeit gekostet, ich habe sie erstmal ignoriert und wiederholt angemerkt dass man die inputdatei korrigieren sollte.
+
+"Ein Bekannter von ihm hatte sich die Daten dann allerdings angeschaut und den Fehler in kurzer Zeit finden können. Du hättest die falsche Datei für die Auswertungen genutzt, obwohl Theo auch die richtige geschickt hatte."
+
+Ich hatte keine fehlerfreie komplette Datei und ich hatte die Fehler gefunden (im Vergleich der verschiedenen Dateien); als er es für dringend genug hielt hat Théo das seinem Kumpel gezeigt. Was der Kumpel gemacht hat ist eine fehlerfreie komplette Datei zu erstellen mit der ich die Analyse wiederholt habe. Das hat ihn einen Nachmittag gekostet, und dann hat Théo selbst noch eine lange Nacht Namen ersetzt - um diese Stunden zu vermeiden hatte ich mit der besten gearbeitet die ich hatte. Die neue Datei war aber immer noch nicht exakt wie vorher, drum kostete mich die Nachanalyse etwas Zeit - ich musste Skalen umkodieren und Namen ändern, jetzt leider ~600 Spalten händisch kontrollieren und angleichen.
+
+Diese Re-analyse habe ich vom 29.9 bis 9.10 gemacht in etwa 13 Stunden, habe ich im Excel rot markiert . Hätte ich selbst die neue Datei kompiliert in exakt der gleichen Form wie die vorige dann hätte mich das eine ähnliche Zeit gekostet. 
+
+Ich verstehe aber dass Théo sehr viel zahlt und würde auf die Hälfte dieser 13 Stunden verzichten, passt das?
+
+Schönen Gruss,
+Christoph
+
+
+---- On Mon, 16 Oct 2023 12:06:43 +0200 Elisabeth <elisabeth@statistiknachhilfe.ch> wrote ---
+
+
+Hallo Christoph,
+ich habe eben mit Theo gesprochen und er hat mir erzählt, dass es scheinbar ein Problem mit den Daten gab.
+
+Er meinte, dass Fehler aufgetaucht sind, die euch länger beschäftigt haben und aufgrund dessen auch einiges an Stunden zusammen kam und die Fehlerquelle nicht gefunden wurde.
+
+Ein Bekannter von ihm hatte sich die Daten dann allerdings angeschaut und den Fehler in kurzer Zeit finden können. Du hättest die falsche Datei für die Auswertungen genutzt, obwohl Theo auch die richtige geschickt hatte.
+Daher wurde mehrere Monate mit falschen Daten gearbeitet.
+
+Er meinte sonst wäre er zufrieden und froh um deine Unterstützung, das wäre allerdings ärgerlich. Auch wenn er sieht, dass er zum Teil auch Schult trägt.
+
+Könntest du mir hierzu eine Rückmeldung geben, was hier aus deiner Sicht passiert ist?
+Eventuell wäre es hier angebracht, ihm in Bezug auf die Rechnungen etwas entgegenzukommen. Also lass mich bitte wissen, was hier passiert ist.
+
+Bitte kontaktiere Theo hierzu nicht selbst und lass uns das erst intern klären.
+
+Liebe Grüße
+Liz
+
+

@@ -1,0 +1,576 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=0.5cm]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same} % disable monospaced font for URLs
+\hypersetup{
+  pdftitle={Tests des Proportions des Interprétations},
+  pdfauthor={Christoph},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Tests des Proportions des Interprétations}
+\author{Christoph}
+\date{2023-10-14}
+
+\begin{document}
+\maketitle
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'dplyr'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:stats':
+## 
+##     filter, lag
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     intersect, setdiff, setequal, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo/Qu.3/interSeded.txt"}\NormalTok{, }\AttributeTok{sep=}\StringTok{" "}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(df)[}\DecValTok{6}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"n"}
+\CommentTok{\#View(df)}
+
+\NormalTok{df  }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{select}\NormalTok{(FT,n)}
+\NormalTok{df  }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(FT}\SpecialCharTok{==}\StringTok{"TRUE"} \SpecialCharTok{|}\NormalTok{ FT}\SpecialCharTok{==}\StringTok{"FALSE"}\NormalTok{)}
+\CommentTok{\#View(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dfTrue  }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(FT}\SpecialCharTok{==}\StringTok{"TRUE"}\NormalTok{)}
+\NormalTok{dfFalse }\OtherTok{\textless{}{-}}\NormalTok{ df }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(FT}\SpecialCharTok{==}\StringTok{"FALSE"}\NormalTok{)}
+\DocumentationTok{\#\#View(dfTrue)}
+\DocumentationTok{\#\#View(dfFalse)}
+\NormalTok{True  }\OtherTok{\textless{}{-}}\NormalTok{ dfTrue}\SpecialCharTok{$}\NormalTok{n}
+\NormalTok{False }\OtherTok{\textless{}{-}}\NormalTok{ dfFalse}\SpecialCharTok{$}\NormalTok{n}
+\NormalTok{dfTF }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(True,False)}
+\DocumentationTok{\#\#View(dfTF)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{PsyPaire  }\OtherTok{\textless{}{-}}\NormalTok{ dfTF[ }\DecValTok{1}\SpecialCharTok{:}\DecValTok{12}\NormalTok{,]       }\CommentTok{\# Paire  4 catégories 3 interprétations}
+\NormalTok{PsyAdulte }\OtherTok{\textless{}{-}}\NormalTok{ dfTF[}\DecValTok{13}\SpecialCharTok{:}\DecValTok{24}\NormalTok{,]       }\CommentTok{\# Adult  4 catégories 3 interprétations}
+\NormalTok{PsyParent }\OtherTok{\textless{}{-}}\NormalTok{ dfTF[}\DecValTok{25}\SpecialCharTok{:}\DecValTok{36}\NormalTok{,]       }\CommentTok{\# Parent 4 catégories 3 interprétations}
+
+\CommentTok{\#MpsPaire  \textless{}{-} dfTF[37:39,]       \# Paire  1 catégories 3 interprétations}
+\CommentTok{\#MpsAdulte \textless{}{-} dfTF[40:42,]       \# Adult  1 catégories 3 interprétations}
+\CommentTok{\#MpsParent \textless{}{-} dfTF[43:45,]       \# Parent 1 catégories 3 interprétations}
+
+\NormalTok{SexPaire  }\OtherTok{\textless{}{-}}\NormalTok{ dfTF[}\DecValTok{46}\SpecialCharTok{:}\DecValTok{66}\NormalTok{,]       }\CommentTok{\# Paire  7 catégories 3 interprétations}
+\NormalTok{SexAdulte }\OtherTok{\textless{}{-}}\NormalTok{ dfTF[}\DecValTok{67}\SpecialCharTok{:}\DecValTok{87}\NormalTok{,]       }\CommentTok{\# Adult  7 catégories 3 interprétations}
+
+\NormalTok{NegAdulte }\OtherTok{\textless{}{-}}\NormalTok{ dfTF[}\DecValTok{88}\SpecialCharTok{:}\DecValTok{96}\NormalTok{,]       }\CommentTok{\# Adult  3 catégories 3 interprétations}
+\CommentTok{\#NegParent \textless{}{-} dfTF[97:99,]       \# Parent 1 catégories 3 interprétations}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{valeurs\_p }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(titre, Cat1TF, Cat2TF)\{}
+\NormalTok{  Cat1TF }\OtherTok{\textless{}{-}} \FunctionTok{unlist}\NormalTok{(Cat1TF)}
+\NormalTok{  Cat2TF }\OtherTok{\textless{}{-}} \FunctionTok{unlist}\NormalTok{(Cat2TF)}
+\NormalTok{  Cat1T }\OtherTok{\textless{}{-}}\NormalTok{ Cat1TF[}\DecValTok{1}\NormalTok{]; Cat1F }\OtherTok{\textless{}{-}}\NormalTok{ Cat1TF[}\DecValTok{2}\NormalTok{]}
+\NormalTok{  Cat2T }\OtherTok{\textless{}{-}}\NormalTok{ Cat2TF[}\DecValTok{1}\NormalTok{]; Cat2F }\OtherTok{\textless{}{-}}\NormalTok{ Cat2TF[}\DecValTok{2}\NormalTok{]}
+\NormalTok{  N1 }\OtherTok{\textless{}{-}}\NormalTok{ Cat1T}\SpecialCharTok{+}\NormalTok{Cat1F}
+\NormalTok{  N2 }\OtherTok{\textless{}{-}}\NormalTok{ Cat2T}\SpecialCharTok{+}\NormalTok{Cat2F}
+
+  \ControlFlowTok{if}\NormalTok{ (Cat1T }\SpecialCharTok{==} \DecValTok{0}\NormalTok{)\{}
+    \ControlFlowTok{if}\NormalTok{(Cat2T}\SpecialCharTok{==}\DecValTok{0}\NormalTok{)\{}
+\NormalTok{      p }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{    \}}\ControlFlowTok{else}\NormalTok{\{}
+\NormalTok{      p }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{    \}}
+\NormalTok{  \}}\ControlFlowTok{else}\NormalTok{\{}
+    \ControlFlowTok{if}\NormalTok{ (Cat2T }\SpecialCharTok{==} \DecValTok{0}\NormalTok{)\{}
+\NormalTok{      p }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{    \}}\ControlFlowTok{else}\NormalTok{\{}
+      \CommentTok{\#print(paste(Cat2T,N2))}
+      \ControlFlowTok{if}\NormalTok{(Cat2T}\SpecialCharTok{/}\NormalTok{N2}\SpecialCharTok{==}\DecValTok{1}\NormalTok{)\{}
+        \ControlFlowTok{if}\NormalTok{(Cat2T}\SpecialCharTok{/}\NormalTok{N2 }\SpecialCharTok{==} \DecValTok{1}\NormalTok{)\{}
+\NormalTok{          p }\OtherTok{\textless{}{-}} \DecValTok{1} 
+\NormalTok{        \}}\ControlFlowTok{else}\NormalTok{\{}
+\NormalTok{          p }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{        \}}
+\NormalTok{      \}}\ControlFlowTok{else}\NormalTok{\{}
+\NormalTok{        p }\OtherTok{\textless{}{-}} \FunctionTok{max}\NormalTok{(  }
+            \FunctionTok{prop.test}\NormalTok{(}\AttributeTok{x=}\NormalTok{Cat1T,}\AttributeTok{n=}\NormalTok{N1,}\AttributeTok{p=}\NormalTok{Cat2T}\SpecialCharTok{/}\NormalTok{N2)}\SpecialCharTok{$}\NormalTok{p.value , }
+            \FunctionTok{prop.test}\NormalTok{(}\AttributeTok{x=}\NormalTok{Cat2T,}\AttributeTok{n=}\NormalTok{N2,}\AttributeTok{p=}\NormalTok{Cat1T}\SpecialCharTok{/}\NormalTok{N1)}\SpecialCharTok{$}\NormalTok{p.value  }
+\NormalTok{        )}
+\NormalTok{      \}}
+\NormalTok{    \}}
+\NormalTok{  \}}
+      
+  \ControlFlowTok{if}\NormalTok{(p}\SpecialCharTok{\textless{}} \FloatTok{0.001}\NormalTok{)\{}
+\NormalTok{    p }\OtherTok{\textless{}{-}} \StringTok{"\textless{} 0.001"}
+\NormalTok{  \}}\ControlFlowTok{else}\NormalTok{\{}
+\NormalTok{    p }\OtherTok{\textless{}{-}} \FunctionTok{round}\NormalTok{(p,}\DecValTok{3}\NormalTok{)}
+\NormalTok{  \}}
+ 
+      \CommentTok{\#print(paste(i, Cat1T, N, Cat1T/N))}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{noquote}\NormalTok{(}\FunctionTok{paste}\NormalTok{(titre,}\StringTok{":"}\NormalTok{,}
+      
+\NormalTok{        Cat1T,}\StringTok{"="}\NormalTok{,}\FunctionTok{round}\NormalTok{(Cat1T}\SpecialCharTok{*}\DecValTok{100}\SpecialCharTok{/}\NormalTok{N1,}\DecValTok{1}\NormalTok{),}\StringTok{"\%"}\NormalTok{,  }
+        \StringTok{"vs"}\NormalTok{,}
+\NormalTok{        Cat2T,}\StringTok{"="}\NormalTok{,}\FunctionTok{round}\NormalTok{(Cat2T}\SpecialCharTok{*}\DecValTok{100}\SpecialCharTok{/}\NormalTok{N2,}\DecValTok{1}\NormalTok{),}\StringTok{"\%"}\NormalTok{,  }
+        \StringTok{"    : valeur p"}\NormalTok{,}
+        \FunctionTok{noquote}\NormalTok{(p)}
+\NormalTok{       )))}
+
+      \CommentTok{\#print()}
+  
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{printInter }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(MAL, df, auteur, Ncat)\{}
+\NormalTok{ interpretations }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"normalisation"}\NormalTok{,}\StringTok{"necessité"}\NormalTok{,}\StringTok{"partie"}\NormalTok{)}
+ \ControlFlowTok{for}\NormalTok{(inter }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{)\{}
+\NormalTok{  inter\_ }\OtherTok{\textless{}{-}}\NormalTok{ interpretations[inter]}
+  \ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(Ncat}\DecValTok{{-}1}\NormalTok{))\{             }\CommentTok{\# Cat 1}
+      \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in}\NormalTok{ (i}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}\SpecialCharTok{:}\NormalTok{Ncat)\{     }\CommentTok{\# Cat 2}
+        \FunctionTok{valeurs\_p}\NormalTok{(}\FunctionTok{paste}\NormalTok{(MAL,auteur,inter\_,}\StringTok{"Cat"}\NormalTok{,i,}\StringTok{"vs."}\NormalTok{,j), df[}\DecValTok{1}\SpecialCharTok{+}\DecValTok{3}\SpecialCharTok{*}\NormalTok{(i}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{+}\NormalTok{(inter}\DecValTok{{-}1}\NormalTok{),], df[ }\DecValTok{1}\SpecialCharTok{+}\DecValTok{3}\SpecialCharTok{*}\NormalTok{(j}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{+}\NormalTok{(inter}\DecValTok{{-}1}\NormalTok{),]) }
+\NormalTok{      \}}
+      \FunctionTok{print}\NormalTok{(}\FunctionTok{noquote}\NormalTok{(}\StringTok{""}\NormalTok{))}
+\NormalTok{    \}}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\newpage
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{printInter}\NormalTok{(}\StringTok{"PSY"}\NormalTok{, PsyPaire ,}\StringTok{"paire"}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] PSY paire normalisation Cat 1 vs. 2 : 199 = 52.8 % vs 251 = 43.1 %     : valeur p < 0.001
+## [1] PSY paire normalisation Cat 1 vs. 3 : 199 = 52.8 % vs 24 = 20.2 %     : valeur p < 0.001
+## [1] PSY paire normalisation Cat 1 vs. 4 : 199 = 52.8 % vs 76 = 43.9 %     : valeur p 0.024
+## [1] 
+## [1] PSY paire normalisation Cat 2 vs. 3 : 251 = 43.1 % vs 24 = 20.2 %     : valeur p < 0.001
+## [1] PSY paire normalisation Cat 2 vs. 4 : 251 = 43.1 % vs 76 = 43.9 %     : valeur p 0.891
+## [1] 
+## [1] PSY paire normalisation Cat 3 vs. 4 : 24 = 20.2 % vs 76 = 43.9 %     : valeur p < 0.001
+## [1] 
+## [1] PSY paire necessité Cat 1 vs. 2 : 76 = 19.5 % vs 165 = 27.9 %     : valeur p < 0.001
+## [1] PSY paire necessité Cat 1 vs. 3 : 76 = 19.5 % vs 13 = 10.6 %     : valeur p 0.017
+## [1] PSY paire necessité Cat 1 vs. 4 : 76 = 19.5 % vs 75 = 43.4 %     : valeur p < 0.001
+## [1] 
+## [1] PSY paire necessité Cat 2 vs. 3 : 165 = 27.9 % vs 13 = 10.6 %     : valeur p < 0.001
+## [1] PSY paire necessité Cat 2 vs. 4 : 165 = 27.9 % vs 75 = 43.4 %     : valeur p < 0.001
+## [1] 
+## [1] PSY paire necessité Cat 3 vs. 4 : 13 = 10.6 % vs 75 = 43.4 %     : valeur p < 0.001
+## [1] 
+## [1] PSY paire partie Cat 1 vs. 2 : 156 = 40.4 % vs 248 = 41.8 %     : valeur p 0.631
+## [1] PSY paire partie Cat 1 vs. 3 : 156 = 40.4 % vs 32 = 26.2 %     : valeur p 0.002
+## [1] PSY paire partie Cat 1 vs. 4 : 156 = 40.4 % vs 86 = 49.4 %     : valeur p 0.019
+## [1] 
+## [1] PSY paire partie Cat 2 vs. 3 : 248 = 41.8 % vs 32 = 26.2 %     : valeur p < 0.001
+## [1] PSY paire partie Cat 2 vs. 4 : 248 = 41.8 % vs 86 = 49.4 %     : valeur p 0.048
+## [1] 
+## [1] PSY paire partie Cat 3 vs. 4 : 32 = 26.2 % vs 86 = 49.4 %     : valeur p < 0.001
+## [1]
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{printInter}\NormalTok{(}\StringTok{"PSY"}\NormalTok{, PsyAdulte,}\StringTok{"adulte"}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] PSY adulte normalisation Cat 1 vs. 2 : 75 = 36.4 % vs 319 = 63.4 %     : valeur p < 0.001
+## [1] PSY adulte normalisation Cat 1 vs. 3 : 75 = 36.4 % vs 49 = 40.8 %     : valeur p 0.361
+## [1] PSY adulte normalisation Cat 1 vs. 4 : 75 = 36.4 % vs 273 = 71.1 %     : valeur p < 0.001
+## [1] 
+## [1] PSY adulte normalisation Cat 2 vs. 3 : 319 = 63.4 % vs 49 = 40.8 %     : valeur p < 0.001
+## [1] PSY adulte normalisation Cat 2 vs. 4 : 319 = 63.4 % vs 273 = 71.1 %     : valeur p 0.002
+## [1] 
+## [1] PSY adulte normalisation Cat 3 vs. 4 : 49 = 40.8 % vs 273 = 71.1 %     : valeur p < 0.001
+## [1] 
+## [1] PSY adulte necessité Cat 1 vs. 2 : 44 = 21.2 % vs 287 = 56.7 %     : valeur p < 0.001
+## [1] PSY adulte necessité Cat 1 vs. 3 : 44 = 21.2 % vs 43 = 35.5 %     : valeur p < 0.001
+## [1] PSY adulte necessité Cat 1 vs. 4 : 44 = 21.2 % vs 293 = 76.5 %     : valeur p < 0.001
+## [1] 
+## [1] PSY adulte necessité Cat 2 vs. 3 : 287 = 56.7 % vs 43 = 35.5 %     : valeur p < 0.001
+## [1] PSY adulte necessité Cat 2 vs. 4 : 287 = 56.7 % vs 293 = 76.5 %     : valeur p < 0.001
+## [1] 
+## [1] PSY adulte necessité Cat 3 vs. 4 : 43 = 35.5 % vs 293 = 76.5 %     : valeur p < 0.001
+## [1] 
+## [1] PSY adulte partie Cat 1 vs. 2 : 62 = 29.8 % vs 335 = 65.6 %     : valeur p < 0.001
+## [1] PSY adulte partie Cat 1 vs. 3 : 62 = 29.8 % vs 54 = 44.6 %     : valeur p < 0.001
+## [1] PSY adulte partie Cat 1 vs. 4 : 62 = 29.8 % vs 301 = 78.4 %     : valeur p < 0.001
+## [1] 
+## [1] PSY adulte partie Cat 2 vs. 3 : 335 = 65.6 % vs 54 = 44.6 %     : valeur p < 0.001
+## [1] PSY adulte partie Cat 2 vs. 4 : 335 = 65.6 % vs 301 = 78.4 %     : valeur p < 0.001
+## [1] 
+## [1] PSY adulte partie Cat 3 vs. 4 : 54 = 44.6 % vs 301 = 78.4 %     : valeur p < 0.001
+## [1]
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{printInter}\NormalTok{(}\StringTok{"PSY"}\NormalTok{, PsyParent,}\StringTok{"parent"}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] PSY parent normalisation Cat 1 vs. 2 : 20 = 46.5 % vs 176 = 66.2 %     : valeur p 0.01
+## [1] PSY parent normalisation Cat 1 vs. 3 : 20 = 46.5 % vs 5 = 31.2 %     : valeur p 0.33
+## [1] PSY parent normalisation Cat 1 vs. 4 : 20 = 46.5 % vs 70 = 70 %     : valeur p 0.001
+## [1] 
+## [1] PSY parent normalisation Cat 2 vs. 3 : 176 = 66.2 % vs 5 = 31.2 %     : valeur p 0.007
+## [1] PSY parent normalisation Cat 2 vs. 4 : 176 = 66.2 % vs 70 = 70 %     : valeur p 0.481
+## [1] 
+## [1] PSY parent normalisation Cat 3 vs. 4 : 5 = 31.2 % vs 70 = 70 %     : valeur p 0.002
+## [1] 
+## [1] PSY parent necessité Cat 1 vs. 2 : 15 = 34.1 % vs 138 = 51.5 %     : valeur p 0.031
+## [1] PSY parent necessité Cat 1 vs. 3 : 15 = 34.1 % vs 5 = 31.2 %     : valeur p 1
+## [1] PSY parent necessité Cat 1 vs. 4 : 15 = 34.1 % vs 74 = 75.5 %     : valeur p < 0.001
+## [1] 
+## [1] PSY parent necessité Cat 2 vs. 3 : 138 = 51.5 % vs 5 = 31.2 %     : valeur p 0.171
+## [1] PSY parent necessité Cat 2 vs. 4 : 138 = 51.5 % vs 74 = 75.5 %     : valeur p < 0.001
+## [1] 
+## [1] PSY parent necessité Cat 3 vs. 4 : 5 = 31.2 % vs 74 = 75.5 %     : valeur p < 0.001
+## [1] 
+## [1] PSY parent partie Cat 1 vs. 2 : 14 = 31.8 % vs 136 = 51.1 %     : valeur p 0.016
+## [1] PSY parent partie Cat 1 vs. 3 : 14 = 31.8 % vs 5 = 31.2 %     : valeur p 1
+## [1] PSY parent partie Cat 1 vs. 4 : 14 = 31.8 % vs 71 = 71.7 %     : valeur p < 0.001
+## [1] 
+## [1] PSY parent partie Cat 2 vs. 3 : 136 = 51.1 % vs 5 = 31.2 %     : valeur p 0.18
+## [1] PSY parent partie Cat 2 vs. 4 : 136 = 51.1 % vs 71 = 71.7 %     : valeur p < 0.001
+## [1] 
+## [1] PSY parent partie Cat 3 vs. 4 : 5 = 31.2 % vs 71 = 71.7 %     : valeur p < 0.001
+## [1]
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{printInter}\NormalTok{(}\StringTok{"SEX"}\NormalTok{, SexPaire ,}\StringTok{"paire"}\NormalTok{, }\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] SEX paire normalisation Cat 1 vs. 2 : 41 = 34.7 % vs 6 = 37.5 %     : valeur p 1
+## [1] SEX paire normalisation Cat 1 vs. 3 : 41 = 34.7 % vs 6 = 26.1 %     : valeur p 0.514
+## [1] SEX paire normalisation Cat 1 vs. 4 : 41 = 34.7 % vs 3 = 33.3 %     : valeur p 1
+## [1] SEX paire normalisation Cat 1 vs. 5 : 41 = 34.7 % vs 3 = 16.7 %     : valeur p 0.173
+## [1] SEX paire normalisation Cat 1 vs. 6 : 41 = 34.7 % vs 2 = 22.2 %     : valeur p 0.661
+## [1] SEX paire normalisation Cat 1 vs. 7 : 41 = 34.7 % vs 3 = 60 %     : valeur p 0.474
+## [1] 
+## [1] SEX paire normalisation Cat 2 vs. 3 : 6 = 37.5 % vs 6 = 26.1 %     : valeur p 0.45
+## [1] SEX paire normalisation Cat 2 vs. 4 : 6 = 37.5 % vs 3 = 33.3 %     : valeur p 1
+## [1] SEX paire normalisation Cat 2 vs. 5 : 6 = 37.5 % vs 3 = 16.7 %     : valeur p 0.114
+## [1] SEX paire normalisation Cat 2 vs. 6 : 6 = 37.5 % vs 2 = 22.2 %     : valeur p 0.547
+## [1] SEX paire normalisation Cat 2 vs. 7 : 6 = 37.5 % vs 3 = 60 %     : valeur p 0.564
+## [1] 
+## [1] SEX paire normalisation Cat 3 vs. 4 : 6 = 26.1 % vs 3 = 33.3 %     : valeur p 0.908
+## [1] SEX paire normalisation Cat 3 vs. 5 : 6 = 26.1 % vs 3 = 16.7 %     : valeur p 0.521
+## [1] SEX paire normalisation Cat 3 vs. 6 : 6 = 26.1 % vs 2 = 22.2 %     : valeur p 1
+## [1] SEX paire normalisation Cat 3 vs. 7 : 6 = 26.1 % vs 3 = 60 %     : valeur p 0.223
+## [1] 
+## [1] SEX paire normalisation Cat 4 vs. 5 : 3 = 33.3 % vs 3 = 16.7 %     : valeur p 0.371
+## [1] SEX paire normalisation Cat 4 vs. 6 : 3 = 33.3 % vs 2 = 22.2 %     : valeur p 0.724
+## [1] SEX paire normalisation Cat 4 vs. 7 : 3 = 33.3 % vs 3 = 60 %     : valeur p 0.429
+## [1] 
+## [1] SEX paire normalisation Cat 5 vs. 6 : 3 = 16.7 % vs 2 = 22.2 %     : valeur p 1
+## [1] SEX paire normalisation Cat 5 vs. 7 : 3 = 16.7 % vs 3 = 60 %     : valeur p 0.046
+## [1] 
+## [1] SEX paire normalisation Cat 6 vs. 7 : 2 = 22.2 % vs 3 = 60 %     : valeur p 0.135
+## [1] 
+## [1] SEX paire necessité Cat 1 vs. 2 : 5 = 4 % vs 4 = 25 %     : valeur p < 0.001
+## [1] SEX paire necessité Cat 1 vs. 3 : 5 = 4 % vs 3 = 13.6 %     : valeur p 0.078
+## [1] SEX paire necessité Cat 1 vs. 4 : 5 = 4 % vs 3 = 33.3 %     : valeur p < 0.001
+## [1] SEX paire necessité Cat 1 vs. 5 : 5 = 4 % vs 2 = 11.1 %     : valeur p 0.348
+## [1] SEX paire necessité Cat 1 vs. 6 : 5 = 4 % vs 2 = 22.2 %     : valeur p 0.052
+## [1] SEX paire necessité Cat 1 vs. 7 : 5 = 4 % vs 2 = 40 %     : valeur p 0.003
+## [1] 
+## [1] SEX paire necessité Cat 2 vs. 3 : 4 = 25 % vs 3 = 13.6 %     : valeur p 0.337
+## [1] SEX paire necessité Cat 2 vs. 4 : 4 = 25 % vs 3 = 33.3 %     : valeur p 0.847
+## [1] SEX paire necessité Cat 2 vs. 5 : 4 = 25 % vs 2 = 11.1 %     : valeur p 0.276
+## [1] SEX paire necessité Cat 2 vs. 6 : 4 = 25 % vs 2 = 22.2 %     : valeur p 1
+## [1] SEX paire necessité Cat 2 vs. 7 : 4 = 25 % vs 2 = 40 %     : valeur p 0.796
+## [1] 
+## [1] SEX paire necessité Cat 3 vs. 4 : 3 = 13.6 % vs 3 = 33.3 %     : valeur p 0.216
+## [1] SEX paire necessité Cat 3 vs. 5 : 3 = 13.6 % vs 2 = 11.1 %     : valeur p 1
+## [1] SEX paire necessité Cat 3 vs. 6 : 3 = 13.6 % vs 2 = 22.2 %     : valeur p 0.791
+## [1] SEX paire necessité Cat 3 vs. 7 : 3 = 13.6 % vs 2 = 40 %     : valeur p 0.286
+## [1] 
+## [1] SEX paire necessité Cat 4 vs. 5 : 3 = 33.3 % vs 2 = 11.1 %     : valeur p 0.112
+## [1] SEX paire necessité Cat 4 vs. 6 : 3 = 33.3 % vs 2 = 22.2 %     : valeur p 0.724
+## [1] SEX paire necessité Cat 4 vs. 7 : 3 = 33.3 % vs 2 = 40 %     : valeur p 1
+## [1] 
+## [1] SEX paire necessité Cat 5 vs. 6 : 2 = 11.1 % vs 2 = 22.2 %     : valeur p 0.596
+## [1] SEX paire necessité Cat 5 vs. 7 : 2 = 11.1 % vs 2 = 40 %     : valeur p 0.179
+## [1] 
+## [1] SEX paire necessité Cat 6 vs. 7 : 2 = 22.2 % vs 2 = 40 %     : valeur p 0.676
+## [1] 
+## [1] SEX paire partie Cat 1 vs. 2 : 13 = 10.5 % vs 4 = 25 %     : valeur p 0.137
+## [1] SEX paire partie Cat 1 vs. 3 : 13 = 10.5 % vs 2 = 9.1 %     : valeur p 1
+## [1] SEX paire partie Cat 1 vs. 4 : 13 = 10.5 % vs 2 = 22.2 %     : valeur p 0.545
+## [1] SEX paire partie Cat 1 vs. 5 : 13 = 10.5 % vs 2 = 11.1 %     : valeur p 1
+## [1] SEX paire partie Cat 1 vs. 6 : 13 = 10.5 % vs 2 = 22.2 %     : valeur p 0.545
+## [1] SEX paire partie Cat 1 vs. 7 : 13 = 10.5 % vs 2 = 40 %     : valeur p 0.154
+## [1] 
+## [1] SEX paire partie Cat 2 vs. 3 : 4 = 25 % vs 2 = 9.1 %     : valeur p 0.14
+## [1] SEX paire partie Cat 2 vs. 4 : 4 = 25 % vs 2 = 22.2 %     : valeur p 1
+## [1] SEX paire partie Cat 2 vs. 5 : 4 = 25 % vs 2 = 11.1 %     : valeur p 0.276
+## [1] SEX paire partie Cat 2 vs. 6 : 4 = 25 % vs 2 = 22.2 %     : valeur p 1
+## [1] SEX paire partie Cat 2 vs. 7 : 4 = 25 % vs 2 = 40 %     : valeur p 0.796
+## [1] 
+## [1] SEX paire partie Cat 3 vs. 4 : 2 = 9.1 % vs 2 = 22.2 %     : valeur p 0.429
+## [1] SEX paire partie Cat 3 vs. 5 : 2 = 9.1 % vs 2 = 11.1 %     : valeur p 1
+## [1] SEX paire partie Cat 3 vs. 6 : 2 = 9.1 % vs 2 = 22.2 %     : valeur p 0.429
+## [1] SEX paire partie Cat 3 vs. 7 : 2 = 9.1 % vs 2 = 40 %     : valeur p 0.104
+## [1] 
+## [1] SEX paire partie Cat 4 vs. 5 : 2 = 22.2 % vs 2 = 11.1 %     : valeur p 0.596
+## [1] SEX paire partie Cat 4 vs. 6 : 2 = 22.2 % vs 2 = 22.2 %     : valeur p 1
+## [1] SEX paire partie Cat 4 vs. 7 : 2 = 22.2 % vs 2 = 40 %     : valeur p 0.676
+## [1] 
+## [1] SEX paire partie Cat 5 vs. 6 : 2 = 11.1 % vs 2 = 22.2 %     : valeur p 0.596
+## [1] SEX paire partie Cat 5 vs. 7 : 2 = 11.1 % vs 2 = 40 %     : valeur p 0.179
+## [1] 
+## [1] SEX paire partie Cat 6 vs. 7 : 2 = 22.2 % vs 2 = 40 %     : valeur p 0.676
+## [1]
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{printInter}\NormalTok{(}\StringTok{"SEX"}\NormalTok{, SexAdulte,}\StringTok{"adulte"}\NormalTok{,}\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] SEX adulte normalisation Cat 1 vs. 2 : 10 = 20.4 % vs 0 = 0 %     : valeur p < 0.001
+## [1] SEX adulte normalisation Cat 1 vs. 3 : 10 = 20.4 % vs 1 = 50 %     : valeur p 0.872
+## [1] SEX adulte normalisation Cat 1 vs. 4 : 10 = 20.4 % vs 0 = 0 %     : valeur p < 0.001
+## [1] SEX adulte normalisation Cat 1 vs. 5 : 10 = 20.4 % vs 15 = 33.3 %     : valeur p 0.077
+## [1] SEX adulte normalisation Cat 1 vs. 6 : 10 = 20.4 % vs 0 = 0 %     : valeur p < 0.001
+## [1] SEX adulte normalisation Cat 1 vs. 7 : 10 = 20.4 % vs 0 = 0 %     : valeur p < 0.001
+## [1] 
+## [1] SEX adulte normalisation Cat 2 vs. 3 : 0 = 0 % vs 1 = 50 %     : valeur p < 0.001
+## [1] SEX adulte normalisation Cat 2 vs. 4 : 0 = 0 % vs 0 = 0 %     : valeur p 1
+## [1] SEX adulte normalisation Cat 2 vs. 5 : 0 = 0 % vs 15 = 33.3 %     : valeur p < 0.001
+## [1] SEX adulte normalisation Cat 2 vs. 6 : 0 = 0 % vs 0 = 0 %     : valeur p 1
+## [1] SEX adulte normalisation Cat 2 vs. 7 : 0 = 0 % vs 0 = 0 %     : valeur p 1
+## [1] 
+## [1] SEX adulte normalisation Cat 3 vs. 4 : 1 = 50 % vs 0 = 0 %     : valeur p < 0.001
+## [1] SEX adulte normalisation Cat 3 vs. 5 : 1 = 50 % vs 15 = 33.3 %     : valeur p 1
+## [1] SEX adulte normalisation Cat 3 vs. 6 : 1 = 50 % vs 0 = 0 %     : valeur p < 0.001
+## [1] SEX adulte normalisation Cat 3 vs. 7 : 1 = 50 % vs 0 = 0 %     : valeur p < 0.001
+## [1] 
+## [1] SEX adulte normalisation Cat 4 vs. 5 : 0 = 0 % vs 15 = 33.3 %     : valeur p < 0.001
+## [1] SEX adulte normalisation Cat 4 vs. 6 : 0 = 0 % vs 0 = 0 %     : valeur p 1
+## [1] SEX adulte normalisation Cat 4 vs. 7 : 0 = 0 % vs 0 = 0 %     : valeur p 1
+## [1] 
+## [1] SEX adulte normalisation Cat 5 vs. 6 : 15 = 33.3 % vs 0 = 0 %     : valeur p < 0.001
+## [1] SEX adulte normalisation Cat 5 vs. 7 : 15 = 33.3 % vs 0 = 0 %     : valeur p < 0.001
+## [1] 
+## [1] SEX adulte normalisation Cat 6 vs. 7 : 0 = 0 % vs 0 = 0 %     : valeur p 1
+## [1] 
+## [1] SEX adulte necessité Cat 1 vs. 2 : 3 = 6.1 % vs 0 = 0 %     : valeur p < 0.001
+## [1] SEX adulte necessité Cat 1 vs. 3 : 3 = 6.1 % vs 1 = 50 %     : valeur p 0.265
+## [1] SEX adulte necessité Cat 1 vs. 4 : 3 = 6.1 % vs 0 = 0 %     : valeur p < 0.001
+## [1] SEX adulte necessité Cat 1 vs. 5 : 3 = 6.1 % vs 5 = 11.1 %     : valeur p 0.377
+## [1] SEX adulte necessité Cat 1 vs. 6 : 3 = 6.1 % vs 1 = 33.3 %     : valeur p 0.446
+## [1] SEX adulte necessité Cat 1 vs. 7 : 3 = 6.1 % vs 1 = 50 %     : valeur p 0.265
+## [1] 
+## [1] SEX adulte necessité Cat 2 vs. 3 : 0 = 0 % vs 1 = 50 %     : valeur p < 0.001
+## [1] SEX adulte necessité Cat 2 vs. 4 : 0 = 0 % vs 0 = 0 %     : valeur p 1
+## [1] SEX adulte necessité Cat 2 vs. 5 : 0 = 0 % vs 5 = 11.1 %     : valeur p < 0.001
+## [1] SEX adulte necessité Cat 2 vs. 6 : 0 = 0 % vs 1 = 33.3 %     : valeur p < 0.001
+## [1] SEX adulte necessité Cat 2 vs. 7 : 0 = 0 % vs 1 = 50 %     : valeur p < 0.001
+## [1] 
+## [1] SEX adulte necessité Cat 3 vs. 4 : 1 = 50 % vs 0 = 0 %     : valeur p < 0.001
+## [1] SEX adulte necessité Cat 3 vs. 5 : 1 = 50 % vs 5 = 11.1 %     : valeur p 0.532
+## [1] SEX adulte necessité Cat 3 vs. 6 : 1 = 50 % vs 1 = 33.3 %     : valeur p 1
+## [1] SEX adulte necessité Cat 3 vs. 7 : 1 = 50 % vs 1 = 50 %     : valeur p 1
+## [1] 
+## [1] SEX adulte necessité Cat 4 vs. 5 : 0 = 0 % vs 5 = 11.1 %     : valeur p < 0.001
+## [1] SEX adulte necessité Cat 4 vs. 6 : 0 = 0 % vs 1 = 33.3 %     : valeur p < 0.001
+## [1] SEX adulte necessité Cat 4 vs. 7 : 0 = 0 % vs 1 = 50 %     : valeur p < 0.001
+## [1] 
+## [1] SEX adulte necessité Cat 5 vs. 6 : 5 = 11.1 % vs 1 = 33.3 %     : valeur p 0.759
+## [1] SEX adulte necessité Cat 5 vs. 7 : 5 = 11.1 % vs 1 = 50 %     : valeur p 0.532
+## [1] 
+## [1] SEX adulte necessité Cat 6 vs. 7 : 1 = 33.3 % vs 1 = 50 %     : valeur p 1
+## [1] 
+## [1] SEX adulte partie Cat 1 vs. 2 : 6 = 12.2 % vs 1 = 25 %     : valeur p 0.988
+## [1] SEX adulte partie Cat 1 vs. 3 : 6 = 12.2 % vs 0 = NaN %     : valeur p < 0.001
+## [1] SEX adulte partie Cat 1 vs. 4 : 6 = 12.2 % vs 1 = 33.3 %     : valeur p 0.815
+## [1] SEX adulte partie Cat 1 vs. 5 : 6 = 12.2 % vs 6 = 13.6 %     : valeur p 0.959
+## [1] SEX adulte partie Cat 1 vs. 6 : 6 = 12.2 % vs 1 = 33.3 %     : valeur p 0.815
+## [1] SEX adulte partie Cat 1 vs. 7 : 6 = 12.2 % vs 1 = 50 %     : valeur p 0.582
+## [1] 
+## [1] SEX adulte partie Cat 2 vs. 3 : 1 = 25 % vs 0 = NaN %     : valeur p < 0.001
+## [1] SEX adulte partie Cat 2 vs. 4 : 1 = 25 % vs 1 = 33.3 %     : valeur p 1
+## [1] SEX adulte partie Cat 2 vs. 5 : 1 = 25 % vs 6 = 13.6 %     : valeur p 1
+## [1] SEX adulte partie Cat 2 vs. 6 : 1 = 25 % vs 1 = 33.3 %     : valeur p 1
+## [1] SEX adulte partie Cat 2 vs. 7 : 1 = 25 % vs 1 = 50 %     : valeur p 1
+## [1] 
+## [1] SEX adulte partie Cat 3 vs. 4 : 0 = NaN % vs 1 = 33.3 %     : valeur p < 0.001
+## [1] SEX adulte partie Cat 3 vs. 5 : 0 = NaN % vs 6 = 13.6 %     : valeur p < 0.001
+## [1] SEX adulte partie Cat 3 vs. 6 : 0 = NaN % vs 1 = 33.3 %     : valeur p < 0.001
+## [1] SEX adulte partie Cat 3 vs. 7 : 0 = NaN % vs 1 = 50 %     : valeur p < 0.001
+## [1] 
+## [1] SEX adulte partie Cat 4 vs. 5 : 1 = 33.3 % vs 6 = 13.6 %     : valeur p 0.878
+## [1] SEX adulte partie Cat 4 vs. 6 : 1 = 33.3 % vs 1 = 33.3 %     : valeur p 1
+## [1] SEX adulte partie Cat 4 vs. 7 : 1 = 33.3 % vs 1 = 50 %     : valeur p 1
+## [1] 
+## [1] SEX adulte partie Cat 5 vs. 6 : 6 = 13.6 % vs 1 = 33.3 %     : valeur p 0.878
+## [1] SEX adulte partie Cat 5 vs. 7 : 6 = 13.6 % vs 1 = 50 %     : valeur p 0.64
+## [1] 
+## [1] SEX adulte partie Cat 6 vs. 7 : 1 = 33.3 % vs 1 = 50 %     : valeur p 1
+## [1]
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{printInter}\NormalTok{(}\StringTok{"NEG"}\NormalTok{, NegAdulte,}\StringTok{"adulte"}\NormalTok{,}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NEG adulte normalisation Cat 1 vs. 2 : 76 = 68.5 % vs 2 = 50 %     : valeur p 0.797
+## [1] NEG adulte normalisation Cat 1 vs. 3 : 76 = 68.5 % vs 0 = 0 %     : valeur p < 0.001
+## [1] 
+## [1] NEG adulte normalisation Cat 2 vs. 3 : 2 = 50 % vs 0 = 0 %     : valeur p < 0.001
+## [1] 
+## [1] NEG adulte necessité Cat 1 vs. 2 : 69 = 62.7 % vs 2 = 50 %     : valeur p 0.992
+## [1] NEG adulte necessité Cat 1 vs. 3 : 69 = 62.7 % vs 1 = 100 %     : valeur p 1
+## [1] 
+## [1] NEG adulte necessité Cat 2 vs. 3 : 2 = 50 % vs 1 = 100 %     : valeur p 1
+## [1] 
+## [1] NEG adulte partie Cat 1 vs. 2 : 82 = 73.9 % vs 3 = 75 %     : valeur p 1
+## [1] NEG adulte partie Cat 1 vs. 3 : 82 = 73.9 % vs 0 = 0 %     : valeur p < 0.001
+## [1] 
+## [1] NEG adulte partie Cat 2 vs. 3 : 3 = 75 % vs 0 = 0 %     : valeur p < 0.001
+## [1]
+\end{verbatim}
+
+\begin{itemize}
+\tightlist
+\item
+  MPS n'a qu'une catégorie, alors aucune comparaison possible
+\item
+  NEG parent pareil
+\end{itemize}
+
+\end{document}

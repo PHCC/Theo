@@ -1,3 +1,102 @@
+--------------------------------------------------------------------------------
+
+Salut Théo,  
+
+un peu dommage que l'idée de mesure à bas seuil n'était pas capté par Madame, sans ça on ne peut pas comprendre les tests.
+
+concernant les commentaires:
+
+- p13 
+
+Je n'ai jamais calculé un IC (ni 99% ni 95%) mais toujours les valeurs p. Je n'ai pas défini un certain seuil de signification alpha. Toi, tu pourrais le faire (soit 5% soit 1%) et adapter ta discussion en référence à ce seuil. Ou la laisser plus général comme elle est maintenant.
+
+Je ne sais pas à quoi ta première phrase 2.5 relate (tous les tests?), je t'appelle mardi pour 5 minutes pour l'adapter le mieux.
+
+Mieux: "Concernant les différents auteurs et différentes formes de maltraitance, nous avons effectué des tests khi-carré d'indépendance pour examiner le degré de dépendance entre auteurs maltraitances" (une relation on a déjà par les pourcentage, mais sans signification)
+
+J'ai utilisé "R version 4.2.3 (2023-03-15)" (et "RStudio 2022.07.2" - bcp. de gens indiquent cela - mais ce n'est pas intéressant car on pouvait fair toute l'analyse avec R sans RStudio)
+
+- p16
+
+oui, j'ai fait des valeurs p mais pas des IC.
+
+L'autre commentaire: mieux discuter au whattsapp, ça regarde tes formulations et tu te retrouves plus vite dans le tableaux
+
+- p17
+
+pas un renvoi à la ligne *dans* un chiffre
+
+madame n'est pas tout à fait satisfiable: il y a 2 variables catégorielles (colonnes, lignes) et la variable de lignes a au moins 2 niveaux (homme, femme) du coup il n'existe pas *la* ligne qui indique la variable catégorielle. Je mettrai khi-carré dans la première ligne et p dans la deuxième, la troisième reste vide le cas échéant.
+
+- p19
+
+les cases vides est le faux chiffre tu arrivais à clarifier?
+
+Dans ce tableau on ne s'était pas intéressé au differentes catégories. Du coup je les ai additionné ce qui donne 1 chiffre psy, pas 4.
+
+- p20
+
+dans des parenthèses on met des pourcentages, des écart-types (standard deviation) ou des IC. Mais pas des valeurs p  
+
+
+Pourrait-on se parler mardi 17:00 par skype pour clarifier le reste?
+
+Bon weekend,
+Christoph
+
+--------------------------------------------------------------------------------
+
+Bonsoir Théo,
+
+mes deux commentaires:
+
+"D’un côté, la variable Normal est mesurée sur une échelle ordinale en 3 catégories plus NSP. C’est donc une variable qualitative
+De l’autre chacune des catégories de maltraitances donne lieu à une variable qualitative dichotomique selon qu’elle a été vécue ou pas.
+ 
+Par conséquent vous ne pouvez pas faire cela [...] Cela n’a pas de sens de croiser des catégories de maltraitances."
+
+J'avais croisé les catégories mais gardé les variables:
+
+- normal catégorie 1 vs. catégorie 2, 1 vs. 3, etc.
+- nécessaire  catégorie 1 vs. catégorie 2, 1 vs. 3, etc.
+- partie catégorie 1 vs. catégorie 2, 1 vs. 3, etc.
+
+Toutes les 3 variables normal, nécessaire, partie étaient recodées comme dichotome. Las remarque "bas seuil" implique 2 niveaux: pas du tout / non pas du tout
+
+- - -
+
+"On peut faire un test d’indépendance de Chi-carré pour voir s’il y a un lien entre le vécu ou non de la catégorie 1 et la perception de cet acte comme plus ou moins normal. Et donc répéter cela pour toutes les catégories, puis pour Nécessaire à la performance, puis pour faisant partie de l’entrainement."
+
+La perception n'était demandée que dans le cas du vécu (les lignes avec item="Jamais" ont les cellules d'interprétation vides). Du coup ce test n'est pas adapté. Et toute information pour le cas "vecu" est déjà dans les tableaux descriptives.
+
+Je souhaite bonne discussion avec ta prof. Aussi très bon d'avoir resolu le problème avec mes collègues.
+
+Christoph
+
+--------------------------------------------------------------------------------
+
+Hello Christoph, 
+
+J'ai donc demandé à ma professeur pour le tableua 5. Voilà ce qu'elle m'a répondu : 
+
+Bonjour,
+ 
+Prenons un peu de recul sur le contenu de la Table 5.
+D’un côté, la variable Normal est mesurée sur une échelle ordinale en 3 catégories plus NSP. C’est donc une variable qualitative
+De l’autre chacune des catégories de maltraitances donne lieu à une variable qualitative dichotomique selon qu’elle a été vécue ou pas.
+ 
+Par conséquent vous ne pouvez pas faire cela – je reprends votre phrase ci-dessous – « j'ai entrepris un Test X2 entre catégorie 1 et 2, (puis entre 1 et 3 etc.)  = 0.0001/ 0.007/etc » Cela n’a pas de sens de croiser des catégories de maltraitances.
+ 
+On peut faire un test d’indépendance de Chi-carré pour voir s’il y a un lien entre le vécu ou non de la catégorie 1 et la perception de cet acte comme plus ou moins normal. Et donc répéter cela pour toutes les catégories, puis pour Nécessaire à la performance, puis pour faisant partie de l’entrainement.
+ 
+Oui, cela fait beaucoup de tests. Pour l’histoire de place, vous pouvez utiliser la notation en étoiles :  * si p <.05, ** si p <.01, *** si p <.001 Il faut alors indiquer la notation en Note en dessous de la table.
+
+Est ce que tu comprends ce qu'elle veut me dire ? Est-ce que tu penses pouvoir réussir ? Je suis désolé de tous ces changements, j'essaie de faire de mon mieux. 
+
+Théo
+
+--------------------------------------------------------------------------------
+
 Bonsoir Théo,
 
 je joins les tests des proportions pour les auteurs. 

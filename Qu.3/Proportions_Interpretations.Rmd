@@ -1,0 +1,143 @@
+---
+title: "Tests des Proportions des Interprétations"
+author: "Christoph"
+date: "2023-10-14"
+output:
+  pdf_document:
+    toc: no
+    toc_depth: 3
+    extra_dependencies: []
+    keep_tex: yes
+geometry: margin=0.5cm
+---
+
+```{r}
+library(dplyr)
+```
+
+
+```{r}
+df <- read.csv("/Users/christophpahl/Bureau/Travail+Hobby/Statistiques/Théo/Qu.3/interSeded.txt", sep=" ")
+colnames(df)[6] <- "n"
+#View(df)
+
+df  <- df %>% select(FT,n)
+df  <- df %>% filter(FT=="TRUE" | FT=="FALSE")
+#View(df)
+```
+
+
+```{r}
+dfTrue  <- df %>% filter(FT=="TRUE")
+dfFalse <- df %>% filter(FT=="FALSE")
+##View(dfTrue)
+##View(dfFalse)
+True  <- dfTrue$n
+False <- dfFalse$n
+dfTF <- data.frame(True,False)
+##View(dfTF)
+```
+
+```{r}
+PsyPaire  <- dfTF[ 1:12,]       # Paire  4 catégories 3 interprétations
+PsyAdulte <- dfTF[13:24,]       # Adult  4 catégories 3 interprétations
+PsyParent <- dfTF[25:36,]       # Parent 4 catégories 3 interprétations
+
+#MpsPaire  <- dfTF[37:39,]       # Paire  1 catégories 3 interprétations
+#MpsAdulte <- dfTF[40:42,]       # Adult  1 catégories 3 interprétations
+#MpsParent <- dfTF[43:45,]       # Parent 1 catégories 3 interprétations
+
+SexPaire  <- dfTF[46:66,]       # Paire  7 catégories 3 interprétations
+SexAdulte <- dfTF[67:87,]       # Adult  7 catégories 3 interprétations
+
+NegAdulte <- dfTF[88:96,]       # Adult  3 catégories 3 interprétations
+#NegParent <- dfTF[97:99,]       # Parent 1 catégories 3 interprétations
+```
+
+```{r}
+valeurs_p <- function(titre, Cat1TF, Cat2TF){
+  Cat1TF <- unlist(Cat1TF)
+  Cat2TF <- unlist(Cat2TF)
+  Cat1T <- Cat1TF[1]; Cat1F <- Cat1TF[2]
+  Cat2T <- Cat2TF[1]; Cat2F <- Cat2TF[2]
+  N1 <- Cat1T+Cat1F
+  N2 <- Cat2T+Cat2F
+
+  if (Cat1T == 0){
+    if(Cat2T==0){
+      p <- 1
+    }else{
+      p <- 0
+    }
+  }else{
+    if (Cat2T == 0){
+      p <- 0
+    }else{
+      #print(paste(Cat2T,N2))
+      if(Cat2T/N2==1){
+        if(Cat2T/N2 == 1){
+          p <- 1 
+        }else{
+          p <- 0
+        }
+      }else{
+        p <- max(  
+            prop.test(x=Cat1T,n=N1,p=Cat2T/N2)$p.value , 
+            prop.test(x=Cat2T,n=N2,p=Cat1T/N1)$p.value  
+        )
+      }
+    }
+  }
+      
+  if(p< 0.001){
+    p <- "< 0.001"
+  }else{
+    p <- round(p,3)
+  }
+ 
+      #print(paste(i, Cat1T, N, Cat1T/N))
+  print(noquote(paste(titre,":",
+      
+        Cat1T,"=",round(Cat1T*100/N1,1),"%",  
+        "vs",
+        Cat2T,"=",round(Cat2T*100/N2,1),"%",  
+        "    : valeur p",
+        noquote(p)
+       )))
+
+      #print()
+  
+}
+```
+
+
+```{r}
+printInter <- function(MAL, df, auteur, Ncat){
+ interpretations <- c("normalisation","necessité","partie")
+ for(inter in 1:3){
+  inter_ <- interpretations[inter]
+  for (i in 1:(Ncat-1)){             # Cat 1
+      for (j in (i+1):Ncat){     # Cat 2
+        valeurs_p(paste(MAL,auteur,inter_,"Cat",i,"vs.",j), df[1+3*(i-1)+(inter-1),], df[ 1+3*(j-1)+(inter-1),]) 
+      }
+      print(noquote(""))
+    }
+  }
+}
+```
+
+\newpage
+
+```{r, warning=FALSE}
+printInter("PSY", PsyPaire ,"paire", 4)
+printInter("PSY", PsyAdulte,"adulte",4)
+printInter("PSY", PsyParent,"parent",4)
+
+printInter("SEX", SexPaire ,"paire", 7)
+printInter("SEX", SexAdulte,"adulte",7)
+
+printInter("NEG", NegAdulte,"adulte",3)
+```
+
+- MPS n'a qu'une catégorie, alors aucune comparaison possible
+- NEG parent pareil
